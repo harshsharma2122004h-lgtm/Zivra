@@ -20,3 +20,16 @@ These files are the saved HTML versions of the website. This package does not in
 
 ## Important
 GitHub Pages can host this static HTML package. If the project later uses a build system or server-side functions, it will need the corresponding source files and deployment setup too.
+
+
+## Supabase setup (ZIVRA)
+
+The public project configuration is stored in `supabase-config.js`. It contains only the Supabase project URL and publishable browser key; never add a service-role/secret key to the repository.
+
+1. Open the Supabase project linked to this repository.
+2. Go to **SQL Editor → New query**.
+3. Paste and run the contents of `supabase-schema.sql`.
+4. Confirm that the `products`, `orders`, and `order_items` tables exist.
+5. Before launch, connect admin sign-in and assign the approved administrator the server-managed `app_metadata.role = admin` claim. Do not grant admin access through user-editable metadata.
+
+The schema includes public read access to active products, admin-only order access, and a database-side guest-order function that recalculates prices and stock. The existing HTML preview pages are not yet fully wired to these tables; online payments and order emails are also not activated. Do not accept real payments until a payment provider and verified server-side webhook are integrated.
