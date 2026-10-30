@@ -33,3 +33,8 @@ The public project configuration is stored in `supabase-config.js`. It contains 
 5. Before launch, connect admin sign-in and assign the approved administrator the server-managed `app_metadata.role = admin` claim. Do not grant admin access through user-editable metadata.
 
 The schema includes public read access to active products, admin-only order access, and a database-side guest-order function that recalculates prices and stock. The existing HTML preview pages are not yet fully wired to these tables; online payments and order emails are also not activated. Do not accept real payments until a payment provider and verified server-side webhook are integrated.
+
+
+## Before enabling public checkout
+
+After running `supabase-schema.sql`, run `supabase-cod-only-patch.sql` in the Supabase SQL Editor. This database constraint keeps online payment orders disabled until a payment provider and verified server-side webhook are integrated. The storefront currently accepts Cash on Delivery only.
