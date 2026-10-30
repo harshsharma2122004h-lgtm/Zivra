@@ -25,6 +25,7 @@ jobs:
         run: |
           mkdir -p _site
           cp index.html admin.html preview.html supabase-config.js _site/
+          cp about.html account.html track-order.html size-guide.html shipping-returns.html faq.html privacy-policy.html contact.html _site/
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
