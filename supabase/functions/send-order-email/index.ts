@@ -1,6 +1,5 @@
 import { serve } from "https://deno.land/std@0.224.0/http/server.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
-import nodemailer from "npm:nodemailer@6.9.16";
 
 const cors = {
   "Access-Control-Allow-Origin": "*",
@@ -75,16 +74,32 @@ serve(async (req) => {
     if (!order.email) return json({ error: "Customer email is missing" }, 400);
     if (["shipped","out_for_delivery"].includes(kind) && (!order.courier_name || !order.tracking_number || !order.tracking_url)) return json({ error: "Save courier, AWB and tracking URL before sending this email." }, 400);
 
-    const host = Deno.env.get("SMTP_HOST") || "smtp.gmail.com";
-    const port = Number(Deno.env.get("SMTP_PORT") || "465");
-    const user = Deno.env.get("SMTP_USER") || "Zivrasupport@gmail.com";
-    const pass = Deno.env.get("SMTP_PASS");
-    if (!pass) return json({ error: "Email service is not configured yet. Add SMTP_PASS in Supabase secrets." }, 503);
-    const transporter = nodemailer.createTransport({ host, port, secure: port === 465, auth: { user, pass } });
+    const scriptUrl = Deno.env.get("GMAIL_SCRIPT_URL");
+    const scriptToken = Deno.env.get("GMAIL_SCRIPT_TOKEN");
+    if (!scriptUrl || !scriptToken) return json({ error: "Email service is not configured. Add GMAIL_SCRIPT_URL and GMAIL_SCRIPT_TOKEN to Supabase Edge Function secrets." }, 503);
     const mail = renderEmail(kind, order, order.order_items || []);
-    await transporter.sendMail({ from: `"ZIVRA Support" <${user}>`, to: order.email, replyTo: "Zivrasupport@gmail.com", subject: mail.subject, html: mail.html, text: mail.text });
+    const sendResponse = await fetch(scriptUrl, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        token: scriptToken,
+        to: order.email,
+        subject: mail.subject,
+        htmlBody: mail.html,
+        textBody: mail.text,
+        replyTo: "Zivrasupport@gmail.com",
+        orderId,
+        emailType: kind,
+      }),
+    });
+    const sendResult = await sendResponse.json().catch(() => ({}));
+    if (!sendResponse.ok || sendResult.ok !== true) {
+      console.error("ZIVRA Gmail delivery failed:", sendResult);
+      return json({ error: sendResult.error || "Gmail could not send this email." }, 502);
+    }
 
-    await adminDb.from("zivra_email_logs").insert({ order_id: orderId, email_type: kind, recipient: order.email, sent_by: kind === "received" ? "checkout" : "admin" });
+    const { error: logError } = await adminDb.from("zivra_email_logs").insert({ order_id: orderId, email_type: kind, recipient: order.email, sent_by: kind === "received" ? "checkout" : "admin" });
+    if (logError) console.error("ZIVRA email log insert failed:", logError);
     return json({ ok: true, recipient: order.email, type: kind });
   } catch (error) {
     console.error("ZIVRA email error:", error);
