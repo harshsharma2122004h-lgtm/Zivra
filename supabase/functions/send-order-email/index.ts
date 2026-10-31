@@ -3,9 +3,15 @@ import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 
 const cors = {
   "Access-Control-Allow-Origin": "*",
-  "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type, x-supabase-api-version",
   "Access-Control-Allow-Methods": "POST, OPTIONS",
+  "Access-Control-Max-Age": "86400",
 };
+const corsHeaders = (req: Request) => ({
+  ...cors,
+  "Access-Control-Allow-Headers": req.headers.get("Access-Control-Request-Headers") ||
+    "authorization, x-client-info, apikey, content-type, x-supabase-api-version",
+  "Vary": "Origin, Access-Control-Request-Headers",
+});
 const json = (body: unknown, status = 200) =>
   new Response(JSON.stringify(body), { status, headers: { ...cors, "Content-Type": "application/json" } });
 
@@ -44,7 +50,7 @@ function renderEmail(kind: string, order: any, items: any[]) {
 }
 
 serve(async (req) => {
-  if (req.method === "OPTIONS") return new Response("ok", { headers: cors });
+  if (req.method === "OPTIONS") return new Response("ok", { headers: corsHeaders(req) });
   if (req.method !== "POST") return json({ error: "Method not allowed" }, 405);
   try {
     const url = Deno.env.get("SUPABASE_URL")!;
