@@ -78,20 +78,32 @@ serve(async (req) => {
     const scriptToken = Deno.env.get("GMAIL_SCRIPT_TOKEN");
     if (!scriptUrl || !scriptToken) return json({ error: "Email service is not configured. Add GMAIL_SCRIPT_URL and GMAIL_SCRIPT_TOKEN to Supabase Edge Function secrets." }, 503);
     const mail = renderEmail(kind, order, order.order_items || []);
-    const sendResponse = await fetch(scriptUrl, {
+    const relayPayload = JSON.stringify({
+      token: scriptToken,
+      to: order.email,
+      subject: mail.subject,
+      htmlBody: mail.html,
+      textBody: mail.text,
+      replyTo: "Zivrasupport@gmail.com",
+      orderId,
+      emailType: kind,
+    });
+    let sendResponse = await fetch(scriptUrl, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        token: scriptToken,
-        to: order.email,
-        subject: mail.subject,
-        htmlBody: mail.html,
-        textBody: mail.text,
-        replyTo: "Zivrasupport@gmail.com",
-        orderId,
-        emailType: kind,
-      }),
+      body: relayPayload,
+      redirect: "manual",
     });
+    // Apps Script ContentService may redirect its response to a googleusercontent URL.
+    if ([301, 302, 303, 307, 308].includes(sendResponse.status)) {
+      const redirectUrl = sendResponse.headers.get("location");
+      if (!redirectUrl) return json({ error: "Gmail relay returned a redirect without a destination." }, 502);
+      sendResponse = await fetch(redirectUrl, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: relayPayload,
+      });
+    }
     const sendResult = await sendResponse.json().catch(() => ({}));
     if (!sendResponse.ok || sendResult.ok !== true) {
       console.error("ZIVRA Gmail delivery failed:", sendResult);
