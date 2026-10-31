@@ -1,15 +1,7 @@
-/**
- * ZIVRA transactional email relay for Google Apps Script.
- *
- * Deploy as a Web App:
- *   Execute as: Me
- *   Who has access: Anyone
- *
- * In Apps Script: Project Settings -> Script Properties, add:
- *   ZIVRA_RELAY_TOKEN = a long random secret (same value as GMAIL_SCRIPT_TOKEN in Supabase)
- *
- * The endpoint is protected by that shared secret. Do not publish the token.
- */
+// ZIVRA transactional email relay for Google Apps Script.
+// Deploy as a Web App, execute as the owner, and protect with a Script Property token.
+// Script Property required: ZIVRA_RELAY_TOKEN
+
 function doPost(e) {
   try {
     var payload = JSON.parse((e && e.postData && e.postData.contents) || "{}");
