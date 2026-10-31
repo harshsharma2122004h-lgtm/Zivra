@@ -88,22 +88,15 @@ serve(async (req) => {
       orderId,
       emailType: kind,
     });
-    let sendResponse = await fetch(scriptUrl, {
+    // Follow the Apps Script ContentService redirect automatically.
+    // Google may convert the response redirect to GET; manually reposting the body
+    // to the redirected googleusercontent URL can fail after Gmail has already sent.
+    const sendResponse = await fetch(scriptUrl, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: relayPayload,
-      redirect: "manual",
+      redirect: "follow",
     });
-    // Apps Script ContentService may redirect its response to a googleusercontent URL.
-    if ([301, 302, 303, 307, 308].includes(sendResponse.status)) {
-      const redirectUrl = sendResponse.headers.get("location");
-      if (!redirectUrl) return json({ error: "Gmail relay returned a redirect without a destination." }, 502);
-      sendResponse = await fetch(redirectUrl, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: relayPayload,
-      });
-    }
     const sendResult = await sendResponse.json().catch(() => ({}));
     if (!sendResponse.ok || sendResult.ok !== true) {
       console.error("ZIVRA Gmail delivery failed:", sendResult);
