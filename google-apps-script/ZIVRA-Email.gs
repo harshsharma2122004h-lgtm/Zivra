@@ -2,6 +2,14 @@
 // Deploy as a Web App, execute as the owner, and protect with a Script Property token.
 // Script Property required: ZIVRA_RELAY_TOKEN
 
+// Run this once from the Apps Script editor to trigger Gmail permission approval.
+// It only checks the account quota; it does not send an email.
+function authorizeGmail() {
+  var remaining = GmailApp.getRemainingDailyQuota();
+  Logger.log("Gmail authorization is ready. Remaining daily recipients: " + remaining);
+  return remaining;
+}
+
 function doPost(e) {
   try {
     var payload = JSON.parse((e && e.postData && e.postData.contents) || "{}");
