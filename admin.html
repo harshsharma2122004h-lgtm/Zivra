@@ -43,7 +43,7 @@ body:not(.authorized) #app{display:none}
 </style>
 </head>
 <body>
-<div id="adminGate"><form class="gate-card" id="adminLoginForm"><div class="gate-brand">ZIVRA<span>.</span></div><h1>Admin sign in</h1><p>This private workspace is restricted to your approved ZIVRA administrator account.</p><label for="adminEmail">Email address</label><input id="adminEmail" type="email" autocomplete="username" value="harshsharma2122004h@gmail.com" required><label for="adminPassword">Password</label><input id="adminPassword" type="password" autocomplete="current-password" required><button id="adminLoginButton" type="submit">Sign in securely</button><button type="button" id="forgotPasswordBtn">Forgot password? Send reset link</button><div id="gateError" role="alert"></div></form></div>
+<div id="adminGate"><form class="gate-card" id="adminLoginForm" onsubmit="return window.zivraAdminLogin(event)"><div class="gate-brand">ZIVRA<span>.</span></div><h1>Admin sign in</h1><p>This private workspace is restricted to your approved ZIVRA administrator account.</p><label for="adminEmail">Email address</label><input id="adminEmail" type="email" autocomplete="username" value="harshsharma2122004h@gmail.com" required><label for="adminPassword">Password</label><input id="adminPassword" type="password" autocomplete="current-password" required><button id="adminLoginButton" type="submit">Sign in securely</button><button type="button" id="forgotPasswordBtn">Forgot password? Send reset link</button><div id="gateError" role="alert"></div></form></div>
 <div id="resetGate"><form class="gate-card" id="resetPasswordForm"><div class="gate-brand">ZIVRA<span>.</span></div><h1>Set a new password</h1><p>Choose a new password for your administrator account.</p><label for="newAdminPassword">New password</label><input id="newAdminPassword" type="password" minlength="8" autocomplete="new-password" required><label for="confirmAdminPassword">Confirm new password</label><input id="confirmAdminPassword" type="password" minlength="8" autocomplete="new-password" required><button type="submit" id="saveNewPassword">Update password</button><div id="resetError" role="alert"></div></form></div>
 <div id="app">
   <aside class="sidebar">
@@ -114,6 +114,21 @@ body:not(.authorized) #app{display:none}
 <script src="./supabase-config.js"></script>
 <script>
 const $=id=>document.getElementById(id);
+window.zivraAdminLogin=async function(e){
+ e.preventDefault();
+ const errorBox=document.getElementById('gateError'),button=document.getElementById('adminLoginButton');
+ errorBox.textContent='';button.disabled=true;button.textContent='Signing in…';
+ try{
+  const cfg=window.ZIVRA_SUPABASE_CONFIG;
+  if(!window.supabase?.createClient||!cfg?.url||!cfg?.anonKey)throw new Error('Supabase setup could not load. Refresh the page and try again.');
+  if(!supabaseClient)supabaseClient=window.supabase.createClient(cfg.url,cfg.anonKey);
+  const {data,error}=await supabaseClient.auth.signInWithPassword({email:document.getElementById('adminEmail').value.trim(),password:document.getElementById('adminPassword').value});
+  if(error)throw error;
+  await acceptAdminSession(data.session);
+ }catch(err){errorBox.textContent=err.message||'Sign in failed. Please try again.'}
+ finally{button.disabled=false;button.textContent='Sign in securely'}
+ return false;
+};
 const money=n=>'₹'+Number(n).toLocaleString('en-IN');
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 let products=[],orders=[],customers=[],nextId=1,editingId=null;
@@ -174,7 +189,7 @@ async function acceptAdminSession(session){
  currentAdmin=session.user;document.body.classList.add('authorized');$('adminGate').style.display='none';$('adminProfileEmail').textContent=session.user.email;$('adminProfileName').textContent='ZIVRA Owner';
  try{await loadStoreData();makeChart()}catch(err){$('connectionStatus').textContent='● Database error';toast(err.message||'Could not load store data')}
 }
-$('adminLoginForm').addEventListener('submit',async e=>{e.preventDefault();$('gateError').textContent='';$('adminLoginButton').disabled=true;$('adminLoginButton').textContent='Signing in…';try{if(!supabaseClient){const cfg=window.ZIVRA_SUPABASE_CONFIG;supabaseClient=window.supabase.createClient(cfg.url,cfg.anonKey)}const {data,error}=await supabaseClient.auth.signInWithPassword({email:$('adminEmail').value.trim(),password:$('adminPassword').value});if(error)throw error;await acceptAdminSession(data.session)}catch(err){$('gateError').textContent=err.message||'Sign in failed'}finally{$('adminLoginButton').disabled=false;$('adminLoginButton').textContent='Sign in securely'}});
+// Login is handled directly by the form so earlier dashboard setup cannot leave it unbound.
 
 // Password recovery: request an email link, then set a new password on this page.
 $('forgotPasswordBtn').addEventListener('click',async()=>{const email=$('adminEmail').value.trim();$('gateError').textContent='';if(!email){$('gateError').textContent='Enter your admin email address first.';return}try{if(!supabaseClient){const cfg=window.ZIVRA_SUPABASE_CONFIG;supabaseClient=window.supabase.createClient(cfg.url,cfg.anonKey)}const redirectTo=window.location.origin+window.location.pathname+'?reset=1';const {error}=await supabaseClient.auth.resetPasswordForEmail(email,{redirectTo});if(error)throw error;$('gateError').textContent='If this admin email is registered, a password reset link has been sent. Check Inbox and Spam.'}catch(err){$('gateError').textContent=err.message||'Could not send reset email.'}});
