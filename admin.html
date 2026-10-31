@@ -201,5 +201,22 @@ supabaseClient?.auth?.onAuthStateChange((_event,session)=>{if(session&&session.u
 startAdmin();
 
 </script>
+
+<script>
+/* Independent dashboard clock: keeps date, weekday and live time visible even if dashboard data loading fails. */
+(function(){
+  function paintZivraDashboardClock(){
+    var now=new Date(),hour=now.getHours();
+    var greeting=hour<12?'Good morning':hour<17?'Good afternoon':'Good evening';
+    var title=document.getElementById('storeGreeting');
+    var date=document.getElementById('storeDate');
+    if(title) title.textContent=greeting+'.';
+    if(date) date.textContent=now.toLocaleDateString('en-IN',{weekday:'long',day:'2-digit',month:'long',year:'numeric'})+'  ·  '+now.toLocaleTimeString('en-IN',{hour:'2-digit',minute:'2-digit',second:'2-digit'})+'  ·  STORE PULSE';
+  }
+  paintZivraDashboardClock();
+  window.setInterval(paintZivraDashboardClock,1000);
+  document.addEventListener('visibilitychange',function(){if(!document.hidden)paintZivraDashboardClock()});
+})();
+</script>
 </body>
 </html>
