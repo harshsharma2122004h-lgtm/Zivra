@@ -44,9 +44,21 @@
         theme: { color: '#171717' },
         handler: async function (response) {
           try {
-            const { data: verified, error: verifyError } = await supabase.functions.invoke('verify-razorpay-payment', {
-              body: { ...response, customer, items, voucher_code: voucherCode }
-            });
+            // A payment can already be captured even if the first verification request
+            // loses its network connection. Retry the SAME payment verification safely.
+            let verified = null;
+            let verifyError = null;
+            for (let attempt = 1; attempt <= 3; attempt++) {
+              const result = await supabase.functions.invoke('verify-razorpay-payment', {
+                body: { ...response, customer, items, voucher_code: voucherCode }
+              });
+              verified = result.data;
+              verifyError = result.error;
+              if (!verifyError && verified?.ok && verified?.order_id) break;
+              if (attempt < 3) {
+                await new Promise(resolve => setTimeout(resolve, attempt * 1200));
+              }
+            }
             if (verifyError) throw verifyError;
             if (!verified?.ok || !verified.order_id) throw new Error(verified?.error || 'Payment verification failed. Contact ZIVRA support before retrying.');
             let emailSent = false;
