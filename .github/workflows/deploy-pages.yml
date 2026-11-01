@@ -3,7 +3,7 @@ name: Deploy ZIVRA to GitHub Pages
 on:
   push:
     branches:
-      - zivra/production-readiness
+      - main
   workflow_dispatch:
 
 permissions:
