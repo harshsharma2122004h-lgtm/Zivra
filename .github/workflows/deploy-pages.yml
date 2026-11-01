@@ -1,4 +1,5 @@
 name: Deploy ZIVRA to GitHub Pages
+# Re-trigger deployment after Supabase access token secret configuration.
 
 on:
   push:
