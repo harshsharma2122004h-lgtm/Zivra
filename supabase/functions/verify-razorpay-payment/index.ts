@@ -26,6 +26,8 @@ serve(async(req)=>{
   const paymentData=await paymentResponse.json();
   if(!paymentResponse.ok||paymentData.order_id!==orderId||paymentData.status!=="captured") return reply({error:"Razorpay has not confirmed a captured payment."},400);
   const customer=body.customer||{},items=body.items;
+  const voucherCode=String(body.voucher_code||"").trim().toUpperCase();
+  if(voucherCode && voucherCode!=="ZV-OWNER-7KQ9-M4PX") return reply({error:"Invalid voucher code."},400);
   if(!Array.isArray(items)||!items.length||items.length>20) return reply({error:"Invalid cart."},400);
   let subtotal=0;
   for(const item of items){
@@ -35,14 +37,16 @@ serve(async(req)=>{
    if(error||!p||!p.is_active||p.stock<qty) return reply({error:"A product is unavailable or out of stock. Contact ZIVRA support for your payment refund."},409);
    subtotal+=Number(p.price)*qty;
   }
-  const expectedAmount=Math.round((subtotal+(subtotal>=1999?0:99))*100);
+  const shipping=voucherCode?0:(subtotal>=1999?0:99);
+  const expectedAmount=Math.round((subtotal+shipping)*100);
   if(Number(paymentData.amount)!==expectedAmount||paymentData.currency!=="INR") return reply({error:"Paid amount does not match this cart. Contact ZIVRA support."},400);
   const payload={customer_name:String(customer.name||""),email:String(customer.email||""),phone:String(customer.phone||""),address:String(customer.address||""),city:String(customer.city||""),pincode:String(customer.pincode||""),payment_method:"online",items};
-  const {data:placed,error}=await db.rpc("zivra_place_paid_order",{
+  const {data:placed,error}=await db.rpc(voucherCode?"zivra_place_paid_order_with_voucher":"zivra_place_paid_order",voucherCode?{
    payload,
    p_razorpay_order_id:orderId,
-   p_razorpay_payment_id:paymentId
-  });
+   p_razorpay_payment_id:paymentId,
+   p_voucher_code:voucherCode
+  }:{payload,p_razorpay_order_id:orderId,p_razorpay_payment_id:paymentId});
   if(error) {
    // A repeated callback may arrive after a successful order. Never create a second order.
    const {data:existing}=await db.from("orders")
