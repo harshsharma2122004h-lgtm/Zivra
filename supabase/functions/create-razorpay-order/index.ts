@@ -22,7 +22,8 @@ serve(async(req)=>{
    if(error||!p||!p.is_active||p.stock<qty) return reply({error:"A product is unavailable or out of stock."},409);
    subtotal+=Number(p.price)*qty;
   }
-  const shipping=voucherCode?0:(subtotal>=1999?0:99);\n  const total=subtotal+shipping, amount=Math.round(total*100);
+  const shipping=voucherCode?0:(subtotal>=1999?0:99);
+  const total=subtotal+shipping, amount=Math.round(total*100);
   if(!Number.isSafeInteger(amount)||amount<100) return reply({error:"Invalid payment amount."},400);
   const auth=btoa(keyId+":"+secret);
   const response=await fetch("https://api.razorpay.com/v1/orders",{method:"POST",headers:{"Authorization":"Basic "+auth,"Content-Type":"application/json"},body:JSON.stringify({amount,currency:"INR",receipt:"zivra_"+crypto.randomUUID().replaceAll("-","").slice(0,20),notes:{store:"ZIVRA"}})});
