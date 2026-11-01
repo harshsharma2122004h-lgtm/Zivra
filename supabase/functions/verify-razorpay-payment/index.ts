@@ -54,7 +54,10 @@ serve(async(req)=>{
     .eq("razorpay_payment_id",paymentId)
     .maybeSingle();
    if(existing?.payment_status==="paid") {
-    return reply({ok:true,order_id:existing.id,order_number:existing.order_number,total:existing.total,payment_id:paymentId});
+    // Ensure a previously paid order is never shown as pending.
+    const {error:repairError}=await db.from("orders").update({status:"confirmed"}).eq("id",existing.id).eq("payment_status","paid");
+    if(repairError) throw repairError;
+    return reply({ok:true,order_id:existing.id,order_number:existing.order_number,total:existing.total,payment_id:paymentId,status:"confirmed"});
    }
    throw error;
   }
