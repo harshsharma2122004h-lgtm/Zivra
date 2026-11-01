@@ -34,11 +34,12 @@ begin
 
   update public.orders
   set payment_status = 'paid',
+      status = 'confirmed',
       razorpay_order_id = p_razorpay_order_id,
       razorpay_payment_id = p_razorpay_payment_id
   where id = v_order_id;
 
-  return v_order || jsonb_build_object('payment_status', 'paid');
+  return v_order || jsonb_build_object('payment_status', 'paid', 'status', 'confirmed');
 end;
 $$;
 
@@ -107,3 +108,11 @@ $$;
 
 revoke all on function public.zivra_place_paid_order_with_voucher(jsonb, text, text, text) from public, anon, authenticated;
 grant execute on function public.zivra_place_paid_order_with_voucher(jsonb, text, text, text) to service_role;
+
+
+-- Repair already-paid online orders that were left in pending by the earlier RPC.
+update public.orders
+set status = 'confirmed'
+where payment_method = 'online'
+  and payment_status = 'paid'
+  and status = 'pending';
