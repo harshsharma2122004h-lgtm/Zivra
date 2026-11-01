@@ -103,10 +103,24 @@ serve(async (req) => {
       body: relayPayload,
       redirect: "follow",
     });
-    const sendResult = await sendResponse.json().catch(() => ({}));
+    const relayResponseText = await sendResponse.text();
+    let sendResult: any = {};
+    try {
+      sendResult = JSON.parse(relayResponseText);
+    } catch {
+      console.error("ZIVRA Gmail relay returned non-JSON:", sendResponse.status, sendResponse.headers.get("content-type"), relayResponseText.slice(0, 1200));
+      return json({
+        error: "Google Apps Script returned an unexpected response. Check that the Web App URL ends in /exec and that its latest deployment is active.",
+        relay_status: sendResponse.status,
+        relay_content_type: sendResponse.headers.get("content-type") || "unknown",
+      }, 502);
+    }
     if (!sendResponse.ok || sendResult.ok !== true) {
-      console.error("ZIVRA Gmail delivery failed:", sendResult);
-      return json({ error: sendResult.error || "Gmail could not send this email." }, 502);
+      console.error("ZIVRA Gmail delivery failed:", sendResponse.status, sendResult);
+      return json({
+        error: sendResult.error || "Gmail could not send this email.",
+        relay_status: sendResponse.status,
+      }, 502);
     }
 
     const { error: logError } = await adminDb.from("zivra_email_logs").insert({ order_id: orderId, email_type: kind, recipient: order.email, sent_by: kind === "received" ? "checkout" : "admin" });
