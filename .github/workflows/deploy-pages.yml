@@ -58,8 +58,8 @@ jobs:
         with:
           version: latest
       - name: Deploy ZIVRA email function
-        run: supabase functions deploy send-order-email --project-ref pkraituxrivliqavzwgsm
+        run: supabase functions deploy send-order-email --project-ref pkraiuxrivliqavzwgsm
       - name: Deploy ZIVRA Razorpay functions
         run: |
-          supabase functions deploy create-razorpay-order --project-ref pkraituxrivliqavzwgsm
-          supabase functions deploy verify-razorpay-payment --project-ref pkraituxrivliqavzwgsm
+          supabase functions deploy create-razorpay-order --project-ref pkraiuxrivliqavzwgsm
+          supabase functions deploy verify-razorpay-payment --project-ref pkraiuxrivliqavzwgsm
