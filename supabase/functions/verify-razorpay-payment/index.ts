@@ -21,13 +21,28 @@ serve(async(req)=>{
    let diff=0;for(let i=0;i<expected.length;i++) diff|=expected.charCodeAt(i)^signature.toLowerCase().charCodeAt(i);
    if(diff!==0) return reply({error:"Payment signature verification failed."},400);
   }
-  const url=Deno.env.get("SUPABASE_URL")!,service=Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
+  const url=Deno.env.get("SUPABASE_URL")!,service=Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!,keyId=Deno.env.get("RAZORPAY_KEY_ID");
+  if(!keyId) return reply({error:"Razorpay Key ID is not configured."},503);
   const db=createClient(url,service);
+  const paymentResponse=await fetch("https://api.razorpay.com/v1/payments/"+paymentId,{headers:{"Authorization":"Basic "+btoa(keyId+":"+secret)}});
+  const paymentData=await paymentResponse.json();
+  if(!paymentResponse.ok||paymentData.order_id!==orderId||paymentData.status!=="captured") return reply({error:"Razorpay has not confirmed a captured payment."},400);
   const customer=body.customer||{},items=body.items;
+  if(!Array.isArray(items)||!items.length||items.length>20) return reply({error:"Invalid cart."},400);
+  let subtotal=0;
+  for(const item of items){
+   const qty=Number(item.quantity);
+   if(!Number.isInteger(qty)||qty<1||qty>20) return reply({error:"Invalid item quantity."},400);
+   const {data:p,error}=await db.from("products").select("id,price,stock,is_active").eq("id",item.product_id).single();
+   if(error||!p||!p.is_active||p.stock<qty) return reply({error:"A product is unavailable or out of stock. Contact ZIVRA support for your payment refund."},409);
+   subtotal+=Number(p.price)*qty;
+  }
+  const expectedAmount=Math.round((subtotal+(subtotal>=1999?0:99))*100);
+  if(Number(paymentData.amount)!==expectedAmount||paymentData.currency!=="INR") return reply({error:"Paid amount does not match this cart. Contact ZIVRA support."},400);
   const payload={customer_name:String(customer.name||""),email:String(customer.email||""),phone:String(customer.phone||""),address:String(customer.address||""),city:String(customer.city||""),pincode:String(customer.pincode||""),payment_method:"online",items};
   const {data:placed,error}=await db.rpc("zivra_place_order",{payload});
   if(error) throw error;
-  const {data:payment,error:paymentError}=await db.from("orders").update({payment_status:"paid",razorpay_order_id:orderId,razorpay_payment_id:paymentId}).eq("id",placed.id).select("id").single();
+  const {error:paymentError}=await db.from("orders").update({payment_status:"paid",razorpay_order_id:orderId,razorpay_payment_id:paymentId}).eq("id",placed.id);
   if(paymentError) throw paymentError;
   return reply({ok:true,order_id:placed.id,order_number:placed.order_number,total:placed.total,payment_id:paymentId});
  }catch(e){console.error(e);return reply({error:e instanceof Error?e.message:"Payment could not be verified and order was not completed."},500)}
