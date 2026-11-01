@@ -10,7 +10,9 @@ serve(async(req)=>{
   if(!keyId||!secret) return reply({error:"Razorpay is not configured on the server."},503);
   const url=Deno.env.get("SUPABASE_URL")!, service=Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
   const db=createClient(url,service);
-  const body=await req.json(), items=body.items;\n  const voucherCode=String(body.voucher_code||"").trim().toUpperCase();\n  if(voucherCode && voucherCode!=="ZV-OWNER-7KQ9-M4PX") return reply({error:"Invalid voucher code."},400);
+  const body=await req.json(), items=body.items;
+  const voucherCode=String(body.voucher_code||"").trim().toUpperCase();
+  if(voucherCode && voucherCode!=="ZV-OWNER-7KQ9-M4PX") return reply({error:"Invalid voucher code."},400);
   if(!Array.isArray(items)||!items.length||items.length>20) return reply({error:"Invalid cart."},400);
   let subtotal=0;
   for(const item of items){
