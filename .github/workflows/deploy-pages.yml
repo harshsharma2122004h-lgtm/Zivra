@@ -59,3 +59,8 @@ jobs:
       - name: Deploy ZIVRA email function
         if: ${{ env.SUPABASE_ACCESS_TOKEN != '' }}
         run: supabase functions deploy send-order-email --project-ref pkraiuxrivliqavzwgsm
+      - name: Deploy ZIVRA Razorpay functions
+        if: ${{ env.SUPABASE_ACCESS_TOKEN != '' }}
+        run: |
+          supabase functions deploy create-razorpay-order --project-ref pkraiuxrivliqavzwgsm
+          supabase functions deploy verify-razorpay-payment --project-ref pkraiuxrivliqavzwgsm
