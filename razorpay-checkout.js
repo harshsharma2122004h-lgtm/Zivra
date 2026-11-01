@@ -32,8 +32,9 @@
       product_id: x.productId, quantity: Number(x.qty),
       size: x.size || 'M', color: x.color || 'Default'
     }));
+    const voucherCode = String(fd.get('voucherCode') || '').trim().toUpperCase();
     try {
-      const { data: created, error: createError } = await supabase.functions.invoke('create-razorpay-order', { body: { items } });
+      const { data: created, error: createError } = await supabase.functions.invoke('create-razorpay-order', { body: { items, voucher_code: voucherCode } });
       if (createError) throw createError;
       if (!created || !created.razorpay_order_id || !created.key_id) throw new Error(created?.error || 'Could not start online payment.');
       const checkout = new window.Razorpay({
@@ -44,7 +45,7 @@
         handler: async function (response) {
           try {
             const { data: verified, error: verifyError } = await supabase.functions.invoke('verify-razorpay-payment', {
-              body: { ...response, customer, items }
+              body: { ...response, customer, items, voucher_code: voucherCode }
             });
             if (verifyError) throw verifyError;
             if (!verified?.ok || !verified.order_id) throw new Error(verified?.error || 'Payment verification failed. Contact ZIVRA support before retrying.');
