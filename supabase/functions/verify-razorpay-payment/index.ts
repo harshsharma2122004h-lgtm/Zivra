@@ -15,12 +15,10 @@ serve(async(req)=>{
   const key=await crypto.subtle.importKey("raw",new TextEncoder().encode(secret),{name:"HMAC",hash:"SHA-256"},false,["sign"]);
   const digest=new Uint8Array(await crypto.subtle.sign("HMAC",key,new TextEncoder().encode(orderId+"|"+paymentId)));
   const expected=hex(digest);
-  if(expected.length!==signature.length||!crypto.subtle.timingSafeEqual) {
-   if(expected!==signature.toLowerCase()) return reply({error:"Payment signature verification failed."},400);
-  } else {
-   let diff=0;for(let i=0;i<expected.length;i++) diff|=expected.charCodeAt(i)^signature.toLowerCase().charCodeAt(i);
-   if(diff!==0) return reply({error:"Payment signature verification failed."},400);
-  }
+  const supplied=signature.toLowerCase();
+  let diff=expected.length ^ supplied.length;
+  for(let i=0;i<expected.length;i++) diff |= expected.charCodeAt(i) ^ (supplied.charCodeAt(i) || 0);
+  if(diff!==0) return reply({error:"Payment signature verification failed."},400);
   const url=Deno.env.get("SUPABASE_URL")!,service=Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!,keyId=Deno.env.get("RAZORPAY_KEY_ID");
   if(!keyId) return reply({error:"Razorpay Key ID is not configured."},503);
   const db=createClient(url,service);
@@ -40,10 +38,22 @@ serve(async(req)=>{
   const expectedAmount=Math.round((subtotal+(subtotal>=1999?0:99))*100);
   if(Number(paymentData.amount)!==expectedAmount||paymentData.currency!=="INR") return reply({error:"Paid amount does not match this cart. Contact ZIVRA support."},400);
   const payload={customer_name:String(customer.name||""),email:String(customer.email||""),phone:String(customer.phone||""),address:String(customer.address||""),city:String(customer.city||""),pincode:String(customer.pincode||""),payment_method:"online",items};
-  const {data:placed,error}=await db.rpc("zivra_place_order",{payload});
-  if(error) throw error;
-  const {error:paymentError}=await db.from("orders").update({payment_status:"paid",razorpay_order_id:orderId,razorpay_payment_id:paymentId}).eq("id",placed.id);
-  if(paymentError) throw paymentError;
+  const {data:placed,error}=await db.rpc("zivra_place_paid_order",{
+   payload,
+   p_razorpay_order_id:orderId,
+   p_razorpay_payment_id:paymentId
+  });
+  if(error) {
+   // A repeated callback may arrive after a successful order. Never create a second order.
+   const {data:existing}=await db.from("orders")
+    .select("id,order_number,total,payment_status")
+    .eq("razorpay_payment_id",paymentId)
+    .maybeSingle();
+   if(existing?.payment_status==="paid") {
+    return reply({ok:true,order_id:existing.id,order_number:existing.order_number,total:existing.total,payment_id:paymentId});
+   }
+   throw error;
+  }
   return reply({ok:true,order_id:placed.id,order_number:placed.order_number,total:placed.total,payment_id:paymentId});
  }catch(e){console.error(e);return reply({error:e instanceof Error?e.message:"Payment could not be verified and order was not completed."},500)}
 });
