@@ -22,10 +22,11 @@ const titles: Record<string,string> = {
   shipped: "Your ZIVRA order is on its way",
   out_for_delivery: "Your ZIVRA order is out for delivery",
   delivered: "Your ZIVRA order has been delivered",
+  cancelled: "Your ZIVRA order has been cancelled",
 };
 const headings: Record<string,string> = {
   received: "ORDER RECEIVED", confirmed: "ORDER CONFIRMED", processing: "PREPARING YOUR ORDER",
-  shipped: "ON THE WAY", out_for_delivery: "OUT FOR DELIVERY", delivered: "DELIVERED",
+  shipped: "ON THE WAY", out_for_delivery: "OUT FOR DELIVERY", delivered: "DELIVERED", cancelled: "ORDER CANCELLED",
 };
 const intro: Record<string,string> = {
   received: "Thank you for choosing ZIVRA. Your order has reached us successfully.",
@@ -34,6 +35,7 @@ const intro: Record<string,string> = {
   shipped: "Your parcel has left us. Use the shipment details below to follow its journey.",
   out_for_delivery: "Your parcel is with the delivery partner and is expected to reach you soon.",
   delivered: "Your ZIVRA order has been marked delivered. We hope you love it.",
+  cancelled: "Your order has been cancelled. If you believe this was a mistake, please contact our support team.",
 };
 const esc = (v: unknown) => String(v ?? "").replace(/[&<>"]/g, c => ({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;" }[c]!));
 const money = (v: unknown) => "₹" + Number(v || 0).toLocaleString("en-IN", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
@@ -47,6 +49,15 @@ function renderEmail(kind: string, order: any, items: any[]) {
   const html = `<!doctype html><html><body style="margin:0;background:#eeeeee;font-family:Arial,Helvetica,sans-serif;color:#191919"><div style="max-width:640px;margin:24px auto;background:#fff"><div style="padding:24px 30px;background:#111;color:#fff;border-bottom:6px solid #d52b35"><div style="font-size:28px;font-weight:900;letter-spacing:7px">ZIVRA</div><div style="font-size:10px;letter-spacing:3px;color:#ddd;margin-top:6px">STYLE IN EVERY DETAIL</div></div><div style="padding:30px"><div style="font-size:11px;letter-spacing:3px;font-weight:bold;color:${accent}">${headings[kind]}</div><h1 style="font-size:30px;line-height:1.15;margin:12px 0 10px">${titles[kind]}</h1><p style="font-size:15px;line-height:1.7;color:#555">${esc(order.customer_name)}, ${intro[kind]}</p><div style="padding:18px;margin:22px 0;${accentBlock}"><div style="font-size:10px;letter-spacing:2px;color:#666">ORDER NUMBER</div><div style="font-size:23px;font-weight:900;margin-top:5px">${esc(order.order_number)}</div><div style="font-size:12px;color:#666;margin-top:7px">${new Date(order.created_at).toLocaleString("en-IN",{dateStyle:"medium",timeStyle:"short",timeZone:"Asia/Kolkata"})}</div></div><h2 style="font-size:16px;border-bottom:2px solid #191919;padding-bottom:10px">YOUR ORDER</h2><table role="presentation" width="100%" cellspacing="0" cellpadding="0">${rows}</table><div style="padding:16px 8px;text-align:right"><span style="color:#666;font-size:13px">Order total</span><div style="font-size:25px;font-weight:900;margin-top:5px">${money(order.total)}</div><div style="font-size:12px;color:#666;margin-top:5px">Payment: Cash on Delivery</div></div>${shipment}<div style="margin-top:22px;padding:18px;background:#f7f7f7"><b style="font-size:13px">DELIVERY ADDRESS</b><p style="font-size:13px;line-height:1.6;color:#555;margin-bottom:0">${esc(address)}<br>Phone: ${esc(order.phone)}</p></div><p style="font-size:13px;line-height:1.7;color:#555;margin-top:25px">Need help? Contact <a href="mailto:Zivrasupport@gmail.com" style="color:#c12631">Zivrasupport@gmail.com</a>.</p></div><div style="padding:20px 30px;background:#111;color:#bbb;font-size:11px;line-height:1.7">THANK YOU FOR SHOPPING WITH ZIVRA<br><span style="color:#fff;font-weight:bold;letter-spacing:2px">ZIVRA SUPPORT</span><br>This is an order-related service email.</div></div></body></html>`;
   const text = `ZIVRA — ${titles[kind]}\nOrder: ${order.order_number}\nCustomer: ${order.customer_name}\nItems: ${items.map((x:any)=>x.product_name+" x "+x.quantity+" — "+money(x.line_total)).join("; ")}\nTotal: ${money(order.total)}\nPayment: Cash on Delivery\nDelivery: ${address}\nCourier: ${order.courier_name||"—"}\nTracking: ${order.tracking_number||"—"}\n${order.tracking_url||""}\nSupport: Zivrasupport@gmail.com`;
   return { subject: `ZIVRA | ${titles[kind]} | ${order.order_number}`, html, text };
+}
+
+
+function renderOwnerAlert(order: any, items: any[]) {
+  const address = [order.address,order.city,order.pincode].filter(Boolean).join(", ");
+  const rows = items.map((x:any) => "<tr><td style='padding:12px 8px;border-bottom:1px solid #333;color:#eee'>" + esc(x.product_name) + "<br><small style='color:#aaa'>Size " + esc(x.size) + " · " + esc(x.color) + " · Qty " + Number(x.quantity) + "</small></td><td align='right' style='padding:12px 8px;border-bottom:1px solid #333;color:#fff'>" + money(x.line_total) + "</td></tr>").join("");
+  const html = "<!doctype html><html><body style='margin:0;background:#080808;font-family:Arial,sans-serif;color:#fff'><div style='max-width:640px;margin:20px auto;background:#111;border:1px solid #333'><header style='padding:26px 30px;background:#080808;border-bottom:5px solid #e02b3b'><div style='font-size:30px;font-weight:900;letter-spacing:8px'>ZIVRA</div><div style='font-size:10px;letter-spacing:3px;color:#aaa;margin-top:6px'>STORE OWNER NOTIFICATION</div></header><main style='padding:28px'><div style='font-size:11px;letter-spacing:3px;color:#e02b3b;font-weight:bold'>NEW ORDER RECEIVED</div><h1 style='font-size:28px;margin:12px 0 22px'>A customer has placed an order.</h1><div style='padding:18px;background:#1b1b1b;border-left:4px solid #e02b3b;margin-bottom:22px'><small style='color:#aaa;letter-spacing:2px'>ORDER NUMBER</small><div style='font-size:24px;font-weight:bold;margin-top:6px'>" + esc(order.order_number) + "</div></div><h3 style='font-size:13px;letter-spacing:2px'>CUSTOMER DETAILS</h3><p style='color:#ccc;line-height:1.8'>" + esc(order.customer_name) + "<br>" + esc(order.email) + "<br>" + esc(order.phone) + "<br>" + esc(address) + "</p><h3 style='font-size:13px;letter-spacing:2px;margin-top:24px'>ORDER ITEMS</h3><table width='100%' cellspacing='0' cellpadding='0'>" + rows + "</table><div style='text-align:right;padding:18px 8px'><small style='color:#aaa'>ORDER TOTAL</small><div style='font-size:26px;font-weight:bold;margin-top:5px'>" + money(order.total) + "</div><p style='font-size:12px;color:#bbb'>Payment method: " + esc(order.payment_method || order.payment || "Cash on Delivery") + "</p></div><div style='padding:16px;background:#1b1b1b;color:#ccc;font-size:13px;line-height:1.7'>Please review this order in the ZIVRA Admin Panel and update its status. This notification is sent for every new order, regardless of payment method.</div></main><footer style='padding:20px 30px;background:#080808;color:#999;font-size:11px'>ZIVRA · PRIVATE STORE NOTIFICATION</footer></div></body></html>";
+  const text = "NEW ZIVRA ORDER: " + order.order_number + "\nCustomer: " + order.customer_name + "\nEmail: " + order.email + "\nPhone: " + order.phone + "\nAddress: " + address + "\nPayment: " + (order.payment_method || order.payment || "Cash on Delivery") + "\nItems: " + items.map((x:any)=>x.product_name+" x "+x.quantity+" — "+money(x.line_total)).join("; ") + "\nTotal: " + money(order.total) + "\nReview this order in the ZIVRA Admin Panel.";
+  return {subject:"NEW ZIVRA ORDER | " + order.order_number,html,text};
 }
 
 serve(async (req) => {
@@ -74,8 +85,9 @@ serve(async (req) => {
     const { data: order, error: orderError } = await adminDb.from("orders").select("*,order_items(*)").eq("id", orderId).single();
     if (orderError || !order) return json({ error: "Order not found" }, 404);
     if (kind === "received") {
-      const { data: prior } = await adminDb.from("zivra_email_logs").select("id").eq("order_id",orderId).eq("email_type","received").limit(1).maybeSingle();
-      if (prior) return json({ ok: true, already_sent: true });
+      const { data: prior } = await adminDb.from("zivra_email_logs").select("id,email_type").eq("order_id",orderId).in("email_type",["received","admin_alert"]);
+      const sent = new Set((prior || []).map((x:any)=>x.email_type));
+      if (sent.has("received") && sent.has("admin_alert")) return json({ok:true,already_sent:true,owner_notified:true});
     }
     if (!order.email) return json({ error: "Customer email is missing" }, 400);
     if (["shipped","out_for_delivery"].includes(kind) && (!order.courier_name || !order.tracking_number || !order.tracking_url)) return json({ error: "Save courier, AWB and tracking URL before sending this email." }, 400);
@@ -83,49 +95,32 @@ serve(async (req) => {
     const scriptUrl = Deno.env.get("GMAIL_SCRIPT_URL");
     const scriptToken = Deno.env.get("GMAIL_SCRIPT_TOKEN");
     if (!scriptUrl || !scriptToken) return json({ error: "Email service is not configured. Add GMAIL_SCRIPT_URL and GMAIL_SCRIPT_TOKEN to Supabase Edge Function secrets." }, 503);
-    const mail = renderEmail(kind, order, order.order_items || []);
-    const relayPayload = JSON.stringify({
-      token: scriptToken,
-      to: order.email,
-      subject: mail.subject,
-      htmlBody: mail.html,
-      textBody: mail.text,
-      replyTo: "Zivrasupport@gmail.com",
-      orderId,
-      emailType: kind,
-    });
-    // Follow the Apps Script ContentService redirect automatically.
-    // Google may convert the response redirect to GET; manually reposting the body
-    // to the redirected googleusercontent URL can fail after Gmail has already sent.
-    const sendResponse = await fetch(scriptUrl, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: relayPayload,
-      redirect: "follow",
-    });
-    const relayResponseText = await sendResponse.text();
-    let sendResult: any = {};
-    try {
-      sendResult = JSON.parse(relayResponseText);
-    } catch {
-      console.error("ZIVRA Gmail relay returned non-JSON:", sendResponse.status, sendResponse.headers.get("content-type"), relayResponseText.slice(0, 1200));
-      return json({
-        error: "Google Apps Script returned an unexpected response. Check that the Web App URL ends in /exec and that its latest deployment is active.",
-        relay_status: sendResponse.status,
-        relay_content_type: sendResponse.headers.get("content-type") || "unknown",
-      }, 502);
-    }
-    if (!sendResponse.ok || sendResult.ok !== true) {
-      console.error("ZIVRA Gmail delivery failed:", sendResponse.status, sendResult);
-      return json({
-        error: sendResult.error || "Gmail could not send this email.",
-        relay_status: sendResponse.status,
-      }, 502);
-    }
 
-    const { error: logError } = await adminDb.from("zivra_email_logs").insert({ order_id: orderId, email_type: kind, recipient: order.email, sent_by: kind === "received" ? "checkout" : "admin" });
-    if (logError) console.error("ZIVRA email log insert failed:", logError);
-    return json({ ok: true, recipient: order.email, type: kind });
+    const items = order.order_items || [];
+    const sendMail = async (recipient:string, mail:{subject:string;html:string;text:string}, emailType:string) => {
+      const payload = JSON.stringify({token:scriptToken,to:recipient,subject:mail.subject,htmlBody:mail.html,textBody:mail.text,replyTo:"zivrasupport@gmail.com",orderId,emailType});
+      const response = await fetch(scriptUrl,{method:"POST",headers:{"Content-Type":"application/json"},body:payload,redirect:"follow"});
+      const raw = await response.text();
+      let result:any = {};
+      try { result = JSON.parse(raw); } catch { throw new Error("Google Apps Script returned an unexpected response. Check the active /exec deployment."); }
+      if(!response.ok || result.ok!==true) throw new Error(result.error || "Gmail could not send this email.");
+      const {error:logError}=await adminDb.from("zivra_email_logs").insert({order_id:orderId,email_type:emailType,recipient,sent_by:(emailType==="received"||emailType==="admin_alert")?"checkout":"admin"});
+      if(logError) console.error("ZIVRA email log insert failed:",logError);
+    };
+
+    if(kind==="received") {
+      const {data:prior}=await adminDb.from("zivra_email_logs").select("email_type").eq("order_id",orderId).in("email_type",["received","admin_alert"]);
+      const sent=new Set((prior||[]).map((x:any)=>x.email_type));
+      let customerSent=sent.has("received"), ownerSent=sent.has("admin_alert");
+      let customerError="", ownerError="";
+      if(!customerSent) { try { await sendMail(order.email,renderEmail("received",order,items),"received"); customerSent=true; } catch(e) { customerError=e instanceof Error?e.message:"Customer email failed"; } }
+      if(!ownerSent) { try { await sendMail("zivrasupport@gmail.com",renderOwnerAlert(order,items),"admin_alert"); ownerSent=true; } catch(e) { ownerError=e instanceof Error?e.message:"Owner notification failed"; } }
+      if(!customerSent||!ownerSent) return json({ok:customerSent||ownerSent,customer_email_sent:customerSent,owner_notified:ownerSent,customer_error:customerError||undefined,owner_error:ownerError||undefined},502);
+      return json({ok:true,customer_email_sent:true,owner_notified:true,recipient:order.email,owner_recipient:"zivrasupport@gmail.com",type:kind});
+    }
+    const mail=renderEmail(kind,order,items);
+    await sendMail(order.email,mail,kind);
+    return json({ok:true,recipient:order.email,type:kind});
   } catch (error) {
     console.error("ZIVRA email error:", error);
     return json({ error: error instanceof Error ? error.message : "Email could not be sent" }, 500);
