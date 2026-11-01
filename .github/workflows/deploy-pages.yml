@@ -43,16 +43,18 @@ jobs:
         uses: actions/deploy-pages@v4
 
   deploy-email-function:
-    if: ${{ secrets.SUPABASE_ACCESS_TOKEN != '' }}
     runs-on: ubuntu-latest
+    env:
+      SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
     steps:
       - name: Checkout repository
+        if: ${{ env.SUPABASE_ACCESS_TOKEN != '' }}
         uses: actions/checkout@v4
       - name: Setup Supabase CLI
+        if: ${{ env.SUPABASE_ACCESS_TOKEN != '' }}
         uses: supabase/setup-cli@v1
         with:
           version: latest
       - name: Deploy ZIVRA email function
+        if: ${{ env.SUPABASE_ACCESS_TOKEN != '' }}
         run: supabase functions deploy send-order-email --project-ref pkraituxrivliqavzwgsm
-        env:
-          SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
