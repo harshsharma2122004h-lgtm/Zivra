@@ -1,3 +1,6 @@
+# Public storefront calls these with the publishable key (not a JWT), so the gateway JWT check is off.
+# Each function does its own validation: payment signature + Razorpay API check, webhook HMAC,
+# or (send-order-email) an admin JWT check for every email type except "received".
 [functions.send-order-email]
 verify_jwt = false
 
