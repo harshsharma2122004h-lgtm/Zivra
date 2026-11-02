@@ -68,10 +68,10 @@ body:not(.authorized) #app{display:none}
       <section class="view active" id="view-overview">
         <div class="pagehead"><div><div class="eyebrow" id="storeDate">STORE PULSE</div><h1 id="storeGreeting">Welcome to ZIVRA.</h1><p>Here’s what’s happening with your ZIVRA store today.</p></div><button class="primary" id="quickAdd">＋ Add a product</button></div>
         <div class="metrics">
-          <div class="metric"><div class="metric-top">Total sales <span class="metric-icon">₹</span></div><strong id="metricSales">₹48,590</strong><div class="trend">↗ 12.8% <span>vs last month</span></div></div>
-          <div class="metric"><div class="metric-top">Orders <span class="metric-icon">▤</span></div><strong id="metricOrders">126</strong><div class="trend">↗ 8.2% <span>vs last month</span></div></div>
-          <div class="metric"><div class="metric-top">Products <span class="metric-icon">◇</span></div><strong id="metricProducts">8</strong><div class="trend"><span>Across 2 collections</span></div></div>
-          <div class="metric"><div class="metric-top">Customers <span class="metric-icon">♙</span></div><strong id="metricCustomers">94</strong><div class="trend">↗ 6 new <span>this week</span></div></div>
+          <div class="metric"><div class="metric-top">Total sales <span class="metric-icon">₹</span></div><strong id="metricSales">—</strong><div class="trend"><span>Calculated from store orders</span></div></div>
+          <div class="metric"><div class="metric-top">Orders <span class="metric-icon">▤</span></div><strong id="metricOrders">—</strong><div class="trend"><span>Live database records</span></div></div>
+          <div class="metric"><div class="metric-top">Products <span class="metric-icon">◇</span></div><strong id="metricProducts">—</strong><div class="trend"><span>Active catalog items</span></div></div>
+          <div class="metric"><div class="metric-top">Customers <span class="metric-icon">♙</span></div><strong id="metricCustomers">—</strong><div class="trend"><span>Unique order customers</span></div></div>
         </div>
         <div class="grid2">
           <section class="panel"><div class="panelhead"><div><h2>Sales overview</h2><p>Sales activity · live orders load separately</p></div><span class="legend"><i class="dot"></i> Revenue</span></div><div class="panelbody"><div class="chart" id="salesChart"></div></div></section>
@@ -196,7 +196,7 @@ async function loadStoreData(){
  customers=[...byEmail.values()].map(c=>({...c,joined:new Date(c.joinedTs).toLocaleDateString('en-IN'),segment:c.orders>=5?'VIP':c.orders>1?'Returning':'New'}));
  renderProducts();renderOrders();renderCustomers();renderInventory();
  $('metricSales').textContent=money(orders.filter(o=>o.status!=='Cancelled').reduce((s,o)=>s+o.total,0));
- $('metricOrders').textContent=orders.length;$('metricCustomers').textContent=customers.length;
+ $('metricOrders').textContent=orders.length;$('metricProducts').textContent=products.length;$('metricCustomers').textContent=customers.length;
  $('connectionStatus').textContent='● Supabase connected';$('connectionStatus').style.background='#e8f3ec';$('connectionStatus').style.color='#2d7659';
 }
 async function updateStock(p,stock){try{const {error}=await supabaseClient.from('products').update({stock}).eq('id',p.id);if(error)throw error;await loadStoreData();toast('Stock saved')}catch(err){toast(err.message||'Could not update stock')}}
