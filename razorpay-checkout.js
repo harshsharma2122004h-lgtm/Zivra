@@ -4,6 +4,14 @@
   if (!form) return;
   const moneyText = n => '₹' + Number(n || 0).toLocaleString('en-IN');
   let paymentInProgress = false;
+  // supabase-js hides the server's message on non-2xx replies; read it so customers see the real reason.
+  async function callFn(supabase, name, body) {
+    const { data, error } = await supabase.functions.invoke(name, { body });
+    if (!error) return { data, message: data && data.error ? String(data.error) : '' };
+    let message = error.message || 'Request failed';
+    try { const j = await error.context.json(); if (j && j.error) message = String(j.error); } catch (_) {}
+    return { data: null, message, failed: true };
+  }
   form.addEventListener('submit', async function (event) {
     const fd = new FormData(form);
     if (fd.get('payment') !== 'upi') return;
@@ -34,9 +42,9 @@
     }));
     const voucherCode = String(fd.get('voucherCode') || '').trim().toUpperCase();
     try {
-      const { data: created, error: createError } = await supabase.functions.invoke('create-razorpay-order', { body: { items, voucher_code: voucherCode } });
-      if (createError) throw createError;
-      if (!created || !created.razorpay_order_id || !created.key_id) throw new Error(created?.error || 'Could not start online payment.');
+      const createdRes = await callFn(supabase, 'create-razorpay-order', { items, customer, voucher_code: voucherCode });
+      const created = createdRes.data;
+      if (!created || !created.razorpay_order_id || !created.key_id) throw new Error(createdRes.message || 'Could not start online payment.');
       const checkout = new window.Razorpay({
         key: created.key_id, amount: created.amount, currency: created.currency || 'INR',
         name: 'ZIVRA', description: 'ZIVRA fashion order', order_id: created.razorpay_order_id,
@@ -44,29 +52,24 @@
         theme: { color: '#171717' },
         handler: async function (response) {
           try {
-            // A payment can already be captured even if the first verification request
-            // loses its network connection. Retry the SAME payment verification safely.
+            // Browser sends ONLY the Razorpay ids + signature. The server finalises the order from
+            // its own saved checkout record, so a repeated or retried callback never duplicates an order.
             let verified = null;
-            let verifyError = null;
-            for (let attempt = 1; attempt <= 3; attempt++) {
-              const result = await supabase.functions.invoke('verify-razorpay-payment', {
-                body: { ...response, customer, items, voucher_code: voucherCode }
+            let lastMessage = '';
+            for (let attempt = 1; attempt <= 6; attempt++) {
+              const res = await callFn(supabase, 'verify-razorpay-payment', {
+                razorpay_order_id: response.razorpay_order_id,
+                razorpay_payment_id: response.razorpay_payment_id,
+                razorpay_signature: response.razorpay_signature
               });
-              verified = result.data;
-              verifyError = result.error;
-              if (!verifyError && verified?.ok && verified?.order_id) break;
-              if (attempt < 3) {
-                await new Promise(resolve => setTimeout(resolve, attempt * 1200));
-              }
+              const d = res.data;
+              if (d && d.ok && d.order_id) { verified = d; break; }
+              lastMessage = (d && d.error) || res.message || lastMessage;
+              if (d && d.retryable === false) break;
+              await new Promise(resolve => setTimeout(resolve, Math.min(attempt, 4) * 1500));
             }
-            if (verifyError) throw verifyError;
-            if (!verified?.ok || !verified.order_id) throw new Error(verified?.error || 'Payment verification failed. Contact ZIVRA support before retrying.');
-            let emailSent = false;
-            try {
-              const { error } = await supabase.functions.invoke('send-order-email', { body: { order_id: verified.order_id, type: 'received' } });
-              if (error) throw error;
-              emailSent = true;
-            } catch (mailError) { console.warn('ZIVRA confirmation email:', mailError); }
+            if (!verified) throw new Error(lastMessage || 'Payment received, but the order is still being confirmed.');
+            const emailSent = !!verified.email_sent;
             const setText = (id, value) => { const el = document.getElementById(id); if (el) el.textContent = value; };
             setText('cartHeading', 'Order confirmation');
             form.classList.remove('show');
@@ -91,7 +94,7 @@
             if (button) { button.disabled = false; button.textContent = 'PLACE ORDER →'; }
           } catch (err) {
             console.error('ZIVRA payment verification:', err);
-            alert((err.message || 'Payment verification failed.') + ' Please contact ZIVRA support with payment ID: ' + response.razorpay_payment_id);
+            alert((err.message || 'Payment verification failed.') + '\n\nYour payment ID: ' + response.razorpay_payment_id + '\nPlease do NOT pay again. ZIVRA will confirm your order automatically or contact you at ' + customer.email + '. Support: Zivrasupport@gmail.com');
             paymentInProgress = false;
             if (button) { button.disabled = false; button.textContent = 'PLACE ORDER →'; }
           }
