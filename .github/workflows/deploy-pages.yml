@@ -63,3 +63,4 @@ jobs:
         run: |
           supabase functions deploy create-razorpay-order --project-ref pkraiuxrivliqavzwgsm
           supabase functions deploy verify-razorpay-payment --project-ref pkraiuxrivliqavzwgsm
+          supabase functions deploy razorpay-webhook --project-ref pkraiuxrivliqavzwgsm
