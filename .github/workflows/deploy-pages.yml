@@ -63,4 +63,8 @@ jobs:
         run: |
           supabase functions deploy create-razorpay-order --project-ref pkraiuxrivliqavzwgsm
           supabase functions deploy verify-razorpay-payment --project-ref pkraiuxrivliqavzwgsm
-          supabase functions deploy razorpay-webhook --project-ref pkraiuxrivliqavzwgsm
+          if [ -f supabase/functions/razorpay-webhook/index.ts ]; then
+            supabase functions deploy razorpay-webhook --project-ref pkraiuxrivliqavzwgsm
+          else
+            echo "Webhook source is not in the repository yet; skipping webhook deployment."
+          fi
