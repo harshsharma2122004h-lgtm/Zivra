@@ -25,7 +25,7 @@ jobs:
       - name: Prepare website files
         run: |
           mkdir -p _site
-          cp index.html admin.html preview.html supabase-config.js razorpay-checkout.js _site/
+          cp index.html admin.html preview.html supabase-config.js razorpay-checkout.js zivra-monitor.js _site/
           cp about.html account.html track-order.html size-guide.html shipping-returns.html faq.html privacy-policy.html contact.html help-center.html _site/
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
@@ -63,8 +63,4 @@ jobs:
         run: |
           supabase functions deploy create-razorpay-order --project-ref pkraiuxrivliqavzwgsm
           supabase functions deploy verify-razorpay-payment --project-ref pkraiuxrivliqavzwgsm
-          if [ -f supabase/functions/razorpay-webhook/index.ts ]; then
-            supabase functions deploy razorpay-webhook --project-ref pkraiuxrivliqavzwgsm
-          else
-            echo "Webhook source is not in the repository yet; skipping webhook deployment."
-          fi
+          echo "Razorpay webhook deployment is optional and is currently skipped."
