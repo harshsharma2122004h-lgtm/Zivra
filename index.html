@@ -110,6 +110,18 @@ const scrollTopProgress=document.getElementById('scrollTopProgress');const scrol
 </script>
 <a class="help-launch" href="help-center.html">✦ &nbsp; Need help?</a><script>(function(){const root=document.body,trigger=document.getElementById("menuTrigger"),back=document.getElementById("drawerBackdrop"),close=document.getElementById("drawerClose"),drawer=document.getElementById("customerDrawer");if(!trigger||!drawer)return;function setOpen(v){root.classList.toggle("drawer-open",v);trigger.setAttribute("aria-expanded",String(v));drawer.setAttribute("aria-hidden",String(!v));}trigger.addEventListener("click",()=>setOpen(true));back.addEventListener("click",()=>setOpen(false));close.addEventListener("click",()=>setOpen(false));drawer.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>setOpen(false)));document.addEventListener("keydown",e=>{if(e.key==="Escape")setOpen(false)});})();</script>
 <script>
+<style id="zivraSiteStudioStyles">
+:root{--site-primary:#24211d;--site-accent:#c8a979;--site-background:#f5f3ef;--site-font-heading:Georgia,serif;--site-radius:10px}
+body[data-zivra-theme="minimal"] .product{box-shadow:none!important;border:1px solid #e8e3da}
+body[data-zivra-theme="editorial"] .product{border-radius:0!important;box-shadow:none!important}
+body[data-zivra-theme="bold"] .pname{font-family:Arial,sans-serif!important;font-weight:900!important;text-transform:uppercase}
+body[data-zivra-theme="soft"] .product{border-radius:18px!important;box-shadow:0 8px 24px #0000000a}
+body[data-zivra-theme="minimal"] .btn,body[data-zivra-theme="minimal"] .add{border-radius:2px!important}
+body[data-zivra-theme="bold"] .btn,body[data-zivra-theme="bold"] .add{border-radius:0!important;text-transform:uppercase;letter-spacing:.06em}
+body[data-zivra-theme="soft"] .btn,body[data-zivra-theme="soft"] .add{border-radius:30px!important}
+body .btn,body .add{border-color:var(--site-primary)!important}
+body .btn:hover,body .add:hover{filter:brightness(.9)}
+</style>
 /* ZIVRA Site Studio runtime: public-safe theme settings and automatic offer badges. */
 (function(){
  const defaults={store_name:'ZIVRA',logo_url:'',announcement:'',footer_text:'',theme:'heritage',primary_color:'#24211d',accent_color:'#c8a979',background_color:'#f5f3ef',heading_font:'Georgia, serif',card_style:'classic',badge_style:'pill',motion:'subtle',corner_radius:10,show_discount_badges:true};
