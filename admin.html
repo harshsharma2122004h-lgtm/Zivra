@@ -283,7 +283,7 @@ async function loadStoreData(){
   supabaseClient.from('orders').select('*,order_items(*)').order('created_at',{ascending:false})
  ]);
  if(pr.error)throw pr.error;if(or.error)throw or.error;
- products=pr.data.map(mapProduct);orders=or.data.map(mapOrder);
+ products=pr.data.map(mapProduct);orders=or.data.map(mapOrder);dbReady=true;
  const byEmail=new Map();or.data.forEach(o=>{const key=o.email.toLowerCase();const c=byEmail.get(key)||{name:o.customer_name,email:o.email,orders:0,spent:0,joinedTs:new Date(o.created_at).getTime(),segment:'New'};c.orders++;if(o.status!=='cancelled')c.spent+=Number(o.total);c.joinedTs=Math.min(c.joinedTs,new Date(o.created_at).getTime());byEmail.set(key,c)});
  customers=[...byEmail.values()].map(c=>({...c,joined:new Date(c.joinedTs).toLocaleDateString('en-IN'),segment:c.orders>=5?'VIP':c.orders>1?'Returning':'New'}));
  renderProducts();renderOrders();renderCustomers();renderInventory();
