@@ -159,6 +159,14 @@ body .btn:hover,body .add:hover{filter:brightness(.9)}
    b.textContent=o.discount_type==='percent'?Number(o.discount_value)+'% OFF':'₹'+Number(o.discount_value).toLocaleString('en-IN')+' OFF';
   });
  }
+ const studioPreviewMode=new URLSearchParams(location.search).has('zivra-studio-preview');
+ if(studioPreviewMode){
+  const showPreviewNotice=()=>{if(document.getElementById('zivraStudioPreviewNotice'))return;const n=document.createElement('div');n.id='zivraStudioPreviewNotice';n.textContent='DRAFT PREVIEW — changes are not live until published from Site Studio';n.style.cssText='position:sticky;top:0;z-index:99999;background:#b8893e;color:#fff;text-align:center;padding:10px 12px;font:700 11px Arial,sans-serif;letter-spacing:.04em';document.body.prepend(n)};
+  showPreviewNotice();
+  window.addEventListener('message',event=>{if(event.origin!==location.origin||event.data?.type!=='zivra-studio-preview-settings'||!event.data.settings)return;applySettings(event.data.settings)});
+  const previewProducts=document.getElementById('products');if(previewProducts)new MutationObserver(()=>applySettings(settings)).observe(previewProducts,{childList:true,subtree:true});
+  return;
+ }
  async function loadRuntime(){
   try{
    const client=window.zivraSupabase;if(!client){setTimeout(loadRuntime,900);return}
