@@ -119,6 +119,7 @@ body:not(.authorized) #app{display:none}
       <section class="view" id="view-sitecontrol">
         <div class="pagehead"><div><div class="eyebrow">STOREFRONT STUDIO</div><h1>Site Control</h1><p>Change the look, text, logo, header, footer, colours, fonts and motion of your customer website. Anything you leave empty keeps the current design.</p></div><div style="display:flex;gap:8px;flex-wrap:wrap"><a class="secondary" href="./index.html" target="_blank" rel="noopener" style="text-decoration:none;padding:10px 14px;border:1px solid var(--line);border-radius:8px">Open store ↗</a><button class="secondary" id="zvReset">Reset all</button><button class="primary" id="zvSave">Save &amp; publish</button></div></div>
         <section class="panel"><div style="padding:16px 20px"><div class="eyebrow" style="margin-bottom:10px">READY-MADE TEMPLATES (tap one, then fine-tune below, then Save)</div><div class="zactions" id="zvTemplates"></div></div></section>
+        <div id="zvHomeBuilder"></div>
         <div id="zvForm"></div>
         <p class="zmeta" id="zvStatus" style="padding:8px 4px">Loading…</p>
       </section>
@@ -293,9 +294,9 @@ $('errMarkAll').addEventListener('click',async()=>{const r=await supabaseClient.
 $('errClearRead').addEventListener('click',async()=>{const r=await supabaseClient.from('zivra_error_logs').delete().eq('is_read',true);if(r.error)toast(r.error.message);else{await loadInbox();toast('Read notifications cleared')}});
 
 // Shrink product photos before upload (fast shop on phones)
-async function zOptimizeImage(file){
+async function zOptimizeImage(file,maxEdge){
  try{
-  const bmp=await createImageBitmap(file);const max=1400,scale=Math.min(1,max/Math.max(bmp.width,bmp.height));
+  const bmp=await createImageBitmap(file);const max=maxEdge||1400,scale=Math.min(1,max/Math.max(bmp.width,bmp.height));
   const w=Math.round(bmp.width*scale),h=Math.round(bmp.height*scale);
   const c=document.createElement('canvas');c.width=w;c.height=h;c.getContext('2d').drawImage(bmp,0,0,w,h);
   const blob=await new Promise(res=>c.toBlob(res,'image/webp',.82));
@@ -412,7 +413,7 @@ const ZV_COLORS=[['bg','Page background'],['surface','Header & cards'],['ink','M
 const zvColorFields=(mode)=>ZV_COLORS.map(c=>['theme.'+mode+'.'+c[0],c[1],'color']);
 const ZV_GROUPS=[
  ['Brand & logo',[['brand.name','Store name (e.g. ZIVRA)','text'],['brand.tagline','Tagline under the logo (leave empty = WEAR YOUR STORY)','text'],['brand.logoUrl','Logo image (optional — replaces the text logo)','image']]],
- ['Announcement bar (top of site)',[['announce.enabled','Show the bar','bool'],['announce.text','Message (e.g. Diwali Sale — 20% OFF)','text'],['announce.link','Link when tapped (optional, https://…)','text'],['announce.bg','Bar colour','color'],['announce.color','Text colour','color']]],
+ ['Announcement bar (top of site)',[['announce.enabled','Show the bar','bool'],['announce.text','Message 1 (e.g. Diwali Sale — 20% OFF)','text'],['announce.text2','Message 2 (optional — messages rotate)','text'],['announce.text3','Message 3 (optional)','text'],['announce.link','Link when tapped (optional, https://…)','text'],['announce.bg','Bar colour','color'],['announce.color','Text colour','color']]],
  ['Header, menu & collection switch',[['nav.home','Menu: Home','text'],['nav.shop','Menu: Shop','text'],['nav.collections','Menu: Collections','text'],['nav.about','Menu: About','text'],['nav.contact','Menu: Contact','text'],['search.placeholder','Search box hint','text'],['labels.street','Switch label: dark side','text'],['labels.ethnic','Switch label: ethnic side','text']]],
  ['Colours — Streetwear (dark side)',zvColorFields('street')],
  ['Colours — Ethnic (light side)',zvColorFields('ethnic')],
@@ -473,7 +474,7 @@ async function initSiteControl(){
  const r=await supabaseClient.from('zivra_site_settings').select('value').eq('key','config').maybeSingle();
  if(r.error){window.zvMissing=true;$('zvForm').innerHTML='<section class="panel"><div class="empty">Site Control needs the one-time database setup (supabase-offers-sitecontrol.sql). Run it in Supabase SQL Editor, then refresh.</div></section>';zvStatus('Setup needed');return}
  window.zvMissing=false;if(!zvLoaded){zvCfg=(r.data&&r.data.value)||{};zvLoaded=true}
- zvRenderForm();zvStatus('Editing the live design. Changes are saved only when you tap “Save & publish”.');
+ zvRenderForm();zhHandle();zhRender();zvStatus('Editing the live design. Changes are saved only when you tap “Save & publish”.');
 }
 $('zvForm').addEventListener('input',e=>{
  const el=e.target;
@@ -514,8 +515,96 @@ $('zvSave').addEventListener('click',async()=>{
 });
 $('zvReset').addEventListener('click',async()=>{
  if(!confirm('Remove ALL Site Control changes and go back to the original ZIVRA design?'))return;
- try{zvCfg={};const r=await supabaseClient.from('zivra_site_settings').upsert({key:'config',value:{},updated_at:new Date().toISOString()});if(r.error)throw r.error;zvRenderForm();toast('Original design restored')}catch(err){toast(err.message||'Could not reset')}
+ try{zvCfg={};const r=await supabaseClient.from('zivra_site_settings').upsert({key:'config',value:{},updated_at:new Date().toISOString()});if(r.error)throw r.error;zvRenderForm();zhRender();toast('Original design restored')}catch(err){toast(err.message||'Could not reset')}
 });
+// ===== Home page builder (posters, tiles, banners, trust, reviews, order) =====
+let zhMode='street';
+const ZH_TOKENS=[['tiles','Category tiles'],['marquee','Scrolling text strip'],['banners','Big banners'],['trust','Trust points'],['shop','Products (always shown)'],['reviews','Customer reviews']];
+const ZH_REP={
+ slides:{label:'Poster slides — they slide automatically (up to 8)',max:8,add:{img:'',eyebrow:'',title:'',sub:'',cta:'SHOP NOW',link:'shop',cta2:'',link2:'shop'},fields:[['img','Poster photo','image'],['eyebrow','Small line','text'],['title','Big heading','text'],['sub','Sub text','text'],['cta','Button 1 text','text'],['link','Button 1 opens (shop · filter:T-Shirts · https://…)','text'],['cta2','Button 2 text (optional)','text'],['link2','Button 2 opens','text']]},
+ tiles:{label:'Category tiles (under the poster)',max:6,add:{img:'',title:'',sub:'',filter:''},fields:[['img','Photo','image'],['title','Title','text'],['sub','Text','text'],['filter','Opens category (e.g. T-Shirts)','text']]},
+ banners:{label:'Big banners',max:4,add:{img:'',eyebrow:'',title:'',text:'',cta:'EXPLORE COLLECTION',link:'shop'},fields:[['img','Photo','image'],['eyebrow','Small line','text'],['title','Heading','text'],['text','Text','text'],['cta','Button text','text'],['link','Button opens','text']]},
+ trust:{label:'Trust points (icons: truck, return, badge, lock, heart, star — or any emoji)',max:4,add:{icon:'badge',title:'',sub:''},fields:[['icon','Icon','text'],['title','Title','text'],['sub','Text','text']]},
+ reviews:{label:'Customer reviews (section is hidden until you add one — only add real reviews)',max:8,add:{name:'',text:''},fields:[['name','Customer name','text'],['text','Review','text']]}
+};
+const zhPath=k=>'home.'+zhMode+'.'+k;
+const zhArr=k=>{const v=zvGet(zvCfg,zhPath(k));return Array.isArray(v)?v:[]};
+const zhSetArr=(k,a)=>zvSet(zvCfg,zhPath(k),a.length?a:undefined);
+function zhOrder(){
+ const saved=zvGet(zvCfg,zhPath('order'));
+ const vis=Array.isArray(saved)&&saved.length?saved.filter(t=>ZH_TOKENS.some(x=>x[0]===t)):ZH_TOKENS.map(x=>x[0]).filter(t=>t!=='marquee'||true);
+ if(!vis.includes('shop'))vis.push('shop');
+ const hidden=ZH_TOKENS.map(x=>x[0]).filter(t=>!vis.includes(t));
+ return {vis,all:[...vis,...hidden]};
+}
+function zhSaveOrder(all,vis){zvSet(zvCfg,zhPath('order'),all.filter(t=>vis.includes(t)))}
+function zhImg(v){return v?`<img src="${zEsc(v)}" alt="">`:''}
+function zhRepHtml(key){
+ const spec=ZH_REP[key],arr=zhArr(key);
+ const rows=arr.map((row,i)=>`<div class="zrow" style="border:1px solid var(--line);border-radius:10px;padding:12px;margin-bottom:12px"><div class="zactions" style="margin-bottom:8px"><b style="font-size:12px;align-self:center">#${i+1}</b><button type="button" data-zrmove="${key}|${i}|-1">↑</button><button type="button" data-zrmove="${key}|${i}|1">↓</button><button type="button" class="zdanger" data-zrdel="${key}|${i}">Delete</button></div><div class="zgrid" style="padding:0">${spec.fields.map(([f,label,type])=>type==='image'
+  ?`<div class="zfield zimg"><label>${zEsc(label)}</label><input data-zr="${key}|${i}|${f}" value="${zEsc(row[f]||'')}" placeholder="https://… or upload"><input type="file" accept="image/*" data-zrfile="${key}|${i}|${f}">${zhImg(row[f])}</div>`
+  :`<div class="zfield"><label>${zEsc(label)}</label><input data-zr="${key}|${i}|${f}" value="${zEsc(row[f]||'')}"></div>`).join('')}</div></div>`).join('');
+ return `<details class="zgroup"><summary>${zEsc(spec.label)} <span class="zmeta">(${arr.length||'default'})</span></summary><div style="padding:16px 20px">${arr.length?'':'<p class="zmeta">Empty = the ZIVRA default design is used. Tap “Add” to make your own.</p>'}${rows}${arr.length<spec.max?`<button type="button" class="secondary" data-zradd="${key}">＋ Add</button>`:''}</div></details>`;
+}
+function zhRender(){
+ const box=$('zvHomeBuilder');if(!box)return;
+ const m=zhMode,od=zhOrder();
+ const sel=(path,opts,cur)=>`<select data-zvh="${path}">${opts.map(o=>`<option value="${o[0]}" ${String(cur)===o[0]?'selected':''}>${zEsc(o[1])}</option>`).join('')}</select>`;
+ const lines=Array.isArray(zvGet(zvCfg,zhPath('marquee')))?zvGet(zvCfg,zhPath('marquee')).join('\n'):'';
+ box.innerHTML=`<details class="zgroup" open><summary>✨ Home page builder (posters, banners, sections)</summary><div style="padding:16px 20px">
+ <div class="zactions" style="margin-bottom:14px"><button type="button" data-zhmode="street" class="${m==='street'?'primary':'secondary'}">Streetwear home</button><button type="button" data-zhmode="ethnic" class="${m==='ethnic'?'primary':'secondary'}">Ethnic home</button></div>
+ <div class="zgrid" style="padding:0 0 12px"><div class="zfield"><label>Home page design</label>${sel('home.design',[['','New premium home (recommended)'],['classic','Old simple home']],zvGet(zvCfg,'home.design')||'')}</div>
+ <div class="zfield"><label>Poster changes every</label>${sel('home.interval',[['','6 seconds (default)'],['4','4 seconds'],['8','8 seconds'],['10','10 seconds']],String(zvGet(zvCfg,'home.interval')||''))}</div>
+ <div class="zfield"><label>Posters slide automatically</label>${sel('home.autoplay',[['','Yes (default)'],['off','No — only by swipe/arrows']],zvGet(zvCfg,'home.autoplay')===false?'off':'')}</div>
+ <div class="zfield"><label>Scrolling text speed</label>${sel('home.marqueeSpeed',[['','Normal'],['slow','Slow'],['fast','Fast']],zvGet(zvCfg,'home.marqueeSpeed')||'')}</div></div>
+ <div class="eyebrow" style="margin:6px 0 8px">SECTION ORDER &amp; VISIBILITY (${m==='street'?'Streetwear':'Ethnic'} home) — poster is always first</div>
+ ${od.all.map((t,i)=>`<div class="zactions" style="margin-bottom:8px;align-items:center"><label style="font-size:13px;min-width:210px"><input type="checkbox" data-zoshow="${t}" ${od.vis.includes(t)?'checked':''} ${t==='shop'?'disabled':''}> ${zEsc(ZH_TOKENS.find(x=>x[0]===t)[1])}</label><button type="button" data-zomove="${t}|-1">↑</button><button type="button" data-zomove="${t}|1">↓</button></div>`).join('')}
+ <div class="zfield" style="margin-top:14px"><label>Scrolling text strip — one message per line (empty = default)</label><textarea data-zhlines="marquee">${zEsc(lines)}</textarea></div>
+ </div></details>${['slides','tiles','banners','trust','reviews'].map(zhRepHtml).join('')}`;
+}
+async function zhUpload(file){
+ const blob=await zOptimizeImage(file,1920);
+ const ext=blob.type==='image/webp'?'webp':(file.type.split('/')[1]||'jpg').replace('jpeg','jpg');
+ const path=`site/${Date.now()}-${Math.random().toString(36).slice(2)}.${ext}`;
+ const up=await supabaseClient.storage.from('product-images').upload(path,blob,{cacheControl:'31536000',upsert:true,contentType:blob.type});if(up.error)throw up.error;
+ return supabaseClient.storage.from('product-images').getPublicUrl(path).data.publicUrl;
+}
+function zhHandle(){
+ const box=$('zvHomeBuilder');if(!box||box.dataset.bound)return;box.dataset.bound='1';
+ box.addEventListener('click',e=>{
+  const b=e.target.closest('button');if(!b)return;
+  if(b.dataset.zhmode){zhMode=b.dataset.zhmode;zhRender();return}
+  if(b.dataset.zradd){const k=b.dataset.zradd,a=zhArr(k).slice();a.push({...ZH_REP[k].add});zhSetArr(k,a);zhRender();return}
+  if(b.dataset.zrdel){const [k,i]=b.dataset.zrdel.split('|'),a=zhArr(k).slice();a.splice(Number(i),1);zhSetArr(k,a);zhRender();return}
+  if(b.dataset.zrmove){const [k,i,d]=b.dataset.zrmove.split('|'),a=zhArr(k).slice(),x=Number(i),y=x+Number(d);if(y<0||y>=a.length)return;[a[x],a[y]]=[a[y],a[x]];zhSetArr(k,a);zhRender();return}
+  if(b.dataset.zomove){const [t,d]=b.dataset.zomove.split('|'),od=zhOrder(),x=od.all.indexOf(t),y=x+Number(d);if(y<0||y>=od.all.length)return;[od.all[x],od.all[y]]=[od.all[y],od.all[x]];zhSaveOrder(od.all,od.vis);zhRender()}
+ });
+ box.addEventListener('input',e=>{
+  const el=e.target;
+  if(el.dataset.zr){const [k,i,f]=el.dataset.zr.split('|'),a=zhArr(k).slice();if(a[Number(i)]){a[Number(i)]={...a[Number(i)],[f]:el.value};zhSetArr(k,a)}}
+  if(el.dataset.zhlines){const arr=el.value.split('\n').map(x=>x.trim()).filter(Boolean);zvSet(zvCfg,zhPath(el.dataset.zhlines),arr.length?arr:undefined)}
+ });
+ box.addEventListener('change',async e=>{
+  const el=e.target;
+  if(el.dataset.zoshow){const od=zhOrder(),vis=el.checked?[...od.vis,el.dataset.zoshow]:od.vis.filter(t=>t!==el.dataset.zoshow);zhSaveOrder(od.all,vis);zhRender();return}
+  if(el.dataset.zvh){
+   const p=el.dataset.zvh,v=el.value;
+   if(p==='home.autoplay')zvSet(zvCfg,p,v==='off'?false:undefined);
+   else if(p==='home.interval')zvSet(zvCfg,p,v?Number(v):undefined);
+   else zvSet(zvCfg,p,v||undefined);
+   return;
+  }
+  if(el.dataset.zrfile&&el.files&&el.files[0]){
+   try{
+    zvStatus('Uploading photo…');
+    const url=await zhUpload(el.files[0]);
+    const [k,i,f]=el.dataset.zrfile.split('|'),a=zhArr(k).slice();
+    if(a[Number(i)]){a[Number(i)]={...a[Number(i)],[f]:url};zhSetArr(k,a);zhRender()}
+    zvStatus('Photo uploaded. Tap “Save & publish” to make it live.');
+   }catch(err){zvStatus('Photo upload failed: '+(err.message||err))}
+  }
+ });
+}
 
 async function startAdmin(){
  const config=window.ZIVRA_SUPABASE_CONFIG;

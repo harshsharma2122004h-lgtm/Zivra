@@ -58,7 +58,85 @@ html{scroll-behavior:smooth;scroll-padding-top:90px}
 /* ZIVRA customer navigation + support drawer */
 .menu-trigger{display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;border:1px solid var(--line);border-radius:50%;background:transparent;color:inherit;font-size:21px;cursor:pointer;flex:none}.topbar{gap:16px}.customer-drawer-backdrop{position:fixed;inset:0;background:#0009;z-index:100;opacity:0;visibility:hidden;transition:.28s}.customer-drawer{position:fixed;z-index:101;inset:0 auto 0 0;width:min(390px,88vw);background:var(--bg,#171a1b);color:var(--ink,#f7f0e5);padding:26px;transform:translateX(-105%);transition:transform .32s cubic-bezier(.2,.8,.2,1);overflow:auto;box-shadow:20px 0 60px #0003}.drawer-open .customer-drawer{transform:translateX(0)}.drawer-open .customer-drawer-backdrop{opacity:1;visibility:visible}.drawer-head{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line);padding-bottom:20px;margin-bottom:20px}.drawer-head strong{font:italic 32px Georgia}.drawer-close{border:1px solid var(--line);border-radius:50%;width:38px;height:38px;background:transparent;color:inherit;font-size:22px}.drawer-links{display:grid;grid-template-columns:1fr 1fr;gap:10px}.drawer-links a{padding:15px 12px;border:1px solid var(--line);border-radius:10px;color:inherit;text-decoration:none;font-size:13px;transition:.2s}.drawer-links a:hover{background:var(--accent);color:#201910;transform:translateY(-2px)}.drawer-support{margin-top:26px;padding:20px;border:1px solid var(--line);border-radius:14px}.drawer-support h3{font:italic 25px Georgia;margin:0 0 8px}.drawer-support p{font-size:13px;line-height:1.7;opacity:.75}.drawer-support a{display:inline-block;margin-top:8px;color:inherit;text-decoration:none;border-bottom:1px solid var(--accent);padding-bottom:4px}.help-launch{position:fixed;right:18px;bottom:22px;z-index:60;border:0;border-radius:30px;padding:14px 19px;background:var(--accent,#e9c994);color:#21190f;font-weight:600;box-shadow:0 8px 28px #0003;cursor:pointer}.app.ethnic .customer-drawer{background:#fff9ef;color:#302218}.app.ethnic .drawer-links a{color:#302218}.app.ethnic .drawer-links a:hover{color:#201910}
 @media(max-width:720px){.topbar{display:flex;flex-wrap:nowrap}.menu-trigger{width:36px;height:36px}.topbar .nav{display:none}}
-/* Private voucher input */.voucher-entry{display:grid;gap:7px;padding:13px;border:1px solid #8886;border-radius:8px}.voucher-entry label{font-size:12px;font-weight:700}.voucher-entry input{width:100%;padding:12px;background:transparent;border:1px solid #8887;color:inherit;border-radius:4px;text-transform:uppercase}.voucher-entry small{font-size:10px;color:var(--muted)}</style><script src="https://checkout.razorpay.com/v1/checkout.js"></script><style id="zv-base-css">.product{position:relative}.corner-badge{position:absolute;top:8px;left:8px;z-index:2;background:var(--accent);color:#1b1711;font-size:10px;font-weight:800;letter-spacing:.05em;padding:4px 9px;border-radius:20px}.offer-badge{display:inline-block;margin-left:10px;background:var(--accent);color:#1b1711;font-size:10px;font-weight:800;padding:3px 9px;border-radius:20px;vertical-align:middle}.zv-announce{display:block;text-align:center;padding:9px 14px;font-size:12px;letter-spacing:.06em;background:var(--accent);color:#1b1711}#couponInfo{line-height:1.5}</style></head><body><main class="app" id="app">
+/* Private voucher input */.voucher-entry{display:grid;gap:7px;padding:13px;border:1px solid #8886;border-radius:8px}.voucher-entry label{font-size:12px;font-weight:700}.voucher-entry input{width:100%;padding:12px;background:transparent;border:1px solid #8887;color:inherit;border-radius:4px;text-transform:uppercase}.voucher-entry small{font-size:10px;color:var(--muted)}</style><script src="https://checkout.razorpay.com/v1/checkout.js"></script><style id="zv-base-css">.product{position:relative}.corner-badge{position:absolute;top:8px;left:8px;z-index:2;background:var(--accent);color:#1b1711;font-size:10px;font-weight:800;letter-spacing:.05em;padding:4px 9px;border-radius:20px}.offer-badge{display:inline-block;margin-left:10px;background:var(--accent);color:#1b1711;font-size:10px;font-weight:800;padding:3px 9px;border-radius:20px;vertical-align:middle}.zv-announce{display:block;text-align:center;padding:9px 14px;font-size:12px;letter-spacing:.06em;background:var(--accent);color:#1b1711}#couponInfo{line-height:1.5}</style><style id="zv-home-css">html.zv-newhome #hero{display:none}
+#zvTop,#zvHome,#zvAfter{display:block}
+.zvs{position:relative;width:100%}
+.zv-rv{opacity:0;transform:translateY(26px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1)}.zv-rv.in{opacity:1;transform:none}
+.zvb{background:#fff;color:#111;border:0;padding:15px 28px;font-size:12px;font-weight:800;letter-spacing:.16em;cursor:pointer;font-family:inherit}
+.zvb-ghost{background:transparent;color:#fff;border-bottom:1px solid #fff;padding:6px 0}
+.zvh-track{display:grid}.zvh-slide{grid-area:1/1;position:relative;overflow:hidden;opacity:0;visibility:hidden;transition:opacity 1s ease,visibility 1s}.zvh-slide.on{opacity:1;visibility:visible}
+.zvh-eyebrow{display:inline-block;font-size:11px;letter-spacing:.3em;text-transform:uppercase;border-bottom:1px solid currentColor;padding-bottom:7px;opacity:.92}
+.zvh-btns{display:flex;gap:18px;flex-wrap:wrap;align-items:center;margin-top:28px}
+.zvh-dots{position:absolute;left:clamp(22px,6vw,90px);bottom:24px;display:flex;gap:8px;z-index:3}.zvh-dot{width:30px;height:3px;border:0;padding:0;background:rgba(255,255,255,.4);cursor:pointer}.zvh-dot.on{background:#fff}
+.zvh-arrow{position:absolute;top:50%;transform:translateY(-50%);width:46px;height:46px;border-radius:50%;border:1px solid rgba(255,255,255,.55);background:rgba(0,0,0,.25);color:#fff;font-size:28px;line-height:1;cursor:pointer;z-index:3}.zvh-arrow.prev{left:16px}.zvh-arrow.next{right:16px}
+@media(max-width:760px){.zvh-arrow{display:none}}
+.zvs-title{font-size:clamp(26px,4vw,40px);text-align:center;margin:0 0 28px}
+/* ---------- STREET (bold, dark, editorial) ---------- */
+.zv-street{font-family:Inter,Arial,sans-serif}
+.zv-street .zvh-slide{min-height:clamp(540px,92vh,860px);color:#fff;background:#0b0b0b}
+.zv-street .zvh-img{position:absolute;inset:0;background-size:cover;background-position:center 25%;transform:scale(1.07);transition:transform 8s ease-out}.zv-street .zvh-slide.on .zvh-img{transform:scale(1)}
+.zv-street .zvh-shade{position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.66) 0%,rgba(0,0,0,.18) 62%,rgba(0,0,0,.05) 100%),linear-gradient(0deg,rgba(0,0,0,.55),transparent 40%)}
+.zv-street .zvh-copy{position:absolute;left:clamp(22px,6vw,90px);bottom:clamp(64px,13vh,130px);max-width:min(880px,90vw)}
+.zv-street .zvh-title{font-weight:900;font-size:clamp(46px,12.5vw,176px);line-height:.88;letter-spacing:-.045em;text-transform:uppercase;margin:18px 0 14px;word-break:break-word}
+.zv-street .zvh-sub{font-size:clamp(13px,1.5vw,17px);opacity:.94;max-width:540px;margin:0}
+.zv-street .zvs-tiles{background:#000;padding:30px clamp(18px,5vw,70px)}
+.zv-street .zvt-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:26px}
+.zv-street .zvt{display:flex;gap:18px;align-items:center;color:#fff;text-decoration:none}
+.zv-street .zvt-img{flex:none;width:88px;height:104px;background-size:cover;background-position:center;background-color:#222;filter:grayscale(.15);transition:transform .5s}.zv-street .zvt:hover .zvt-img{transform:scale(1.05)}
+.zv-street .zvt-txt{display:grid;gap:5px}.zv-street .zvt-txt b{font-size:18px;letter-spacing:.03em}.zv-street .zvt-txt span{font-size:12px;opacity:.7}.zv-street .zvt-txt em{font-style:normal;font-size:11px;font-weight:800;letter-spacing:.14em;border-bottom:1px solid #fff;justify-self:start;padding-bottom:3px}
+.zv-street .zvs-marquee{overflow:hidden;padding:22px 0;border-block:1px solid var(--line);background:var(--bg)}
+.zvm-track{display:flex;width:max-content;animation:zvm linear infinite}.zvs-marquee:hover .zvm-track{animation-play-state:paused}
+@keyframes zvm{from{transform:translate3d(0,0,0)}to{transform:translate3d(-25%,0,0)}}
+.zv-street .zvm-track span{white-space:nowrap;font-weight:900;font-size:clamp(30px,6vw,68px);text-transform:uppercase;letter-spacing:-.025em;padding:0 30px;color:transparent;-webkit-text-stroke:1.5px var(--ink)}
+.zv-street .zvm-track span::after{content:'\2726';margin-left:60px;color:var(--accent);-webkit-text-stroke:0;font-size:.6em;vertical-align:middle}
+.zv-street .zvs-banner{min-height:clamp(440px,70vh,660px);overflow:hidden;display:flex;align-items:center;color:#fff;background:#111}
+.zv-street .zvb-frame{position:absolute;inset:0;overflow:hidden}.zv-street .zvb-img{position:absolute;inset:-14% 0;background-size:cover;background-position:center;will-change:transform}
+.zv-street .zvs-banner::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.7),rgba(0,0,0,.1) 70%)}
+.zv-street .zvs-banner.flip{justify-content:flex-end}.zv-street .zvs-banner.flip::after{background:linear-gradient(270deg,rgba(0,0,0,.7),rgba(0,0,0,.1) 70%)}
+.zv-street .zvb-copy{position:relative;z-index:2;padding:0 clamp(22px,6vw,90px);max-width:680px}
+.zv-street .zvb-copy h2{font-weight:900;font-size:clamp(44px,9vw,124px);line-height:.9;letter-spacing:-.04em;text-transform:uppercase;margin:16px 0}
+.zv-street .zvb-copy p{opacity:.92;margin:0 0 24px;font-size:clamp(14px,1.6vw,18px)}
+.zv-street .zvs-trust{padding:48px clamp(18px,5vw,70px);border-bottom:1px solid var(--line)}
+.zvtr-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+@media(max-width:860px){.zvtr-grid{grid-template-columns:repeat(2,1fr)}}
+.zv-street .zvtr{display:flex;gap:14px;align-items:center}.zvtr i{width:42px;height:42px;flex:none;color:var(--accent);display:grid;place-items:center}.zvtr i svg{width:34px;height:34px}
+.zvtr b{display:block;font-size:12px;letter-spacing:.12em;text-transform:uppercase}.zvtr span{display:block;font-size:12px;color:var(--muted);margin-top:3px}
+.zv-street .zvs-reviews{padding:60px clamp(18px,5vw,70px)}.zvr-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
+.zv-street .zvr{margin:0;border:1px solid var(--line);padding:26px;background:var(--surface)}.zvr-stars{color:var(--accent);letter-spacing:.2em;font-size:14px}.zvr blockquote{margin:14px 0;font-size:15px;line-height:1.7}.zvr figcaption{font-size:12px;letter-spacing:.12em;text-transform:uppercase;opacity:.75}
+/* ---------- ETHNIC (soft, serif, arches) ---------- */
+.zv-ethnic{font-family:Jost,Arial,sans-serif}
+.zv-ethnic .zvh-slide{display:grid;grid-template-columns:1.05fr .95fr;align-items:center;gap:clamp(20px,4vw,60px);min-height:clamp(560px,86vh,780px);padding:36px clamp(22px,6vw,90px) 70px;color:var(--ink);background:var(--bg)}
+.zv-ethnic .zvh-img{position:relative;order:2;width:100%;max-width:520px;height:min(640px,70vh);justify-self:end;background-size:cover;background-position:center;border-radius:999px 999px 26px 26px;box-shadow:0 30px 60px rgba(60,35,10,.18)}
+.zv-ethnic .zvh-shade{display:none}
+.zv-ethnic .zvh-copy{position:relative}
+.zv-ethnic .zvh-eyebrow{color:var(--accent)}
+.zv-ethnic .zvh-title{font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-weight:600;font-size:clamp(46px,8.5vw,118px);line-height:.95;letter-spacing:-.01em;margin:16px 0 14px}
+.zv-ethnic .zvh-sub{font-size:clamp(14px,1.5vw,18px);color:var(--muted);max-width:480px;margin:0}
+.zv-ethnic .zvb{background:var(--ink);color:var(--bg);border-radius:999px;padding:15px 30px}.zv-ethnic .zvb-ghost{background:transparent;color:var(--ink);border-radius:0;border-bottom:1px solid var(--ink)}
+.zv-ethnic .zvh-dot{background:rgba(0,0,0,.22)}.zv-ethnic .zvh-dot.on{background:var(--ink)}
+.zv-ethnic .zvh-arrow{border-color:var(--line);background:var(--surface);color:var(--ink)}
+@media(max-width:760px){.zv-ethnic .zvh-slide{grid-template-columns:1fr;padding:22px 20px 64px}.zv-ethnic .zvh-img{order:-1;max-width:100%;height:min(86vw,420px);justify-self:center}}
+.zv-ethnic .zvs-tiles{padding:56px clamp(18px,5vw,70px) 20px}
+.zv-ethnic .zvt-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:20px;max-width:1100px;margin:0 auto}
+.zv-ethnic .zvt{display:block;text-align:center;color:var(--ink);text-decoration:none}
+.zv-ethnic .zvt-img{display:block;aspect-ratio:3/4;border-radius:999px 999px 20px 20px;background-size:cover;background-position:center;background-color:var(--surface);margin-bottom:16px;transition:transform .6s}.zv-ethnic .zvt:hover .zvt-img{transform:scale(1.03)}
+.zv-ethnic .zvt-txt{display:grid;gap:4px}.zv-ethnic .zvt-txt b{font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-weight:600;font-size:clamp(22px,3vw,30px)}.zv-ethnic .zvt-txt span{font-size:13px;color:var(--muted)}.zv-ethnic .zvt-txt em{font-style:normal;font-size:11px;letter-spacing:.16em;color:var(--accent);margin-top:4px}
+.zv-ethnic .zvs-marquee{overflow:hidden;padding:20px 0;margin:36px 0;background:var(--surface);border-block:1px solid var(--line)}
+.zv-ethnic .zvm-track span{white-space:nowrap;font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-weight:600;font-size:clamp(26px,5vw,50px);color:var(--accent);padding:0 26px}
+.zv-ethnic .zvm-track span::after{content:'\273F';margin-left:52px;font-style:normal;font-size:.7em;color:var(--muted)}
+.zv-ethnic .zvs-banner{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:clamp(24px,5vw,70px);padding:clamp(30px,6vw,80px) clamp(22px,6vw,90px)}
+.zv-ethnic .zvb-frame{position:relative;height:clamp(340px,50vw,560px);overflow:hidden;border-radius:240px 240px 22px 22px}.zv-ethnic .zvb-img{position:absolute;inset:-10% 0;background-size:cover;background-position:center;will-change:transform}
+.zv-ethnic .zvs-banner.flip .zvb-frame{order:2}
+.zv-ethnic .zvb-copy{color:var(--ink)}.zv-ethnic .zvb-copy .zvh-eyebrow{color:var(--accent)}
+.zv-ethnic .zvb-copy h2{font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-weight:600;font-size:clamp(40px,6.5vw,88px);line-height:.98;margin:14px 0}
+.zv-ethnic .zvb-copy p{color:var(--muted);margin:0 0 24px;font-size:clamp(14px,1.5vw,17px)}
+@media(max-width:760px){.zv-ethnic .zvs-banner{grid-template-columns:1fr}.zv-ethnic .zvs-banner.flip .zvb-frame{order:0}}
+.zv-ethnic .zvs-trust{padding:20px clamp(18px,5vw,70px) 56px}
+.zv-ethnic .zvtr{display:flex;flex-direction:column;align-items:center;text-align:center;gap:6px;border:1px solid var(--line);border-radius:18px;padding:24px 12px;background:var(--surface)}
+.zv-ethnic .zvs-reviews{padding:60px clamp(18px,5vw,70px)}.zv-ethnic .zvs-title{font-family:'Cormorant Garamond',Georgia,serif;font-style:italic}
+.zv-ethnic .zvr{margin:0;border:1px solid var(--line);border-radius:20px;padding:28px;background:var(--surface);text-align:center}.zv-ethnic .zvr blockquote{font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-size:20px}
+@media(prefers-reduced-motion:reduce){.zvm-track{animation:none}.zvh-slide,.zv-rv{transition:none}.zvh-img{transform:none!important}}
+</style></head><body><main class="app" id="app">
 <header class="topbar"><button class="menu-trigger" id="menuTrigger" type="button" aria-label="Open navigation" aria-expanded="false">☰</button><a href="#" class="logo" id="logo">ZIVRA<small>WEAR YOUR STORY</small></a><nav class="nav"><a href="#home">Home</a><a href="#shop">Shop</a><a href="#collections">Collections</a><a href="#about">About</a><a href="#contact">Contact</a></nav><label class="search"><input id="search" placeholder="Search for products..."><span>⌕</span></label><div class="icons"><button type="button" id="accountButton" title="My Account" aria-label="My Account" style="background:none;border:0;color:inherit;font:inherit;padding:0">♙</button><span title="Wishlist">♡</span><span title="Bag" id="bag">▢<sup id="count">0</sup></span></div></header><div class="customer-drawer-backdrop" id="drawerBackdrop"></div><aside class="customer-drawer" id="customerDrawer" aria-hidden="true"><div class="drawer-head"><strong>ZIVRA.</strong><button class="drawer-close" id="drawerClose" aria-label="Close menu">×</button></div><div class="eyebrow">EXPLORE ZIVRA</div><nav class="drawer-links"><a href="#home">⌂ &nbsp; Home</a><a href="#shop">◇ &nbsp; Shop</a><a href="#collections">▦ &nbsp; Collections</a><a href="about.html">✧ &nbsp; About / Story</a><a href="contact.html">✉ &nbsp; Contact</a><a href="account.html">♙ &nbsp; My Account</a><a href="track-order.html">↗ &nbsp; My Orders</a><a href="help-center.html">? &nbsp; Help Centre</a></nav><section class="drawer-support"><h3>Need a hand?</h3><p>Order updates, sizing, returns or anything else — find answers in our customer care space.</p><a href="help-center.html">Visit Help Centre →</a></section></aside>
 <div class="switchline"><div class="switchbox"><b id="streetLabel" class="active">Men's Streetwear</b><button class="toggle" id="toggle" role="switch" aria-checked="false" aria-label="Switch collection"><span class="knob"></span></button><b id="ethnicLabel">Sanganeri & Ethnic Wear</b></div></div>
 <section class="hero" id="hero"><div class="hero-copy"><div class="eyebrow" id="eyebrow">MEN'S STREETWEAR</div><h1 id="headline">BUILT FOR<br>THE BOLD</h1><p id="subhead">Oversized fits / Premium cotton / Urban vibes</p><button class="btn" id="shopNow">Shop Now&nbsp; →</button></div></section>
@@ -316,8 +394,10 @@ function applyStatic(c){
   keys.forEach(function(k,i){if(links[i]&&typeof nv[k]==='string'&&nv[k].trim())links[i].textContent=nv[k]});
   var sp=c.search||{};if(sp.placeholder){var si=document.getElementById('search');if(si)si.placeholder=sp.placeholder}
   var an=c.announce||{},old=document.querySelector('.zv-announce');if(old)old.remove();
-  if(an.enabled&&an.text){
-    var bar=document.createElement(an.link?'a':'div');bar.className='zv-announce';bar.textContent=an.text;
+  var annMsgs=[an.text,an.text2,an.text3].filter(function(x){return x&&String(x).trim()});if(window.zvAnnTimer){clearInterval(window.zvAnnTimer);window.zvAnnTimer=null}
+  if(an.enabled&&annMsgs.length){
+    var bar=document.createElement(an.link?'a':'div');bar.className='zv-announce';bar.textContent=annMsgs[0];bar.style.transition='opacity .3s';
+    if(annMsgs.length>1){var annI=0;window.zvAnnTimer=setInterval(function(){annI=(annI+1)%annMsgs.length;bar.style.opacity='0';setTimeout(function(){bar.textContent=annMsgs[annI];bar.style.opacity='1'},300)},4200)}
     if(an.link){bar.href=an.link}
     if(isColor(an.bg))bar.style.background=an.bg;if(isColor(an.color))bar.style.color=an.color;
     var appEl=document.getElementById('app');appEl.insertBefore(bar,appEl.firstChild);
@@ -340,6 +420,7 @@ function applyStatic(c){
   var st=document.getElementById('zv-site-css')||document.createElement('style');st.id='zv-site-css';st.textContent=window.zivraBuildSiteCss(c);document.head.appendChild(st);
 }
 function afterRender(){
+  try{window.zivraHomeRender&&window.zivraHomeRender()}catch(e){window.zivraReport&&window.zivraReport('home-page',e)}
   var c=siteCfg;if(!c)return;
   var hero=(c.hero||{})[mode]||{},promo=(c.promo||{})[mode]||{},tx=c.text||{};
   if(hero.cta){var sn=document.getElementById('shopNow');if(sn)sn.textContent=hero.cta}
@@ -349,7 +430,7 @@ function afterRender(){
 }
 window.zivraApplySite=function(c){
   if(!c||typeof c!=='object')return;
-  siteCfg=c;mutateData(c);applyStatic(c);render();
+  window.ZIVRA_SITE=c;siteCfg=c;mutateData(c);applyStatic(c);render();
 };
 var _render=render;
 render=function(){_render.apply(this,arguments);try{afterRender()}catch(e){window.zivraReport&&window.zivraReport('site-control',e)}};
@@ -369,6 +450,180 @@ window.zivraLoadSite=async function(){
 };
 window.zivraLoadSite();
 })()}catch(zvErr){try{window.zivraReport&&window.zivraReport('storefront-extras',zvErr)}catch(_){}}
+
+
+/* ===== ZIVRA premium home page (sliding posters, tiles, marquee, banners, trust, reviews) ===== */
+try{(function(){
+var esc=function(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[c]})};
+var safeUrl=function(u){return /^(https?:\/\/|data:image\/)/.test(u||'')?String(u).replace(/[()'"\s]/g,function(c){return encodeURIComponent(c)}):''};
+var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+var ICON={
+ truck:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6h11v10H2zM13 9h4l3 3v4h-7z"/><circle cx="6.5" cy="17.5" r="1.8"/><circle cx="16.5" cy="17.5" r="1.8"/></svg>',
+ return:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12a8 8 0 1 0 3-6.2M4 4v4h4"/></svg>',
+ badge:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="10" r="6"/><path d="m9.5 10 2 2 3-3.5M8.5 15.5 7.5 21 12 18.5 16.5 21l-1-5.5"/></svg>',
+ lock:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>',
+ heart:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.600-7 10-7 10z"/></svg>',
+ star:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><path d="m12 3 2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.300 6.1-.9z"/></svg>'
+};
+var TOKENS=['tiles','marquee','banners','trust','shop','reviews'];
+function productsOf(m){return (data[m]&&data[m].products)||[]}
+function catImage(m,f){
+  var key=String(f||'').toLowerCase().replace(/s$/,'');
+  var p=productsOf(m).filter(function(x){return String(x[0]).toLowerCase().indexOf(key)>-1})[0];
+  if(p){try{var u=productImage(p);if(u)return u}catch(e){}}
+  return '';
+}
+function defaults(m){
+  var d=data[m],street=m==='street';
+  var cats=(d.cats||[]).map(function(c){return c[1]}).filter(function(n){return n!=='All'&&n!=='Accessories'}).slice(0,3);
+  var subs=street?['Everyday essentials','Sharp, clean fits','Made to move']:['Sanganeri prints','Everyday elegance','Heritage in every thread'];
+  var fallbackImgs=street?[A.street0,A.street1,A.street2]:[A.ethnic0,A.ethnic1,A.ethnic2];
+  return {
+    slides:[{img:d.hero,eyebrow:street?'NEW COLLECTION':'SANGANERI PRINTS',title:street?'Built for the bold':'Timeless tradition',sub:street?'Oversized fits \u00B7 Premium cotton \u00B7 Urban vibes':'Natural fabrics \u00B7 Heritage prints \u00B7 Everyday elegance',cta:'SHOP NOW',link:'shop',cta2:street?'EXPLORE NEW IN':'EXPLORE PRINTS',link2:'shop'}],
+    tiles:cats.map(function(n,i){return {img:catImage(m,n)||fallbackImgs[i],title:n,sub:subs[i],filter:n}}),
+    marquee:street?['FREE SHIPPING ABOVE \u20B91999','CASH ON DELIVERY','PREMIUM COTTON','NEW DROPS EVERY WEEK']:['FREE SHIPPING ABOVE \u20B91999','CASH ON DELIVERY','SANGANERI PRINTS','NATURAL FABRICS'],
+    banners:[{img:street?A.accessories:A.ethnic3,eyebrow:street?'NEW SEASON':'THE EDIT',title:street?'New vibes':'Wear your heritage',text:street?'Discover everything new and now.':'Prints, drapes and everyday elegance.',cta:'EXPLORE COLLECTION',link:'shop'}],
+    trust:[{icon:'truck',title:'Fast Delivery',sub:'Quick & safe delivery'},{icon:'return',title:'Easy Returns',sub:'Hassle-free process'},{icon:'badge',title:'Quality Assured',sub:'Best fashion, best quality'},{icon:'lock',title:'Secure Checkout',sub:'Safe & trusted'}],
+    reviews:[]
+  };
+}
+function pick(arr,def){return Array.isArray(arr)&&arr.length?arr:def}
+function go(link){
+  link=String(link||'shop');
+  if(link==='shop'||link==='#shop'){var s=document.getElementById('shop');if(s)s.scrollIntoView({behavior:'smooth',block:'start'});return}
+  if(link.indexOf('filter:')===0){
+    filter=link.slice(7)||'All';
+    document.querySelectorAll('.cat').forEach(function(x){x.style.borderColor=x.dataset.filter===filter?'var(--accent)':''});
+    renderProducts();var s2=document.getElementById('shop');if(s2)s2.scrollIntoView({behavior:'smooth',block:'start'});return;
+  }
+  if(/^https?:\/\//.test(link)){window.location.href=link;return}
+  if(link.charAt(0)==='#'){var t=document.querySelector(link);if(t)t.scrollIntoView({behavior:'smooth',block:'start'})}
+}
+function bg(u){var s=safeUrl(u);return s?'style="background-image:url(\''+s+'\')"':''}
+function secHero(slides,iv){
+  var h='<section class="zvs zvs-hero" aria-label="Featured posters"><div class="zvh-track">';
+  slides.forEach(function(s,i){
+    h+='<div class="zvh-slide'+(i===0?' on':'')+'" data-i="'+i+'"><div class="zvh-img" '+bg(s.img)+'></div><div class="zvh-shade"></div><div class="zvh-copy">'+
+      (s.eyebrow?'<div class="zvh-eyebrow">'+esc(s.eyebrow)+'</div>':'')+
+      '<h1 class="zvh-title">'+esc(s.title).replace(/\r?\n/g,'<br>')+'</h1>'+
+      (s.sub?'<p class="zvh-sub">'+esc(s.sub)+'</p>':'')+
+      '<div class="zvh-btns">'+(s.cta?'<button class="zvb" data-go="'+esc(s.link||'shop')+'">'+esc(s.cta)+'</button>':'')+(s.cta2?'<button class="zvb zvb-ghost" data-go="'+esc(s.link2||'shop')+'">'+esc(s.cta2)+'</button>':'')+'</div></div></div>';
+  });
+  h+='</div>';
+  if(slides.length>1){
+    h+='<button class="zvh-arrow prev" aria-label="Previous poster">\u2039</button><button class="zvh-arrow next" aria-label="Next poster">\u203A</button><div class="zvh-dots">'+slides.map(function(_,i){return '<button class="zvh-dot'+(i===0?' on':'')+'" data-i="'+i+'" aria-label="Poster '+(i+1)+'"></button>'}).join('')+'</div>';
+  }
+  return h+'</section>';
+}
+function secTiles(t){
+  if(!t.length)return'';
+  return '<section class="zvs zvs-tiles"><div class="zvt-grid">'+t.map(function(x){
+    return '<a class="zvt zv-rv" href="#shop" data-go="filter:'+esc(x.filter||'All')+'"><span class="zvt-img" '+bg(x.img)+'></span><span class="zvt-txt"><b>'+esc(x.title)+'</b><span>'+esc(x.sub||'')+'</span><em>SHOP '+esc(String(x.title||'').toUpperCase())+' \u2192</em></span></a>';
+  }).join('')+'</div></section>';
+}
+function secMarquee(items,speed){
+  if(!items.length)return'';
+  var line=items.map(function(t){return '<span>'+esc(t)+'</span>'}).join('');
+  var dur=speed==='slow'?'60s':speed==='fast'?'20s':'36s';
+  return '<section class="zvs zvs-marquee" aria-hidden="true"><div class="zvm-track" style="animation-duration:'+dur+'">'+line+line+line+line+'</div></section>';
+}
+function secBanners(b){
+  return b.map(function(x,i){
+    return '<section class="zvs zvs-banner'+(i%2?' flip':'')+'"><div class="zvb-frame"><div class="zvb-img" data-f=".12" '+bg(x.img)+'></div></div><div class="zvb-copy zv-rv">'+
+      (x.eyebrow?'<div class="zvh-eyebrow">'+esc(x.eyebrow)+'</div>':'')+'<h2>'+esc(x.title).replace(/\r?\n/g,'<br>')+'</h2>'+(x.text?'<p>'+esc(x.text)+'</p>':'')+
+      (x.cta?'<button class="zvb" data-go="'+esc(x.link||'shop')+'">'+esc(x.cta)+'</button>':'')+'</div></section>';
+  }).join('');
+}
+function secTrust(t){
+  if(!t.length)return'';
+  return '<section class="zvs zvs-trust"><div class="zvtr-grid">'+t.map(function(x){
+    var ic=ICON[String(x.icon||'').toLowerCase()]||(x.icon?'<span style="font-size:26px">'+esc(x.icon)+'</span>':'');
+    return '<div class="zvtr zv-rv"><i>'+ic+'</i><b>'+esc(x.title)+'</b><span>'+esc(x.sub||'')+'</span></div>';
+  }).join('')+'</div></section>';
+}
+function secReviews(r){
+  if(!r.length)return'';
+  return '<section class="zvs zvs-reviews"><h2 class="zvs-title">What our customers say</h2><div class="zvr-grid">'+r.map(function(x){
+    return '<figure class="zvr zv-rv"><div class="zvr-stars">\u2605\u2605\u2605\u2605\u2605</div><blockquote>'+esc(x.text)+'</blockquote><figcaption>'+esc(x.name)+'</figcaption></figure>';
+  }).join('')+'</div></section>';
+}
+/* mounts */
+var top_,before_,after_;
+function mounts(){
+  if(top_)return true;
+  var hero=document.getElementById('hero'),shop=document.getElementById('shop');
+  if(!hero||!shop)return false;
+  top_=document.createElement('div');top_.id='zvTop';hero.parentNode.insertBefore(top_,hero);
+  before_=document.createElement('div');before_.id='zvHome';hero.parentNode.insertBefore(before_,hero);
+  after_=document.createElement('div');after_.id='zvAfter';shop.parentNode.insertBefore(after_,shop.nextSibling);
+  [top_,before_,after_].forEach(function(el){
+    el.addEventListener('click',function(e){var b=e.target.closest('[data-go]');if(b){e.preventDefault();go(b.getAttribute('data-go'));return}
+      var d=e.target.closest('.zvh-dot');if(d){slideTo(Number(d.dataset.i));restart();return}
+      if(e.target.closest('.zvh-arrow.next')){slideTo(sl.i+1);restart();return}
+      if(e.target.closest('.zvh-arrow.prev')){slideTo(sl.i-1);restart();return}});
+  });
+  var x0=null;
+  top_.addEventListener('touchstart',function(e){x0=e.touches[0].clientX},{passive:true});
+  top_.addEventListener('touchend',function(e){if(x0==null)return;var dx=e.changedTouches[0].clientX-x0;x0=null;if(Math.abs(dx)>45){slideTo(sl.i+(dx<0?1:-1));restart()}},{passive:true});
+  return true;
+}
+/* slider */
+var sl={t:null,i:0,iv:6};
+function slideTo(i){
+  var s=top_?top_.querySelectorAll('.zvh-slide'):[],d=top_?top_.querySelectorAll('.zvh-dot'):[];
+  if(!s.length)return;sl.i=(i+s.length)%s.length;
+  s.forEach(function(x,k){x.classList.toggle('on',k===sl.i)});d.forEach(function(x,k){x.classList.toggle('on',k===sl.i)});
+}
+function stop(){if(sl.t){clearInterval(sl.t);sl.t=null}}
+function restart(){stop();if(top_&&top_.querySelectorAll('.zvh-slide').length>1&&sl.auto!==false)sl.t=setInterval(function(){if(!document.hidden)slideTo(sl.i+1)},sl.iv*1000)}
+/* parallax + reveal */
+var par=[],tick=false,io=null;
+function parUpdate(){
+  tick=false;var vh=window.innerHeight;
+  par.forEach(function(el){var r=el.parentNode.getBoundingClientRect();if(r.bottom<-50||r.top>vh+50)return;var d=r.top+r.height/2-vh/2;el.style.transform='translate3d(0,'+(-d*el.f).toFixed(1)+'px,0)'});
+}
+window.addEventListener('scroll',function(){if(!tick&&par.length){tick=true;requestAnimationFrame(parUpdate)}},{passive:true});
+function wire(motion){
+  par=[];
+  var off=reduce||(motion&&motion.reveal==='off');
+  if(!off){document.querySelectorAll('#zvHome .zvb-img,#zvAfter .zvb-img').forEach(function(el){el.f=(window.innerWidth<800?.07:.12);par.push(el)});}
+  if(io){io.disconnect();io=null}
+  var els=document.querySelectorAll('#zvHome .zv-rv,#zvAfter .zv-rv');
+  if(off||!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in')});return}
+  io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}})},{threshold:.12,rootMargin:'0px 0px -6% 0px'});
+  els.forEach(function(e,i){e.style.transitionDelay=((i%4)*90)+'ms';io.observe(e)});
+  parUpdate();
+  setTimeout(function(){document.querySelectorAll('.zv-rv:not(.in)').forEach(function(e){var r=e.getBoundingClientRect();if(r.top<window.innerHeight*1.2)e.classList.add('in')})},3500);
+}
+window.zivraHomeRender=function(){
+  var c=window.ZIVRA_SITE||{},h=c.home||{},on=h.design!=='classic';
+  document.documentElement.classList.toggle('zv-newhome',on);
+  if(!mounts())return;
+  var m=mode,mc=h[m]||{};
+  [top_,before_,after_].forEach(function(el){el.className='zv-'+m});
+  if(!on){top_.innerHTML='';before_.innerHTML='';after_.innerHTML='';stop();return}
+  var def=defaults(m);
+  var slides=pick(mc.slides,def.slides).filter(function(s){return s&&(s.img||s.title)}).slice(0,8);
+  var secs={
+    tiles:secTiles(pick(mc.tiles,def.tiles)),
+    marquee:secMarquee(Array.isArray(mc.marquee)?mc.marquee.filter(Boolean):def.marquee,h.marqueeSpeed),
+    banners:secBanners(pick(mc.banners,def.banners)),
+    trust:secTrust(pick(mc.trust,def.trust)),
+    reviews:secReviews(Array.isArray(mc.reviews)?mc.reviews.filter(function(r){return r&&r.text}):def.reviews)
+  };
+  var order=Array.isArray(mc.order)&&mc.order.length?mc.order.filter(function(t){return TOKENS.indexOf(t)>-1}):TOKENS.slice();
+  if(order.indexOf('shop')<0)order.push('shop');
+  var bh='',ah='',seenShop=false;
+  order.forEach(function(t){if(t==='shop'){seenShop=true;return}(seenShop?(ah+=secs[t]||''):(bh+=secs[t]||''))});
+  top_.innerHTML=secHero(slides,h.interval);
+  before_.innerHTML=bh;after_.innerHTML=ah;
+  sl.i=0;sl.iv=Math.max(3,Number(h.interval)||6);sl.auto=h.autoplay!==false;
+  restart();wire(c.motion);
+};
+/* fonts for the two designs */
+try{if(!document.getElementById('zv-home-fonts')){var lk=document.createElement('link');lk.id='zv-home-fonts';lk.rel='stylesheet';lk.href='https://fonts.googleapis.com/css2?family=Inter:wght@500;800;900&family=Cormorant+Garamond:ital,wght@0,500;0,700;1,500;1,700&family=Jost:wght@400;500&display=swap';document.head.appendChild(lk)}}catch(e){}
+render();
+})()}catch(zvHomeErr){try{window.zivraReport&&window.zivraReport('home-page',zvHomeErr)}catch(_){}}
 
 </script>
 <a class="help-launch" href="help-center.html">✦ &nbsp; Need help?</a><script>(function(){const root=document.body,trigger=document.getElementById("menuTrigger"),back=document.getElementById("drawerBackdrop"),close=document.getElementById("drawerClose"),drawer=document.getElementById("customerDrawer");if(!trigger||!drawer)return;function setOpen(v){root.classList.toggle("drawer-open",v);trigger.setAttribute("aria-expanded",String(v));drawer.setAttribute("aria-hidden",String(!v));}trigger.addEventListener("click",()=>setOpen(true));back.addEventListener("click",()=>setOpen(false));close.addEventListener("click",()=>setOpen(false));drawer.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>setOpen(false)));document.addEventListener("keydown",e=>{if(e.key==="Escape")setOpen(false)});})();</script><script src="./razorpay-checkout.js"></script></body></html>
