@@ -3,6 +3,7 @@
 Branch: `zivra/premium-redesign-safe`
 
 ## Added in this branch
+- `admin-content-studio.html`: separate authenticated owner workspace for theme-specific homepage copy, hero campaign, poster JSON, ordered section JSON, marquee and brand story. Uses the existing Supabase admin role claim and saves drafts/published records to `zivra_site_content`; it does not alter the existing admin dashboard.
 - `zivra-premium-preview.html`: isolated, responsive dual-theme editorial homepage preview. It does not replace `index.html` and its collection links intentionally return to the current storefront until the integration is tested.
 - `supabase/migrations/20261104_zivra_premium_foundation.sql`: additive schema foundation for customer profiles, saved addresses, wishlist, customer-linked orders, product media/variant metadata and editable published site content.
 
