@@ -438,6 +438,15 @@ function applyStatic(c){
 function afterRender(){
   try{window.zivraHomeRender&&window.zivraHomeRender()}catch(e){window.zivraReport&&window.zivraReport('home-page',e)}
   var c=siteCfg;if(!c)return;
+  try{(Array.isArray(c.visualOverrides)?c.visualOverrides:[]).forEach(function(x){
+    if(!x||typeof x.selector!=='string'||x.selector.length>500)return;
+    var el=document.querySelector(x.selector);if(!el)return;
+    if(typeof x.text==='string'&&el.tagName!=='IMG')el.textContent=x.text.slice(0,3000);
+    if(typeof x.image==='string'&&/^https?:\/\//i.test(x.image)){if(el.tagName==='IMG')el.src=x.image;else el.style.backgroundImage='url("'+x.image.replace(/["\\]/g,'')+'")'}
+    if(/^#[0-9a-f]{6}$/i.test(x.bg||''))el.style.backgroundColor=x.bg;
+    if(/^#[0-9a-f]{6}$/i.test(x.color||''))el.style.color=x.color;
+  })}catch(e){}
+
   var hero=(c.hero||{})[mode]||{},promo=(c.promo||{})[mode]||{},tx=c.text||{};
   if(hero.cta){var sn=document.getElementById('shopNow');if(sn)sn.textContent=hero.cta}
   var ft=mode==='street'?tx.featuredStreet:tx.featuredEthnic;if(ft){var stt=document.getElementById('sectionTitle');if(stt)stt.textContent=ft}

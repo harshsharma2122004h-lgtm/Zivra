@@ -87,7 +87,7 @@ body:not(.authorized) #app{display:none}
         <section class="panel"><div class="panelhead"><div><h2>Recent orders</h2><p>Latest activity from your ZIVRA store</p></div><button class="secondary" data-goto="orders">All orders →</button></div><div class="tablewrap"><table><thead><tr><th>Order</th><th>Customer</th><th>Date</th><th>Total</th><th>Status</th><th>Action</th></tr></thead><tbody id="recentOrders"></tbody></table></div></section>
       </section>
       <section class="view" id="view-products">
-        <div class="pagehead"><div><div class="eyebrow">CATALOG MANAGEMENT</div><h1>Products</h1><p>Add, edit, search and manage items in your collections.</p></div><div style="display:flex;gap:8px;flex-wrap:wrap"><button class="secondary" id="optimizeImages">Speed up product images</button><button class="primary" id="addProduct">＋ Add product</button></div></div>
+        <div class="pagehead"><div><div class="eyebrow">CATALOG MANAGEMENT</div><h1>Products</h1><p>Add, edit, search and manage items in your collections.</p></div><div style="display:flex;gap:8px;flex-wrap:wrap"><a class="secondary" href="./admin-bulk-import.html" style="text-decoration:none;padding:10px 14px;border:1px solid var(--line);border-radius:8px">Bulk import CSV ↗</a><button class="secondary" id="optimizeImages">Speed up product images</button><button class="primary" id="addProduct">＋ Add product</button></div></div>
         <section class="panel"><div class="toolbar"><div class="search"><input id="productSearch" placeholder="Search products or SKU…" /></div><select class="select" id="productCategory"><option value="All">All collections</option><option>Streetwear</option><option>Ethnic</option><option>Accessories</option></select><select class="select" id="productStock"><option value="All">Any stock level</option><option value="Low">Low stock</option><option value="Out of stock">Out of stock</option></select></div><div class="tablewrap"><table><thead><tr><th>Product</th><th>SKU</th><th>Collection</th><th>Price</th><th>Stock</th><th>Status</th><th>Actions</th></tr></thead><tbody id="productsTable"></tbody></table></div><div class="tablefoot"><span id="productCount">Showing 8 products</span><button class="secondary" id="exportProducts">Export CSV ↓</button></div></section>
       </section>
       <section class="view" id="view-orders">
@@ -117,9 +117,33 @@ body:not(.authorized) #app{display:none}
         <section class="panel"><div id="offersList"></div><div class="tablefoot"><span id="offerFoot">Loading…</span><span>Discount is always re-checked by the server at checkout</span></div></section>
       </section>
       <section class="view" id="view-sitecontrol">
-        <div class="pagehead"><div><div class="eyebrow">STOREFRONT STUDIO</div><h1>Site Control</h1><p>Change the look, text, logo, header, footer, colours, fonts and motion of your customer website. Anything you leave empty keeps the current design.</p></div><div style="display:flex;gap:8px;flex-wrap:wrap"><a class="secondary" href="./index.html" target="_blank" rel="noopener" style="text-decoration:none;padding:10px 14px;border:1px solid var(--line);border-radius:8px">Open store ↗</a><button class="secondary" id="zvReset">Reset all</button><button class="primary" id="zvSave">Save &amp; publish</button></div></div>
+        <div class="pagehead"><div><div class="eyebrow">STOREFRONT STUDIO</div><h1>Site Control</h1><p>Change the look, text, logo, header, footer, colours, fonts and motion of your customer website. Anything you leave empty keeps the current design.</p></div><div style="display:flex;gap:8px;flex-wrap:wrap"><a class="secondary" href="./admin-visual-site-preview.html" style="text-decoration:none;padding:10px 14px;border:1px solid var(--line);border-radius:8px">Visual preview ↗</a><a class="secondary" href="./index.html" target="_blank" rel="noopener" style="text-decoration:none;padding:10px 14px;border:1px solid var(--line);border-radius:8px">Open store ↗</a><button class="secondary" id="zvReset">Reset all</button><button class="primary" id="zvSave">Save &amp; publish</button></div></div>
         <section class="panel"><div style="padding:16px 20px"><div class="eyebrow" style="margin-bottom:10px">READY-MADE TEMPLATES (tap one, then fine-tune below, then Save)</div><div class="zactions" id="zvTemplates"></div></div></section>
         <div id="zvHomeBuilder"></div>
+<style>
+#zvVisualEditor{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:14px;margin:16px 0}
+#zvVisualFrame{width:100%;height:780px;border:1px solid var(--line);border-radius:12px;background:#fff}
+#zvVisualPanel{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px;align-self:start;position:sticky;top:12px}
+#zvVisualPanel label{display:block;font-size:11px;color:var(--muted);margin:12px 0 5px}
+#zvVisualPanel input,#zvVisualPanel textarea{width:100%;padding:10px;border:1px solid var(--line);border-radius:8px;font:inherit;font-size:12px}
+#zvVisualPanel textarea{min-height:85px}
+@media(max-width:850px){#zvVisualEditor{grid-template-columns:1fr}#zvVisualFrame{height:65vh}#zvVisualPanel{position:static}}
+</style>
+<section class="panel" style="margin-top:16px">
+ <div class="panelhead"><div><h2>Live visual editor</h2><p>Website ke preview par kisi text, image ya section par click karein, phir side panel se edit karein.</p></div><button type="button" class="secondary" id="zvVisualReload">Refresh preview</button></div>
+ <div id="zvVisualEditor">
+  <iframe id="zvVisualFrame" src="./index.html?zvVisualPreview=1" title="Live ZIVRA storefront editor preview"></iframe>
+  <aside id="zvVisualPanel">
+   <b>Selected element</b><p id="zvVisualHint" class="zmeta">Preview load hone ke baad kisi text ya image par click karein.</p>
+   <label>Text content</label><textarea id="zvVisualText" placeholder="Selected text"></textarea>
+   <label>Image URL (optional)</label><input id="zvVisualImage" type="url" placeholder="https://…">
+   <label>Background colour</label><input id="zvVisualBg" type="color" value="#ffffff">
+   <label>Text colour</label><input id="zvVisualColor" type="color" value="#222222">
+   <div class="zactions" style="margin-top:14px"><button type="button" class="primary" id="zvVisualApply">Apply to preview</button><button type="button" class="secondary" id="zvVisualClear">Clear selection</button></div>
+   <p class="zmeta">Edits are saved into Site Control settings. Use the main “Save &amp; publish” button above to publish.</p>
+  </aside>
+ </div>
+</section>
         <div id="zvForm"></div>
         <p class="zmeta" id="zvStatus" style="padding:8px 4px">Loading…</p>
       </section>
@@ -647,5 +671,59 @@ startAdmin();
   document.addEventListener('visibilitychange',function(){if(!document.hidden)paintZivraDashboardClock()});
 })();
 </script>
-</body>
+
+<script>
+(function(){
+ let selected=null,selectedSelector='',frame=document.getElementById('zvVisualFrame');
+ const $=id=>document.getElementById(id);
+ function selectorFor(el){
+  if(el.id)return '#'+CSS.escape(el.id);
+  const parts=[];let n=el;
+  while(n&&n.nodeType===1&&n!==frame.contentDocument.body){
+   let part=n.tagName.toLowerCase();
+   if(n.classList.length)part+='.'+[...n.classList].slice(0,2).map(CSS.escape).join('.');
+   else if(n.parentElement)part+=':nth-of-type('+(Array.from(n.parentElement.children).filter(x=>x.tagName===n.tagName).indexOf(n)+1)+')';
+   parts.unshift(part);n=n.parentElement;
+  }
+  return 'body>'+parts.join('>');
+ }
+ function selectElement(el){
+  if(!el||!frame.contentDocument.body.contains(el))return;
+  if(selected)selected.style.outline='';
+  selected=el;selectedSelector=selectorFor(el);el.style.outline='2px solid #c59a58';
+  $('zvVisualHint').textContent=selectedSelector;
+  $('zvVisualText').value=(el.innerText||el.textContent||'').trim().slice(0,3000);
+  $('zvVisualImage').value=el.tagName==='IMG'?(el.getAttribute('src')||''):(el.style.backgroundImage.match(/url\(["']?(.*?)["']?\)/)||[])[1]||'';
+  $('zvVisualBg').value='#ffffff';$('zvVisualColor').value='#222222';
+ }
+ function attach(){
+  try{
+   const d=frame.contentDocument;if(!d||!d.body)return;
+   d.addEventListener('click',e=>{if(e.target.closest('a,button'))e.preventDefault();e.stopPropagation();selectElement(e.target.closest('img, h1,h2,h3,p,span,button,a,section,div')||e.target)},true);
+   d.addEventListener('keydown',e=>{if(e.key==='Enter')e.preventDefault()},true);
+   const cfg=window.zvCfg||{};
+   const list=Array.isArray(cfg.visualOverrides)?cfg.visualOverrides:[];
+   list.forEach(x=>{try{const el=d.querySelector(x.selector);if(el)applyOne(el,x)}catch(e){}});
+   $('zvVisualHint').textContent='Ready — preview par kisi element par click karein.';
+  }catch(e){$('zvVisualHint').textContent='Preview access error: '+e.message}
+ }
+ function applyOne(el,x){
+  if(x.text!==undefined){if(el.tagName==='IMG'){}else el.textContent=x.text}
+  if(x.image&&/^https?:\/\//i.test(x.image)){if(el.tagName==='IMG')el.src=x.image;else el.style.backgroundImage='url("'+x.image.replace(/["\\]/g,'')+'")'}
+  if(/^#[0-9a-f]{6}$/i.test(x.bg||''))el.style.backgroundColor=x.bg;
+  if(/^#[0-9a-f]{6}$/i.test(x.color||''))el.style.color=x.color;
+ }
+ frame.addEventListener('load',attach);
+ $('zvVisualReload').addEventListener('click',()=>{frame.src='./index.html?zvVisualPreview='+Date.now()});
+ $('zvVisualApply').addEventListener('click',()=>{
+  if(!selected||!selectedSelector){$('zvVisualHint').textContent='Pehle preview mein koi element select karein.';return}
+  const item={selector:selectedSelector,text:$('zvVisualText').value,image:$('zvVisualImage').value,bg:$('zvVisualBg').value,color:$('zvVisualColor').value};
+  applyOne(selected,item);
+  const arr=Array.isArray(zvCfg.visualOverrides)?zvCfg.visualOverrides:[];
+  const at=arr.findIndex(x=>x.selector===selectedSelector);if(at>=0)arr[at]=item;else arr.push(item);
+  zvCfg.visualOverrides=arr;zvStatus('Visual change added. Tap “Save & publish” to publish it to the live storefront.');
+ });
+ $('zvVisualClear').addEventListener('click',()=>{if(selected)selected.style.outline='';selected=null;selectedSelector='';$('zvVisualHint').textContent='Selection cleared.'});
+})();
+</script></body>
 </html>
