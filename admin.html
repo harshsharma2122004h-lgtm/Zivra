@@ -699,7 +699,7 @@ startAdmin();
  function attach(){
   try{
    const d=frame.contentDocument;if(!d||!d.body)return;
-   d.addEventListener('click',e=>{if(e.target.closest('a,button'))e.preventDefault();e.stopPropagation();selectElement(e.target.closest('img, h1,h2,h3,p,span,button,a,section,div')||e.target)},true);
+   d.addEventListener('click',e=>{if(e.target.closest('a,button'))e.preventDefault();e.stopPropagation();selectElement(e.target.closest('img,h1,h2,h3,p,span,button,a')||e.target)},true);
    d.addEventListener('keydown',e=>{if(e.key==='Enter')e.preventDefault()},true);
    const cfg=window.zvCfg||{};
    const list=Array.isArray(cfg.visualOverrides)?cfg.visualOverrides:[];
