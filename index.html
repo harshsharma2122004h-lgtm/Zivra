@@ -152,6 +152,16 @@ html{scroll-behavior:smooth;scroll-padding-top:90px}
 .cat.cat-photo{position:relative;aspect-ratio:3/4;padding:0 6px 12px;display:flex;align-items:flex-end;justify-content:center;background-size:cover;background-position:center;color:#fff;font-weight:700;font-size:12px;letter-spacing:.08em;text-transform:uppercase;border:1px solid transparent;border-radius:10px;overflow:hidden;cursor:pointer}
 .cat.cat-photo span{display:none}
 .app.ethnic .cat.cat-photo{border-radius:999px 999px 12px 12px;padding-bottom:16px}
+</style><style id="zv-v2-css">
+.psizes{margin:-2px 0 8px}.psizes span{display:inline-block;border:1px solid var(--line);font-size:10px;padding:2px 6px;margin:0 4px 4px 0;border-radius:3px}.psizes span.x{opacity:.35;text-decoration:line-through}
+.pcolors{margin:0 0 10px}.pcolors i{display:inline-block;width:12px;height:12px;border-radius:50%;border:1px solid var(--line);margin-right:5px}
+.option-btn[disabled]{opacity:.35;text-decoration:line-through;cursor:not-allowed}.color-dot[disabled]{opacity:.35;cursor:not-allowed;position:relative}
+.detail-thumbs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}.detail-thumbs:empty{display:none}.dthumb{width:54px;height:66px;padding:0;border:2px solid var(--line);background:transparent;border-radius:6px;overflow:hidden;cursor:pointer}.dthumb.on{border-color:var(--accent)}.dthumb img{width:100%;height:100%;object-fit:cover;display:block}
+.detail-meta{display:grid;gap:8px;margin:14px 0}.detail-meta:empty{display:none}.detail-meta div{display:flex;gap:12px;font-size:12px;line-height:1.5}.detail-meta b{min-width:78px;letter-spacing:.08em;text-transform:uppercase;font-size:10px;color:var(--muted);padding-top:2px}
+html.zv-edit [data-zve]{outline:2px dashed rgba(212,175,55,.7);outline-offset:2px;cursor:pointer!important}
+html.zv-edit [data-zve]:hover{outline-color:#fff;outline-style:solid;background-color:rgba(212,175,55,.14)}
+html.zv-edit .zvh-slide{transition:none}
+html.zv-edit .cat.cat-photo{outline-offset:-3px}
 </style></head><body><main class="app" id="app">
 <header class="topbar"><button class="menu-trigger" id="menuTrigger" type="button" aria-label="Open navigation" aria-expanded="false">☰</button><a href="#" class="logo" id="logo">ZIVRA<small>WEAR YOUR STORY</small></a><nav class="nav"><a href="#home">Home</a><a href="#shop">Shop</a><a href="#collections">Collections</a><a href="#about">About</a><a href="#contact">Contact</a></nav><label class="search"><input id="search" placeholder="Search for products..."><span>⌕</span></label><div class="icons"><button type="button" id="accountButton" title="My Account" aria-label="My Account" style="background:none;border:0;color:inherit;font:inherit;padding:0">♙</button><span title="Wishlist">♡</span><span title="Bag" id="bag">▢<sup id="count">0</sup></span></div></header><div class="customer-drawer-backdrop" id="drawerBackdrop"></div><aside class="customer-drawer" id="customerDrawer" aria-hidden="true"><div class="drawer-head"><strong>ZIVRA.</strong><button class="drawer-close" id="drawerClose" aria-label="Close menu">×</button></div><div class="eyebrow">EXPLORE ZIVRA</div><nav class="drawer-links"><a href="#home">⌂ &nbsp; Home</a><a href="#shop">◇ &nbsp; Shop</a><a href="#collections">▦ &nbsp; Collections</a><a href="about.html">✧ &nbsp; About / Story</a><a href="contact.html">✉ &nbsp; Contact</a><a href="account.html">♙ &nbsp; My Account</a><a href="track-order.html">↗ &nbsp; My Orders</a><a href="help-center.html">? &nbsp; Help Centre</a></nav><section class="drawer-support"><h3>Need a hand?</h3><p>Order updates, sizing, returns or anything else — find answers in our customer care space.</p><a href="help-center.html">Visit Help Centre →</a></section></aside>
 <div class="switchline"><div class="switchbox"><b id="streetLabel" class="active">Men's Streetwear</b><button class="toggle" id="toggle" role="switch" aria-checked="false" aria-label="Switch collection"><span class="knob"></span></button><b id="ethnicLabel">Sanganeri & Ethnic Wear</b></div></div>
@@ -165,7 +175,7 @@ html{scroll-behavior:smooth;scroll-padding-top:90px}
 <article class="email-card"><div class="email-card-head"><strong>01 · CUSTOMER ORDER CONFIRMATION</strong><span class="email-tag">Transactional</span></div><p><strong>To:</strong> <span id="customerEmailTo">customer@example.com</span></p><p><strong>Subject:</strong> We received your ZIVRA order · <span id="customerOrderId">ZV-000000</span></p><div class="email-body" id="customerEmailBody">Thank you for shopping with ZIVRA.</div><p class="email-legal">Essential order update for the customer; it is not a marketing email.</p><button type="button" id="copyCustomerEmail">Copy customer email text</button></article>
 <article class="email-card"><div class="email-card-head"><strong>02 · STORE OWNER NOTIFICATION</strong><span class="email-tag">Internal alert</span></div><p><strong>To:</strong> <span id="ownerEmailTo">your-store-email@example.com</span></p><p><strong>Subject:</strong> New ZIVRA order · <span id="ownerOrderId">ZV-000000</span></p><div class="email-body" id="ownerEmailBody">A new order has been placed.</div><p class="email-legal">This goes to the store owner/admin inbox, separate from the customer email.</p><button type="button" id="copyOwnerEmail">Copy owner notification</button></article>
 <article class="email-card marketing"><div class="email-card-head"><strong>03 · ZIVRA STYLE LETTER</strong><span class="email-tag">Optional marketing</span></div><p><strong>To:</strong> <span id="marketingEmailTo">customer@example.com</span></p><p><strong>Subject:</strong> A little inspiration from ZIVRA</p><div class="email-body" id="marketingEmailBody">New season. New point of view. Discover your next favourite look with ZIVRA.</div><p class="email-legal">Only send this if the customer opts in. Every marketing email must include a clear unsubscribe link. It is separate from essential order emails.</p><button type="button" id="copyMarketingEmail">Copy marketing email text</button></article>
-</div></div><button type="button" class="place-order" id="continueShopping" style="margin-top:24px">CONTINUE SHOPPING</button></div></section></div><div class="toast" id="toast"></div><div class="product-modal" id="productModal" aria-hidden="true"><section class="product-dialog" role="dialog" aria-modal="true" aria-labelledby="detailName"><button class="modal-close" id="detailClose" aria-label="Close product details">×</button><img id="detailImage" alt="Selected fashion product"><div class="product-detail-copy"><div class="eyebrow" id="detailEyebrow">ZIVRA / DETAILS</div><h2 id="detailName">Product name</h2><div class="detail-price" id="detailPrice"></div><p id="detailDescription">Premium everyday style, designed to fit your look.</p><span class="detail-label">Choose size</span><div class="option-row" id="sizeOptions"><button class="option-btn">S</button><button class="option-btn selected">M</button><button class="option-btn">L</button><button class="option-btn">XL</button><button class="option-btn">XXL</button></div><span class="detail-label">Choose colour</span><div class="option-row" id="colorOptions"><button class="color-dot selected" data-color="Black" aria-label="Black"><span style="background:#171717"></span></button><button class="color-dot" data-color="Cream" aria-label="Cream"><span style="background:#e8dcc8"></span></button><button class="color-dot" data-color="Olive" aria-label="Olive"><span style="background:#62684c"></span></button><button class="color-dot" data-color="Rust" aria-label="Rust"><span style="background:#a65d3d"></span></button></div><button class="detail-add" id="detailAdd">ADD SELECTED ITEM TO BAG</button><p class="detail-note">Cash on Delivery available · Free shipping on orders above ₹1999.</p></div></section></div></main>
+</div></div><button type="button" class="place-order" id="continueShopping" style="margin-top:24px">CONTINUE SHOPPING</button></div></section></div><div class="toast" id="toast"></div><div class="product-modal" id="productModal" aria-hidden="true"><section class="product-dialog" role="dialog" aria-modal="true" aria-labelledby="detailName"><button class="modal-close" id="detailClose" aria-label="Close product details">×</button><img id="detailImage" alt="Selected fashion product"><div class="product-detail-copy"><div class="detail-thumbs" id="detailThumbs"></div><div class="eyebrow" id="detailEyebrow">ZIVRA / DETAILS</div><h2 id="detailName">Product name</h2><div class="detail-price" id="detailPrice"></div><div class="detail-meta" id="detailMeta"></div><p id="detailDescription">Premium everyday style, designed to fit your look.</p><span class="detail-label">Choose size</span><div class="option-row" id="sizeOptions"><button class="option-btn">S</button><button class="option-btn selected">M</button><button class="option-btn">L</button><button class="option-btn">XL</button><button class="option-btn">XXL</button></div><span class="detail-label">Choose colour</span><div class="option-row" id="colorOptions"><button class="color-dot selected" data-color="Black" aria-label="Black"><span style="background:#171717"></span></button><button class="color-dot" data-color="Cream" aria-label="Cream"><span style="background:#e8dcc8"></span></button><button class="color-dot" data-color="Olive" aria-label="Olive"><span style="background:#62684c"></span></button><button class="color-dot" data-color="Rust" aria-label="Rust"><span style="background:#a65d3d"></span></button></div><button class="detail-add" id="detailAdd">ADD SELECTED ITEM TO BAG</button><p class="detail-note">Cash on Delivery available · Free shipping on orders above ₹1999.</p></div></section></div></main>
 <button class="scroll-top-progress" id="scrollTopProgress" aria-label="Back to top" title="Back to top"><svg viewBox="0 0 54 54" aria-hidden="true"><circle class="progress-track" cx="27" cy="27" r="24"/><circle class="progress-value" id="scrollProgressValue" cx="27" cy="27" r="24"/></svg><span class="scroll-arrow" aria-hidden="true">↑</span></button>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="./supabase-config.js"></script><script>// ZIVRA customer-side error monitor.
@@ -244,7 +254,7 @@ const A={"heroStreet":"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAA
 const data={street:{hero:A.heroStreet,headline:'BUILT FOR<br>THE BOLD',eyebrow:"MEN'S STREETWEAR",sub:'Oversized fits / Premium cotton / Urban vibes',cats:[['▦','All'],['♧','T-Shirts'],['▤','Shirts'],['▱','Jeans'],['▥','Pants'],['♙','Hoodies'],['◉','Accessories']],products:[],promo:A.accessories,title:'Complete Your Look',desc:'Caps, bags, chains and accessories to finish the fit.'},ethnic:{hero:A.heroEthnic,headline:'TIMELESS<br>TRADITION',eyebrow:'SANGANERI PRINTS',sub:'Natural fabrics / Heritage prints / Everyday elegance',cats:[['✿','All'],['♧','Kurtas'],['❀','Kurtis'],['▤','Printed Shirts'],['♢','Suits & Sets'],['♧','Dupattas'],['◈','Accessories']],products:[],promo:A.ethnic0,title:'Complete Your Look',desc:'Matching dupattas, stoles, potli bags and handcrafted accessories.'}};
 let mode='street',filter='All',cartItems=[],liveCatalogReady=false;const app=document.getElementById('app');const $=id=>document.getElementById(id);function toast(t){$('toast').textContent=t;$('toast').style.display='block';setTimeout(()=>$('toast').style.display='none',1900)}
 function render(){const d=data[mode];app.classList.toggle('ethnic',mode==='ethnic');$('toggle').classList.toggle('ethnic',mode==='ethnic');$('toggle').setAttribute('aria-checked',String(mode==='ethnic'));$('streetLabel').classList.toggle('active',mode==='street');$('ethnicLabel').classList.toggle('active',mode==='ethnic');$('hero').style.backgroundImage=`url("${d.hero}")`;$('headline').innerHTML=d.headline;$('eyebrow').textContent=d.eyebrow;$('subhead').textContent=d.sub;$('sectionTitle').textContent=mode==='street'?'Featured Collection':'Sanganeri Featured Collection';$('promoTitle').textContent=d.title;$('promoDesc').textContent=d.desc;$('promoImage').src=mode==='street'?A.accessories:A.ethnic3;$('categories').innerHTML=d.cats.map((c,i)=>`<button class="cat" data-filter="${c[1]}"><span>${c[0]}</span>${c[1]}</button>`).join('');document.querySelectorAll('.cat').forEach(b=>b.onclick=()=>{filter=b.dataset.filter;document.querySelectorAll('.cat').forEach(x=>x.style.borderColor=x===b?'var(--accent)':'');renderProducts()});renderProducts()}
-function priceNum(s){return Number(s.replace(/[^0-9]/g,''))||0}let detailProduct=null,detailSize='M',detailColor='Black';function productImage(p){return p[4]||A[p[2]]||''}function addItem(p,size='M',color='Black'){const key=p[0]+'|'+mode+'|'+size+'|'+color;const found=cartItems.find(x=>x.key===key);if(found)found.qty++;else cartItems.push({key,name:p[0],price:p[1],img:productImage(p),productId:p[3]||null,qty:1,mode,size,color});renderCart();toast(p[0]+' · '+size+' / '+color+' added to bag')}function openProduct(p){detailProduct=p;detailSize='M';detailColor='Black';$('detailImage').src=productImage(p);$('detailImage').alt=p[0];$('detailAdd').disabled=Number(p[7])<=0;$('detailAdd').textContent=Number(p[7])<=0?'OUT OF STOCK':'ADD SELECTED ITEM TO BAG';$('detailName').textContent=p[0];$('detailPrice').innerHTML=window.zivraDetailPriceHtml?zivraDetailPriceHtml(p):p[1];$('detailEyebrow').textContent='ZIVRA / '+String(p[6]||(mode==='street'?'STREETWEAR':'SANGANERI & ETHNIC')).toUpperCase();$('detailDescription').textContent=(p[5]&&String(p[5]).trim())||(mode==='street'?'A versatile wardrobe essential with a considered fit and everyday comfort.':'A print-led wardrobe piece inspired by Indian craft and easy everyday styling.');(function(){var n=document.querySelector('.detail-note');if(n){var st=Number(p[7]);n.textContent=(st<=0?'Currently sold out. ':(st<=5?'Only '+st+' left in stock. ':'In stock. '))+'Cash on Delivery available · Free shipping on orders above \u20B91999.'}})();document.querySelectorAll('#sizeOptions .option-btn').forEach(b=>b.classList.toggle('selected',b.textContent===detailSize));document.querySelectorAll('#colorOptions .color-dot').forEach(b=>b.classList.toggle('selected',b.dataset.color===detailColor));$('productModal').classList.add('open');$('productModal').setAttribute('aria-hidden','false')}function closeProduct(){$('productModal').classList.remove('open');$('productModal').setAttribute('aria-hidden','true')}function renderProducts(){const d=data[mode];if(!liveCatalogReady){$('products').innerHTML='<p class="catalog-loading" role="status">Loading the ZIVRA collection…</p>';return}const q=$('search').value.toLowerCase();const list=d.products.filter(p=>(filter==='All'||p[0].toLowerCase().includes(filter.toLowerCase().replace(/s$/,'')))&&p[0].toLowerCase().includes(q));$('products').innerHTML=list.map((p,i)=>{const E=window.zivraEscape||(x=>x);const stock=Number(p[7]);const sold=stock<=0;const desc=p[5]?String(p[5]).trim():'';return `<article class="product${sold?' soldout':''}" data-product-index="${d.products.indexOf(p)}" tabindex="0" role="button" aria-label="View ${E(p[0])} details">${sold?'':(window.zivraBadgeHtml?zivraBadgeHtml(p):'')}${sold?'<span class="soldout-ribbon">SOLD OUT</span>':''}<img src="${productImage(p)}" alt="${E(p[0])}" loading="lazy" decoding="async"><div class="pinfo">${p[6]?'<div class="pcat">'+E(p[6])+'</div>':''}<div class="pname">${E(p[0])}</div>${desc?'<p class="pdesc">'+E(desc.length>90?desc.slice(0,88)+'…':desc)+'</p>':''}<div class="price">${window.zivraPriceHtml?zivraPriceHtml(p):p[1]}</div>${(!sold&&stock>0&&stock<=5)?'<div class="lowtxt">Only '+stock+' left</div>':''}${sold?'<button class="add" disabled>SOLD OUT</button>':'<button class="add" data-name="'+E(p[0])+'">ADD TO CART</button>'}</div></article>`}).join('')||'<p>No matching products found.</p>';document.querySelectorAll('.product').forEach(card=>{card.addEventListener('click',e=>{if(e.target.closest('.add'))return;const p=d.products[Number(card.dataset.productIndex)];if(p)openProduct(p)});card.addEventListener('keydown',e=>{if((e.key==='Enter'||e.key===' ')&&e.target===card){e.preventDefault();const p=d.products[Number(card.dataset.productIndex)];if(p)openProduct(p)}})});document.querySelectorAll('.add').forEach(b=>b.onclick=e=>{e.stopPropagation();const p=d.products.find(x=>x[0]===b.dataset.name);if(p)addItem(p)})}function cartTotal(){return cartItems.reduce((n,x)=>n+priceNum(x.price)*x.qty,0)}function money(n){return '₹'+n.toLocaleString('en-IN')}function renderCart(){const count=cartItems.reduce((n,x)=>n+x.qty,0);$('count').textContent=count;$('bagCountLabel').textContent=count;const root=$('cartContents');if(!cartItems.length){root.innerHTML='<div class="empty-bag">Your bag is waiting for something good.<br><br><button class="checkout-back" type="button" id="keepShopping">Continue shopping →</button></div>';const k=$('keepShopping');if(k)k.onclick=closeCartPanel;return}root.innerHTML='<div class="cart-lines">'+cartItems.map((x,i)=>`<div class="cart-line"><img src="${x.img}" alt="${x.name}"><div><h4>${x.name}</h4><p>${x.price} · Size ${x.size||'M'} · ${x.color||'Black'}</p><div class="qtyrow"><button data-dec="${i}" aria-label="Decrease quantity">−</button><span>${x.qty}</span><button data-inc="${i}" aria-label="Increase quantity">+</button><button data-remove="${i}" style="margin-left:auto;width:auto;border:0;text-decoration:underline">Remove</button></div></div></div>`).join('')+'</div><div class="cart-summary"><div class="summaryrow"><span>Subtotal</span><strong>'+money(cartTotal())+'</strong></div><div class="summaryrow"><span>Shipping</span><span>Calculated at checkout</span></div><button class="checkout-btn" id="goCheckout">CONTINUE TO CHECKOUT →</button></div>';root.querySelectorAll('[data-dec]').forEach(b=>b.onclick=()=>changeQty(+b.dataset.dec,-1));root.querySelectorAll('[data-inc]').forEach(b=>b.onclick=()=>changeQty(+b.dataset.inc,1));root.querySelectorAll('[data-remove]').forEach(b=>b.onclick=()=>{cartItems.splice(+b.dataset.remove,1);renderCart()});$('goCheckout').onclick=()=>{$('cartContents').style.display='none';$('checkoutForm').classList.add('show');$('cartHeading').textContent='Checkout';$('orderSuccess').classList.remove('show');window.zivraShowQuote&&zivraShowQuote()}}function changeQty(i,delta){cartItems[i].qty+=delta;if(cartItems[i].qty<=0)cartItems.splice(i,1);renderCart()}function openCartPanel(){$('cartOverlay').classList.add('open');$('cartOverlay').setAttribute('aria-hidden','false');$('checkoutForm').classList.remove('show');$('orderSuccess').classList.remove('show');$('cartContents').style.display='block';$('cartHeading').innerHTML='Your Bag <span id="bagCountLabel" class="cart-badge">'+cartItems.reduce((n,x)=>n+x.qty,0)+'</span>';renderCart()}function closeCartPanel(){$('cartOverlay').classList.remove('open');$('cartOverlay').setAttribute('aria-hidden','true')}function backToBag(){$('checkoutForm').classList.remove('show');$('cartContents').style.display='block';$('cartHeading').innerHTML='Your Bag <span id="bagCountLabel" class="cart-badge">'+cartItems.reduce((n,x)=>n+x.qty,0)+'</span>';renderCart()}
+function priceNum(s){return Number(s.replace(/[^0-9]/g,''))||0}let detailProduct=null,detailSize='M',detailColor='Black';function productImage(p){return p[4]||A[p[2]]||''}function addItem(p,size='M',color='Black'){const key=p[0]+'|'+mode+'|'+size+'|'+color;const found=cartItems.find(x=>x.key===key);if(found)found.qty++;else cartItems.push({key,name:p[0],price:p[1],img:productImage(p),productId:p[3]||null,qty:1,mode,size,color});renderCart();toast(p[0]+' · '+size+' / '+color+' added to bag')}function openProduct(p){detailProduct=p;detailSize='M';detailColor='Black';$('detailImage').src=productImage(p);$('detailImage').alt=p[0];$('detailAdd').disabled=Number(p[7])<=0;$('detailAdd').textContent=Number(p[7])<=0?'OUT OF STOCK':'ADD SELECTED ITEM TO BAG';$('detailName').textContent=p[0];$('detailPrice').innerHTML=window.zivraDetailPriceHtml?zivraDetailPriceHtml(p):p[1];$('detailEyebrow').textContent='ZIVRA / '+String(p[6]||(mode==='street'?'STREETWEAR':'SANGANERI & ETHNIC')).toUpperCase();$('detailDescription').textContent=(p[5]&&String(p[5]).trim())||(mode==='street'?'A versatile wardrobe essential with a considered fit and everyday comfort.':'A print-led wardrobe piece inspired by Indian craft and easy everyday styling.');(function(){var n=document.querySelector('.detail-note');if(n){var st=Number(p[7]);n.textContent=(st<=0?'Currently sold out. ':(st<=5?'Only '+st+' left in stock. ':'In stock. '))+'Cash on Delivery available · Free shipping on orders above \u20B91999.'}})();document.querySelectorAll('#sizeOptions .option-btn').forEach(b=>b.classList.toggle('selected',b.textContent===detailSize));document.querySelectorAll('#colorOptions .color-dot').forEach(b=>b.classList.toggle('selected',b.dataset.color===detailColor));window.zivraOpenExtras&&zivraOpenExtras(p);$('productModal').classList.add('open');$('productModal').setAttribute('aria-hidden','false')}function closeProduct(){$('productModal').classList.remove('open');$('productModal').setAttribute('aria-hidden','true')}function renderProducts(){const d=data[mode];if(!liveCatalogReady){$('products').innerHTML='<p class="catalog-loading" role="status">Loading the ZIVRA collection…</p>';return}const q=$('search').value.toLowerCase();const list=d.products.filter(p=>(filter==='All'||p[0].toLowerCase().includes(filter.toLowerCase().replace(/s$/,'')))&&p[0].toLowerCase().includes(q));$('products').innerHTML=list.map((p,i)=>{const E=window.zivraEscape||(x=>x);const stock=Number(p[7]);const sold=stock<=0;const desc=p[5]?String(p[5]).trim():'';return `<article class="product${sold?' soldout':''}" data-product-index="${d.products.indexOf(p)}" tabindex="0" role="button" aria-label="View ${E(p[0])} details">${sold?'':(window.zivraBadgeHtml?zivraBadgeHtml(p):'')}${sold?'<span class="soldout-ribbon">SOLD OUT</span>':''}<img src="${productImage(p)}" alt="${E(p[0])}" loading="lazy" decoding="async"><div class="pinfo">${p[6]?'<div class="pcat">'+E(p[6])+'</div>':''}<div class="pname">${E(p[0])}</div>${desc?'<p class="pdesc">'+E(desc.length>90?desc.slice(0,88)+'…':desc)+'</p>':''}<div class="price">${window.zivraPriceHtml?zivraPriceHtml(p):p[1]}</div>${window.zivraVariantHtml?zivraVariantHtml(p):''}${(!sold&&stock>0&&stock<=5)?'<div class="lowtxt">Only '+stock+' left</div>':''}${sold?'<button class="add" disabled>SOLD OUT</button>':'<button class="add" data-name="'+E(p[0])+'">ADD TO CART</button>'}</div></article>`}).join('')||'<p>No matching products found.</p>';document.querySelectorAll('.product').forEach(card=>{card.addEventListener('click',e=>{if(e.target.closest('.add'))return;const p=d.products[Number(card.dataset.productIndex)];if(p)openProduct(p)});card.addEventListener('keydown',e=>{if((e.key==='Enter'||e.key===' ')&&e.target===card){e.preventDefault();const p=d.products[Number(card.dataset.productIndex)];if(p)openProduct(p)}})});document.querySelectorAll('.add').forEach(b=>b.onclick=e=>{e.stopPropagation();const p=d.products.find(x=>x[0]===b.dataset.name);if(p)addItem(p)})}function cartTotal(){return cartItems.reduce((n,x)=>n+priceNum(x.price)*x.qty,0)}function money(n){return '₹'+n.toLocaleString('en-IN')}function renderCart(){const count=cartItems.reduce((n,x)=>n+x.qty,0);$('count').textContent=count;$('bagCountLabel').textContent=count;const root=$('cartContents');if(!cartItems.length){root.innerHTML='<div class="empty-bag">Your bag is waiting for something good.<br><br><button class="checkout-back" type="button" id="keepShopping">Continue shopping →</button></div>';const k=$('keepShopping');if(k)k.onclick=closeCartPanel;return}root.innerHTML='<div class="cart-lines">'+cartItems.map((x,i)=>`<div class="cart-line"><img src="${x.img}" alt="${x.name}"><div><h4>${x.name}</h4><p>${x.price} · Size ${x.size||'M'} · ${x.color||'Black'}</p><div class="qtyrow"><button data-dec="${i}" aria-label="Decrease quantity">−</button><span>${x.qty}</span><button data-inc="${i}" aria-label="Increase quantity">+</button><button data-remove="${i}" style="margin-left:auto;width:auto;border:0;text-decoration:underline">Remove</button></div></div></div>`).join('')+'</div><div class="cart-summary"><div class="summaryrow"><span>Subtotal</span><strong>'+money(cartTotal())+'</strong></div><div class="summaryrow"><span>Shipping</span><span>Calculated at checkout</span></div><button class="checkout-btn" id="goCheckout">CONTINUE TO CHECKOUT →</button></div>';root.querySelectorAll('[data-dec]').forEach(b=>b.onclick=()=>changeQty(+b.dataset.dec,-1));root.querySelectorAll('[data-inc]').forEach(b=>b.onclick=()=>changeQty(+b.dataset.inc,1));root.querySelectorAll('[data-remove]').forEach(b=>b.onclick=()=>{cartItems.splice(+b.dataset.remove,1);renderCart()});$('goCheckout').onclick=()=>{$('cartContents').style.display='none';$('checkoutForm').classList.add('show');$('cartHeading').textContent='Checkout';$('orderSuccess').classList.remove('show');window.zivraShowQuote&&zivraShowQuote()}}function changeQty(i,delta){cartItems[i].qty+=delta;if(cartItems[i].qty<=0)cartItems.splice(i,1);renderCart()}function openCartPanel(){$('cartOverlay').classList.add('open');$('cartOverlay').setAttribute('aria-hidden','false');$('checkoutForm').classList.remove('show');$('orderSuccess').classList.remove('show');$('cartContents').style.display='block';$('cartHeading').innerHTML='Your Bag <span id="bagCountLabel" class="cart-badge">'+cartItems.reduce((n,x)=>n+x.qty,0)+'</span>';renderCart()}function closeCartPanel(){$('cartOverlay').classList.remove('open');$('cartOverlay').setAttribute('aria-hidden','true')}function backToBag(){$('checkoutForm').classList.remove('show');$('cartContents').style.display='block';$('cartHeading').innerHTML='Your Bag <span id="bagCountLabel" class="cart-badge">'+cartItems.reduce((n,x)=>n+x.qty,0)+'</span>';renderCart()}
 document.querySelectorAll('#sizeOptions .option-btn').forEach(b=>b.addEventListener('click',()=>{detailSize=b.textContent;document.querySelectorAll('#sizeOptions .option-btn').forEach(x=>x.classList.toggle('selected',x===b))}));document.querySelectorAll('#colorOptions .color-dot').forEach(b=>b.addEventListener('click',()=>{detailColor=b.dataset.color;document.querySelectorAll('#colorOptions .color-dot').forEach(x=>x.classList.toggle('selected',x===b))}));$('detailClose').addEventListener('click',closeProduct);$('productModal').addEventListener('click',e=>{if(e.target===$('productModal'))closeProduct()});document.addEventListener('keydown',e=>{if(e.key==='Escape')closeProduct()});$('detailAdd').addEventListener('click',()=>{if(detailProduct&&Number(detailProduct[7])>0){addItem(detailProduct,detailSize,detailColor);closeProduct()}});
 function switchMode(){mode=mode==='street'?'ethnic':'street';filter='All';render()}$('toggle').addEventListener('click',switchMode);$('streetLabel').onclick=()=>{if(mode!=='street')switchMode()};$('ethnicLabel').onclick=()=>{if(mode!=='ethnic')switchMode()};$('search').addEventListener('input',renderProducts);$('shopNow').onclick=()=>$('shop').scrollIntoView({behavior:'smooth'});$('viewAll').onclick=e=>{e.preventDefault();filter='All';renderProducts();$('shop').scrollIntoView({behavior:'smooth'})};$('promoBtn').onclick=()=>{mode='street';filter='Accessories';render();$('shop').scrollIntoView({behavior:'smooth'})};$('bag').onclick=openCartPanel;$('closeCart').onclick=closeCartPanel;$('cartOverlay').addEventListener('click',e=>{if(e.target===$('cartOverlay'))closeCartPanel()});document.addEventListener('keydown',e=>{if(e.key==='Escape')closeCartPanel()});$('backToBag').onclick=backToBag;let lastOrderPreview=null;
 function setEmailPreview(id,body){$(id).textContent=body}
@@ -256,7 +266,7 @@ const fd=new FormData(e.target);if(fd.get('payment')!=='cod'){return}if(cartItem
 wireCopyEmail('copyCustomerEmail','customerEmailBody','Subject: We received your ZIVRA order');wireCopyEmail('copyOwnerEmail','ownerEmailBody','Subject: New ZIVRA order notification');wireCopyEmail('copyMarketingEmail','marketingEmailBody','Subject: A little inspiration from ZIVRA');$('continueShopping').onclick=()=>{zivraCodSubmissionLocked=false;closeCartPanel();$('checkoutForm').reset();$('cartContents').style.display='block';$('checkoutForm').classList.remove('show');$('orderSuccess').classList.remove('show');$('cartHeading').innerHTML='Your Bag <span id="bagCountLabel" class="cart-badge">0</span>'};$('newsletter').onsubmit=e=>{e.preventDefault();toast('Newsletter signup is not connected yet. Please check back soon.')};$('logo').onclick=e=>{e.preventDefault();window.scrollTo({top:0,behavior:'smooth'})};render();
 function revealOnScroll(){const reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;const candidates=document.querySelectorAll('#hero .hero-copy,#categories,.section-head,.product,.promo,.darkstrip,#contact,.footer,.benefit,.category-tile');if(reduce||window.innerWidth<=900||(window.matchMedia&&window.matchMedia('(pointer:coarse)').matches)||!('IntersectionObserver' in window)){candidates.forEach(el=>el.classList.add('is-visible'));return}if(!window.zivraRevealObserver){window.zivraRevealObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{{if(entry.isIntersecting)entry.target.classList.add('is-visible')}}),{threshold:.12,rootMargin:'0px 0px -45px 0px'})}candidates.forEach((el,i)=>{if(el.dataset.revealReady)return;el.dataset.revealReady='1';el.classList.add('scroll-reveal');if(el.matches('.hero-copy,.section-head,.darkstrip'))el.classList.add('reveal-left');else if(el.matches('.promo,#contact,.footer'))el.classList.add('reveal-right');else if(el.matches('.product')){el.classList.add('reveal-zoom');el.style.setProperty('--reveal-delay',(i%4)*85+'ms')}window.zivraRevealObserver.observe(el)})}new MutationObserver(()=>requestAnimationFrame(revealOnScroll)).observe(document.getElementById('products'),{childList:true});revealOnScroll();
 
-async function connectZivraStore(){try{const cfg=window.ZIVRA_SUPABASE_CONFIG;if(!cfg?.url||!cfg?.anonKey||!window.supabase?.createClient)throw new Error('Supabase configuration or client library is missing');window.zivraSupabase=window.supabase.createClient(cfg.url,cfg.anonKey);const {data:liveProducts,error}=await window.zivraSupabase.from('products').select('id,name,description,category,price,image_url,is_active,stock').eq('is_active',true).order('created_at',{ascending:false});if(error)throw error;const street=liveProducts.filter(p=>['Streetwear','Accessories'].includes(String(p.category||'').trim())).map(p=>[p.name,'₹'+Number(p.price).toLocaleString('en-IN'),'street0',p.id,p.image_url,p.description,p.category,Number(p.stock)]);const ethnic=liveProducts.filter(p=>['Ethnic','Sanganeri & Ethnic Wear','Sanganeri'].includes(String(p.category||'').trim())).map(p=>[p.name,'₹'+Number(p.price).toLocaleString('en-IN'),'ethnic0',p.id,p.image_url,p.description,p.category,Number(p.stock)]);if(window.zivraLoadOffers){await window.zivraLoadOffers();window.zivraApplyOffers([...street,...ethnic])}data.street.products=street;data.ethnic.products=ethnic;liveCatalogReady=true;render();if(!liveProducts.length)toast('Your live catalog is empty. Add active, in-stock products in Admin.');else toast('Live ZIVRA catalog connected · '+liveProducts.length+' products')}catch(err){console.warn('ZIVRA catalog connection:',err);liveCatalogReady=true;data.street.products=[];data.ethnic.products=[];render();zivraReport('catalog',err);toast('Our collection could not load right now. Please refresh in a moment.')}}
+async function connectZivraStore(){try{const cfg=window.ZIVRA_SUPABASE_CONFIG;if(!cfg?.url||!cfg?.anonKey||!window.supabase?.createClient)throw new Error('Supabase configuration or client library is missing');window.zivraSupabase=window.supabase.createClient(cfg.url,cfg.anonKey);const BASECOLS='id,name,description,category,price,image_url,is_active,stock';let qres=await window.zivraSupabase.from('products').select(BASECOLS+',compare_at_price,images,sizes,colors,brand,fabric,fit,highlights,care').eq('is_active',true).order('created_at',{ascending:false});if(qres.error&&/column|schema cache|does not exist/i.test(String(qres.error.message||''))){qres=await window.zivraSupabase.from('products').select(BASECOLS+',compare_at_price').eq('is_active',true).order('created_at',{ascending:false});if(qres.error)qres=await window.zivraSupabase.from('products').select(BASECOLS).eq('is_active',true).order('created_at',{ascending:false})}const liveProducts=qres.data,error=qres.error;if(error)throw error;const mapP=(p,k)=>window.zivraMapProduct?window.zivraMapProduct(p,k):[p.name,'\u20B9'+Number(p.price).toLocaleString('en-IN'),k,p.id,p.image_url,p.description,p.category,Number(p.stock)];const street=liveProducts.filter(p=>['Streetwear','Accessories'].includes(String(p.category||'').trim())).map(p=>mapP(p,'street0'));const ethnic=liveProducts.filter(p=>['Ethnic','Sanganeri & Ethnic Wear','Sanganeri'].includes(String(p.category||'').trim())).map(p=>mapP(p,'ethnic0'));if(window.zivraLoadOffers){await window.zivraLoadOffers();window.zivraApplyOffers([...street,...ethnic])}data.street.products=street;data.ethnic.products=ethnic;liveCatalogReady=true;render();if(!liveProducts.length)toast('Your live catalog is empty. Add active, in-stock products in Admin.');else toast('Live ZIVRA catalog connected · '+liveProducts.length+' products')}catch(err){console.warn('ZIVRA catalog connection:',err);liveCatalogReady=true;data.street.products=[];data.ethnic.products=[];render();zivraReport('catalog',err);toast('Our collection could not load right now. Please refresh in a moment.')}}
 
 const infoModal=$('infoModal');function openInfo(title,html){$('infoTitle').textContent=title;$('infoContent').innerHTML=html;infoModal.classList.add('open');infoModal.setAttribute('aria-hidden','false')}function closeInfo(){infoModal.classList.remove('open');infoModal.setAttribute('aria-hidden','true')}$('infoClose').onclick=closeInfo;infoModal.addEventListener('click',e=>{if(e.target===infoModal)closeInfo()});document.querySelectorAll('.footer a').forEach(a=>{const label=a.textContent.trim();const routes={'About':'about.html','Contact':'contact.html','My Account':'#account','Size Guide':'size-guide.html','Shipping & Returns':'shipping-returns.html','FAQ':'faq.html','Track Order':'track-order.html','Privacy Policy':'privacy-policy.html'};if(routes[label])a.setAttribute('href',routes[label]);});document.querySelector('.footer')?.addEventListener('click',e=>{const a=e.target.closest('a');if(!a)return;const label=a.textContent.trim();if(label==='My Account'){e.preventDefault();e.stopImmediatePropagation();accountOpen();return}const routes={'About':'about.html','Contact':'contact.html','Size Guide':'size-guide.html','Shipping & Returns':'shipping-returns.html','FAQ':'faq.html','Track Order':'track-order.html','Privacy Policy':'privacy-policy.html'};if(routes[label]){e.preventDefault();e.stopImmediatePropagation();window.location.href=routes[label]}},true);
 
@@ -293,9 +303,9 @@ function bestOffer(p,offers){
 window.zivraApplyOffers=function(list){
   var offers=window.zivraOffers||[];if(!offers.length)return;
   list.forEach(function(p){
-    if(p[8])return;
+    if(p._offApplied)return;
     var r=bestOffer(p,offers);
-    if(r.d>0){var price=pnum(p[1]);p[8]=p[1];p[1]=rupee(price-r.d);p[9]=r.badge}
+    if(r.d>0){var price=pnum(p[1]);if(!p[8])p[8]=p[1];p[1]=rupee(price-r.d);p[9]=r.badge;p._offApplied=true}
   });
 };
 window.zivraPriceHtml=function(p){return (p[8]?'<s style="opacity:.55;margin-right:6px">'+esc(p[8])+'</s>':'')+esc(p[1])};
@@ -438,15 +448,6 @@ function applyStatic(c){
 function afterRender(){
   try{window.zivraHomeRender&&window.zivraHomeRender()}catch(e){window.zivraReport&&window.zivraReport('home-page',e)}
   var c=siteCfg;if(!c)return;
-  try{(Array.isArray(c.visualOverrides)?c.visualOverrides:[]).forEach(function(x){
-    if(!x||typeof x.selector!=='string'||x.selector.length>500)return;
-    var el=document.querySelector(x.selector);if(!el)return;
-    if(typeof x.text==='string'&&el.tagName!=='IMG')el.textContent=x.text.slice(0,3000);
-    if(typeof x.image==='string'&&/^https?:\/\//i.test(x.image)){if(el.tagName==='IMG')el.src=x.image;else el.style.backgroundImage='url("'+x.image.replace(/["\\]/g,'')+'")'}
-    if(/^#[0-9a-f]{6}$/i.test(x.bg||''))el.style.backgroundColor=x.bg;
-    if(/^#[0-9a-f]{6}$/i.test(x.color||''))el.style.color=x.color;
-  })}catch(e){}
-
   var hero=(c.hero||{})[mode]||{},promo=(c.promo||{})[mode]||{},tx=c.text||{};
   if(hero.cta){var sn=document.getElementById('shopNow');if(sn)sn.textContent=hero.cta}
   var ft=mode==='street'?tx.featuredStreet:tx.featuredEthnic;if(ft){var stt=document.getElementById('sectionTitle');if(stt)stt.textContent=ft}
@@ -460,6 +461,7 @@ window.zivraApplySite=function(c){
 var _render=render;
 render=function(){_render.apply(this,arguments);try{afterRender()}catch(e){window.zivraReport&&window.zivraReport('site-control',e)}};
 window.zivraLoadSite=async function(){
+  if(location.search.indexOf('zvedit=1')>-1&&window.parent!==window)return;
   try{
     var cached=localStorage.getItem('zivra_site_cfg');
     if(cached)window.zivraApplySite(JSON.parse(cached));
@@ -477,21 +479,26 @@ window.zivraLoadSite();
 })()}catch(zvErr){try{window.zivraReport&&window.zivraReport('storefront-extras',zvErr)}catch(_){}}
 
 
-/* ===== ZIVRA premium home page (sliding posters, tiles, marquee, banners, trust, reviews) ===== */
+/* ===== ZIVRA premium home page v2 (posters, tiles, marquee, banners, trust, reviews + visual-editor hooks) ===== */
 try{(function(){
 var esc=function(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[c]})};
 var safeUrl=function(u){return /^(https?:\/\/|data:image\/)/.test(u||'')?String(u).replace(/[()'"\s]/g,function(c){return encodeURIComponent(c)}):''};
+var isColor=function(v){return typeof v==='string'&&/^#[0-9a-fA-F]{3,8}$/.test(v)};
 var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+var ZE=window.zvEditMode=(location.search.indexOf('zvedit=1')>-1&&window.parent!==window);
+function za(path,kind,label){return ZE?' data-zve="'+esc(path)+'" data-zk="'+kind+'" data-zl="'+esc(label)+'"':''}
 var ICON={
  truck:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6h11v10H2zM13 9h4l3 3v4h-7z"/><circle cx="6.5" cy="17.5" r="1.8"/><circle cx="16.5" cy="17.5" r="1.8"/></svg>',
  return:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12a8 8 0 1 0 3-6.2M4 4v4h4"/></svg>',
  badge:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="10" r="6"/><path d="m9.5 10 2 2 3-3.5M8.5 15.5 7.5 21 12 18.5 16.5 21l-1-5.5"/></svg>',
  lock:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>',
- heart:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.600-7 10-7 10z"/></svg>',
- star:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><path d="m12 3 2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.300 6.1-.9z"/></svg>'
+ heart:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></svg>',
+ star:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><path d="m12 3 2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z"/></svg>'
 };
 var TOKENS=['tiles','marquee','banners','trust','shop','reviews'];
 function productsOf(m){return (data[m]&&data[m].products)||[]}
+function cfgHome(){var c=window.ZIVRA_SITE||{};return c.home||{}}
+function catKey(n){return String(n||'').replace(/[^A-Za-z0-9 _-]/g,'')}
 function catImage(m,f){
   var key=String(f||'').toLowerCase().replace(/s$/,'');
   var p=productsOf(m).filter(function(x){return String(x[0]).toLowerCase().indexOf(key)>-1})[0];
@@ -513,6 +520,7 @@ function defaults(m){
   };
 }
 function pick(arr,def){return Array.isArray(arr)&&arr.length?arr:def}
+window.zivraHomeEffective=function(m,key){var mc=cfgHome()[m]||{},def=defaults(m);return JSON.parse(JSON.stringify(key==='marquee'?(Array.isArray(mc.marquee)?mc.marquee:def.marquee):pick(mc[key],def[key])))};
 function go(link){
   link=String(link||'shop');
   if(link==='shop'||link==='#shop'){var s=document.getElementById('shop');if(s)s.scrollIntoView({behavior:'smooth',block:'start'});return}
@@ -525,51 +533,67 @@ function go(link){
   if(link.charAt(0)==='#'){var t=document.querySelector(link);if(t)t.scrollIntoView({behavior:'smooth',block:'start'})}
 }
 function bg(u){var s=safeUrl(u);return s?'style="background-image:url(\''+s+'\')"':''}
-function secHero(slides,iv){
+function secStyle(m,tok){
+  var st=((cfgHome()[m]||{}).style||{})[tok]||{},css='';
+  if(isColor(st.bg))css+='background:'+st.bg+';';
+  if(isColor(st.color))css+='color:'+st.color+';';
+  return css?' style="'+css+'"':'';
+}
+function secHero(m,slides){
   var h='<section class="zvs zvs-hero" aria-label="Featured posters"><div class="zvh-track">';
+  var first=true;
   slides.forEach(function(s,i){
-    h+='<div class="zvh-slide'+(i===0?' on':'')+'" data-i="'+i+'"><div class="zvh-img" '+bg(s.img)+'></div><div class="zvh-shade"></div><div class="zvh-copy">'+
-      (s.eyebrow?'<div class="zvh-eyebrow">'+esc(s.eyebrow)+'</div>':'')+
-      '<h1 class="zvh-title">'+esc(s.title).replace(/\r?\n/g,'<br>')+'</h1>'+
-      (s.sub?'<p class="zvh-sub">'+esc(s.sub)+'</p>':'')+
-      '<div class="zvh-btns">'+(s.cta?'<button class="zvb" data-go="'+esc(s.link||'shop')+'">'+esc(s.cta)+'</button>':'')+(s.cta2?'<button class="zvb zvb-ghost" data-go="'+esc(s.link2||'shop')+'">'+esc(s.cta2)+'</button>':'')+'</div></div></div>';
+    if(!s||!(s.img||s.title))return;
+    var P='home.'+m+'.slides.'+i+'.';
+    h+='<div class="zvh-slide'+(first?' on':'')+'" data-i="'+i+'"><div class="zvh-img" '+bg(s.img)+za(P+'img','image','Poster photo')+'></div><div class="zvh-shade"></div><div class="zvh-copy">'+
+      (s.eyebrow||ZE?'<div class="zvh-eyebrow"'+za(P+'eyebrow','text','Small line')+'>'+esc(s.eyebrow||'')+'</div>':'')+
+      '<h1 class="zvh-title"'+za(P+'title','longtext','Poster heading')+'>'+esc(s.title).replace(/\r?\n/g,'<br>')+'</h1>'+
+      (s.sub?'<p class="zvh-sub"'+za(P+'sub','text','Sub text')+'>'+esc(s.sub)+'</p>':'')+
+      '<div class="zvh-btns">'+(s.cta?'<button class="zvb" data-go="'+esc(s.link||'shop')+'"'+za(P+'cta','text','Button 1 text')+'>'+esc(s.cta)+'</button>':'')+(s.cta2?'<button class="zvb zvb-ghost" data-go="'+esc(s.link2||'shop')+'"'+za(P+'cta2','text','Button 2 text')+'>'+esc(s.cta2)+'</button>':'')+'</div></div></div>';
+    first=false;
   });
   h+='</div>';
-  if(slides.length>1){
-    h+='<button class="zvh-arrow prev" aria-label="Previous poster">\u2039</button><button class="zvh-arrow next" aria-label="Next poster">\u203A</button><div class="zvh-dots">'+slides.map(function(_,i){return '<button class="zvh-dot'+(i===0?' on':'')+'" data-i="'+i+'" aria-label="Poster '+(i+1)+'"></button>'}).join('')+'</div>';
+  var n=(h.match(/class="zvh-slide/g)||[]).length;
+  if(n>1){
+    h+='<button class="zvh-arrow prev" aria-label="Previous poster">\u2039</button><button class="zvh-arrow next" aria-label="Next poster">\u203A</button><div class="zvh-dots">'+Array.apply(null,Array(n)).map(function(_,i){return '<button class="zvh-dot'+(i===0?' on':'')+'" data-i="'+i+'" aria-label="Poster '+(i+1)+'"></button>'}).join('')+'</div>';
   }
   return h+'</section>';
 }
-function secTiles(t){
+function secTiles(m,t){
   if(!t.length)return'';
-  return '<section class="zvs zvs-tiles"><div class="zvt-grid">'+t.map(function(x){
-    return '<a class="zvt zv-rv" href="#shop" data-go="filter:'+esc(x.filter||'All')+'"><span class="zvt-img" '+bg(x.img)+'></span><span class="zvt-txt"><b>'+esc(x.title)+'</b><span>'+esc(x.sub||'')+'</span><em>SHOP '+esc(String(x.title||'').toUpperCase())+' \u2192</em></span></a>';
+  return '<section class="zvs zvs-tiles"'+secStyle(m,'tiles')+za('home.'+m+'.style.tiles','section','Category tiles section')+'><div class="zvt-grid">'+t.map(function(x,i){
+    var P='home.'+m+'.tiles.'+i+'.';
+    return '<a class="zvt zv-rv" href="#shop" data-go="filter:'+esc(x.filter||'All')+'"><span class="zvt-img" '+bg(x.img)+za(P+'img','image','Tile photo')+'></span><span class="zvt-txt"><b'+za(P+'title','text','Tile title')+'>'+esc(x.title)+'</b><span'+za(P+'sub','text','Tile text')+'>'+esc(x.sub||'')+'</span><em>SHOP '+esc(String(x.title||'').toUpperCase())+' \u2192</em></span></a>';
   }).join('')+'</div></section>';
 }
-function secMarquee(items,speed){
+function secMarquee(m,items,speed){
   if(!items.length)return'';
   var line=items.map(function(t){return '<span>'+esc(t)+'</span>'}).join('');
   var dur=speed==='slow'?'60s':speed==='fast'?'20s':'36s';
-  return '<section class="zvs zvs-marquee" aria-hidden="true"><div class="zvm-track" style="animation-duration:'+dur+'">'+line+line+line+line+'</div></section>';
+  return '<section class="zvs zvs-marquee"'+secStyle(m,'marquee')+za('home.'+m+'.marquee','lines','Scrolling text strip (one message per line)')+' aria-hidden="true"><div class="zvm-track" style="animation-duration:'+dur+'">'+line+line+line+line+'</div></section>';
 }
-function secBanners(b){
+function secBanners(m,b){
   return b.map(function(x,i){
-    return '<section class="zvs zvs-banner'+(i%2?' flip':'')+'"><div class="zvb-frame"><div class="zvb-img" data-f=".12" '+bg(x.img)+'></div></div><div class="zvb-copy zv-rv">'+
-      (x.eyebrow?'<div class="zvh-eyebrow">'+esc(x.eyebrow)+'</div>':'')+'<h2>'+esc(x.title).replace(/\r?\n/g,'<br>')+'</h2>'+(x.text?'<p>'+esc(x.text)+'</p>':'')+
-      (x.cta?'<button class="zvb" data-go="'+esc(x.link||'shop')+'">'+esc(x.cta)+'</button>':'')+'</div></section>';
+    var P='home.'+m+'.banners.'+i+'.';
+    return '<section class="zvs zvs-banner'+(i%2?' flip':'')+'"'+secStyle(m,'banners')+za('home.'+m+'.style.banners','section','Banner section')+'><div class="zvb-frame"><div class="zvb-img" data-f=".12" '+bg(x.img)+za(P+'img','image','Banner photo')+'></div></div><div class="zvb-copy zv-rv">'+
+      (x.eyebrow||ZE?'<div class="zvh-eyebrow"'+za(P+'eyebrow','text','Small line')+'>'+esc(x.eyebrow||'')+'</div>':'')+'<h2'+za(P+'title','longtext','Banner heading')+'>'+esc(x.title).replace(/\r?\n/g,'<br>')+'</h2>'+(x.text?'<p'+za(P+'text','text','Banner text')+'>'+esc(x.text)+'</p>':'')+
+      (x.cta?'<button class="zvb" data-go="'+esc(x.link||'shop')+'"'+za(P+'cta','text','Button text')+'>'+esc(x.cta)+'</button>':'')+'</div></section>';
   }).join('');
 }
-function secTrust(t){
+function secTrust(m,t){
   if(!t.length)return'';
-  return '<section class="zvs zvs-trust"><div class="zvtr-grid">'+t.map(function(x){
+  return '<section class="zvs zvs-trust"'+secStyle(m,'trust')+za('home.'+m+'.style.trust','section','Trust points section')+'><div class="zvtr-grid">'+t.map(function(x,i){
+    var P='home.'+m+'.trust.'+i+'.';
     var ic=ICON[String(x.icon||'').toLowerCase()]||(x.icon?'<span style="font-size:26px">'+esc(x.icon)+'</span>':'');
-    return '<div class="zvtr zv-rv"><i>'+ic+'</i><b>'+esc(x.title)+'</b><span>'+esc(x.sub||'')+'</span></div>';
+    return '<div class="zvtr zv-rv"><i>'+ic+'</i><b'+za(P+'title','text','Trust title')+'>'+esc(x.title)+'</b><span'+za(P+'sub','text','Trust text')+'>'+esc(x.sub||'')+'</span></div>';
   }).join('')+'</div></section>';
 }
-function secReviews(r){
-  if(!r.length)return'';
-  return '<section class="zvs zvs-reviews"><h2 class="zvs-title">What our customers say</h2><div class="zvr-grid">'+r.map(function(x){
-    return '<figure class="zvr zv-rv"><div class="zvr-stars">\u2605\u2605\u2605\u2605\u2605</div><blockquote>'+esc(x.text)+'</blockquote><figcaption>'+esc(x.name)+'</figcaption></figure>';
+function secReviews(m,r){
+  var items=r.map(function(x,i){return {x:x,i:i}}).filter(function(o){return o.x&&o.x.text});
+  if(!items.length)return'';
+  return '<section class="zvs zvs-reviews"'+secStyle(m,'reviews')+za('home.'+m+'.style.reviews','section','Reviews section')+'><h2 class="zvs-title">What our customers say</h2><div class="zvr-grid">'+items.map(function(o){
+    var P='home.'+m+'.reviews.'+o.i+'.';
+    return '<figure class="zvr zv-rv"><div class="zvr-stars">\u2605\u2605\u2605\u2605\u2605</div><blockquote'+za(P+'text','longtext','Review')+'>'+esc(o.x.text)+'</blockquote><figcaption'+za(P+'name','text','Customer name')+'>'+esc(o.x.name)+'</figcaption></figure>';
   }).join('')+'</div></section>';
 }
 /* mounts */
@@ -592,7 +616,6 @@ function mounts(){
   top_.addEventListener('touchend',function(e){if(x0==null)return;var dx=e.changedTouches[0].clientX-x0;x0=null;if(Math.abs(dx)>45){slideTo(sl.i+(dx<0?1:-1));restart()}},{passive:true});
   return true;
 }
-/* slider */
 var sl={t:null,i:0,iv:6};
 function slideTo(i){
   var s=top_?top_.querySelectorAll('.zvh-slide'):[],d=top_?top_.querySelectorAll('.zvh-dot'):[];
@@ -600,17 +623,16 @@ function slideTo(i){
   s.forEach(function(x,k){x.classList.toggle('on',k===sl.i)});d.forEach(function(x,k){x.classList.toggle('on',k===sl.i)});
 }
 function stop(){if(sl.t){clearInterval(sl.t);sl.t=null}}
-function restart(){stop();if(top_&&top_.querySelectorAll('.zvh-slide').length>1&&sl.auto!==false)sl.t=setInterval(function(){if(!document.hidden)slideTo(sl.i+1)},sl.iv*1000)}
-/* parallax + reveal */
+function restart(){stop();if(ZE)return;if(top_&&top_.querySelectorAll('.zvh-slide').length>1&&sl.auto!==false)sl.t=setInterval(function(){if(!document.hidden)slideTo(sl.i+1)},sl.iv*1000)}
 var par=[],tick=false,io=null;
 function parUpdate(){
   tick=false;var vh=window.innerHeight;
-  par.forEach(function(el){var r=el.parentNode.getBoundingClientRect();if(r.bottom<-50||r.top>vh+50)return;var d=r.top+r.height/2-vh/2;el.style.transform='translate3d(0,'+(-d*el.f).toFixed(1)+'px,0)'});
+  par.forEach(function(el){var r=el.parentNode.getBoundingClientRect();if(r.bottom<-50||r.top>vh+50)return;var d=r.top+r.height/2-vh/2;el.style.transform='translate3d(0,'+(-d*el.f).toFixed(1)+'px,0)'})
 }
 window.addEventListener('scroll',function(){if(!tick&&par.length){tick=true;requestAnimationFrame(parUpdate)}},{passive:true});
 function wire(motion){
   par=[];
-  var off=reduce||(motion&&motion.reveal==='off');
+  var off=reduce||ZE||(motion&&motion.reveal==='off');
   if(!off){document.querySelectorAll('#zvHome .zvb-img,#zvAfter .zvb-img').forEach(function(el){el.f=(window.innerWidth<800?.07:.12);par.push(el)});}
   if(io){io.disconnect();io=null}
   var els=document.querySelectorAll('#zvHome .zv-rv,#zvAfter .zv-rv');
@@ -622,47 +644,145 @@ function wire(motion){
 }
 function decorateCats(){
   try{
-    var list=productsOf(mode);
+    var list=productsOf(mode),ci=cfgHome().catImages||{};
     document.querySelectorAll('#categories .cat').forEach(function(b){
-      var name=b.dataset.filter,img='';
-      if(name==='All'){var f=list.filter(function(x){return productImage(x)})[0];img=f?productImage(f):''}
-      else img=catImage(mode,name);
+      var name=b.dataset.filter,img=ci[catKey(name)]||'';
+      if(!img){if(name==='All'){var f=list.filter(function(x){return productImage(x)})[0];img=f?productImage(f):''}else img=catImage(mode,name)}
       var u=safeUrl(img);
       if(u){b.classList.add('cat-photo');b.style.backgroundImage='linear-gradient(0deg,rgba(0,0,0,.78),rgba(0,0,0,0) 58%),url(\''+u+'\')'}
       else{b.classList.remove('cat-photo');b.style.backgroundImage=''}
+      if(ZE){b.setAttribute('data-zve','home.catImages.'+catKey(name));b.setAttribute('data-zk','image');b.setAttribute('data-zl','Category photo: '+name)}
     });
   }catch(e){}
+}
+function tagStatic(){
+  if(!ZE)return;
+  var c=window.ZIVRA_SITE||{};
+  function t(sel,path,kind,label,idx){var els=document.querySelectorAll(sel),el=els[idx||0];if(el){el.setAttribute('data-zve',path);el.setAttribute('data-zk',kind||'text');el.setAttribute('data-zl',label)}}
+  t('#logo','brand.name','text','Store name');
+  t('.zv-announce','announce.text','text','Announcement bar');
+  ['home','shop','collections','about','contact'].forEach(function(k,i){t('.topbar .nav a','nav.'+k,'text','Menu: '+k,i)});
+  t('#streetLabel','labels.street','text','Collection switch (dark)');t('#ethnicLabel','labels.ethnic','text','Collection switch (ethnic)');
+  t('#sectionTitle','text.'+(mode==='street'?'featuredStreet':'featuredEthnic'),'text','Products section title');
+  t('#viewAll','text.viewAll','text','View all link');
+  t('#promoTitle','promo.'+mode+'.title','text','Complete-look title');t('#promoDesc','promo.'+mode+'.desc','text','Complete-look text');
+  t('#promoBtn','promo.'+mode+'.btn','text','Complete-look button');t('#promoImage','promo.'+mode+'.image','image','Complete-look photo');
+  t('#stripTitle','strip.title','text','Highlight strip title');
+  [['b1t','b1s'],['b2t','b2s']].forEach(function(k,i){t('.darkstrip .benefit:nth-of-type('+(i+1)+') strong','strip.'+k[0],'text','Benefit '+(i+1)+' title');t('.darkstrip .benefit:nth-of-type('+(i+1)+') span','strip.'+k[1],'text','Benefit '+(i+1)+' text')});
+  var fcols=document.querySelectorAll('.footer > div');
+  if(fcols[0]){var p0=fcols[0].querySelector('p');if(p0){p0.setAttribute('data-zve','footer.copyright');p0.setAttribute('data-zk','text');p0.setAttribute('data-zl','Footer copyright line')}}
+  t('.zv-news-blurb','footer.newsletter','text','Newsletter text');
+  var lc=fcols[fcols.length-1];if(lc){var ph=lc.querySelector('p'),sm=lc.querySelector('small');if(ph){ph.setAttribute('data-zve','footer.philosophy');ph.setAttribute('data-zk','text');ph.setAttribute('data-zl','Footer quote')}if(sm){sm.setAttribute('data-zve','footer.small');sm.setAttribute('data-zk','text');sm.setAttribute('data-zl','Footer small line')}}
+  document.querySelectorAll('.product').forEach(function(p){p.setAttribute('data-zve','card');p.setAttribute('data-zk','cards');p.setAttribute('data-zl','Product card style')});
 }
 window.zivraHomeRender=function(){
   var c=window.ZIVRA_SITE||{},h=c.home||{},on=h.design!=='classic';
   document.documentElement.classList.toggle('zv-newhome',on);
+  document.documentElement.classList.toggle('zv-edit',!!ZE);
   if(!mounts())return;
   var m=mode,mc=h[m]||{};
   [top_,before_,after_].forEach(function(el){el.className='zv-'+m});
-  if(!on){top_.innerHTML='';before_.innerHTML='';after_.innerHTML='';stop();decorateCats();return}
+  if(!on){top_.innerHTML='';before_.innerHTML='';after_.innerHTML='';stop();decorateCats();tagStatic();return}
   var def=defaults(m);
-  var slides=pick(mc.slides,def.slides).filter(function(s){return s&&(s.img||s.title)}).slice(0,8);
   var secs={
-    tiles:secTiles(pick(mc.tiles,def.tiles)),
-    marquee:secMarquee(Array.isArray(mc.marquee)?mc.marquee.filter(Boolean):def.marquee,h.marqueeSpeed),
-    banners:secBanners(pick(mc.banners,def.banners)),
-    trust:secTrust(pick(mc.trust,def.trust)),
-    reviews:secReviews(Array.isArray(mc.reviews)?mc.reviews.filter(function(r){return r&&r.text}):def.reviews)
+    tiles:secTiles(m,pick(mc.tiles,def.tiles)),
+    marquee:secMarquee(m,Array.isArray(mc.marquee)?mc.marquee.filter(Boolean):def.marquee,h.marqueeSpeed),
+    banners:secBanners(m,pick(mc.banners,def.banners)),
+    trust:secTrust(m,pick(mc.trust,def.trust)),
+    reviews:secReviews(m,Array.isArray(mc.reviews)?mc.reviews:def.reviews)
   };
   var order=Array.isArray(mc.order)&&mc.order.length?mc.order.filter(function(t){return TOKENS.indexOf(t)>-1}):TOKENS.slice();
   if(order.indexOf('shop')<0)order.push('shop');
   var bh='',ah='',seenShop=false;
   order.forEach(function(t){if(t==='shop'){seenShop=true;return}(seenShop?(ah+=secs[t]||''):(bh+=secs[t]||''))});
-  top_.innerHTML=secHero(slides,h.interval);
+  top_.innerHTML=secHero(m,pick(mc.slides,def.slides).slice(0,8));
   before_.innerHTML=bh;after_.innerHTML=ah;
   sl.i=0;sl.iv=Math.max(3,Number(h.interval)||6);sl.auto=h.autoplay!==false;
-  restart();wire(c.motion);
-  decorateCats();
+  restart();wire(c.motion);decorateCats();tagStatic();
 };
-/* fonts for the two designs */
 try{if(!document.getElementById('zv-home-fonts')){var lk=document.createElement('link');lk.id='zv-home-fonts';lk.rel='stylesheet';lk.href='https://fonts.googleapis.com/css2?family=Inter:wght@500;800;900&family=Cormorant+Garamond:ital,wght@0,500;0,700;1,500;1,700&family=Jost:wght@400;500&display=swap';document.head.appendChild(lk)}}catch(e){}
+/* ---------- visual editor bridge (only inside the admin preview frame) ---------- */
+if(ZE){
+  document.addEventListener('click',function(e){
+    var t=e.target.closest('[data-zve]');
+    var keep=e.target.closest('.zvh-dot,.zvh-arrow');
+    if(keep&&!t)return;
+    if(keep&&t&&t.closest('.zvh-dots,.zvh-arrow'))return;
+    e.preventDefault();e.stopPropagation();e.stopImmediatePropagation();
+    if(!t)return;
+    var path=t.getAttribute('data-zve'),kind=t.getAttribute('data-zk')||'text',msg={zv:'select',path:path,kind:kind,label:t.getAttribute('data-zl')||path,mode:mode,value:''};
+    if(kind==='text'||kind==='longtext'){msg.value=(t.innerText||t.textContent||'').trim()}
+    var m2=path.match(/^home\.(street|ethnic)\.(slides|tiles|banners|trust|reviews|marquee)(?:\.|$)/);
+    if(m2){msg.seed={path:'home.'+m2[1]+'.'+m2[2],value:window.zivraHomeEffective(m2[1],m2[2])};if(kind==='lines')msg.value=msg.seed.value.join('\n')}
+    if(kind==='section'){var tk=path.split('.').pop();msg.token=tk}
+    parent.postMessage(msg,location.origin);
+  },true);
+  window.addEventListener('message',function(e){
+    if(e.origin!==location.origin)return;var d=e.data||{};
+    if(d.zv==='config'&&d.cfg&&typeof d.cfg==='object'){try{window.zivraApplySite(d.cfg)}catch(err){}}
+    if(d.zv==='mode'&&d.mode&&d.mode!==mode){switchMode()}
+    if(d.zv==='scroll'){var el=document.querySelector(d.sel);if(el)el.scrollIntoView({behavior:'smooth',block:'center'})}
+  });
+  parent.postMessage({zv:'ready'},location.origin);
+}
 render();
 })()}catch(zvHomeErr){try{window.zivraReport&&window.zivraReport('home-page',zvHomeErr)}catch(_){}}
+
+
+
+/* ===== ZIVRA product extras: MRP/cut price, size & colour availability, photo gallery, details ===== */
+try{(function(){
+var esc=window.zivraEscape||function(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[c]})};
+var rupee=function(n){return '\u20B9'+Number(n).toLocaleString('en-IN')};
+var okHex=function(h){return /^#[0-9a-fA-F]{3,8}$/.test(h||'')};
+window.zivraMapProduct=function(p,key){
+  var price=Number(p.price),mrp=Number(p.compare_at_price)||0;
+  var row=[p.name,rupee(price),key,p.id,p.image_url,p.description,p.category,Number(p.stock)];
+  if(mrp>price){row[8]=rupee(mrp);row[9]=Math.round((mrp-price)/mrp*100)+'% OFF'}
+  row[10]=[p.image_url].concat(Array.isArray(p.images)?p.images:[]).filter(Boolean);
+  row[11]=(p.sizes&&typeof p.sizes==='object'&&!Array.isArray(p.sizes))?p.sizes:{};
+  row[12]=Array.isArray(p.colors)?p.colors:[];
+  row[13]={brand:p.brand||'',fabric:p.fabric||'',fit:p.fit||'',highlights:p.highlights||'',care:p.care||''};
+  return row;
+};
+window.zivraVariantHtml=function(p){
+  var h='',sizes=p[11]||{},keys=Object.keys(sizes);
+  if(keys.length)h+='<div class="psizes">'+keys.map(function(k){return '<span'+(Number(sizes[k])>0?'':' class="x"')+'>'+esc(k)+'</span>'}).join('')+'</div>';
+  var cols=Array.isArray(p[12])?p[12]:[];
+  if(cols.length)h+='<div class="pcolors">'+cols.slice(0,6).map(function(c){return '<i title="'+esc(c.name)+'" style="background:'+(okHex(c.hex)?c.hex:'#888')+'"></i>'}).join('')+'</div>';
+  return h;
+};
+function addState(p){
+  var btn=document.getElementById('detailAdd');if(!btn)return;
+  var sizes=p[11]||{},hasSizes=Object.keys(sizes).length>0;
+  var out=Number(p[7])<=0||(hasSizes&&!detailSize);
+  btn.disabled=out;btn.textContent=out?(Number(p[7])<=0||hasSizes?'SOLD OUT':'OUT OF STOCK'):'ADD SELECTED ITEM TO BAG';
+}
+window.zivraOpenExtras=function(p){
+  var imgs=Array.isArray(p[10])&&p[10].length?p[10]:[];
+  var th=document.getElementById('detailThumbs');
+  if(th)th.innerHTML=imgs.length>1?imgs.map(function(u,i){return '<button type="button" class="dthumb'+(i===0?' on':'')+'" data-src="'+esc(u)+'" aria-label="Photo '+(i+1)+'"><img src="'+esc(u)+'" alt="" loading="lazy"></button>'}).join(''):'';
+  var szBox=document.getElementById('sizeOptions'),sizes=p[11]||{},keys=Object.keys(sizes);
+  if(szBox&&keys.length){
+    var first=keys.filter(function(k){return Number(sizes[k])>0})[0]||'';
+    szBox.innerHTML=keys.map(function(k){var av=Number(sizes[k])>0;return '<button type="button" class="option-btn'+(k===first?' selected':'')+'" data-size="'+esc(k)+'"'+(av?'':' disabled title="Not available"')+'>'+esc(k)+'</button>'}).join('');
+    detailSize=first;
+  }else if(szBox&&!szBox.querySelector('[data-size]')===false){}
+  var coBox=document.getElementById('colorOptions'),cols=Array.isArray(p[12])?p[12]:[];
+  if(coBox&&cols.length){
+    var fc=cols.filter(function(c){return c.stock===undefined||Number(c.stock)>0})[0];
+    coBox.innerHTML=cols.map(function(c){var av=c.stock===undefined||Number(c.stock)>0;return '<button type="button" class="color-dot'+(fc&&c.name===fc.name?' selected':'')+'" data-color="'+esc(c.name)+'" title="'+esc(c.name)+(av?'':' — not available')+'"'+(av?'':' disabled')+'><span style="background:'+(okHex(c.hex)?c.hex:'#888')+'"></span></button>'}).join('');
+    detailColor=fc?fc.name:'';
+  }
+  var meta=p[13]||{},rows=[['Brand',meta.brand],['Fabric',meta.fabric],['Fit',meta.fit],['Highlights',meta.highlights],['Care',meta.care]].filter(function(r){return r[1]});
+  var mb=document.getElementById('detailMeta');if(mb)mb.innerHTML=rows.map(function(r){return '<div><b>'+esc(r[0])+'</b><span>'+esc(r[1])+'</span></div>'}).join('');
+  addState(p);
+};
+var sb=document.getElementById('sizeOptions'),cb=document.getElementById('colorOptions'),tb=document.getElementById('detailThumbs');
+if(sb)sb.addEventListener('click',function(e){var b=e.target.closest('.option-btn');if(!b||b.disabled)return;detailSize=b.dataset.size||b.textContent;sb.querySelectorAll('.option-btn').forEach(function(x){x.classList.toggle('selected',x===b)});if(detailProduct)addState(detailProduct)});
+if(cb)cb.addEventListener('click',function(e){var b=e.target.closest('.color-dot');if(!b||b.disabled)return;detailColor=b.dataset.color;cb.querySelectorAll('.color-dot').forEach(function(x){x.classList.toggle('selected',x===b)})});
+if(tb)tb.addEventListener('click',function(e){var b=e.target.closest('.dthumb');if(!b)return;var im=document.getElementById('detailImage');if(im)im.src=b.dataset.src;tb.querySelectorAll('.dthumb').forEach(function(x){x.classList.toggle('on',x===b)})});
+})()}catch(zvPErr){try{window.zivraReport&&window.zivraReport('product-extras',zvPErr)}catch(_){}}
 
 </script>
 <a class="help-launch" href="help-center.html">✦ &nbsp; Need help?</a><script>(function(){const root=document.body,trigger=document.getElementById("menuTrigger"),back=document.getElementById("drawerBackdrop"),close=document.getElementById("drawerClose"),drawer=document.getElementById("customerDrawer");if(!trigger||!drawer)return;function setOpen(v){root.classList.toggle("drawer-open",v);trigger.setAttribute("aria-expanded",String(v));drawer.setAttribute("aria-hidden",String(!v));}trigger.addEventListener("click",()=>setOpen(true));back.addEventListener("click",()=>setOpen(false));close.addEventListener("click",()=>setOpen(false));drawer.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>setOpen(false)));document.addEventListener("keydown",e=>{if(e.key==="Escape")setOpen(false)});})();</script><script src="./razorpay-checkout.js"></script></body></html>

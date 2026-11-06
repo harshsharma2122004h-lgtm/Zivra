@@ -25,6 +25,7 @@
 .zitem{padding:16px 20px;border-bottom:1px solid var(--line);display:grid;gap:7px}.zitem.unread{background:#fff9ec;box-shadow:inset 3px 0 0 var(--accent)}.zitem .zhead{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:center}.zitem b{font-size:13px}.zitem .zmeta{font-size:11px;color:var(--muted)}.zitem .zbody{font-size:13px;line-height:1.6;white-space:pre-wrap;word-break:break-word}.zitem .zdetails{font-size:11px;color:#6d675d;background:#f6f2ea;border-radius:8px;padding:8px 10px;white-space:pre-wrap;word-break:break-all;max-height:140px;overflow:auto}.zactions{display:flex;gap:8px;flex-wrap:wrap}.zactions button,.zactions a{border:1px solid var(--line);background:#fff;color:#3c3831;padding:7px 11px;border-radius:7px;font-size:11px;text-decoration:none;cursor:pointer}.zactions .zdanger{color:#a54b43}.ztag{display:inline-block;background:#eaf0f8;color:#4d6c93;border-radius:20px;padding:3px 9px;font-size:10px;font-weight:750}.ztag.bad{background:#fae9e6;color:#a54b43}
 .zgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;padding:18px 20px}.zfield label{display:block;font-size:11px;color:var(--muted);margin-bottom:5px;line-height:1.4}.zfield input:not([type=checkbox]):not([type=color]),.zfield select,.zfield textarea{width:100%;padding:10px 11px;border:1px solid var(--line);border-radius:8px;background:#fff;font:inherit;font-size:13px;color:inherit}.zfield textarea{min-height:76px;resize:vertical}.zchips{display:flex;flex-wrap:wrap;gap:8px}.zchip{border:1px solid var(--line);background:#fff;border-radius:20px;padding:7px 12px;font-size:12px;cursor:pointer;user-select:none}.zchip.on{background:var(--accent);color:#fff;border-color:var(--accent)}details.zgroup{border:1px solid var(--line);border-radius:12px;background:#fff;margin-bottom:12px;overflow:hidden}details.zgroup>summary{padding:15px 20px;font-weight:700;font-size:14px;cursor:pointer;list-style:none}details.zgroup>summary::after{content:'＋';float:right;color:var(--muted)}details.zgroup[open]>summary::after{content:'－'}.zcolor{display:flex;gap:8px;align-items:center}.zcolor input[type=color]{width:46px;height:38px;padding:2px;border:1px solid var(--line);border-radius:8px;background:#fff}.zcolor code{font-size:11px;color:var(--muted)}.zcolor button{border:1px solid var(--line);background:#fff;border-radius:6px;padding:5px 9px;font-size:11px;cursor:pointer}.zimg{display:grid;gap:6px}.zimg img{max-height:70px;max-width:160px;object-fit:contain;border:1px solid var(--line);border-radius:6px;background:#f6f2ea}
 
+.zve-grid{display:grid;grid-template-columns:1fr;gap:14px}@media(min-width:1000px){.zve-grid{grid-template-columns:minmax(0,1fr) 340px}}.zve-frame{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#1b1b1b;display:flex;justify-content:center}.zve-frame iframe{border:0;width:100%;height:74vh;background:#111}.zve-frame.mobile iframe{width:390px;max-width:100%}.zve-panel{padding:16px;max-height:74vh;overflow:auto}
 .toast{position:fixed;bottom:22px;right:24px;background:#25221e;color:#fff;padding:13px 17px;border-radius:9px;font-size:12px;box-shadow:0 12px 30px #0002;opacity:0;transform:translateY(8px);transition:.2s;pointer-events:none;z-index:20}.toast.show{opacity:1;transform:translateY(0)}.modalback{position:fixed;inset:0;background:#17151080;display:none;align-items:center;justify-content:center;padding:20px;z-index:30;overflow-y:auto}.modalback.open{display:flex}.modal{background:#fff;color:#292722;border-radius:14px;width:min(480px,100%);max-height:calc(100dvh - 40px);overflow-y:auto;padding:24px;box-shadow:0 25px 80px #0003;overscroll-behavior:contain}.modalhead{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}.modalhead h2{font-size:19px;margin:0;font-family:var(--site-font-heading);font-weight:500}.close{border:0;background:#f3f0eb;border-radius:50%;width:30px;height:30px}.field{display:grid;gap:6px;margin-bottom:14px}.field label{font-size:10px;color:#6d665b;font-weight:750}.field input,.field select{width:100%;border:1px solid #e4ded4;border-radius:8px;padding:11px;font-size:12px;color:#292722;background:#fff}.modalactions{display:flex;justify-content:flex-end;gap:8px;margin-top:20px}.notice{padding:12px 14px;border-radius:9px;background:#f8f1e5;color:#785c31;font-size:11px;line-height:1.6;margin-bottom:17px}.settingsgrid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.setting{padding:20px;border:1px solid var(--line);border-radius:12px;background:#fff}.setting h3{font-size:12px;margin:0 0 8px}.setting p{font-size:11px;color:var(--muted);line-height:1.6}.toggle{display:flex;align-items:center;justify-content:space-between;font-size:11px;padding:12px 0;border-top:1px solid var(--line)}.toggle input{accent-color:#292722}
 @media(max-width:1050px){.sidebar{width:205px}.content{padding:25px 22px}.topbar{padding:0 22px}.metrics{grid-template-columns:repeat(2,minmax(0,1fr))}.grid2{grid-template-columns:1fr}}
 @media(max-width:700px){.modalback{align-items:flex-start;padding:10px;}.modal{width:100%;max-height:calc(100dvh - 20px);padding:18px;}.topbar{height:auto;min-height:55px;flex-wrap:wrap;padding:9px 12px;gap:8px}.topright{gap:6px;flex-wrap:wrap;justify-content:flex-end}#logoutAdmin,.iconbtn{padding:8px 9px;font-size:10px}#app{display:block}.sidebar{width:100%;padding:13px 14px;display:block}.brand{padding:3px 6px 13px;border-bottom:0}.brand strong{font-size:20px}.brand small{margin-top:4px}.navlabel,.sidebottom{display:none}.nav{display:flex;overflow:auto;gap:5px;padding-top:10px}.nav button{white-space:nowrap;padding:9px 11px;font-size:10px}.nav button span{width:auto}.topbar{height:55px;padding:0 16px}.topright .statuspill{display:none}.content{padding:22px 14px 35px}.pagehead{align-items:flex-start;flex-direction:column}.pagehead .primary{width:100%}.metrics{gap:9px}.metric{padding:14px}.metric strong{font-size:22px}.metric-top{font-size:9px}.metric-icon{width:27px;height:27px}.grid2{gap:12px}.panelhead,.panelbody{padding:15px}.settingsgrid{grid-template-columns:1fr}.tablefoot{align-items:flex-start;flex-direction:column}.chart{gap:6px}.chart .bar{width:22px}}
@@ -59,6 +60,7 @@ body:not(.authorized) #app{display:none}
       <button data-view="products"><span>◇</span> Products</button>
       <button data-view="orders"><span>▤</span> Orders</button>
       <button data-view="offers"><span>％</span> Offers &amp; Coupons</button>
+      <button data-view="visual"><span>🖌</span> Visual Editor</button>
       <button data-view="sitecontrol"><span>✦</span> Site Control</button>
       <button data-view="messages"><span>✉</span> Messages <b class="navcount" id="msgCount" hidden>0</b></button>
       <button data-view="notifications"><span>🔔</span> Notifications <b class="navcount" id="errCount" hidden>0</b></button>
@@ -87,7 +89,7 @@ body:not(.authorized) #app{display:none}
         <section class="panel"><div class="panelhead"><div><h2>Recent orders</h2><p>Latest activity from your ZIVRA store</p></div><button class="secondary" data-goto="orders">All orders →</button></div><div class="tablewrap"><table><thead><tr><th>Order</th><th>Customer</th><th>Date</th><th>Total</th><th>Status</th><th>Action</th></tr></thead><tbody id="recentOrders"></tbody></table></div></section>
       </section>
       <section class="view" id="view-products">
-        <div class="pagehead"><div><div class="eyebrow">CATALOG MANAGEMENT</div><h1>Products</h1><p>Add, edit, search and manage items in your collections.</p></div><div style="display:flex;gap:8px;flex-wrap:wrap"><a class="secondary" href="./admin-bulk-import.html" style="text-decoration:none;padding:10px 14px;border:1px solid var(--line);border-radius:8px">Bulk import CSV ↗</a><button class="secondary" id="optimizeImages">Speed up product images</button><button class="primary" id="addProduct">＋ Add product</button></div></div>
+        <div class="pagehead"><div><div class="eyebrow">CATALOG MANAGEMENT</div><h1>Products</h1><p>Add, edit, search and manage items in your collections.</p></div><div style="display:flex;gap:8px;flex-wrap:wrap"><button class="secondary" id="bulkOpen">⬆ Bulk upload</button><button class="secondary" id="optimizeImages">Speed up product images</button><button class="primary" id="addProduct">＋ Add product</button></div></div>
         <section class="panel"><div class="toolbar"><div class="search"><input id="productSearch" placeholder="Search products or SKU…" /></div><select class="select" id="productCategory"><option value="All">All collections</option><option>Streetwear</option><option>Ethnic</option><option>Accessories</option></select><select class="select" id="productStock"><option value="All">Any stock level</option><option value="Low">Low stock</option><option value="Out of stock">Out of stock</option></select></div><div class="tablewrap"><table><thead><tr><th>Product</th><th>SKU</th><th>Collection</th><th>Price</th><th>Stock</th><th>Status</th><th>Actions</th></tr></thead><tbody id="productsTable"></tbody></table></div><div class="tablefoot"><span id="productCount">Showing 8 products</span><button class="secondary" id="exportProducts">Export CSV ↓</button></div></section>
       </section>
       <section class="view" id="view-orders">
@@ -116,34 +118,14 @@ body:not(.authorized) #app{display:none}
         </section>
         <section class="panel"><div id="offersList"></div><div class="tablefoot"><span id="offerFoot">Loading…</span><span>Discount is always re-checked by the server at checkout</span></div></section>
       </section>
+      <section class="view" id="view-visual">
+        <div class="pagehead"><div><div class="eyebrow">LIVE EDITOR</div><h1>Visual Editor</h1><p>This is your real store. Tap any text, photo, poster, box or product card to edit it. Changes show instantly; tap Save &amp; publish when you are happy.</p></div><div style="display:flex;gap:8px;flex-wrap:wrap"><button class="secondary" id="zveMobile">📱 Mobile</button><button class="secondary" id="zveDesktop">🖥 Desktop</button><button class="primary" id="zveSave">Save &amp; publish</button></div></div>
+        <div class="zve-grid"><div class="zve-frame mobile" id="zveFrameWrap"></div><aside class="zve-panel panel" id="zvePanel"></aside></div>
+      </section>
       <section class="view" id="view-sitecontrol">
-        <div class="pagehead"><div><div class="eyebrow">STOREFRONT STUDIO</div><h1>Site Control</h1><p>Change the look, text, logo, header, footer, colours, fonts and motion of your customer website. Anything you leave empty keeps the current design.</p></div><div style="display:flex;gap:8px;flex-wrap:wrap"><a class="secondary" href="./admin-visual-site-preview.html" style="text-decoration:none;padding:10px 14px;border:1px solid var(--line);border-radius:8px">Visual preview ↗</a><a class="secondary" href="./index.html" target="_blank" rel="noopener" style="text-decoration:none;padding:10px 14px;border:1px solid var(--line);border-radius:8px">Open store ↗</a><button class="secondary" id="zvReset">Reset all</button><button class="primary" id="zvSave">Save &amp; publish</button></div></div>
+        <div class="pagehead"><div><div class="eyebrow">STOREFRONT STUDIO</div><h1>Site Control</h1><p>Change the look, text, logo, header, footer, colours, fonts and motion of your customer website. Anything you leave empty keeps the current design.</p></div><div style="display:flex;gap:8px;flex-wrap:wrap"><a class="secondary" href="./index.html" target="_blank" rel="noopener" style="text-decoration:none;padding:10px 14px;border:1px solid var(--line);border-radius:8px">Open store ↗</a><button class="secondary" id="zvReset">Reset all</button><button class="primary" id="zvSave">Save &amp; publish</button></div></div>
         <section class="panel"><div style="padding:16px 20px"><div class="eyebrow" style="margin-bottom:10px">READY-MADE TEMPLATES (tap one, then fine-tune below, then Save)</div><div class="zactions" id="zvTemplates"></div></div></section>
         <div id="zvHomeBuilder"></div>
-<style>
-#zvVisualEditor{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:14px;margin:16px 0}
-#zvVisualFrame{width:100%;height:780px;border:1px solid var(--line);border-radius:12px;background:#fff}
-#zvVisualPanel{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px;align-self:start;position:sticky;top:12px}
-#zvVisualPanel label{display:block;font-size:11px;color:var(--muted);margin:12px 0 5px}
-#zvVisualPanel input,#zvVisualPanel textarea{width:100%;padding:10px;border:1px solid var(--line);border-radius:8px;font:inherit;font-size:12px}
-#zvVisualPanel textarea{min-height:85px}
-@media(max-width:850px){#zvVisualEditor{grid-template-columns:1fr}#zvVisualFrame{height:65vh}#zvVisualPanel{position:static}}
-</style>
-<section class="panel" style="margin-top:16px">
- <div class="panelhead"><div><h2>Live visual editor</h2><p>Website ke preview par kisi text, image ya section par click karein, phir side panel se edit karein.</p></div><button type="button" class="secondary" id="zvVisualReload">Refresh preview</button></div>
- <div id="zvVisualEditor">
-  <iframe id="zvVisualFrame" src="./index.html?zvVisualPreview=1" title="Live ZIVRA storefront editor preview"></iframe>
-  <aside id="zvVisualPanel">
-   <b>Selected element</b><p id="zvVisualHint" class="zmeta">Preview load hone ke baad kisi text ya image par click karein.</p>
-   <label>Text content</label><textarea id="zvVisualText" placeholder="Selected text"></textarea>
-   <label>Image URL (optional)</label><input id="zvVisualImage" type="url" placeholder="https://…">
-   <label>Background colour</label><input id="zvVisualBg" type="color" value="#ffffff">
-   <label>Text colour</label><input id="zvVisualColor" type="color" value="#222222">
-   <div class="zactions" style="margin-top:14px"><button type="button" class="primary" id="zvVisualApply">Apply to preview</button><button type="button" class="secondary" id="zvVisualClear">Clear selection</button></div>
-   <p class="zmeta">Edits are saved into Site Control settings. Use the main “Save &amp; publish” button above to publish.</p>
-  </aside>
- </div>
-</section>
         <div id="zvForm"></div>
         <p class="zmeta" id="zvStatus" style="padding:8px 4px">Loading…</p>
       </section>
@@ -179,6 +161,7 @@ body:not(.authorized) #app{display:none}
     </div>
   </main>
 </div>
+<div class="modalback" id="bulkModal"><div class="modal" style="max-width:820px;width:100%"><div class="modalhead"><h2>Bulk upload products</h2><button type="button" class="close" id="bulkClose">×</button></div><div style="padding:4px 22px 22px;display:grid;gap:14px"><p style="font-size:13px;line-height:1.6;margin:0"><b>1.</b> Download the template and fill one product per row (Excel or Google Sheets). <b>2.</b> Save as CSV or Excel and upload it here. <b>3.</b> Check the preview and tap Import. A product whose SKU already exists is updated.</p><div class="zactions"><button type="button" class="secondary" id="bulkTemplate">⬇ Download template (CSV)</button></div><input type="file" id="bulkFile" accept=".csv,.xlsx,.xls,text/csv"><div id="bulkPreview"></div><div class="zactions"><button type="button" class="primary" id="bulkImport" disabled>Import</button><button type="button" class="secondary" id="bulkCancel">Close</button></div><hr style="border:0;border-top:1px solid var(--line);width:100%"><div><b style="font-size:13px">Photos in bulk</b><p style="font-size:12px;color:var(--muted);line-height:1.6">Select many photos at once. Name each file with the product SKU: <code>ZV-001.jpg</code> = main photo, <code>ZV-001_2.jpg</code>, <code>ZV-001_3.jpg</code>, <code>ZV-001_4.jpg</code> = extra photos. Import the products first.</p><input type="file" id="bulkPhotos" accept="image/*" multiple><p id="bulkPhotoStatus" class="zmeta"></p></div></div></div></div>
 <div class="modalback" id="productModal"><form class="modal" id="productForm"><div class="modalhead"><h2 id="modalTitle">Add product</h2><button type="button" class="close" id="closeModal">×</button></div><div class="field"><label for="pNameSelect">Product name</label><select id="pNameSelect" required><option value="">Select product name</option><optgroup label="Streetwear"><option>T-Shirt</option><option>Shirt</option><option>Oversized T-Shirt</option><option>Hoodie</option><option>Sweatshirt</option><option>Jeans</option><option>Cargo Pants</option><option>Trousers</option><option>Shorts</option><option>Jacket</option></optgroup><optgroup label="Ethnic Wear"><option>Kurta</option><option>Kurta Set</option><option>Sanganeri Suit</option><option>Ethnic Dress</option><option>Dupatta</option></optgroup><optgroup label="Accessories"><option>Cap</option><option>Bag</option><option>Other Accessories</option></optgroup><option value="__custom">Custom Product</option></select><input id="pCustomName" maxlength="70" placeholder="Enter custom product name" style="display:none;margin-top:8px" /></div><div class="field"><label for="pSku">SKU</label><input id="pSku" required maxlength="24" placeholder="ZV-001" /></div><div class="field"><label for="pCategory">Collection</label><select id="pCategory"><option>Streetwear</option><option>Ethnic</option><option>Accessories</option></select></div><div class="field"><label for="pPrice">Price (₹)</label><input id="pPrice" type="number" min="1" max="1000000" required placeholder="999" /></div><div class="field"><label for="pStock">Available stock</label><input id="pStock" type="number" min="0" max="100000" required placeholder="25" /></div><div class="field" style="grid-column:1/-1"><label for="pImageFile">Product photo</label><div class="image-upload"><input id="pImageFile" type="file" accept="image/jpeg,image/png,image/webp" /><img id="pImagePreview" class="image-preview" alt="Product photo preview" /><div class="image-help">Upload JPG, PNG or WebP · maximum 5 MB. You can also paste an image URL below.</div></div><input id="pImage" type="url" maxlength="1000" placeholder="Or paste image URL (optional)" style="margin-top:8px" /></div><div class="modalactions"><button type="button" class="secondary" id="cancelModal">Cancel</button><button class="primary" type="submit">Save product</button></div></form></div>
 <div class="modalback" id="trackingModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="trackingModalTitle">
   <div class="modal tracking-modal">
@@ -227,14 +210,14 @@ function orderRows(list,includeRecent=false){return list.map(o=>`<tr><td><b>${es
 function renderOrders(){const q=($('orderSearch')?.value||'').toLowerCase();const status=$('orderStatus')?.value||'All';const list=orders.filter(o=>(o.id+' '+o.customer+' '+o.email).toLowerCase().includes(q)&&(status==='All'||o.status===status));$('ordersTable').innerHTML=orderRows(list);$('orderCount').textContent=`Showing ${list.length} of ${orders.length} orders`; $('recentOrders').innerHTML=orderRows(orders.slice(0,4),true);$('metricOrders').textContent=126+Math.max(0,orders.length-6)}
 function renderCustomers(){const q=($('customerSearch')?.value||'').toLowerCase();const list=customers.filter(c=>(c.name+' '+c.email).toLowerCase().includes(q));$('customersTable').innerHTML=list.map(c=>`<tr><td><div class="customer"><div class="avatar">${esc(c.name.split(' ').map(x=>x[0]).join(''))}</div><b style="color:#292722">${esc(c.name)}</b></div></td><td>${esc(c.email)}</td><td>${c.orders}</td><td class="money">${money(c.spent)}</td><td>${esc(c.joined)}</td><td>${badge(c.segment)}</td></tr>`).join('')||`<tr><td colspan="6"><div class="empty">No customers found.</div></td></tr>`;$('customerCount').textContent=`Showing ${list.length} of ${customers.length} sample customers`; $('metricCustomers').textContent=94+Math.max(0,customers.length-6)}
 function renderInventory(){const q=($('inventorySearch')?.value||'').toLowerCase();const filter=$('inventoryFilter')?.value||'All';const list=products.filter(p=>(p.name+' '+p.sku).toLowerCase().includes(q)&&(filter==='All'||filter==='Low'&&p.stock>0&&p.stock<10||filter==='Out of stock'&&p.stock===0||filter==='Healthy'&&p.stock>=10));$('inventoryTable').innerHTML=list.map(p=>`<tr><td><div class="itemcell"><div class="inventory-photo">${p.image_url?`<img src="${esc(p.image_url)}" alt="${esc(p.name)} product photo" loading="lazy" onerror="this.hidden=true;this.parentElement.classList.add('no-photo')">`:'<span>No photo</span>'}</div><b>${esc(p.name)}</b></div></td><td>${esc(p.sku)}</td><td><b>${p.stock}</b> units</td><td>${p.stock===0?badge('Out of stock'):p.stock<10?badge('Low stock'):badge('Healthy')}</td><td class="money">${money(p.price)}</td><td><button class="mini" data-restock="${p.id}">＋ Add 10</button></td></tr>`).join('')||`<tr><td colspan="6"><div class="empty">No inventory items found.</div></td></tr>`}
-function showView(name){document.querySelectorAll('.view').forEach(v=>v.classList.toggle('active',v.id==='view-'+name));document.querySelectorAll('#nav button').forEach(b=>b.classList.toggle('active',b.dataset.view===name));$('crumb').textContent=({overview:'Overview',products:'Products',orders:'Orders',customers:'Customers',offers:'Offers & Coupons',sitecontrol:'Site Control',messages:'Messages',notifications:'Notifications',inventory:'Inventory',database:'Database',settings:'Settings'})[name]||name;window.scrollTo({top:0,behavior:'smooth'});if(name==='products')renderProducts();if(name==='orders')renderOrders();if(name==='customers')renderCustomers();if(name==='inventory')renderInventory();if(name==='offers'){loadOffers()}if(name==='sitecontrol'){initSiteControl()}if(name==='messages'){loadInbox()}if(name==='notifications'){loadInbox()}}
-function openModal(id=null){editingId=id;const p=products.find(x=>x.id===id);$('modalTitle').textContent=p?'Edit product':'Add product';const knownNames=[...$('pNameSelect').options].map(o=>o.value).filter(v=>v&&v!=='__custom');const known=knownNames.includes(p?.name);$('pNameSelect').value=p?(known?p.name:'__custom'):'';$('pCustomName').value=p&&!known?p.name:'';$('pCustomName').style.display=p&&!known?'block':'none';$('pSku').value=p?.sku||'';$('pCategory').value=p?.category||'Streetwear';$('pPrice').value=p?.price||'';$('pStock').value=p?.stock??'';$('pImage').value=p?.image_url||'';$('pImageFile').value='';$('pImagePreview').src=p?.image_url||'';$('pImagePreview').style.display=p?.image_url?'block':'none';$('productModal').classList.add('open');$('pName').focus()}
+function showView(name){document.querySelectorAll('.view').forEach(v=>v.classList.toggle('active',v.id==='view-'+name));document.querySelectorAll('#nav button').forEach(b=>b.classList.toggle('active',b.dataset.view===name));$('crumb').textContent=({overview:'Overview',products:'Products',orders:'Orders',customers:'Customers',offers:'Offers & Coupons',visual:'Visual Editor',sitecontrol:'Site Control',messages:'Messages',notifications:'Notifications',inventory:'Inventory',database:'Database',settings:'Settings'})[name]||name;window.scrollTo({top:0,behavior:'smooth'});if(name==='products')renderProducts();if(name==='orders')renderOrders();if(name==='customers')renderCustomers();if(name==='inventory')renderInventory();if(name==='offers'){loadOffers()}if(name==='sitecontrol'){initSiteControl()}if(name==='visual'){zveOpen()}if(name==='messages'){loadInbox()}if(name==='notifications'){loadInbox()}}
+function openModal(id=null){editingId=id;const p=products.find(x=>x.id===id);$('modalTitle').textContent=p?'Edit product':'Add product';const knownNames=[...$('pNameSelect').options].map(o=>o.value).filter(v=>v&&v!=='__custom');const known=knownNames.includes(p?.name);$('pNameSelect').value=p?(known?p.name:'__custom'):'';$('pCustomName').value=p&&!known?p.name:'';$('pCustomName').style.display=p&&!known?'block':'none';$('pSku').value=p?.sku||'';$('pCategory').value=p?.category||'Streetwear';$('pPrice').value=p?.price||'';$('pStock').value=p?.stock??'';$('pImage').value=p?.image_url||'';$('pImageFile').value='';$('pImagePreview').src=p?.image_url||'';$('pImagePreview').style.display=p?.image_url?'block':'none';zpFill(p);$('productModal').classList.add('open');$('pNameSelect').focus()}
 $('pNameSelect').addEventListener('change',()=>{$('pCustomName').style.display=$('pNameSelect').value==='__custom'?'block':'none';$('pCustomName').required=$('pNameSelect').value==='__custom';if($('pNameSelect').value!=='__custom')$('pCustomName').value='';});
 function closeModal(){$('productModal').classList.remove('open');$('pCustomName').required=false;$('pCustomName').style.display='none';$('productForm').reset();$('pImagePreview').removeAttribute('src');$('pImagePreview').style.display='none';editingId=null}
 function csvDownload(filename,rows){const csv=rows.map(r=>r.map(v=>'"'+String(v??'').replace(/"/g,'""')+'"').join(',')).join('\r\n');const blob=new Blob(['\ufeff'+csv],{type:'text/csv;charset=utf-8;'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download=filename;a.click();URL.revokeObjectURL(url);toast('CSV export prepared')}
 function makeChart(){const days=Array.from({length:7},(_,i)=>{const d=new Date();d.setDate(d.getDate()-(6-i));return d});const vals=days.map(d=>orders.filter(o=>new Date(o.date).toDateString()===d.toDateString()).reduce((s,o)=>s+o.total,0));const max=Math.max(1,...vals);$('salesChart').innerHTML=vals.map((v,i)=>{const label=days[i].toLocaleDateString('en-IN',{weekday:'short'});return '<div class="barcol"><div class="bar '+(i===6?'current':'')+'" style="height:'+Math.max(5,v/max*100)+'%" title="'+label+' · '+money(v)+'"></div><label>'+label+'</label></div>'}).join('')}
 $('nav').addEventListener('click',e=>{const b=e.target.closest('[data-view]');if(b)showView(b.dataset.view)});document.addEventListener('click',e=>{const g=e.target.closest('[data-goto]');if(g)showView(g.dataset.goto);const ed=e.target.closest('[data-edit]');if(ed)openModal(ed.dataset.edit);const del=e.target.closest('[data-delete]');if(del){const p=products.find(x=>String(x.id)===String(del.dataset.delete));if(p&&confirm(`Remove “${p.name}” from the active ZIVRA catalog?`)){removeProduct(p)} }const rs=e.target.closest('[data-restock]');if(rs){const p=products.find(x=>String(x.id)===String(rs.dataset.restock));if(p){updateStock(p,p.stock+10)}}});
-$('pImageFile').addEventListener('change',()=>{const file=$('pImageFile').files[0];if(!file){$('pImagePreview').style.display='none';return}if(!['image/jpeg','image/png','image/webp'].includes(file.type)||file.size>5*1024*1024){toast('Choose JPG, PNG or WebP under 5 MB');$('pImageFile').value='';return}const reader=new FileReader();reader.onload=()=>{$('pImagePreview').src=reader.result;$('pImagePreview').style.display='block'};reader.readAsDataURL(file)});$('addProduct').addEventListener('click',()=>openModal());$('quickAdd').addEventListener('click',()=>openModal());$('closeModal').addEventListener('click',closeModal);$('cancelModal').addEventListener('click',closeModal);$('productModal').addEventListener('click',e=>{if(e.target===$('productModal'))closeModal()});$('productForm').addEventListener('submit',async e=>{e.preventDefault();const name=$('pNameSelect').value==='__custom'?$('pCustomName').value.trim():$('pNameSelect').value,sku=$('pSku').value.trim().toUpperCase(),category=$('pCategory').value,price=Number($('pPrice').value),stock=Number($('pStock').value);if(!name||!sku||price<=0||stock<0)return toast('Please check the product fields');if(products.some(p=>p.sku.toLowerCase()===sku.toLowerCase()&&String(p.id)!==String(editingId)))return toast('That SKU already exists');let image_url=$('pImage').value.trim();const imageFile=$('pImageFile').files[0];try{if(imageFile){if(!['image/jpeg','image/png','image/webp'].includes(imageFile.type))throw new Error('Choose a JPG, PNG or WebP image');if(imageFile.size>5*1024*1024)throw new Error('Image must be 5 MB or smaller');const optimized=await zOptimizeImage(imageFile);const ext=({ 'image/jpeg':'jpg','image/png':'png','image/webp':'webp'})[optimized.type]||'jpg';const path=`products/${Date.now()}-${Math.random().toString(36).slice(2)}.${ext}`;const {error:uploadError}=await supabaseClient.storage.from('product-images').upload(path,optimized,{cacheControl:'31536000',upsert:true,contentType:optimized.type});if(uploadError)throw uploadError;const {data:publicData}=supabaseClient.storage.from('product-images').getPublicUrl(path);image_url=publicData.publicUrl;}const payload={name,sku,category,price,stock,image_url};if(editingId){const {error}=await supabaseClient.from('products').update(payload).eq('id',editingId);if(error)throw error}else{const {error}=await supabaseClient.from('products').insert(payload);if(error)throw error}closeModal();await loadStoreData();toast(editingId?'Product updated in database':'Product added to database')}catch(err){toast(err.message||'Could not save product')}});
+$('pImageFile').addEventListener('change',()=>{const file=$('pImageFile').files[0];if(!file){$('pImagePreview').style.display='none';return}if(!['image/jpeg','image/png','image/webp'].includes(file.type)||file.size>5*1024*1024){toast('Choose JPG, PNG or WebP under 5 MB');$('pImageFile').value='';return}const reader=new FileReader();reader.onload=()=>{$('pImagePreview').src=reader.result;$('pImagePreview').style.display='block'};reader.readAsDataURL(file)});$('addProduct').addEventListener('click',()=>openModal());$('quickAdd').addEventListener('click',()=>openModal());$('closeModal').addEventListener('click',closeModal);$('cancelModal').addEventListener('click',closeModal);$('productModal').addEventListener('click',e=>{if(e.target===$('productModal'))closeModal()});$('productForm').addEventListener('submit',async e=>{e.preventDefault();const name=$('pNameSelect').value==='__custom'?$('pCustomName').value.trim():$('pNameSelect').value,sku=$('pSku').value.trim().toUpperCase(),category=$('pCategory').value,price=Number($('pPrice').value),stock=Number($('pStock').value);if(!name||!sku||price<=0||stock<0)return toast('Please check the product fields');if(products.some(p=>p.sku.toLowerCase()===sku.toLowerCase()&&String(p.id)!==String(editingId)))return toast('That SKU already exists');let image_url=$('pImage').value.trim();const imageFile=$('pImageFile').files[0];try{if(imageFile){if(!['image/jpeg','image/png','image/webp'].includes(imageFile.type))throw new Error('Choose a JPG, PNG or WebP image');if(imageFile.size>5*1024*1024)throw new Error('Image must be 5 MB or smaller');const optimized=await zOptimizeImage(imageFile);const ext=({ 'image/jpeg':'jpg','image/png':'png','image/webp':'webp'})[optimized.type]||'jpg';const path=`products/${Date.now()}-${Math.random().toString(36).slice(2)}.${ext}`;const {error:uploadError}=await supabaseClient.storage.from('product-images').upload(path,optimized,{cacheControl:'31536000',upsert:true,contentType:optimized.type});if(uploadError)throw uploadError;const {data:publicData}=supabaseClient.storage.from('product-images').getPublicUrl(path);image_url=publicData.publicUrl;}const extra=await zpExtrasFromForm(price);const sizeKeys=Object.keys(extra.sizes);const finalStock=sizeKeys.length?sizeKeys.reduce((n,k)=>n+extra.sizes[k],0):stock;const payload={name,sku,category,price,stock:finalStock,image_url,...extra};await zpSave(payload,editingId);closeModal();await loadStoreData();toast(editingId?'Product updated in database':'Product added to database')}catch(err){toast(err.message||'Could not save product')}});
 ['productSearch','productCategory','productStock'].forEach(id=>$(id).addEventListener('input',renderProducts));['orderSearch','orderStatus'].forEach(id=>$(id).addEventListener('input',renderOrders));$('customerSearch').addEventListener('input',renderCustomers);['inventorySearch','inventoryFilter'].forEach(id=>$(id).addEventListener('input',renderInventory));let trackingOrder=null,trackingNextStatus=null;function openTrackingModal(o,nextStatus=null){trackingOrder=o;trackingNextStatus=nextStatus;$('trackingOrderLabel').textContent='Order '+o.id+' · '+o.customer+' — enter all shipment details together. Customer will see these on Track Order.';$('trackingCourier').value=o.courier||'';$('trackingAwb').value=o.trackingNumber||'';$('trackingUrl').value=o.trackingUrl||'';$('trackingModalTitle').textContent=nextStatus==='shipped'?'Dispatch order':'Shipment details';$('trackingSave').textContent=nextStatus==='shipped'?'Save & mark as shipped':'Save shipment details';$('trackingModal').classList.add('open');$('trackingModal').setAttribute('aria-hidden','false')}function closeTrackingModal(){$('trackingModal').classList.remove('open');$('trackingModal').setAttribute('aria-hidden','true');trackingOrder=null;trackingNextStatus=null}['trackingModalClose','trackingCancel'].forEach(id=>$(id).addEventListener('click',closeTrackingModal));$('trackingModal').addEventListener('click',e=>{if(e.target===$('trackingModal'))closeTrackingModal()});document.addEventListener('click',e=>{const b=e.target.closest('[data-tracking]');if(!b)return;const o=orders.find(x=>String(x.dbId)===String(b.dataset.tracking));if(!o){toast('Order details could not be found. Refresh orders and try again.');return}openTrackingModal(o)} ,true);$('trackingForm').addEventListener('submit',async e=>{e.preventDefault();if(!trackingOrder)return;const courier=$('trackingCourier').value.trim(),awb=$('trackingAwb').value.trim(),link=$('trackingUrl').value.trim();if(!courier||!awb||!/^https?:\/\//i.test(link)){toast('Please enter courier, AWB and a valid tracking URL');return}const patch={courier_name:courier,tracking_number:awb,tracking_url:link};if(trackingNextStatus==='shipped')patch.status='shipped',patch.shipped_at=new Date().toISOString();const btn=$('trackingSave');btn.disabled=true;btn.textContent='SAVING…';try{const {error}=await supabaseClient.from('orders').update(patch).eq('id',trackingOrder.dbId);if(error)throw error;closeTrackingModal();await loadStoreData();toast(trackingNextStatus==='shipped'?'Order marked shipped and tracking saved':'Shipment details saved')}catch(err){toast(err.message||'Could not save shipment details')}finally{btn.disabled=false;btn.textContent='Save shipment details'}});
 document.addEventListener('click',async e=>{const btn=e.target.closest('[data-send-email]');if(!btn)return;const order=orders.find(x=>String(x.dbId)===String(btn.dataset.sendEmail));const picker=document.querySelector('[data-email-type="'+CSS.escape(String(btn.dataset.sendEmail))+'"]');if(!order||!picker)return;const type=picker.value;if(['shipped','out_for_delivery'].includes(type)&&(!order.courier||!order.trackingNumber||!order.trackingUrl)){toast('Save courier, AWB and tracking URL first');return}btn.disabled=true;const old=btn.textContent;btn.textContent='SENDING…';try{const {data,error}=await supabaseClient.functions.invoke('send-order-email',{body:{order_id:order.dbId,type}});if(error){let detail=error.message||'Request failed';if(error.context){try{const response=typeof error.context.clone==='function'?error.context.clone():error.context;const body=await response.text();if(body)detail+=' · '+body.slice(0,220)}catch{}if(error.context.status)detail+=' (HTTP '+error.context.status+')'}throw new Error(detail)}if(data?.error)throw new Error(data.error);toast('ZIVRA email sent to '+order.email)}catch(err){toast('Email error: '+(err.message||'Could not send'))}finally{btn.disabled=false;btn.textContent=old}});
 $('ordersTable').addEventListener('change',async e=>{const sel=e.target.closest('[data-order]');if(!sel)return;const o=orders.find(x=>x.id===sel.dataset.order);if(!o)return;const next=sel.value.toLowerCase();if(next==='shipped'){openTrackingModal(o,'shipped');return}const patch={status:next};if(next==='delivered')patch.delivered_at=new Date().toISOString();try{const {error}=await supabaseClient.from('orders').update(patch).eq('id',o.dbId);if(error)throw error;await loadStoreData();toast(o.id+' status updated')}catch(err){toast(err.message||'Could not update order');renderOrders()}});
@@ -629,7 +612,294 @@ function zhHandle(){
   }
  });
 }
+// ===== Product form extras (MRP, description, sizes+stock, colours, extra photos, details) =====
+const ZP_SIZES=['S','M','L','XL','XXL','Free'];
+const ZP_COLOR_HEX={black:'#111111',white:'#ffffff',cream:'#e8dcc8',beige:'#d8c6a8',navy:'#1f2a44',olive:'#6b6b3a',grey:'#888888',gray:'#888888',red:'#c0392b',blue:'#2f5fa8',green:'#2e7d32',maroon:'#6d1f2c',brown:'#6b4a2f',pink:'#e9a1b5',yellow:'#e6c229',orange:'#e67e22',purple:'#6c3f8f',mustard:'#d4a017',rust:'#b5522b',khaki:'#b5a66a'};
+const zpHexFor=n=>ZP_COLOR_HEX[String(n||'').trim().toLowerCase()]||'#888888';
+function zpFormHtml(){
+ return `<div class="field" style="grid-column:1/-1"><label for="pMrp">MRP / cut price (₹) — optional, shown struck-through with “% OFF”</label><input id="pMrp" type="number" min="0" step="1" placeholder="e.g. 1299"></div>
+ <div class="field" style="grid-column:1/-1"><label for="pDesc">Description</label><textarea id="pDesc" maxlength="1500" rows="3" placeholder="Fabric feel, fit, styling…" style="width:100%;padding:10px;border:1px solid var(--line);border-radius:8px;font:inherit"></textarea></div>
+ <div class="field"><label for="pBrand">Brand</label><input id="pBrand" maxlength="60" placeholder="ZIVRA"></div>
+ <div class="field"><label for="pFabric">Fabric</label><input id="pFabric" maxlength="80" placeholder="100% cotton"></div>
+ <div class="field"><label for="pFit">Fit</label><input id="pFit" maxlength="60" placeholder="Oversized / Regular"></div>
+ <div class="field"><label for="pCare">Care</label><input id="pCare" maxlength="120" placeholder="Machine wash cold"></div>
+ <div class="field" style="grid-column:1/-1"><label for="pHigh">Highlights</label><input id="pHigh" maxlength="200" placeholder="Heavyweight · Dropped shoulder · Pre-washed"></div>
+ <div class="field" style="grid-column:1/-1"><label>Sizes &amp; stock — put the number available for each size (0 = shown as not available). Total stock is added automatically.</label><div id="pSizes" style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px">${ZP_SIZES.map(s=>`<label style="font-size:11px">${s}<input type="number" min="0" step="1" data-psize="${s}" placeholder="0" style="width:100%"></label>`).join('')}</div></div>
+ <div class="field" style="grid-column:1/-1"><label>Colours (up to 5) — name, shade and stock</label>${[0,1,2,3,4].map(i=>`<div style="display:grid;grid-template-columns:1fr 54px 80px;gap:8px;margin-bottom:6px"><input data-pcol="name" data-i="${i}" placeholder="Colour name" maxlength="30"><input type="color" data-pcol="hex" data-i="${i}" value="#888888" style="padding:2px;height:38px"><input type="number" min="0" data-pcol="stock" data-i="${i}" placeholder="Stock"></div>`).join('')}</div>
+ <div class="field" style="grid-column:1/-1"><label>More photos (optional) — main photo is above; add up to 3 more</label>${[2,3,4].map(i=>`<div style="margin-bottom:8px"><input type="file" accept="image/jpeg,image/png,image/webp" data-pimgfile="${i}"><input type="url" data-pimgurl="${i}" placeholder="Or paste photo ${i} URL" style="width:100%;margin-top:4px"></div>`).join('')}</div>`;
+}
+function zpFill(p){
+ const set=(id,v)=>{const el=$(id);if(el)el.value=v==null?'':v};
+ set('pMrp',p?.compare_at_price);set('pDesc',p?.description);set('pBrand',p?.brand);set('pFabric',p?.fabric);set('pFit',p?.fit);set('pCare',p?.care);set('pHigh',p?.highlights);
+ const sizes=(p&&p.sizes&&typeof p.sizes==='object')?p.sizes:{};
+ document.querySelectorAll('[data-psize]').forEach(el=>{el.value=sizes[el.dataset.psize]!==undefined?sizes[el.dataset.psize]:''});
+ const cols=Array.isArray(p?.colors)?p.colors:[];
+ document.querySelectorAll('[data-pcol]').forEach(el=>{const c=cols[Number(el.dataset.i)]||{};const k=el.dataset.pcol;el.value=k==='name'?(c.name||''):k==='hex'?(c.hex||'#888888'):(c.stock!==undefined?c.stock:'')});
+ const imgs=Array.isArray(p?.images)?p.images:[];
+ document.querySelectorAll('[data-pimgurl]').forEach(el=>{el.value=imgs[Number(el.dataset.pimgurl)-2]||''});
+ document.querySelectorAll('[data-pimgfile]').forEach(el=>{el.value=''});
+}
+function zpSizesFromForm(){
+ const out={};document.querySelectorAll('[data-psize]').forEach(el=>{if(el.value!==''){const n=Math.max(0,Math.floor(Number(el.value)||0));out[el.dataset.psize]=n}});return out;
+}
+function zpColorsFromForm(){
+ const out=[];for(let i=0;i<5;i++){
+  const g=k=>document.querySelector(`[data-pcol="${k}"][data-i="${i}"]`);const name=(g('name').value||'').trim();if(!name)continue;
+  const st=g('stock').value;out.push({name,hex:g('hex').value||zpHexFor(name),stock:st===''?0:Math.max(0,Math.floor(Number(st)))});
+ }return out;
+}
+document.addEventListener('input',e=>{
+ if(e.target.dataset&&e.target.dataset.psize!==undefined){
+  const sizes=zpSizesFromForm(),keys=Object.keys(sizes);
+  if(keys.length)$('pStock').value=keys.reduce((n,k)=>n+sizes[k],0);
+ }
+});
+async function zpUploadFile(file,max){
+ if(!['image/jpeg','image/png','image/webp'].includes(file.type))throw new Error('Choose JPG, PNG or WebP photos');
+ const blob=await zOptimizeImage(file,max||1600);
+ const ext=blob.type==='image/webp'?'webp':(file.type.split('/')[1]||'jpg').replace('jpeg','jpg');
+ const path=`products/${Date.now()}-${Math.random().toString(36).slice(2)}.${ext}`;
+ const up=await supabaseClient.storage.from('product-images').upload(path,blob,{cacheControl:'31536000',upsert:true,contentType:blob.type});if(up.error)throw up.error;
+ return supabaseClient.storage.from('product-images').getPublicUrl(path).data.publicUrl;
+}
+async function zpExtrasFromForm(price){
+ const mrpRaw=$('pMrp').value,mrp=mrpRaw===''?null:Number(mrpRaw);
+ if(mrp!==null&&!(mrp>=price))throw new Error('MRP must be the same as or higher than the selling price');
+ const images=[];
+ for(const i of [2,3,4]){
+  const f=document.querySelector(`[data-pimgfile="${i}"]`).files[0],u=(document.querySelector(`[data-pimgurl="${i}"]`).value||'').trim();
+  if(f)images.push(await zpUploadFile(f));else if(u)images.push(u);
+ }
+ return {compare_at_price:mrp,description:($('pDesc').value||'').trim(),brand:($('pBrand').value||'').trim(),fabric:($('pFabric').value||'').trim(),fit:($('pFit').value||'').trim(),care:($('pCare').value||'').trim(),highlights:($('pHigh').value||'').trim(),sizes:zpSizesFromForm(),colors:zpColorsFromForm(),images};
+}
+const zpIsColErr=e=>/column|schema cache|does not exist/i.test(String((e&&e.message)||''));
+async function zpSave(payload,id){
+ const run=b=>id?supabaseClient.from('products').update(b).eq('id',id):supabaseClient.from('products').insert(b);
+ let r=await run(payload);
+ if(r.error&&zpIsColErr(r.error)){
+  const slim={name:payload.name,sku:payload.sku,category:payload.category,price:payload.price,stock:payload.stock,image_url:payload.image_url,description:payload.description,compare_at_price:payload.compare_at_price};
+  r=await run(slim);
+  if(r.error&&zpIsColErr(r.error)){delete slim.description;delete slim.compare_at_price;r=await run(slim)}
+  if(!r.error)toast('Saved basic details. Run the products SQL once to also save sizes, colours and extra photos.');
+ }
+ if(r.error)throw r.error;
+}
 
+// ===== Bulk upload (CSV / Excel) =====
+const ZB_HEADERS=['name','sku','collection','price','mrp','sizes','colors','stock','description','image_url','image_2','image_3','image_4','brand','fabric','fit','highlights','care','active'];
+const ZB_ALIAS={'product name':'name','title':'name','category':'collection','selling price':'price','sale price':'price','compare_at_price':'mrp','cut price':'mrp','compare at price':'mrp','colours':'colors','colour':'colors','color':'colors','quantity':'stock','qty':'stock','image':'image_url','image 1':'image_url','image1':'image_url','photo':'image_url','image 2':'image_2','image2':'image_2','image 3':'image_3','image3':'image_3','image 4':'image_4','image4':'image_4','is_active':'active','status':'active'};
+function zbParseCSV(text){
+ text=String(text||'').replace(/^\uFEFF/,'');
+ const first=text.split('\n')[0]||'';const delim=(first.match(/\t/g)||[]).length>(first.match(/,/g)||[]).length?'\t':((first.match(/;/g)||[]).length>(first.match(/,/g)||[]).length?';':',');
+ const rows=[];let row=[],cell='',q=false;
+ for(let i=0;i<text.length;i++){
+  const c=text[i];
+  if(q){if(c==='"'){if(text[i+1]==='"'){cell+='"';i++}else q=false}else cell+=c}
+  else if(c==='"')q=true;
+  else if(c===delim){row.push(cell);cell=''}
+  else if(c==='\n'||c==='\r'){if(c==='\r'&&text[i+1]==='\n')i++;row.push(cell);cell='';if(row.some(x=>String(x).trim()!==''))rows.push(row);row=[]}
+  else cell+=c;
+ }
+ row.push(cell);if(row.some(x=>String(x).trim()!==''))rows.push(row);
+ return rows;
+}
+function zbSizes(str){
+ const out={};const parts=String(str||'').split(/[|;,]/).map(x=>x.trim()).filter(Boolean);
+ for(const p of parts){const m=p.match(/^([A-Za-z0-9+\- ]{1,10})\s*[:=]\s*(\d+)$/);if(!m)throw new Error('Sizes must look like S:5|M:10|L:0 (problem: “'+p+'”)');out[m[1].trim().toUpperCase()==='FREE'?'Free':m[1].trim().toUpperCase()]=Number(m[2])}
+ return out;
+}
+function zbColors(str){
+ const out=[];const parts=String(str||'').split('|').map(x=>x.trim()).filter(Boolean);
+ for(const p of parts){const m=p.match(/^([^#:]+?)\s*(?:#([0-9a-fA-F]{3,6}))?\s*(?::\s*(\d+))?$/);if(!m)throw new Error('Colours must look like Black#111111:5|Cream:3 (problem: “'+p+'”)');out.push({name:m[1].trim(),hex:m[2]?'#'+m[2]:zpHexFor(m[1]),stock:m[3]!==undefined?Number(m[3]):0})}
+ return out.slice(0,8);
+}
+function zbCollection(v){
+ const x=String(v||'').trim().toLowerCase();
+ if(['streetwear','street','mens streetwear',"men's streetwear"].includes(x))return 'Streetwear';
+ if(['ethnic','ethnic wear','sanganeri','sanganeri & ethnic wear','women ethnic','ethnic collection'].includes(x))return 'Ethnic';
+ if(['accessories','accessory'].includes(x))return 'Accessories';
+ return '';
+}
+function zbRows(table){
+ if(!table.length)return {rows:[],error:'The file is empty.'};
+ const head=table[0].map(h=>{const k=String(h||'').trim().toLowerCase();return ZB_ALIAS[k]||k});
+ for(const must of ['name','sku','collection','price'])if(!head.includes(must))return {rows:[],error:'Column “'+must+'” is missing. Download the template and keep its first row.'};
+ const out=[];
+ for(let r=1;r<table.length;r++){
+  const raw={};head.forEach((h,i)=>{raw[h]=String(table[r][i]==null?'':table[r][i]).trim()});
+  if(!raw.name&&!raw.sku)continue;
+  const item={line:r+1,errors:[],data:null,skip:/^SAMPLE/i.test(raw.sku||'')};
+  const d={};
+  try{
+   d.name=raw.name;if(!d.name)item.errors.push('name is empty');
+   d.sku=String(raw.sku||'').toUpperCase().replace(/\s+/g,'');if(!d.sku||d.sku.length>24)item.errors.push('sku is empty or longer than 24');
+   d.category=zbCollection(raw.collection);if(!d.category)item.errors.push('collection must be Streetwear, Ethnic or Accessories');
+   d.price=Number(String(raw.price).replace(/[₹,\s]/g,''));if(!(d.price>0))item.errors.push('price must be a number above 0');
+   const mrp=String(raw.mrp||'').replace(/[₹,\s]/g,'');d.compare_at_price=mrp===''?null:Number(mrp);
+   if(d.compare_at_price!==null&&!(d.compare_at_price>=d.price))item.errors.push('mrp must be same or higher than price');
+   d.sizes={};d.colors=[];
+   try{d.sizes=zbSizes(raw.sizes)}catch(e){item.errors.push(e.message)}
+   try{d.colors=zbColors(raw.colors)}catch(e){item.errors.push(e.message)}
+   const sk=Object.keys(d.sizes);
+   if(sk.length)d.stock=sk.reduce((n,k)=>n+d.sizes[k],0);
+   else{const st=String(raw.stock||'').trim();d.stock=st===''?0:Math.floor(Number(st));if(!(d.stock>=0))item.errors.push('stock must be 0 or more')}
+   d.description=raw.description||'';
+   const isUrl=u=>!u||/^https?:\/\//i.test(u);
+   d.image_url=raw.image_url||'';d.images=[raw.image_2,raw.image_3,raw.image_4].filter(Boolean);
+   if(!isUrl(d.image_url)||d.images.some(u=>!isUrl(u)))item.errors.push('photo links must start with https://');
+   d.brand=raw.brand||'';d.fabric=raw.fabric||'';d.fit=raw.fit||'';d.highlights=raw.highlights||'';d.care=raw.care||'';
+   const act=String(raw.active||'yes').toLowerCase();d.is_active=!['no','false','0','inactive','hidden','n'].includes(act);
+   item.data=d;
+  }catch(e){item.errors.push(e.message)}
+  out.push(item);
+ }
+ return {rows:out,error:''};
+}
+function zbTemplate(){
+ const rows=[ZB_HEADERS,
+ ['SAMPLE Black Oversized T-Shirt','SAMPLE-001','Streetwear','799','999','S:5|M:10|L:8|XL:4','Black#111111:12|Cream#e8dcc8:15','','Heavyweight cotton oversized tee','https://example.com/photo1.jpg','https://example.com/photo2.jpg','','','ZIVRA','100% cotton','Oversized','Heavyweight · Dropped shoulder','Machine wash cold','yes'],
+ ['SAMPLE Sanganeri Cotton Kurta','SAMPLE-002','Ethnic','1499','1999','M:6|L:6|XL:3','Indigo#2f4a8a:9|Rust#b5522b:6','','Hand-block style Sanganeri print kurta','https://example.com/kurta1.jpg','','','','ZIVRA','Cotton','Regular','Breathable · Natural dyes','Dry clean / gentle hand wash','yes']];
+ return rows;
+}
+let zbParsed=null;
+function zbRenderPreview(res){
+ const box=$('bulkPreview');
+ if(res.error){box.innerHTML=`<div class="empty">${zEsc(res.error)}</div>`;$('bulkImport').disabled=true;return}
+ const rows=res.rows.filter(r=>!r.skip),ok=rows.filter(r=>!r.errors.length),bad=rows.filter(r=>r.errors.length);
+ box.innerHTML=`<p style="font-size:13px"><b>${ok.length}</b> product(s) ready to import · <b style="color:#c0392b">${bad.length}</b> with problems${res.rows.some(r=>r.skip)?' · sample rows ignored':''}</p>`+
+ (bad.length?`<div style="max-height:150px;overflow:auto;font-size:12px;color:#a54b43;margin-bottom:10px">${bad.slice(0,30).map(r=>`Row ${r.line}: ${zEsc(r.errors.join('; '))}`).join('<br>')}</div>`:'')+
+ `<div style="overflow:auto;max-height:220px"><table style="font-size:12px;width:100%"><tr><th>Row</th><th>Name</th><th>SKU</th><th>Collection</th><th>Price</th><th>Stock</th></tr>${ok.slice(0,40).map(r=>`<tr><td>${r.line}</td><td>${zEsc(r.data.name)}</td><td>${zEsc(r.data.sku)}</td><td>${zEsc(r.data.category)}</td><td>${zMoney(r.data.price)}</td><td>${r.data.stock}</td></tr>`).join('')}</table></div>`;
+ $('bulkImport').disabled=!ok.length;$('bulkImport').textContent=ok.length?`Import ${ok.length} product(s)`:'Nothing to import';
+}
+async function zbReadFile(file){
+ const n=file.name.toLowerCase();
+ if(/\.(xlsx|xls)$/.test(n)){
+  if(!window.XLSX){await new Promise((res,rej)=>{const s=document.createElement('script');s.src='https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js';s.onload=res;s.onerror=()=>rej(new Error('Excel reader could not load. Save the sheet as CSV and upload that instead.'));document.head.appendChild(s)})}
+  const wb=XLSX.read(await file.arrayBuffer(),{type:'array'});const ws=wb.Sheets[wb.SheetNames[0]];
+  return XLSX.utils.sheet_to_json(ws,{header:1,raw:false,defval:''});
+ }
+ return zbParseCSV(await file.text());
+}
+async function zbUpsert(list){
+ const full=list.map(d=>({name:d.name,sku:d.sku,category:d.category,price:d.price,compare_at_price:d.compare_at_price,stock:d.stock,image_url:d.image_url,description:d.description,is_active:d.is_active,images:d.images,sizes:d.sizes,colors:d.colors,brand:d.brand,fabric:d.fabric,fit:d.fit,highlights:d.highlights,care:d.care}));
+ let r=await supabaseClient.from('products').upsert(full,{onConflict:'sku'});
+ if(r.error&&zpIsColErr(r.error)){
+  const slim=full.map(x=>({name:x.name,sku:x.sku,category:x.category,price:x.price,compare_at_price:x.compare_at_price,stock:x.stock,image_url:x.image_url,description:x.description,is_active:x.is_active}));
+  r=await supabaseClient.from('products').upsert(slim,{onConflict:'sku'});
+  if(!r.error)window.zbSlim=true;
+ }
+ if(r.error)throw r.error;
+}
+function zbOpen(){$('bulkModal').classList.add('open');$('bulkPreview').innerHTML='';$('bulkImport').disabled=true;$('bulkImport').textContent='Import';$('bulkFile').value='';zbParsed=null;$('bulkPhotoStatus').textContent=''}
+document.addEventListener('click',async e=>{
+ const b=e.target.closest('button');if(!b)return;
+ if(b.id==='bulkOpen'){zbOpen();return}
+ if(b.id==='bulkClose'||b.id==='bulkCancel'){$('bulkModal').classList.remove('open');return}
+ if(b.id==='bulkTemplate'){csvDownload('zivra-products-template.csv',zbTemplate());return}
+ if(b.id==='bulkImport'&&zbParsed){
+  const ok=zbParsed.rows.filter(r=>!r.skip&&!r.errors.length).map(r=>r.data);if(!ok.length)return;
+  b.disabled=true;let done=0;window.zbSlim=false;
+  try{for(let i=0;i<ok.length;i+=40){await zbUpsert(ok.slice(i,i+40));done+=Math.min(40,ok.length-i);b.textContent=`Importing… ${done}/${ok.length}`}
+   await loadStoreData();$('bulkModal').classList.remove('open');toast(window.zbSlim?`${done} products imported (basic fields). Run the products SQL to save sizes, colours and extra photos.`:`${done} products imported`)}
+  catch(err){toast(err.message||'Import failed');b.disabled=false;b.textContent='Try again'}
+ }
+});
+document.addEventListener('change',async e=>{
+ if(e.target.id==='bulkFile'&&e.target.files[0]){
+  try{$('bulkPreview').innerHTML='<p>Reading file…</p>';zbParsed=zbRows(await zbReadFile(e.target.files[0]));zbRenderPreview(zbParsed)}catch(err){$('bulkPreview').innerHTML=`<div class="empty">${zEsc(err.message||'Could not read the file')}</div>`}
+ }
+ if(e.target.id==='bulkPhotos'&&e.target.files.length){
+  const st=$('bulkPhotoStatus');let ok=0,miss=[];const files=[...e.target.files];
+  const bySku={};products.forEach(p=>{bySku[String(p.sku).toUpperCase()]=p});
+  for(let i=0;i<files.length;i++){
+   const f=files[i],m=f.name.match(/^(.+?)(?:_([2-4]))?\.(jpe?g|png|webp)$/i);
+   st.textContent=`Uploading ${i+1}/${files.length}…`;
+   if(!m||!bySku[m[1].toUpperCase()]){miss.push(f.name);continue}
+   try{
+    const p=bySku[m[1].toUpperCase()],url=await zpUploadFile(f,1600),idx=m[2]?Number(m[2]):1;
+    let body;
+    if(idx===1)body={image_url:url};else{const imgs=Array.isArray(p.images)?p.images.slice():[];imgs[idx-2]=url;body={images:Array.from(imgs,x=>x||'')};p.images=body.images}
+    const r=await supabaseClient.from('products').update(body).eq('id',p.id);if(r.error)throw r.error;if(idx===1)p.image_url=url;ok++;
+   }catch(err){miss.push(f.name+' ('+(err.message||'error')+')')}
+  }
+  await loadStoreData();st.textContent=`${ok} photo(s) attached.`+(miss.length?' Not matched: '+miss.slice(0,8).join(', ')+(miss.length>8?'…':''):'');e.target.value='';
+ }
+});
+
+// ===== Visual editor =====
+let zveSel=null,zveTimer=null;
+function zvePost(m){const f=$('zveFrame');if(f&&f.contentWindow)f.contentWindow.postMessage(m,location.origin)}
+function zveSync(){clearTimeout(zveTimer);zveTimer=setTimeout(()=>zvePost({zv:'config',cfg:zvCfg}),120)}
+async function zveOpen(){
+ await initSiteControl();
+ const wrap=$('zveFrameWrap');
+ if(!wrap.dataset.ready){wrap.dataset.ready='1';wrap.innerHTML='<iframe id="zveFrame" src="./index.html?zvedit=1" title="Store preview"></iframe>'}
+ zveRenderPanel(null);
+}
+window.addEventListener('message',e=>{
+ if(e.origin!==location.origin)return;const d=e.data||{};if(!d.zv)return;
+ if(d.zv==='ready'){zvePost({zv:'config',cfg:zvCfg});return}
+ if(d.zv==='select'){
+  zveSel=d;if(d.mode)zhMode=d.mode;
+  if(d.seed&&zvGet(zvCfg,d.seed.path)===undefined){zvSet(zvCfg,d.seed.path,d.seed.value);zveSync()}
+  zveRenderPanel(d);
+ }
+});
+function zveModeBtns(){return `<div class="zactions" style="margin:10px 0"><button type="button" class="secondary" data-zvemode="street">View Streetwear</button><button type="button" class="secondary" data-zvemode="ethnic">View Ethnic</button></div>`}
+function zveRenderPanel(d){
+ const box=$('zvePanel');if(!box)return;
+ if(!d){box.innerHTML=`<div class="eyebrow">HOW TO USE</div><p style="font-size:13px;line-height:1.6">Tap any <b>text</b>, <b>photo</b>, <b>poster</b>, <b>box</b> or <b>product card</b> in the preview. Its settings open here. Changes show instantly; tap <b>Save &amp; publish</b> when you are happy.</p>${zveModeBtns()}`;return}
+ const cur=zvGet(zvCfg,d.path);let h=`<div class="eyebrow">${zEsc(d.label)}</div>`;
+ const k=d.kind;
+ if(k==='text')h+=`<div class="zfield"><label>Text</label><input id="zveText" value="${zEsc(cur!==undefined?cur:d.value)}"></div>`;
+ else if(k==='longtext')h+=`<div class="zfield"><label>Text (new line = line break)</label><textarea id="zveText" rows="4">${zEsc(cur!==undefined?cur:d.value)}</textarea></div>`;
+ else if(k==='lines')h+=`<div class="zfield"><label>One message per line</label><textarea id="zveLines" rows="6">${zEsc(Array.isArray(cur)?cur.join('\n'):(d.value||''))}</textarea></div>`;
+ else if(k==='image')h+=`<div class="zfield zimg"><label>Photo link or upload</label><input id="zveImg" value="${zEsc(cur||'')}" placeholder="https://…"><input type="file" id="zveFile" accept="image/*">${cur?`<img src="${zEsc(cur)}" alt="">`:''}<button type="button" class="secondary" id="zveImgClear">Remove photo (use default)</button></div>`;
+ else if(k==='section'){
+  const m=d.mode||zhMode,tok=d.token,st=zvGet(zvCfg,d.path)||{};
+  h+=`<div class="zfield"><label>Background colour</label><div class="zcolor"><input type="color" id="zveBg" value="${/^#[0-9a-fA-F]{6}$/.test(st.bg||'')?st.bg:'#111111'}"><button type="button" data-zveclr="bg">Reset</button></div></div><div class="zfield"><label>Text colour</label><div class="zcolor"><input type="color" id="zveFg" value="${/^#[0-9a-fA-F]{6}$/.test(st.color||'')?st.color:'#ffffff'}"><button type="button" data-zveclr="color">Reset</button></div></div><div class="zactions" style="margin-top:12px"><button type="button" data-zvemove="-1">Move up ↑</button><button type="button" data-zvemove="1">Move down ↓</button><button type="button" class="zdanger" data-zvehide="1">Hide this section</button></div>`;
+ }
+ else if(k==='cards'){
+  const sel=(path,opts)=>`<select data-zvecard="${path}">${opts.map(o=>`<option value="${o[0]}" ${String(zvGet(zvCfg,path)===false?'off':zvGet(zvCfg,path)||'')===o[0]?'selected':''}>${o[1]}</option>`).join('')}</select>`;
+  h+=`<div class="zfield"><label>Card style</label>${sel('card.style',[['','Default'],['minimal','Minimal'],['bordered','Bold border'],['shadow','Soft shadow']])}</div><div class="zfield"><label>Hover / touch effect</label>${sel('card.hover',[['','Lift'],['zoom','Image zoom'],['none','None']])}</div><div class="zfield"><label>Photo shape</label>${sel('card.image',[['','Default'],['portrait','Portrait'],['tall','Tall'],['square','Square']])}</div><div class="zfield"><label>Add to cart button</label>${sel('card.quickAdd',[['','Show'],['off','Hide']])}</div>`;
+ }
+ if(k==='text'||k==='longtext')h+=`<button type="button" class="secondary" id="zveReset" style="margin-top:10px">Reset to default text</button>`;
+ box.innerHTML=h+zveModeBtns();
+ if(window.innerWidth<1000)box.scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+document.addEventListener('input',e=>{
+ const el=e.target;if(!zveSel)return;
+ if(el.id==='zveText'){zvSet(zvCfg,zveSel.path,el.value);zveSync()}
+ if(el.id==='zveLines'){const a=el.value.split('\n').map(x=>x.trim()).filter(Boolean);zvSet(zvCfg,zveSel.path,a.length?a:undefined);zveSync()}
+ if(el.id==='zveImg'){zvSet(zvCfg,zveSel.path,el.value.trim()||undefined);zveSync()}
+ if(el.id==='zveBg'||el.id==='zveFg'){zvSet(zvCfg,zveSel.path+'.'+(el.id==='zveBg'?'bg':'color'),el.value);zveSync()}
+});
+document.addEventListener('change',async e=>{
+ const el=e.target;if(!zveSel)return;
+ if(el.id==='zveFile'&&el.files[0]){try{const url=await zhUpload(el.files[0]);zvSet(zvCfg,zveSel.path,url);zveSync();zveRenderPanel(zveSel);toast('Photo ready — tap Save & publish')}catch(err){toast(err.message||'Upload failed')}}
+ if(el.dataset&&el.dataset.zvecard){const p=el.dataset.zvecard;zvSet(zvCfg,p,p==='card.quickAdd'?(el.value==='off'?false:undefined):(el.value||undefined));zveSync()}
+});
+document.addEventListener('click',e=>{
+ const b=e.target.closest('button');if(!b)return;
+ if(b.dataset.zvemode){zvePost({zv:'mode',mode:b.dataset.zvemode});zhMode=b.dataset.zvemode;return}
+ if(b.id==='zveMobile'||b.id==='zveDesktop'){$('zveFrameWrap').classList.toggle('mobile',b.id==='zveMobile');return}
+ if(b.id==='zveSave'){zvSave2();return}
+ if(!zveSel)return;
+ if(b.id==='zveImgClear'){zvSet(zvCfg,zveSel.path,undefined);zveSync();zveRenderPanel(zveSel);return}
+ if(b.id==='zveReset'){zvSet(zvCfg,zveSel.path,undefined);const f=$('zveFrame');if(f)f.contentWindow.location.reload();zveRenderPanel(null);return}
+ if(b.dataset.zveclr){zvSet(zvCfg,zveSel.path+'.'+b.dataset.zveclr,undefined);zveSync();zveRenderPanel(zveSel);return}
+ if(b.dataset.zvemove||b.dataset.zvehide){
+  zhMode=zveSel.mode||zhMode;const od=zhOrder(),tok=zveSel.token;
+  if(b.dataset.zvehide){const vis=od.vis.filter(t=>t!==tok);zhSaveOrder(od.all,vis)}
+  else{const x=od.all.indexOf(tok),y=x+Number(b.dataset.zvemove);if(y>=0&&y<od.all.length){[od.all[x],od.all[y]]=[od.all[y],od.all[x]];zhSaveOrder(od.all,od.vis)}}
+  zveSync();return;
+ }
+});
+async function zvSave2(){
+ try{const r=await supabaseClient.from('zivra_site_settings').upsert({key:'config',value:zvCfg,updated_at:new Date().toISOString()});if(r.error)throw r.error;toast('Published! Your store is updated')}catch(err){toast(err.message||'Could not save')}
+}
+
+(function(){const f=document.querySelector('#productForm .modalactions');if(f&&!document.getElementById('pMrp'))f.insertAdjacentHTML('beforebegin',zpFormHtml())})();
 async function startAdmin(){
  const config=window.ZIVRA_SUPABASE_CONFIG;
  if(!config?.url||!config?.anonKey||!window.supabase?.createClient){$('gateError').textContent='Supabase setup could not load. Refresh this page and try again.';return}
@@ -671,59 +941,5 @@ startAdmin();
   document.addEventListener('visibilitychange',function(){if(!document.hidden)paintZivraDashboardClock()});
 })();
 </script>
-
-<script>
-(function(){
- let selected=null,selectedSelector='',frame=document.getElementById('zvVisualFrame');
- const $=id=>document.getElementById(id);
- function selectorFor(el){
-  if(el.id)return '#'+CSS.escape(el.id);
-  const parts=[];let n=el;
-  while(n&&n.nodeType===1&&n!==frame.contentDocument.body){
-   let part=n.tagName.toLowerCase();
-   if(n.classList.length)part+='.'+[...n.classList].slice(0,2).map(CSS.escape).join('.');
-   else if(n.parentElement)part+=':nth-of-type('+(Array.from(n.parentElement.children).filter(x=>x.tagName===n.tagName).indexOf(n)+1)+')';
-   parts.unshift(part);n=n.parentElement;
-  }
-  return 'body>'+parts.join('>');
- }
- function selectElement(el){
-  if(!el||!frame.contentDocument.body.contains(el))return;
-  if(selected)selected.style.outline='';
-  selected=el;selectedSelector=selectorFor(el);el.style.outline='2px solid #c59a58';
-  $('zvVisualHint').textContent=selectedSelector;
-  $('zvVisualText').value=(el.innerText||el.textContent||'').trim().slice(0,3000);
-  $('zvVisualImage').value=el.tagName==='IMG'?(el.getAttribute('src')||''):(el.style.backgroundImage.match(/url\(["']?(.*?)["']?\)/)||[])[1]||'';
-  $('zvVisualBg').value='#ffffff';$('zvVisualColor').value='#222222';
- }
- function attach(){
-  try{
-   const d=frame.contentDocument;if(!d||!d.body)return;
-   d.addEventListener('click',e=>{if(e.target.closest('a,button'))e.preventDefault();e.stopPropagation();selectElement(e.target.closest('img,h1,h2,h3,p,span,button,a')||e.target)},true);
-   d.addEventListener('keydown',e=>{if(e.key==='Enter')e.preventDefault()},true);
-   const cfg=window.zvCfg||{};
-   const list=Array.isArray(cfg.visualOverrides)?cfg.visualOverrides:[];
-   list.forEach(x=>{try{const el=d.querySelector(x.selector);if(el)applyOne(el,x)}catch(e){}});
-   $('zvVisualHint').textContent='Ready — preview par kisi element par click karein.';
-  }catch(e){$('zvVisualHint').textContent='Preview access error: '+e.message}
- }
- function applyOne(el,x){
-  if(x.text!==undefined){if(el.tagName==='IMG'){}else el.textContent=x.text}
-  if(x.image&&/^https?:\/\//i.test(x.image)){if(el.tagName==='IMG')el.src=x.image;else el.style.backgroundImage='url("'+x.image.replace(/["\\]/g,'')+'")'}
-  if(/^#[0-9a-f]{6}$/i.test(x.bg||''))el.style.backgroundColor=x.bg;
-  if(/^#[0-9a-f]{6}$/i.test(x.color||''))el.style.color=x.color;
- }
- frame.addEventListener('load',attach);
- $('zvVisualReload').addEventListener('click',()=>{frame.src='./index.html?zvVisualPreview='+Date.now()});
- $('zvVisualApply').addEventListener('click',()=>{
-  if(!selected||!selectedSelector){$('zvVisualHint').textContent='Pehle preview mein koi element select karein.';return}
-  const item={selector:selectedSelector,text:$('zvVisualText').value,image:$('zvVisualImage').value,bg:$('zvVisualBg').value,color:$('zvVisualColor').value};
-  applyOne(selected,item);
-  const arr=Array.isArray(zvCfg.visualOverrides)?zvCfg.visualOverrides:[];
-  const at=arr.findIndex(x=>x.selector===selectedSelector);if(at>=0)arr[at]=item;else arr.push(item);
-  zvCfg.visualOverrides=arr;zvStatus('Visual change added. Tap “Save & publish” to publish it to the live storefront.');
- });
- $('zvVisualClear').addEventListener('click',()=>{if(selected)selected.style.outline='';selected=null;selectedSelector='';$('zvVisualHint').textContent='Selection cleared.'});
-})();
-</script></body>
+</body>
 </html>
