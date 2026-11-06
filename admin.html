@@ -567,7 +567,7 @@ function zhRender(){
  <div class="eyebrow" style="margin:6px 0 8px">SECTION ORDER &amp; VISIBILITY (${m==='street'?'Streetwear':'Ethnic'} home) — poster is always first</div>
  ${od.all.map((t,i)=>`<div class="zactions" style="margin-bottom:8px;align-items:center"><label style="font-size:13px;min-width:210px"><input type="checkbox" data-zoshow="${t}" ${od.vis.includes(t)?'checked':''} ${t==='shop'?'disabled':''}> ${zEsc(ZH_TOKENS.find(x=>x[0]===t)[1])}</label><button type="button" data-zomove="${t}|-1">↑</button><button type="button" data-zomove="${t}|1">↓</button></div>`).join('')}
  <div class="zfield" style="margin-top:14px"><label>Scrolling text strip — one message per line (empty = default)</label><textarea data-zhlines="marquee">${zEsc(lines)}</textarea></div>
- </div></details>${['slides','tiles','banners','trust','reviews'].map(zhRepHtml).join('')}`;
+ </div></details>${['slides','tiles','banners','trust','reviews'].map(zhRepHtml).join('')}${zhCatHtml()}`;
 }
 async function zhUpload(file){
  const blob=await zOptimizeImage(file,1920);
@@ -900,6 +900,20 @@ async function zvSave2(){
 }
 
 (function(){const f=document.querySelector('#productForm .modalactions');if(f&&!document.getElementById('pMrp'))f.insertAdjacentHTML('beforebegin',zpFormHtml())})();
+// ===== Category photos (both collections) =====
+const ZH_CATS={street:['All','T-Shirts','Shirts','Jeans','Pants','Hoodies','Accessories'],ethnic:['All','Kurtas','Kurtis','Printed Shirts','Suits & Sets','Dupattas','Accessories']};
+const zhCatKey=(m,n)=>m+'_'+String(n||'').replace(/[^A-Za-z0-9]+/g,'_');
+function zhCatHtml(){
+ const row=(m,n)=>{const k=zhCatKey(m,n),v=zvGet(zvCfg,'home.catImages.'+k)||'';return `<div class="zrow" style="border:1px solid var(--line);border-radius:10px;padding:10px;margin-bottom:10px;display:grid;grid-template-columns:70px 1fr;gap:10px;align-items:center"><div style="width:70px;height:88px;border-radius:8px;background:#f1ebe0 ${v?`url('${zEsc(v)}')`:''} center/cover no-repeat"></div><div class="zimg"><b style="font-size:13px">${zEsc(n)}</b><input data-zcurl="${k}" value="${zEsc(v)}" placeholder="https://… or upload a real photo"><input type="file" accept="image/*" data-zcfile="${k}">${v?`<button type="button" class="zdanger" data-zcdel="${k}" style="justify-self:start">Remove photo</button>`:''}</div></div>`};
+ return `<details class="zgroup"><summary>Category photos — real photo for each box (both collections) <span class="zmeta">tip: upload a clear photo of that product type</span></summary><div style="padding:16px 20px"><p class="zmeta" style="margin-top:0">If you leave a box empty, the photo of the first matching product is used automatically (for example a product named “… T-Shirt” feeds the T-Shirts box).</p>${['street','ethnic'].map(m=>`<div class="eyebrow" style="margin:10px 0">${m==='street'?'STREETWEAR BOXES':'ETHNIC BOXES'}</div>${ZH_CATS[m].map(n=>row(m,n)).join('')}`).join('')}</div></details>`;
+}
+(function(){
+ const box=$('zvHomeBuilder');if(!box)return;
+ box.addEventListener('input',e=>{const el=e.target;if(el.dataset&&el.dataset.zcurl){zvSet(zvCfg,'home.catImages.'+el.dataset.zcurl,el.value.trim()||undefined)}});
+ box.addEventListener('change',async e=>{const el=e.target;if(el.dataset&&el.dataset.zcfile&&el.files&&el.files[0]){try{zvStatus('Uploading photo…');const url=await zhUpload(el.files[0]);zvSet(zvCfg,'home.catImages.'+el.dataset.zcfile,url);zhRender();zvStatus('Photo uploaded. Tap “Save & publish” to make it live.')}catch(err){zvStatus('Upload failed: '+(err.message||err))}}});
+ box.addEventListener('click',e=>{const b=e.target.closest('[data-zcdel]');if(!b)return;zvSet(zvCfg,'home.catImages.'+b.dataset.zcdel,undefined);zhRender()});
+})();
+
 async function startAdmin(){
  const config=window.ZIVRA_SUPABASE_CONFIG;
  if(!config?.url||!config?.anonKey||!window.supabase?.createClient){$('gateError').textContent='Supabase setup could not load. Refresh this page and try again.';return}

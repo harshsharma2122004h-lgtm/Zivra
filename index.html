@@ -149,7 +149,7 @@ html{scroll-behavior:smooth;scroll-padding-top:90px}
 .soldout-ribbon{position:absolute;right:0;top:12px;z-index:2;background:#d9534f;color:#fff;font-size:10px;font-weight:800;letter-spacing:.14em;padding:5px 11px}
 .product{position:relative}.lowtxt{font-size:11px;color:#e07a6f;margin:-6px 0 10px;font-weight:600}
 .product.soldout img{filter:grayscale(.85);opacity:.7}
-.cat.cat-photo{position:relative;aspect-ratio:3/4;padding:0 6px 12px;display:flex;align-items:flex-end;justify-content:center;background-size:cover;background-position:center;color:#fff;font-weight:700;font-size:12px;letter-spacing:.08em;text-transform:uppercase;border:1px solid transparent;border-radius:10px;overflow:hidden;cursor:pointer}
+.cat span{display:none!important}.cat:not(.cat-photo){aspect-ratio:3/4;display:flex;align-items:flex-end;justify-content:center;padding:0 6px 14px;background:linear-gradient(165deg,var(--surface,#1c2021),var(--bg,#111));font-weight:700;letter-spacing:.1em;text-transform:uppercase;font-size:12px}.cat.cat-photo{position:relative;aspect-ratio:3/4;padding:0 6px 12px;display:flex;align-items:flex-end;justify-content:center;background-size:cover;background-position:center;color:#fff;font-weight:700;font-size:12px;letter-spacing:.08em;text-transform:uppercase;border:1px solid transparent;border-radius:10px;overflow:hidden;cursor:pointer}
 .cat.cat-photo span{display:none}
 .app.ethnic .cat.cat-photo{border-radius:999px 999px 12px 12px;padding-bottom:16px}
 </style><style id="zv-v2-css">
@@ -499,9 +499,11 @@ var TOKENS=['tiles','marquee','banners','trust','shop','reviews'];
 function productsOf(m){return (data[m]&&data[m].products)||[]}
 function cfgHome(){var c=window.ZIVRA_SITE||{};return c.home||{}}
 function catKey(n){return String(n||'').replace(/[^A-Za-z0-9 _-]/g,'')}
+function catKey2(m,n){return m+'_'+String(n||'').replace(/[^A-Za-z0-9]+/g,'_')}
 function catImage(m,f){
-  var key=String(f||'').toLowerCase().replace(/s$/,'');
-  var p=productsOf(m).filter(function(x){return String(x[0]).toLowerCase().indexOf(key)>-1})[0];
+  var key=String(f||'').toLowerCase().split('&')[0].trim().replace(/s$/,'');
+  var acc=String(f||'').toLowerCase()==='accessories';
+  var p=productsOf(m).filter(function(x){var nm=String(x[0]).toLowerCase();if(acc)return String(x[6]||'')==='Accessories';if(key==='shirt'&&/t[- ]?shirt/.test(nm))return false;return nm.indexOf(key)>-1}).filter(function(x){try{return productImage(x)}catch(e){return false}})[0];
   if(p){try{var u=productImage(p);if(u)return u}catch(e){}}
   return '';
 }
@@ -646,12 +648,12 @@ function decorateCats(){
   try{
     var list=productsOf(mode),ci=cfgHome().catImages||{};
     document.querySelectorAll('#categories .cat').forEach(function(b){
-      var name=b.dataset.filter,img=ci[catKey(name)]||'';
+      var name=b.dataset.filter,img=ci[catKey2(mode,name)]||ci[catKey(name)]||'';
       if(!img){if(name==='All'){var f=list.filter(function(x){return productImage(x)})[0];img=f?productImage(f):''}else img=catImage(mode,name)}
       var u=safeUrl(img);
       if(u){b.classList.add('cat-photo');b.style.backgroundImage='linear-gradient(0deg,rgba(0,0,0,.78),rgba(0,0,0,0) 58%),url(\''+u+'\')'}
       else{b.classList.remove('cat-photo');b.style.backgroundImage=''}
-      if(ZE){b.setAttribute('data-zve','home.catImages.'+catKey(name));b.setAttribute('data-zk','image');b.setAttribute('data-zl','Category photo: '+name)}
+      if(ZE){b.setAttribute('data-zve','home.catImages.'+catKey2(mode,name));b.setAttribute('data-zk','image');b.setAttribute('data-zl','Category photo: '+name)}
     });
   }catch(e){}
 }
