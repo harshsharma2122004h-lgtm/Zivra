@@ -124,6 +124,7 @@ body:not(.authorized) #app{display:none}
       </section>
       <section class="view" id="view-sitecontrol">
         <div class="pagehead"><div><div class="eyebrow">STOREFRONT STUDIO</div><h1>Site Control</h1><p>Change the look, text, logo, header, footer, colours, fonts and motion of your customer website. Anything you leave empty keeps the current design.</p></div><div style="display:flex;gap:8px;flex-wrap:wrap"><a class="secondary" href="./index.html" target="_blank" rel="noopener" style="text-decoration:none;padding:10px 14px;border:1px solid var(--line);border-radius:8px">Open store ↗</a><button class="secondary" id="zvReset">Reset all</button><button class="primary" id="zvSave">Save &amp; publish</button></div></div>
+        <section class="panel" id="zvLivePanel"><div style="padding:16px 20px"><div class="eyebrow">WHAT IS LIVE ON YOUR WEBSITE</div><div class="zactions" style="margin:14px 0;gap:22px"><label style="font-size:14px;display:flex;gap:8px;align-items:center"><input type="checkbox" id="liveStreet" checked> Men's Streetwear</label><label style="font-size:14px;display:flex;gap:8px;align-items:center"><input type="checkbox" id="liveEthnic" checked> Ethnic / Sanganeri</label></div><p class="zmeta" id="liveNote" style="margin:0 0 12px"></p><button class="primary" id="liveSave" type="button">Apply to live site now</button></div></section>
         <section class="panel"><div style="padding:16px 20px"><div class="eyebrow" style="margin-bottom:10px">READY-MADE TEMPLATES (tap one, then fine-tune below, then Save)</div><div class="zactions" id="zvTemplates"></div></div></section>
         <div id="zvHomeBuilder"></div>
         <div id="zvForm"></div>
@@ -481,7 +482,7 @@ async function initSiteControl(){
  const r=await supabaseClient.from('zivra_site_settings').select('value').eq('key','config').maybeSingle();
  if(r.error){window.zvMissing=true;$('zvForm').innerHTML='<section class="panel"><div class="empty">Site Control needs the one-time database setup (supabase-offers-sitecontrol.sql). Run it in Supabase SQL Editor, then refresh.</div></section>';zvStatus('Setup needed');return}
  window.zvMissing=false;if(!zvLoaded){zvCfg=(r.data&&r.data.value)||{};zvLoaded=true}
- zvRenderForm();zhHandle();zhRender();zvStatus('Editing the live design. Changes are saved only when you tap “Save & publish”.');
+ zvRenderForm();zhHandle();zhRender();zlRender();zvStatus('Editing the live design. Changes are saved only when you tap “Save & publish”.');
 }
 $('zvForm').addEventListener('input',e=>{
  const el=e.target;
@@ -526,7 +527,7 @@ $('zvReset').addEventListener('click',async()=>{
 });
 // ===== Home page builder (posters, tiles, banners, trust, reviews, order) =====
 let zhMode='street';
-const ZH_TOKENS=[['tiles','Category tiles'],['marquee','Scrolling text strip'],['banners','Big banners'],['trust','Trust points'],['shop','Products (always shown)'],['reviews','Customer reviews']];
+const ZH_TOKENS=[['cats','Shop-by-category circles'],['newin','New arrivals strip (small product photos)'],['marquee','Scrolling text strip'],['tiles','Category tiles'],['banners','Big banners'],['trust','Trust points'],['shop','Products (always shown)'],['reviews','Customer reviews']];
 const ZH_REP={
  slides:{label:'Poster slides — they slide automatically (up to 8)',max:8,add:{img:'',eyebrow:'',title:'',sub:'',cta:'SHOP NOW',link:'shop',cta2:'',link2:'shop'},fields:[['img','Poster photo','image'],['eyebrow','Small line','text'],['title','Big heading','text'],['sub','Sub text','text'],['cta','Button 1 text','text'],['link','Button 1 opens (shop · filter:T-Shirts · https://…)','text'],['cta2','Button 2 text (optional)','text'],['link2','Button 2 opens','text']]},
  tiles:{label:'Category tiles (under the poster)',max:6,add:{img:'',title:'',sub:'',filter:''},fields:[['img','Photo','image'],['title','Title','text'],['sub','Text','text'],['filter','Opens category (e.g. T-Shirts)','text']]},
@@ -913,6 +914,28 @@ function zhCatHtml(){
  box.addEventListener('change',async e=>{const el=e.target;if(el.dataset&&el.dataset.zcfile&&el.files&&el.files[0]){try{zvStatus('Uploading photo…');const url=await zhUpload(el.files[0]);zvSet(zvCfg,'home.catImages.'+el.dataset.zcfile,url);zhRender();zvStatus('Photo uploaded. Tap “Save & publish” to make it live.')}catch(err){zvStatus('Upload failed: '+(err.message||err))}}});
  box.addEventListener('click',e=>{const b=e.target.closest('[data-zcdel]');if(!b)return;zvSet(zvCfg,'home.catImages.'+b.dataset.zcdel,undefined);zhRender()});
 })();
+
+// ===== Live collections control =====
+function zlRender(){
+ const s=zvGet(zvCfg,'live.street')!==false,e=zvGet(zvCfg,'live.ethnic')!==false;
+ if($('liveStreet'))$('liveStreet').checked=s;if($('liveEthnic'))$('liveEthnic').checked=e;
+ const n=$('liveNote');if(n)n.textContent=s&&e?'Both collections are live. Customers see the collection switch.':(s?'Only Men’s Streetwear is live. Customers do not see the switch.':(e?'Only Ethnic is live. Customers do not see the switch.':''));
+}
+async function zlSave(){
+ const s=$('liveStreet').checked,e=$('liveEthnic').checked;
+ if(!s&&!e){toast('At least one collection must stay live');return}
+ try{
+  const r=await supabaseClient.from('zivra_site_settings').select('value').eq('key','config').maybeSingle();
+  if(r.error)throw r.error;
+  const cfg=(r.data&&r.data.value)||{};
+  if(s&&e)delete cfg.live;else cfg.live={street:s,ethnic:e};
+  const w=await supabaseClient.from('zivra_site_settings').upsert({key:'config',value:cfg,updated_at:new Date().toISOString()});if(w.error)throw w.error;
+  if(s&&e)delete zvCfg.live;else zvCfg.live={street:s,ethnic:e};
+  zlRender();toast('Live site updated');
+ }catch(err){toast(err.message||'Could not update')}
+}
+document.addEventListener('click',e=>{if(e.target.id==='liveSave')zlSave()});
+document.addEventListener('change',e=>{if(e.target.id==='liveStreet'||e.target.id==='liveEthnic'){const s=$('liveStreet').checked,x=$('liveEthnic').checked;const n=$('liveNote');if(n)n.textContent=(!s&&!x)?'Keep at least one collection on.':'Not applied yet — tap “Apply to live site now”.'}});
 
 async function startAdmin(){
  const config=window.ZIVRA_SUPABASE_CONFIG;
