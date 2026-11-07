@@ -26,6 +26,7 @@
 .zgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;padding:18px 20px}.zfield label{display:block;font-size:11px;color:var(--muted);margin-bottom:5px;line-height:1.4}.zfield input:not([type=checkbox]):not([type=color]),.zfield select,.zfield textarea{width:100%;padding:10px 11px;border:1px solid var(--line);border-radius:8px;background:#fff;font:inherit;font-size:13px;color:inherit}.zfield textarea{min-height:76px;resize:vertical}.zchips{display:flex;flex-wrap:wrap;gap:8px}.zchip{border:1px solid var(--line);background:#fff;border-radius:20px;padding:7px 12px;font-size:12px;cursor:pointer;user-select:none}.zchip.on{background:var(--accent);color:#fff;border-color:var(--accent)}details.zgroup{border:1px solid var(--line);border-radius:12px;background:#fff;margin-bottom:12px;overflow:hidden}details.zgroup>summary{padding:15px 20px;font-weight:700;font-size:14px;cursor:pointer;list-style:none}details.zgroup>summary::after{content:'＋';float:right;color:var(--muted)}details.zgroup[open]>summary::after{content:'－'}.zcolor{display:flex;gap:8px;align-items:center}.zcolor input[type=color]{width:46px;height:38px;padding:2px;border:1px solid var(--line);border-radius:8px;background:#fff}.zcolor code{font-size:11px;color:var(--muted)}.zcolor button{border:1px solid var(--line);background:#fff;border-radius:6px;padding:5px 9px;font-size:11px;cursor:pointer}.zimg{display:grid;gap:6px}.zimg img{max-height:70px;max-width:160px;object-fit:contain;border:1px solid var(--line);border-radius:6px;background:#f6f2ea}
 
 .zve-grid{display:grid;grid-template-columns:1fr;gap:14px}@media(min-width:1000px){.zve-grid{grid-template-columns:minmax(0,1fr) 340px}}.zve-frame{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#1b1b1b;display:flex;justify-content:center}.zve-frame iframe{border:0;width:100%;height:74vh;background:#111}.zve-frame.mobile iframe{width:390px;max-width:100%}.zve-panel{padding:16px;max-height:74vh;overflow:auto}
+.zvthemes{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}.zvtheme{border:2px solid var(--line);border-radius:12px;padding:0;overflow:hidden;background:#fff;cursor:pointer;text-align:left}.zvtheme.on{border-color:var(--accent);box-shadow:0 0 0 2px rgba(180,140,70,.25)}.zvtheme .zvthumb{height:120px;display:flex;flex-direction:column;gap:6px;padding:10px}.zvtheme .zvthumb i{display:block;border-radius:2px}.zvtheme b{display:block;padding:10px 12px 2px;font-size:14px}.zvtheme span.d{display:block;padding:0 12px 12px;font-size:12px;color:var(--muted);line-height:1.5}
 .toast{position:fixed;bottom:22px;right:24px;background:#25221e;color:#fff;padding:13px 17px;border-radius:9px;font-size:12px;box-shadow:0 12px 30px #0002;opacity:0;transform:translateY(8px);transition:.2s;pointer-events:none;z-index:20}.toast.show{opacity:1;transform:translateY(0)}.modalback{position:fixed;inset:0;background:#17151080;display:none;align-items:center;justify-content:center;padding:20px;z-index:30;overflow-y:auto}.modalback.open{display:flex}.modal{background:#fff;color:#292722;border-radius:14px;width:min(480px,100%);max-height:calc(100dvh - 40px);overflow-y:auto;padding:24px;box-shadow:0 25px 80px #0003;overscroll-behavior:contain}.modalhead{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}.modalhead h2{font-size:19px;margin:0;font-family:var(--site-font-heading);font-weight:500}.close{border:0;background:#f3f0eb;border-radius:50%;width:30px;height:30px}.field{display:grid;gap:6px;margin-bottom:14px}.field label{font-size:10px;color:#6d665b;font-weight:750}.field input,.field select{width:100%;border:1px solid #e4ded4;border-radius:8px;padding:11px;font-size:12px;color:#292722;background:#fff}.modalactions{display:flex;justify-content:flex-end;gap:8px;margin-top:20px}.notice{padding:12px 14px;border-radius:9px;background:#f8f1e5;color:#785c31;font-size:11px;line-height:1.6;margin-bottom:17px}.settingsgrid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.setting{padding:20px;border:1px solid var(--line);border-radius:12px;background:#fff}.setting h3{font-size:12px;margin:0 0 8px}.setting p{font-size:11px;color:var(--muted);line-height:1.6}.toggle{display:flex;align-items:center;justify-content:space-between;font-size:11px;padding:12px 0;border-top:1px solid var(--line)}.toggle input{accent-color:#292722}
 @media(max-width:1050px){.sidebar{width:205px}.content{padding:25px 22px}.topbar{padding:0 22px}.metrics{grid-template-columns:repeat(2,minmax(0,1fr))}.grid2{grid-template-columns:1fr}}
 @media(max-width:700px){.modalback{align-items:flex-start;padding:10px;}.modal{width:100%;max-height:calc(100dvh - 20px);padding:18px;}.topbar{height:auto;min-height:55px;flex-wrap:wrap;padding:9px 12px;gap:8px}.topright{gap:6px;flex-wrap:wrap;justify-content:flex-end}#logoutAdmin,.iconbtn{padding:8px 9px;font-size:10px}#app{display:block}.sidebar{width:100%;padding:13px 14px;display:block}.brand{padding:3px 6px 13px;border-bottom:0}.brand strong{font-size:20px}.brand small{margin-top:4px}.navlabel,.sidebottom{display:none}.nav{display:flex;overflow:auto;gap:5px;padding-top:10px}.nav button{white-space:nowrap;padding:9px 11px;font-size:10px}.nav button span{width:auto}.topbar{height:55px;padding:0 16px}.topright .statuspill{display:none}.content{padding:22px 14px 35px}.pagehead{align-items:flex-start;flex-direction:column}.pagehead .primary{width:100%}.metrics{gap:9px}.metric{padding:14px}.metric strong{font-size:22px}.metric-top{font-size:9px}.metric-icon{width:27px;height:27px}.grid2{gap:12px}.panelhead,.panelbody{padding:15px}.settingsgrid{grid-template-columns:1fr}.tablefoot{align-items:flex-start;flex-direction:column}.chart{gap:6px}.chart .bar{width:22px}}
@@ -62,6 +63,7 @@ body:not(.authorized) #app{display:none}
       <button data-view="offers"><span>％</span> Offers &amp; Coupons</button>
       <button data-view="visual"><span>🖌</span> Visual Editor</button>
       <button data-view="sitecontrol"><span>✦</span> Site Control</button>
+      <button data-view="assistant"><span>🤖</span> Assistant</button>
       <button data-view="messages"><span>✉</span> Messages <b class="navcount" id="msgCount" hidden>0</b></button>
       <button data-view="notifications"><span>🔔</span> Notifications <b class="navcount" id="errCount" hidden>0</b></button>
       <button data-view="customers"><span>♙</span> Customers</button>
@@ -124,6 +126,7 @@ body:not(.authorized) #app{display:none}
       </section>
       <section class="view" id="view-sitecontrol">
         <div class="pagehead"><div><div class="eyebrow">STOREFRONT STUDIO</div><h1>Site Control</h1><p>Change the look, text, logo, header, footer, colours, fonts and motion of your customer website. Anything you leave empty keeps the current design.</p></div><div style="display:flex;gap:8px;flex-wrap:wrap"><a class="secondary" href="./index.html" target="_blank" rel="noopener" style="text-decoration:none;padding:10px 14px;border:1px solid var(--line);border-radius:8px">Open store ↗</a><button class="secondary" id="zvReset">Reset all</button><button class="primary" id="zvSave">Save &amp; publish</button></div></div>
+        <section class="panel" id="zvThemePanel"><div style="padding:16px 20px"><div class="eyebrow">STORE THEME — COMPLETE LOOK OF YOUR WEBSITE</div><p class="zmeta" style="margin:6px 0 14px">Pick a full design like a Shopify theme. It changes header, banner, product cards, buttons and footer for both collections. Your text, photos and products stay the same.</p><div id="zvThemeCards" class="zvthemes"></div><p class="zmeta" id="zvThemeNote" style="margin-top:12px"></p></div></section>
         <section class="panel" id="zvLivePanel"><div style="padding:16px 20px"><div class="eyebrow">WHAT IS LIVE ON YOUR WEBSITE</div><div class="zactions" style="margin:14px 0;gap:22px"><label style="font-size:14px;display:flex;gap:8px;align-items:center"><input type="checkbox" id="liveStreet" checked> Men's Streetwear</label><label style="font-size:14px;display:flex;gap:8px;align-items:center"><input type="checkbox" id="liveEthnic" checked> Ethnic / Sanganeri</label></div><p class="zmeta" id="liveNote" style="margin:0 0 12px"></p><button class="primary" id="liveSave" type="button">Apply to live site now</button></div></section>
         <section class="panel"><div style="padding:16px 20px"><div class="eyebrow" style="margin-bottom:10px">READY-MADE TEMPLATES (tap one, then fine-tune below, then Save)</div><div class="zactions" id="zvTemplates"></div></div></section>
         <div id="zvHomeBuilder"></div>
@@ -131,6 +134,10 @@ body:not(.authorized) #app{display:none}
         <p class="zmeta" id="zvStatus" style="padding:8px 4px">Loading…</p>
       </section>
 
+      <section class="view" id="view-assistant">
+        <div class="pagehead"><div><div class="eyebrow">SMART HELPER</div><h1>Assistant</h1><p>Reads your customer messages and site notifications, tells you what is urgent, and writes reply drafts you can send in one tap.</p></div></div>
+        <div id="zaBody"></div>
+      </section>
       <section class="view" id="view-messages">
         <div class="pagehead"><div><div class="eyebrow">CUSTOMER INBOX</div><h1>Messages</h1><p>Messages customers send from the website contact form.</p></div><button class="secondary" id="msgMarkAll">Mark all read</button></div>
         <section class="panel"><div class="toolbar"><select class="select" id="msgFilter"><option value="unread">Unread only</option><option value="all">All messages</option></select></div><div id="messagesList"></div><div class="tablefoot"><span id="msgFoot">Loading…</span><span>Live database records</span></div></section>
@@ -211,7 +218,7 @@ function orderRows(list,includeRecent=false){return list.map(o=>`<tr><td><b>${es
 function renderOrders(){const q=($('orderSearch')?.value||'').toLowerCase();const status=$('orderStatus')?.value||'All';const list=orders.filter(o=>(o.id+' '+o.customer+' '+o.email).toLowerCase().includes(q)&&(status==='All'||o.status===status));$('ordersTable').innerHTML=orderRows(list);$('orderCount').textContent=`Showing ${list.length} of ${orders.length} orders`; $('recentOrders').innerHTML=orderRows(orders.slice(0,4),true);$('metricOrders').textContent=126+Math.max(0,orders.length-6)}
 function renderCustomers(){const q=($('customerSearch')?.value||'').toLowerCase();const list=customers.filter(c=>(c.name+' '+c.email).toLowerCase().includes(q));$('customersTable').innerHTML=list.map(c=>`<tr><td><div class="customer"><div class="avatar">${esc(c.name.split(' ').map(x=>x[0]).join(''))}</div><b style="color:#292722">${esc(c.name)}</b></div></td><td>${esc(c.email)}</td><td>${c.orders}</td><td class="money">${money(c.spent)}</td><td>${esc(c.joined)}</td><td>${badge(c.segment)}</td></tr>`).join('')||`<tr><td colspan="6"><div class="empty">No customers found.</div></td></tr>`;$('customerCount').textContent=`Showing ${list.length} of ${customers.length} sample customers`; $('metricCustomers').textContent=94+Math.max(0,customers.length-6)}
 function renderInventory(){const q=($('inventorySearch')?.value||'').toLowerCase();const filter=$('inventoryFilter')?.value||'All';const list=products.filter(p=>(p.name+' '+p.sku).toLowerCase().includes(q)&&(filter==='All'||filter==='Low'&&p.stock>0&&p.stock<10||filter==='Out of stock'&&p.stock===0||filter==='Healthy'&&p.stock>=10));$('inventoryTable').innerHTML=list.map(p=>`<tr><td><div class="itemcell"><div class="inventory-photo">${p.image_url?`<img src="${esc(p.image_url)}" alt="${esc(p.name)} product photo" loading="lazy" onerror="this.hidden=true;this.parentElement.classList.add('no-photo')">`:'<span>No photo</span>'}</div><b>${esc(p.name)}</b></div></td><td>${esc(p.sku)}</td><td><b>${p.stock}</b> units</td><td>${p.stock===0?badge('Out of stock'):p.stock<10?badge('Low stock'):badge('Healthy')}</td><td class="money">${money(p.price)}</td><td><button class="mini" data-restock="${p.id}">＋ Add 10</button></td></tr>`).join('')||`<tr><td colspan="6"><div class="empty">No inventory items found.</div></td></tr>`}
-function showView(name){document.querySelectorAll('.view').forEach(v=>v.classList.toggle('active',v.id==='view-'+name));document.querySelectorAll('#nav button').forEach(b=>b.classList.toggle('active',b.dataset.view===name));$('crumb').textContent=({overview:'Overview',products:'Products',orders:'Orders',customers:'Customers',offers:'Offers & Coupons',visual:'Visual Editor',sitecontrol:'Site Control',messages:'Messages',notifications:'Notifications',inventory:'Inventory',database:'Database',settings:'Settings'})[name]||name;window.scrollTo({top:0,behavior:'smooth'});if(name==='products')renderProducts();if(name==='orders')renderOrders();if(name==='customers')renderCustomers();if(name==='inventory')renderInventory();if(name==='offers'){loadOffers()}if(name==='sitecontrol'){initSiteControl()}if(name==='visual'){zveOpen()}if(name==='messages'){loadInbox()}if(name==='notifications'){loadInbox()}}
+function showView(name){document.querySelectorAll('.view').forEach(v=>v.classList.toggle('active',v.id==='view-'+name));document.querySelectorAll('#nav button').forEach(b=>b.classList.toggle('active',b.dataset.view===name));$('crumb').textContent=({overview:'Overview',products:'Products',orders:'Orders',customers:'Customers',assistant:'Assistant',offers:'Offers & Coupons',visual:'Visual Editor',sitecontrol:'Site Control',messages:'Messages',notifications:'Notifications',inventory:'Inventory',database:'Database',settings:'Settings'})[name]||name;window.scrollTo({top:0,behavior:'smooth'});if(name==='products')renderProducts();if(name==='orders')renderOrders();if(name==='customers')renderCustomers();if(name==='inventory')renderInventory();if(name==='assistant'){zaOpen()}if(name==='offers'){loadOffers()}if(name==='sitecontrol'){initSiteControl()}if(name==='visual'){zveOpen()}if(name==='messages'){loadInbox()}if(name==='notifications'){loadInbox()}}
 function openModal(id=null){editingId=id;const p=products.find(x=>x.id===id);$('modalTitle').textContent=p?'Edit product':'Add product';const knownNames=[...$('pNameSelect').options].map(o=>o.value).filter(v=>v&&v!=='__custom');const known=knownNames.includes(p?.name);$('pNameSelect').value=p?(known?p.name:'__custom'):'';$('pCustomName').value=p&&!known?p.name:'';$('pCustomName').style.display=p&&!known?'block':'none';$('pSku').value=p?.sku||'';$('pCategory').value=p?.category||'Streetwear';$('pPrice').value=p?.price||'';$('pStock').value=p?.stock??'';$('pImage').value=p?.image_url||'';$('pImageFile').value='';$('pImagePreview').src=p?.image_url||'';$('pImagePreview').style.display=p?.image_url?'block':'none';zpFill(p);$('productModal').classList.add('open');$('pNameSelect').focus()}
 $('pNameSelect').addEventListener('change',()=>{$('pCustomName').style.display=$('pNameSelect').value==='__custom'?'block':'none';$('pCustomName').required=$('pNameSelect').value==='__custom';if($('pNameSelect').value!=='__custom')$('pCustomName').value='';});
 function closeModal(){$('productModal').classList.remove('open');$('pCustomName').required=false;$('pCustomName').style.display='none';$('productForm').reset();$('pImagePreview').removeAttribute('src');$('pImagePreview').style.display='none';editingId=null}
@@ -482,7 +489,7 @@ async function initSiteControl(){
  const r=await supabaseClient.from('zivra_site_settings').select('value').eq('key','config').maybeSingle();
  if(r.error){window.zvMissing=true;$('zvForm').innerHTML='<section class="panel"><div class="empty">Site Control needs the one-time database setup (supabase-offers-sitecontrol.sql). Run it in Supabase SQL Editor, then refresh.</div></section>';zvStatus('Setup needed');return}
  window.zvMissing=false;if(!zvLoaded){zvCfg=(r.data&&r.data.value)||{};zvLoaded=true}
- zvRenderForm();zhHandle();zhRender();zlRender();zvStatus('Editing the live design. Changes are saved only when you tap “Save & publish”.');
+ zvRenderForm();zhHandle();zhRender();zlRender();ztRender();zvStatus('Editing the live design. Changes are saved only when you tap “Save & publish”.');
 }
 $('zvForm').addEventListener('input',e=>{
  const el=e.target;
@@ -937,6 +944,139 @@ async function zlSave(){
 document.addEventListener('click',e=>{if(e.target.id==='liveSave')zlSave()});
 document.addEventListener('change',e=>{if(e.target.id==='liveStreet'||e.target.id==='liveEthnic'){const s=$('liveStreet').checked,x=$('liveEthnic').checked;const n=$('liveNote');if(n)n.textContent=(!s&&!x)?'Keep at least one collection on.':'Not applied yet — tap “Apply to live site now”.'}});
 
+// ===== Store themes (Shopify-style) =====
+const ZV_STORE_THEMES=[
+ {key:'',name:'ZIVRA Original',desc:'Your current dark Streetwear and beige Ethnic look.',bg:'#15191a',bar:'#e5c690',line:'#2a3032'},
+ {key:'dawn',name:'Shopify Dawn',desc:'Clean white, black buttons, full-width banner, modern sans-serif. The most popular Shopify style.',bg:'#ffffff',bar:'#121212',line:'#e7e7e7'},
+ {key:'prestige',name:'Shopify Prestige',desc:'Luxury ivory and gold, elegant serif headings, thin lines, dark footer.',bg:'#faf6ef',bar:'#a8844a',line:'#e5d9c4'}
+];
+function ztRender(){
+ const box=$('zvThemeCards');if(!box)return;
+ const cur=zvGet(zvCfg,'theme.template')||'';
+ box.innerHTML=ZV_STORE_THEMES.map(t=>`<button type="button" class="zvtheme ${t.key===cur?'on':''}" data-zvtheme="${t.key}"><div class="zvthumb" style="background:${t.bg}"><i style="height:10px;background:${t.bar}"></i><i style="height:46px;background:${t.bar};opacity:.75"></i><i style="height:34px;background:${t.line}"></i></div><b>${zEsc(t.name)}${t.key===cur?' ✓':''}</b><span class="d">${zEsc(t.desc)}</span></button>`).join('');
+ const n=$('zvThemeNote');if(n)n.textContent='Tap a theme to publish it on your live website at once. You can change back any time.';
+}
+async function ztApply(key){
+ try{
+  const r=await supabaseClient.from('zivra_site_settings').select('value').eq('key','config').maybeSingle();
+  if(r.error)throw r.error;
+  const cfg=(r.data&&r.data.value)||{};
+  cfg.theme=cfg.theme||{};
+  if(key)cfg.theme.template=key;else delete cfg.theme.template;
+  if(!Object.keys(cfg.theme).length)delete cfg.theme;
+  const w=await supabaseClient.from('zivra_site_settings').upsert({key:'config',value:cfg,updated_at:new Date().toISOString()});if(w.error)throw w.error;
+  zvSet(zvCfg,'theme.template',key||undefined);ztRender();toast(key?'Theme published on your live site':'Original look restored');
+  const f=$('zveFrame');if(f&&f.contentWindow)f.contentWindow.postMessage({zv:'config',cfg:zvCfg},location.origin);
+ }catch(err){toast(err.message||'Could not apply the theme')}
+}
+document.addEventListener('click',e=>{const b=e.target.closest('[data-zvtheme]');if(b)ztApply(b.dataset.zvtheme)});
+// ===== ZIVRA Assistant: reads customer messages + site notifications, drafts replies, answers quick questions =====
+const ZA_TAGS=[
+ {key:'complaint',label:'Complaint',pri:3,re:/\b(bad|worst|fraud|cheat|scam|damaged|wrong item|wrong product|defect|torn|poor quality|angry|complaint|legal|consumer|fake)\b|kharab|dhokha/i},
+ {key:'payment',label:'Payment',pri:3,re:/payment|paid|deducted|debited|upi|razorpay|transaction|amount cut|paisa kat|paise kat|money/i},
+ {key:'refund',label:'Return / Refund',pri:3,re:/return|refund|exchange|replace|cancel|wapas|paisa wapas|vapas/i},
+ {key:'order',label:'Order status',pri:2,re:/where is my order|order status|track|tracking|delivery date|not received|not delivered|dispatch|shipped|kab aay|kahan hai|kaha hai|status/i},
+ {key:'product',label:'Product / Size',pri:1,re:/size|fit|colou?r|stock|available|fabric|length|measurement|chest|waist|material/i},
+ {key:'offer',label:'Offer / Coupon',pri:1,re:/coupon|offer|discount|voucher|promo|code/i},
+ {key:'address',label:'Address change',pri:2,re:/address|pincode|change (my )?(number|phone)|wrong address/i}
+];
+function zaTag(m){
+ const t=`${m.subject||''} ${m.message||''}`;
+ const hits=ZA_TAGS.filter(x=>x.re.test(t));
+ hits.sort((a,b)=>b.pri-a.pri);
+ return {main:hits[0]||{key:'other',label:'General',pri:0},all:hits};
+}
+const zaOrderNo=m=>{const x=`${m.subject||''} ${m.message||''}`.match(/\bZV-[A-Z0-9]{5,14}\b/i);return x?x[0].toUpperCase():''};
+function zaReply(m,tag,order,lang){
+ const name=(m.name||'').split(' ')[0]||'there',hi=lang==='hinglish';
+ const oline=order?(hi?`Aapka order ${order.order_number} abhi *${order.status}* hai${order.payment_status?` (payment: ${order.payment_status})`:''}.`:`Your order ${order.order_number} is currently *${order.status}*${order.payment_status?` (payment: ${order.payment_status})`:''}.`):(hi?'Kripya apna order number (ZV- se shuru hota hai) bhej dijiye, hum turant check karenge.':'Could you please share your order number (it starts with ZV-) so we can check it right away?');
+ const sign=hi?'— Team ZIVRA':'— Team ZIVRA';
+ const T={
+  order:hi?`Hi ${name}, hume likhne ke liye shukriya! ${oline} Aap website par "Track Order" mein order number aur email dalkar kabhi bhi status dekh sakte hain. ${sign}`:`Hi ${name}, thank you for reaching out! ${oline} You can also track it any time from “Track Order” on our website using your order number and email. ${sign}`,
+  refund:hi?`Hi ${name}, hume khed hai ki product aapki umeed par khara nahi utra. ${order?oline+' ':''}Kripya order number, item ki photo aur batayiye ki aapko exchange chahiye ya refund. Hum jaldi hal karenge. ${sign}`:`Hi ${name}, we're sorry it didn't work out. ${order?oline+' ':''}Please share your order number, a photo of the item, and whether you'd like an exchange or a refund — we'll sort it out quickly. ${sign}`,
+  payment:hi?`Hi ${name}, bataane ke liye shukriya. ${order?oline+' ':''}Kripya order number aur payment ka screenshot/reference bhej dijiye. Agar paisa kat gaya hai par order nahi bana, to hum priority par check karke hal karenge. ${sign}`:`Hi ${name}, thanks for letting us know. ${order?oline+' ':''}Please share your order number and the payment screenshot/reference. If money was debited without an order, we will check and resolve it on priority. ${sign}`,
+  complaint:hi?`Hi ${name}, hume sach mein khed hai ki aapko aisa anubhav hua. ${order?oline+' ':''}Kripya order number aur photos bhej dijiye — hum isse pehli priority par dekhenge aur jald hal karenge. ${sign}`:`Hi ${name}, we're truly sorry about this experience. ${order?oline+' ':''}Please share your order number and photos and we'll treat this as a top priority and make it right. ${sign}`,
+  product:hi?`Hi ${name}, hamare product mein ruchi dikhane ke liye shukriya! Kaun sa product dekh rahe hain? Batayiye, hum size/colour ki availability turant confirm kar denge. ${sign}`:`Hi ${name}, thanks for your interest! Which product are you looking at? Let us know and we'll confirm size and colour availability right away. ${sign}`,
+  offer:hi?`Hi ${name}, poochne ke liye shukriya! Chal rahe offers website par product par dikhte hain, aur coupon code checkout mein "Coupon code" box mein daalna hota hai. Agar koi code kaam nahi kar raha to code bhej dijiye, hum check karenge. ${sign}`:`Hi ${name}, thanks for asking! Live offers are shown on the products, and a coupon code can be entered in the “Coupon code” box at checkout. If a code isn't working, send it to us and we'll check. ${sign}`,
+  address:hi?`Hi ${name}, address/number badalne ke liye order number bhejiye. ${order?oline+' ':''}Agar order abhi dispatch nahi hua hai to hum turant badal denge. ${sign}`:`Hi ${name}, please share your order number and the new details. ${order?oline+' ':''}If the order hasn't been dispatched yet, we'll update it right away. ${sign}`,
+  other:hi?`Hi ${name}, hume likhne ke liye shukriya! Hum aapka message dekh rahe hain aur jaldi jawab denge. ${sign}`:`Hi ${name}, thank you for writing to us! We have your message and will get back to you shortly. ${sign}`
+ };
+ return T[tag.main.key]||T.other;
+}
+const ZA_KB=[
+ {re:/supabase configuration|catalog (connection|could not)|products? (could not|failed)/i,title:'Products not loading',fix:'Check that Supabase is running and the site loaded supabase-config.js. Open the store once and refresh.'},
+ {re:/online-payment|razorpay|payment/i,title:'Online payment problem',fix:'Online payment is under repair. Keep Cash on Delivery only until the ₹1 payment test passes.'},
+ {re:/coupon|voucher/i,title:'Coupon / voucher issue',fix:'Open Offers & Coupons and check the code, dates, usage limit and minimum order.'},
+ {re:/permission denied|row-level security|rls|not authorized|jwt/i,title:'Permission problem',fix:'A database rule blocked an action. Send the exact message to your developer (or me).'},
+ {re:/column|schema cache|does not exist|could not find the function/i,title:'Database setup missing',fix:'Run the latest SQL files in the Supabase SQL Editor, then refresh.'},
+ {re:/failed to fetch|network|timeout|load failed/i,title:'Customer network issue',fix:'Usually a weak connection on the customer side. No action unless it keeps repeating.'},
+ {re:/contact-form/i,title:'Contact form failed',fix:'A customer could not send a message. Check the messages table SQL was run.'},
+ {re:/./,title:'Website script error',fix:'Send me the message and the page name, and I will fix it in the next release.'}
+];
+function zaGroups(){
+ const g={};
+ zErrors.forEach(e=>{
+  const kb=ZA_KB.find(k=>k.re.test(`${e.source} ${e.message}`));
+  const x=g[kb.title]||(g[kb.title]={kb,count:0,items:[],unread:0,last:e.last_seen});
+  x.count+=Number(e.occurrences||1);x.items.push(e);if(!e.is_read)x.unread++;if(new Date(e.last_seen)>new Date(x.last))x.last=e.last_seen;
+ });
+ return Object.values(g).sort((a,b)=>b.unread-a.unread||b.count-a.count);
+}
+let zaLang='english',zaOrders={};
+async function zaLookup(m){
+ const no=zaOrderNo(m);
+ try{
+  let q=supabaseClient.from('orders').select('order_number,status,payment_status,total,created_at,email');
+  q=no?q.eq('order_number',no):q.eq('email',String(m.email||'').toLowerCase()).order('created_at',{ascending:false}).limit(1);
+  const r=await q.maybeSingle();return r.error?null:(r.data||null);
+ }catch(_){return null}
+}
+function zaCard(m){
+ const tag=zaTag(m),ord=zaOrders[m.id],reply=zaReply(m,tag,ord,zaLang);
+ const pri=tag.main.pri>=3?'<span class="ztag bad">URGENT</span>':'';
+ const wa=String(m.phone||'').replace(/[^0-9]/g,'');
+ return `<div class="zitem ${m.is_read?'':'unread'}" data-zaid="${zEsc(m.id)}"><div class="zhead"><div><b>${zEsc(m.subject)}</b> ${pri} <span class="ztag">${zEsc(tag.main.label)}</span>${zaOrderNo(m)?`<span class="ztag">${zEsc(zaOrderNo(m))}</span>`:''}</div><span class="zmeta">${zWhen(m.created_at)}</span></div><div class="zmeta">${zEsc(m.name)} · ${zEsc(m.email)}${m.phone?' · '+zEsc(m.phone):''}</div><div class="zbody">${zEsc(m.message)}</div>${ord?`<div class="zdetails">Order ${zEsc(ord.order_number)} · ${zEsc(ord.status)} · payment ${zEsc(ord.payment_status||'-')} · ${zMoney(ord.total)}</div>`:''}<textarea class="zareply" rows="4" style="width:100%;padding:10px;border:1px solid var(--line);border-radius:8px;font:inherit;font-size:13px">${zEsc(reply)}</textarea><div class="zactions"><button type="button" data-zaact="lookup">Check order</button><button type="button" data-zaact="copy">Copy reply</button><button type="button" data-zaact="mail">Email reply</button>${wa?`<button type="button" data-zaact="wa">WhatsApp reply</button>`:''}<button type="button" data-zaact="done">Mark handled</button></div></div>`;
+}
+function zaRender(){
+ const box=$('zaBody');if(!box)return;
+ const unread=zMessages.filter(m=>!m.is_read),groups=zaGroups(),urgent=unread.filter(m=>zaTag(m).main.pri>=3).length;
+ const top=groups[0];
+ const brief=`<section class="panel"><div style="padding:16px 20px"><div class="eyebrow">TODAY'S BRIEF</div><p style="font-size:14px;line-height:1.7;margin:8px 0">You have <b>${unread.length}</b> unread customer message(s)${urgent?`, <b style="color:#c0392b">${urgent} urgent</b>`:''} and <b>${zErrors.filter(e=>!e.is_read).length}</b> new site notification(s).${top&&top.unread?` Biggest site issue: <b>${zEsc(top.kb.title)}</b> (${top.count} time${top.count>1?'s':''}).`:''}</p><div class="zactions"><button type="button" data-zalang="english" class="${zaLang==='english'?'primary':'secondary'}">Replies in English</button><button type="button" data-zalang="hinglish" class="${zaLang==='hinglish'?'primary':'secondary'}">Replies in Hinglish</button></div></div></section>`;
+ const ask=`<section class="panel"><div style="padding:16px 20px"><div class="eyebrow">ASK THE ASSISTANT</div><div class="zactions" style="margin-top:10px;flex-wrap:nowrap"><input id="zaAsk" placeholder="e.g. orders today · pending orders · low stock · unread messages" style="flex:1;padding:10px;border:1px solid var(--line);border-radius:8px"><button class="primary" id="zaAskGo" type="button">Ask</button></div><div id="zaAnswer" class="zbody" style="margin-top:12px"></div></div></section>`;
+ const msgs=`<section class="panel"><div style="padding:16px 20px 0"><div class="eyebrow">MESSAGES THAT NEED A REPLY</div></div>${unread.sort((a,b)=>zaTag(b).main.pri-zaTag(a).main.pri||new Date(b.created_at)-new Date(a.created_at)).map(zaCard).join('')||'<div class="empty">No unread messages. 🎉</div>'}</section>`;
+ const notes=`<section class="panel"><div style="padding:16px 20px 0"><div class="eyebrow">SITE NOTIFICATIONS — WHAT THEY MEAN</div></div>${groups.map(g=>`<div class="zitem ${g.unread?'unread':''}"><div class="zhead"><div><b>${zEsc(g.kb.title)}</b> <span class="ztag bad">${g.count}×</span></div><span class="zmeta">last ${zWhen(g.last)}</span></div><div class="zbody"><b>What to do:</b> ${zEsc(g.kb.fix)}</div><div class="zdetails">${zEsc(g.items.slice(0,2).map(i=>i.message).join(' | ').slice(0,260))}</div><div class="zactions"><button type="button" data-zagroup="${zEsc(g.kb.title)}">Mark all handled</button></div></div>`).join('')||'<div class="empty">No notifications. The site is healthy.</div>'}</section>`;
+ box.innerHTML=brief+ask+msgs+notes;
+}
+async function zaAnswer(q){
+ q=String(q||'').toLowerCase();
+ try{
+  if(/unread|message/.test(q)){const n=zMessages.filter(m=>!m.is_read).length;return `You have ${n} unread message(s) and ${zErrors.filter(e=>!e.is_read).length} unread notification(s).`}
+  if(/low stock|stock kam|stock/.test(q)){const r=await supabaseClient.from('products').select('name,sku,stock').eq('is_active',true).lte('stock',5).order('stock');if(r.error)throw r.error;return r.data.length?'Low stock (5 or less):\n'+r.data.map(p=>`• ${p.name} (${p.sku}) — ${p.stock} left`).join('\n'):'No active product is low on stock.'}
+  if(/today|aaj/.test(q)){const d=new Date();d.setHours(0,0,0,0);const r=await supabaseClient.from('orders').select('total,status').gte('created_at',d.toISOString());if(r.error)throw r.error;const live=r.data.filter(o=>!/cancel/i.test(o.status||''));return `Today: ${live.length} order(s), total ${zMoney(live.reduce((n,o)=>n+Number(o.total||0),0))}.`}
+  if(/pending|new order|processing|to ship|dispatch/.test(q)){const r=await supabaseClient.from('orders').select('order_number,status,total,customer_name').not('status','in','(delivered,cancelled)').order('created_at',{ascending:false}).limit(15);if(r.error)throw r.error;return r.data.length?'Open orders:\n'+r.data.map(o=>`• ${o.order_number} — ${o.customer_name} — ${o.status} — ${zMoney(o.total)}`).join('\n'):'No open orders.'}
+  return 'I can answer: “orders today”, “pending orders”, “low stock”, “unread messages”.';
+ }catch(err){return 'Could not check: '+(err.message||err)}
+}
+document.addEventListener('click',async e=>{
+ const b=e.target.closest('button');if(!b)return;
+ if(b.dataset.zalang){zaLang=b.dataset.zalang;zaRender();return}
+ if(b.id==='zaAskGo'){$('zaAnswer').textContent='Checking…';$('zaAnswer').textContent=await zaAnswer($('zaAsk').value);return}
+ if(b.dataset.zagroup){
+  const g=zaGroups().find(x=>x.kb.title===b.dataset.zagroup);if(!g)return;
+  const r=await supabaseClient.from('zivra_error_logs').update({is_read:true}).in('id',g.items.map(i=>i.id));
+  if(r.error){toast(r.error.message);return}await loadInbox();zaRender();toast('Marked handled');return;
+ }
+ const card=b.closest('[data-zaid]');if(!card||!b.dataset.zaact)return;
+ const m=zMessages.find(x=>x.id===card.dataset.zaid);if(!m)return;
+ const ta=card.querySelector('.zareply');
+ if(b.dataset.zaact==='lookup'){b.textContent='Checking…';const o=await zaLookup(m);zaOrders[m.id]=o;if(!o)toast('No matching order found');zaRender();return}
+ if(b.dataset.zaact==='copy'){try{await navigator.clipboard.writeText(ta.value);toast('Reply copied')}catch(_){ta.select();document.execCommand('copy');toast('Reply copied')}return}
+ if(b.dataset.zaact==='mail'){window.location.href=`mailto:${m.email}?subject=${encodeURIComponent('Re: '+m.subject)}&body=${encodeURIComponent(ta.value)}`;return}
+ if(b.dataset.zaact==='wa'){window.open(`https://wa.me/${String(m.phone).replace(/[^0-9]/g,'')}?text=${encodeURIComponent(ta.value)}`,'_blank','noopener');return}
+ if(b.dataset.zaact==='done'){const r=await supabaseClient.from('zivra_messages').update({is_read:true}).eq('id',m.id);if(r.error){toast(r.error.message);return}await loadInbox();zaRender();toast('Marked handled')}
+});
+async function zaOpen(){await loadInbox();zaRender()}
+
 async function startAdmin(){
  const config=window.ZIVRA_SUPABASE_CONFIG;
  if(!config?.url||!config?.anonKey||!window.supabase?.createClient){$('gateError').textContent='Supabase setup could not load. Refresh this page and try again.';return}
@@ -978,5 +1118,5 @@ startAdmin();
   document.addEventListener('visibilitychange',function(){if(!document.hidden)paintZivraDashboardClock()});
 })();
 </script>
-</body>
+<div style="position:fixed;right:8px;bottom:8px;z-index:9999;font:600 10px Arial;color:#8a8a8a;background:rgba(255,255,255,.85);padding:4px 7px;border-radius:6px">Admin build 2026-11-07-shop1</div></body>
 </html>

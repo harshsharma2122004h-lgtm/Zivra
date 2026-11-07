@@ -208,8 +208,73 @@ html.zv-one-collection .switchline{display:none!important}
 .price .sale{font-size:15px;font-weight:800;color:var(--ink)}.price s{font-size:12px;color:var(--muted);font-weight:400}.price .pct{font-style:normal;font-size:12px;font-weight:800;color:#e5702d}
 .product .add{padding:9px 6px!important;font-size:11px!important;border-radius:6px}
 @media(max-width:560px){.products{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:12px 10px!important}}
-</style><link rel="stylesheet" href="./zivra-premium.css?v=1">
-</head><body><main class="app" id="app">
+</style><style id="zv-theme-css">
+/* ===== Shopify-style full-site themes: Dawn (clean) and Prestige (luxury) ===== */
+html.zv-theme-dawn .app,html.zv-theme-dawn .app.ethnic{--bg:#ffffff;--surface:#ffffff;--ink:#121212;--muted:#6b6b6b;--line:#e7e7e7;--accent:#121212;--card:#f3f3f3;--site-background:#fff;--site-on-background:#121212}
+html.zv-theme-prestige .app,html.zv-theme-prestige .app.ethnic{--bg:#faf6ef;--surface:#fffdf9;--ink:#26211a;--muted:#8a7f6f;--line:#e5d9c4;--accent:#a8844a;--card:#f1e9da;--site-background:#faf6ef;--site-on-background:#26211a}
+html.zv-theme-dawn body,html.zv-theme-dawn .app,html.zv-theme-prestige body,html.zv-theme-prestige .app{background:var(--bg)!important;color:var(--ink)!important}
+html.zv-theme-dawn body,html.zv-theme-dawn button,html.zv-theme-dawn input{font-family:Inter,Arial,sans-serif}
+html.zv-theme-prestige body,html.zv-theme-prestige button,html.zv-theme-prestige input{font-family:Jost,Arial,sans-serif}
+/* header + bars */
+html.zv-theme-dawn .topbar,html.zv-theme-prestige .topbar{background:var(--surface)!important;color:var(--ink)!important;border-bottom:1px solid var(--line)}
+html.zv-theme-dawn .search,html.zv-theme-prestige .search{background:var(--card)!important;border-radius:0!important;border:0!important}
+html.zv-theme-dawn .search input,html.zv-theme-prestige .search input{color:var(--ink)!important}
+html.zv-theme-dawn .switchline,html.zv-theme-prestige .switchline{background:var(--surface)!important;border-bottom:1px solid var(--line)}
+html.zv-theme-dawn .zv-announce{background:#121212;color:#fff;font-size:12px;letter-spacing:.05em}
+html.zv-theme-prestige .zv-announce{background:#26211a;color:#e9d9b8;font-size:11px;letter-spacing:.18em;text-transform:uppercase}
+html.zv-theme-prestige .logo,html.zv-theme-prestige .section-head h2,html.zv-theme-prestige .zvb-copy h2,html.zv-theme-prestige .zvh-title{font-family:'Cormorant Garamond',Georgia,serif!important}
+/* poster becomes a full-width Shopify banner */
+html.zv-theme-dawn .zv-street .zvh-slide,html.zv-theme-dawn .zv-ethnic .zvh-slide,html.zv-theme-prestige .zv-street .zvh-slide,html.zv-theme-prestige .zv-ethnic .zvh-slide{display:block;min-height:clamp(320px,46vw,560px);background:#222;color:#fff}
+html.zv-theme-dawn .zvh-img,html.zv-theme-prestige .zvh-img{position:absolute!important;inset:0!important;height:100%!important;aspect-ratio:auto!important;order:0!important}
+html.zv-theme-dawn .zvh-shade,html.zv-theme-prestige .zvh-shade{display:block!important;position:absolute;inset:0;background:rgba(0,0,0,.30)}
+html.zv-theme-dawn .zvh-copy,html.zv-theme-prestige .zvh-copy{position:relative!important;min-height:clamp(320px,46vw,560px);display:flex!important;flex-direction:column;align-items:center;justify-content:center;text-align:center;color:#fff!important;padding:44px 22px 52px!important}
+html.zv-theme-dawn .zvh-eyebrow,html.zv-theme-dawn .zvh-sub,html.zv-theme-prestige .zvh-eyebrow,html.zv-theme-prestige .zvh-sub{color:#fff!important;opacity:.95}
+html.zv-theme-dawn .zvh-title{color:#fff!important;font-family:Inter,Arial,sans-serif!important;font-style:normal!important;font-weight:400!important;text-transform:none!important;letter-spacing:-.025em!important;font-size:clamp(30px,5.2vw,66px)!important;line-height:1.05!important}
+html.zv-theme-prestige .zvh-title{color:#fff!important;font-style:normal!important;font-weight:500!important;text-transform:none!important;letter-spacing:.01em!important;font-size:clamp(34px,5.8vw,76px)!important;line-height:1.02!important}
+html.zv-theme-dawn .zvh-btns,html.zv-theme-prestige .zvh-btns{justify-content:center}
+html.zv-theme-dawn .zvb{background:#fff!important;color:#121212!important;border-radius:0!important;letter-spacing:.1em}
+html.zv-theme-prestige .zvb{background:transparent!important;color:#fff!important;border:1px solid #fff!important;border-radius:0!important;letter-spacing:.2em}html.zv-theme-prestige .zvb:hover{background:#fff!important;color:#26211a!important}
+html.zv-theme-dawn .zvb-ghost,html.zv-theme-prestige .zvb-ghost{background:transparent!important;color:#fff!important;border:0!important;border-bottom:1px solid #fff!important}
+html.zv-theme-dawn .zvh-dot,html.zv-theme-prestige .zvh-dot{background:rgba(255,255,255,.45)}html.zv-theme-dawn .zvh-dot.on,html.zv-theme-prestige .zvh-dot.on{background:#fff}
+html.zv-theme-dawn .zvh-arrow,html.zv-theme-prestige .zvh-arrow{background:rgba(255,255,255,.18);color:#fff;border-color:rgba(255,255,255,.7)}
+/* sections */
+html.zv-theme-dawn .zvs-cats,html.zv-theme-dawn .zvs-newin,html.zv-theme-prestige .zvs-cats,html.zv-theme-prestige .zvs-newin{background:var(--bg)}
+html.zv-theme-dawn .zv-street .zvs-tiles,html.zv-theme-dawn .zv-ethnic .zvs-tiles,html.zv-theme-prestige .zv-street .zvs-tiles,html.zv-theme-prestige .zv-ethnic .zvs-tiles{background:var(--bg);padding:40px clamp(14px,4vw,60px)}
+html.zv-theme-dawn .zv-street .zvt,html.zv-theme-prestige .zv-street .zvt,html.zv-theme-dawn .zv-ethnic .zvt,html.zv-theme-prestige .zv-ethnic .zvt{display:block;text-align:left;color:var(--ink)}
+html.zv-theme-dawn .zvt-img,html.zv-theme-prestige .zvt-img{width:100%!important;height:auto!important;aspect-ratio:4/5!important;display:block;border-radius:0!important;margin-bottom:12px;filter:none!important}
+html.zv-theme-dawn .zvt-grid,html.zv-theme-prestige .zvt-grid{grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:18px}
+html.zv-theme-dawn .zvt-txt b,html.zv-theme-prestige .zvt-txt b{font-family:inherit!important;font-style:normal!important;font-size:15px;font-weight:600}
+html.zv-theme-dawn .zv-street .zvs-marquee,html.zv-theme-prestige .zv-street .zvs-marquee,html.zv-theme-dawn .zv-ethnic .zvs-marquee,html.zv-theme-prestige .zv-ethnic .zvs-marquee{background:#121212;margin:0;padding:12px 0;border:0}
+html.zv-theme-prestige .zvs-marquee{background:#26211a!important}
+html.zv-theme-dawn .zvm-track span,html.zv-theme-prestige .zvm-track span{color:#fff!important;-webkit-text-stroke:0!important;font-family:inherit!important;font-style:normal!important;font-weight:500!important;font-size:12px!important;letter-spacing:.18em;padding:0 26px!important}
+html.zv-theme-prestige .zvm-track span{color:#e9d9b8!important}
+html.zv-theme-dawn .zvm-track span::after,html.zv-theme-prestige .zvm-track span::after{color:#888}
+html.zv-theme-dawn .zv-street .zvs-banner{min-height:clamp(320px,50vw,520px)}
+html.zv-theme-dawn .zvb-copy h2,html.zv-theme-prestige .zvb-copy h2{text-transform:none!important;font-style:normal!important;letter-spacing:-.02em!important;font-weight:500!important}
+html.zv-theme-dawn .zv-street .zvs-trust,html.zv-theme-prestige .zv-street .zvs-trust{background:var(--card);border:0}
+html.zv-theme-dawn .zv-ethnic .zvtr,html.zv-theme-prestige .zv-ethnic .zvtr{border-radius:0}
+/* products */
+html.zv-theme-dawn .section-head h2,html.zv-theme-prestige .section-head h2{font-style:normal!important;font-weight:400!important;text-transform:none;letter-spacing:-.01em}
+html.zv-theme-prestige .section-head h2{font-weight:500!important;letter-spacing:.02em}
+html.zv-theme-dawn .product .add,html.zv-theme-dawn .app.ethnic .product .add{background:#121212!important;color:#fff!important;border:0!important;border-radius:0!important}
+html.zv-theme-prestige .product .add,html.zv-theme-prestige .app.ethnic .product .add{background:transparent!important;color:#26211a!important;border:1px solid #26211a!important;border-radius:0!important;letter-spacing:.18em}
+html.zv-theme-prestige .product .add:hover{background:#26211a!important;color:#fff!important}
+html.zv-theme-dawn .product .corner-badge,html.zv-theme-prestige .product .corner-badge{background:#121212;color:#fff;border-radius:2px;font-weight:600;letter-spacing:.06em}
+html.zv-theme-prestige .product .corner-badge{background:#a8844a}
+html.zv-theme-dawn .price .pct{color:#c62828}html.zv-theme-prestige .price .pct{color:#a8844a}
+html.zv-theme-dawn .pimg,html.zv-theme-prestige .pimg{border-radius:0}
+html.zv-theme-dawn .wish,html.zv-theme-prestige .wish{border-radius:50%}
+html.zv-theme-dawn .cat.cat-photo,html.zv-theme-prestige .cat.cat-photo,html.zv-theme-dawn .app.ethnic .cat.cat-photo,html.zv-theme-prestige .app.ethnic .cat.cat-photo{border-radius:0}
+html.zv-theme-dawn .categories,html.zv-theme-prestige .categories,html.zv-theme-dawn .app.ethnic .categories,html.zv-theme-prestige .app.ethnic .categories{background:var(--bg)!important}
+html.zv-theme-dawn .promo,html.zv-theme-prestige .promo{border-radius:0;background:var(--card)}
+/* footer */
+html.zv-theme-dawn .footer,html.zv-theme-dawn .app.ethnic .footer{background:#f4f4f4!important;color:#121212!important}
+html.zv-theme-prestige .footer,html.zv-theme-prestige .app.ethnic .footer{background:#2a2118!important;color:#efe5d2!important}
+html.zv-theme-dawn .darkstrip,html.zv-theme-prestige .darkstrip{background:var(--card)!important;color:var(--ink)!important;border-block:1px solid var(--line)}
+html.zv-theme-dawn .footer a,html.zv-theme-dawn .footer p,html.zv-theme-dawn .footer small,html.zv-theme-dawn .footer h4{color:inherit!important}
+html.zv-theme-prestige .footer a,html.zv-theme-prestige .footer p,html.zv-theme-prestige .footer small,html.zv-theme-prestige .footer h4{color:inherit!important}
+.zv-buildtag{position:fixed;left:8px;bottom:8px;z-index:99999;background:#000;color:#fff;font:600 11px/1 Arial;padding:6px 9px;border-radius:6px;opacity:.9}
+</style></head><body><main class="app" id="app">
 <header class="topbar"><button class="menu-trigger" id="menuTrigger" type="button" aria-label="Open navigation" aria-expanded="false">☰</button><a href="#" class="logo" id="logo">ZIVRA<small>WEAR YOUR STORY</small></a><nav class="nav"><a href="#home">Home</a><a href="#shop">Shop</a><a href="#collections">Collections</a><a href="#about">About</a><a href="#contact">Contact</a></nav><label class="search"><input id="search" placeholder="Search for products..."><span>⌕</span></label><div class="icons"><button type="button" id="accountButton" title="My Account" aria-label="My Account" style="background:none;border:0;color:inherit;font:inherit;padding:0">♙</button><span title="Wishlist">♡</span><span title="Bag" id="bag">▢<sup id="count">0</sup></span></div></header><div class="customer-drawer-backdrop" id="drawerBackdrop"></div><aside class="customer-drawer" id="customerDrawer" aria-hidden="true"><div class="drawer-head"><strong>ZIVRA.</strong><button class="drawer-close" id="drawerClose" aria-label="Close menu">×</button></div><div class="eyebrow">EXPLORE ZIVRA</div><nav class="drawer-links"><a href="#home">⌂ &nbsp; Home</a><a href="#shop">◇ &nbsp; Shop</a><a href="#collections">▦ &nbsp; Collections</a><a href="about.html">✧ &nbsp; About / Story</a><a href="contact.html">✉ &nbsp; Contact</a><a href="account.html">♙ &nbsp; My Account</a><a href="track-order.html">↗ &nbsp; My Orders</a><a href="help-center.html">? &nbsp; Help Centre</a></nav><section class="drawer-support"><h3>Need a hand?</h3><p>Order updates, sizing, returns or anything else — find answers in our customer care space.</p><a href="help-center.html">Visit Help Centre →</a></section></aside>
 <div class="switchline"><div class="switchbox"><b id="streetLabel" class="active">Men's Streetwear</b><button class="toggle" id="toggle" role="switch" aria-checked="false" aria-label="Switch collection"><span class="knob"></span></button><b id="ethnicLabel">Sanganeri & Ethnic Wear</b></div></div>
 <section class="hero" id="hero"><div class="hero-copy"><div class="eyebrow" id="eyebrow">MEN'S STREETWEAR</div><h1 id="headline">BUILT FOR<br>THE BOLD</h1><p id="subhead">Oversized fits / Premium cotton / Urban vibes</p><button class="btn" id="shopNow">Shop Now&nbsp; →</button></div></section>
@@ -455,6 +520,7 @@ function mutateData(c){
   });
 }
 function applyStatic(c){
+  (function(){var cl=document.documentElement.className.replace(/\bzv-theme-[a-z]+\b/g,'').replace(/\s+/g,' ').trim();var t=(c.theme||{}).template;if(t&&/^[a-z]+$/.test(t)&&t!=='classic')cl+=' zv-theme-'+t;document.documentElement.className=cl})();
   var b=c.brand||{};
   if(b.name||b.tagline!==undefined||b.logoUrl){
     var nm={name:b.name||'ZIVRA',tagline:b.tagline,logoUrl:b.logoUrl};
@@ -779,7 +845,7 @@ window.zivraHomeRender=function(){
   sl.i=0;sl.iv=Math.max(3,Number(h.interval)||6);sl.auto=h.autoplay!==false;
   restart();wire(c.motion);decorateCats();tagStatic();
 };
-try{if(!document.getElementById('zv-home-fonts')){var lk=document.createElement('link');lk.id='zv-home-fonts';lk.rel='stylesheet';lk.href='https://fonts.googleapis.com/css2?family=Inter:wght@500;800;900&family=Cormorant+Garamond:ital,wght@0,500;0,700;1,500;1,700&family=Jost:wght@400;500&display=swap';document.head.appendChild(lk)}}catch(e){}
+try{if(!document.getElementById('zv-home-fonts')){var lk=document.createElement('link');lk.id='zv-home-fonts';lk.rel='stylesheet';lk.href='https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800;900&family=Cormorant+Garamond:ital,wght@0,500;0,700;1,500;1,700&family=Jost:wght@400;500;600&display=swap';document.head.appendChild(lk)}}catch(e){}
 /* ---------- visual editor bridge (only inside the admin preview frame) ---------- */
 if(ZE){
   document.addEventListener('click',function(e){
@@ -888,5 +954,4 @@ document.addEventListener('click',function(e){
 })()}catch(zvWErr){try{window.zivraReport&&window.zivraReport('wishlist',zvWErr)}catch(_){}}
 
 </script>
-<a class="help-launch" href="help-center.html">✦ &nbsp; Need help?</a><script>(function(){const root=document.body,trigger=document.getElementById("menuTrigger"),back=document.getElementById("drawerBackdrop"),close=document.getElementById("drawerClose"),drawer=document.getElementById("customerDrawer");if(!trigger||!drawer)return;function setOpen(v){root.classList.toggle("drawer-open",v);trigger.setAttribute("aria-expanded",String(v));drawer.setAttribute("aria-hidden",String(!v));}trigger.addEventListener("click",()=>setOpen(true));back.addEventListener("click",()=>setOpen(false));close.addEventListener("click",()=>setOpen(false));drawer.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>setOpen(false)));document.addEventListener("keydown",e=>{if(e.key==="Escape")setOpen(false)});})();</script><script src="./razorpay-checkout.js"></script><script src="./zivra-assistant.js?v=1"></script>
-</body></html>
+<a class="help-launch" href="help-center.html">✦ &nbsp; Need help?</a><script>(function(){const root=document.body,trigger=document.getElementById("menuTrigger"),back=document.getElementById("drawerBackdrop"),close=document.getElementById("drawerClose"),drawer=document.getElementById("customerDrawer");if(!trigger||!drawer)return;function setOpen(v){root.classList.toggle("drawer-open",v);trigger.setAttribute("aria-expanded",String(v));drawer.setAttribute("aria-hidden",String(!v));}trigger.addEventListener("click",()=>setOpen(true));back.addEventListener("click",()=>setOpen(false));close.addEventListener("click",()=>setOpen(false));drawer.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>setOpen(false)));document.addEventListener("keydown",e=>{if(e.key==="Escape")setOpen(false)});})();</script><script src="./razorpay-checkout.js"></script><script>window.ZIVRA_BUILD='2026-11-07-shop1';if(location.search.indexOf('build')>-1){document.addEventListener('DOMContentLoaded',function(){var d=document.createElement('div');d.className='zv-buildtag';d.textContent='Store build '+window.ZIVRA_BUILD;document.body.appendChild(d)})}</script></body></html>
