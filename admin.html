@@ -48,6 +48,49 @@ body:not(.authorized) #app{display:none}
 #resetGate .gate-card{width:min(420px,100%)}
 #resetGate p{color:#777}
 </style>
+
+<style id="zivra-admin-premium">
+/* ZIVRA admin refresh: calm, guided and mobile-first */
+#view-sitecontrol .pagehead{align-items:flex-start}
+#view-sitecontrol .pagehead p{max-width:650px;font-size:13px}
+.zv-guide{padding:22px;margin-bottom:16px;background:linear-gradient(135deg,#fff 0%,#f7f1e7 100%);border-color:#e7dccb}
+.zv-guide-head{display:flex;justify-content:space-between;align-items:center;gap:16px}
+.zv-guide-head h2{font:500 25px Georgia,serif;margin:7px 0 5px;color:#292722}
+.zv-guide-head p{font-size:12px;color:#817c73;margin:0}
+.zv-guide-mark{width:48px;height:48px;display:grid;place-items:center;border-radius:50%;background:#29231c;color:#d9bd8c;font:italic 26px Georgia}
+.zv-guide-steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:20px}
+.zv-guide-steps>div{background:#fff;border:1px solid #e9e1d5;border-radius:11px;padding:15px;display:grid;gap:7px}
+.zv-guide-steps b{font-size:10px;letter-spacing:.15em;color:#aa8552}
+.zv-guide-steps strong{font-size:13px;color:#292722}
+.zv-guide-steps span{font-size:11px;line-height:1.55;color:#817c73}
+.zv-guide-tip{font-size:11px;color:#75664f;background:#eee4d5;border-radius:8px;padding:10px 12px;margin:14px 0 0}
+#zvTemplates{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;padding:4px 0}
+#zvTemplates button{min-height:116px;flex:1 1 0;text-align:left;white-space:normal;border:1px solid #e6ddcf;background:#fff;border-radius:12px;padding:16px 14px;color:#292722;font-size:13px;font-weight:750;line-height:1.4;box-shadow:0 5px 16px #34271908;transition:transform .2s,border-color .2s,box-shadow .2s}
+#zvTemplates button:before{content:"";display:block;width:42px;height:5px;border-radius:8px;background:linear-gradient(90deg,#29231c 0 60%,#c6a16a 60%);margin-bottom:13px}
+#zvTemplates button:hover{transform:translateY(-2px);border-color:#b89461;box-shadow:0 10px 24px #34271912}
+#zvTemplates button:focus-visible{outline:2px solid #a9844e;outline-offset:3px}
+#zvHomeBuilder{margin-top:16px}
+#zvForm{margin-top:14px}
+#view-sitecontrol details.zgroup{box-shadow:0 3px 14px #34271906}
+#view-sitecontrol details.zgroup>summary{padding:17px 20px}
+#view-sitecontrol .zfield label{font-weight:650;color:#62594e}
+#view-sitecontrol .zfield input:not([type=checkbox]):not([type=color]),#view-sitecontrol .zfield select,#view-sitecontrol .zfield textarea{min-height:42px}
+#view-sitecontrol .zactions button{min-height:36px}
+#view-sitecontrol #zvStatus{background:#f3eee5;border-radius:9px;padding:12px;margin-top:14px}
+@media(max-width:760px){
+ .zv-guide{padding:16px}
+ .zv-guide-head h2{font-size:22px}
+ .zv-guide-steps{grid-template-columns:1fr;gap:8px;margin-top:14px}
+ .zv-guide-steps>div{grid-template-columns:32px 1fr;align-items:start;column-gap:8px;padding:12px}
+ .zv-guide-steps b{grid-row:span 2;padding-top:2px}
+ .zv-guide-steps span{grid-column:2}
+ #zvTemplates{grid-template-columns:1fr}
+ #zvTemplates button{min-height:78px}
+ #view-sitecontrol .pagehead>div:last-child{width:100%}
+ #view-sitecontrol .pagehead>div:last-child button,#view-sitecontrol .pagehead>div:last-child a{flex:1;text-align:center}
+}
+</style>
+
 </head>
 <body>
 <div id="adminGate"><form class="gate-card" id="adminLoginForm" onsubmit="return window.zivraAdminLogin(event)"><div class="gate-brand">ZIVRA<span>.</span></div><h1>Admin sign in</h1><p>This private workspace is restricted to your approved ZIVRA administrator account.</p><label for="adminEmail">Email address</label><input id="adminEmail" type="email" autocomplete="username" value="harshsharma2122004h@gmail.com" required><label for="adminPassword">Password</label><input id="adminPassword" type="password" autocomplete="current-password" required><button id="adminLoginButton" type="submit">Sign in securely</button><button type="button" id="forgotPasswordBtn">Forgot password? Send reset link</button><div id="gateError" role="alert"></div></form></div>
@@ -125,10 +168,19 @@ body:not(.authorized) #app{display:none}
         <div class="zve-grid"><div class="zve-frame mobile" id="zveFrameWrap"></div><aside class="zve-panel panel" id="zvePanel"></aside></div>
       </section>
       <section class="view" id="view-sitecontrol">
-        <div class="pagehead"><div><div class="eyebrow">STOREFRONT STUDIO</div><h1>Site Control</h1><p>Change the look, text, logo, header, footer, colours, fonts and motion of your customer website. Anything you leave empty keeps the current design.</p></div><div style="display:flex;gap:8px;flex-wrap:wrap"><a class="secondary" href="./index.html" target="_blank" rel="noopener" style="text-decoration:none;padding:10px 14px;border:1px solid var(--line);border-radius:8px">Open store ↗</a><button class="secondary" id="zvReset">Reset all</button><button class="primary" id="zvSave">Save &amp; publish</button></div></div>
-        <section class="panel" id="zvThemePanel"><div style="padding:16px 20px"><div class="eyebrow">STORE THEME — COMPLETE LOOK OF YOUR WEBSITE</div><p class="zmeta" style="margin:6px 0 14px">Pick a full design like a Shopify theme. It changes header, banner, product cards, buttons and footer for both collections. Your text, photos and products stay the same.</p><div id="zvThemeCards" class="zvthemes"></div><p class="zmeta" id="zvThemeNote" style="margin-top:12px"></p></div></section>
+        <div class="pagehead"><div><div class="eyebrow">STOREFRONT STUDIO</div><h1>Site Control</h1><p>A simple control room for your storefront. Start with a ready-made design, update the posters, then publish. Advanced settings are optional.</p></div><div style="display:flex;gap:8px;flex-wrap:wrap"><a class="secondary" href="./index.html" target="_blank" rel="noopener" style="text-decoration:none;padding:10px 14px;border:1px solid var(--line);border-radius:8px">Open store ↗</a><button class="secondary" id="zvReset">Reset all</button><button class="primary" id="zvSave">Save &amp; publish</button></div></div>
+        <section class="panel" id="zvThemePanel" hidden><div style="padding:16px 20px"><div class="eyebrow">STORE THEME — COMPLETE LOOK OF YOUR WEBSITE</div><p class="zmeta" style="margin:6px 0 14px">Pick a full design like a Shopify theme. It changes header, banner, product cards, buttons and footer for both collections. Your text, photos and products stay the same.</p><div id="zvThemeCards" class="zvthemes"></div><p class="zmeta" id="zvThemeNote" style="margin-top:12px"></p></div></section>
+        <section class="panel zv-guide">
+          <div class="zv-guide-head"><div><div class="eyebrow">QUICK SETUP · 2 MINUTES</div><h2>Make your store look premium</h2><p>Follow these three steps. You do not need to edit every setting.</p></div><span class="zv-guide-mark">Z</span></div>
+          <div class="zv-guide-steps">
+            <div><b>01</b><strong>Choose a design</strong><span>Pick one of the three ready-made premium styles below.</span></div>
+            <div><b>02</b><strong>Update your posters</strong><span>Open Home page builder → Posters. Upload separate Streetwear and Sanganeri banners.</span></div>
+            <div><b>03</b><strong>Publish once</strong><span>Tap Save &amp; publish. Preview on desktop and mobile before sharing your store.</span></div>
+          </div>
+          <p class="zv-guide-tip">Tip: Leave advanced colour, font and CSS settings untouched unless you need them.</p>
+        </section>
         <section class="panel" id="zvLivePanel"><div style="padding:16px 20px"><div class="eyebrow">WHAT IS LIVE ON YOUR WEBSITE</div><div class="zactions" style="margin:14px 0;gap:22px"><label style="font-size:14px;display:flex;gap:8px;align-items:center"><input type="checkbox" id="liveStreet" checked> Men's Streetwear</label><label style="font-size:14px;display:flex;gap:8px;align-items:center"><input type="checkbox" id="liveEthnic" checked> Ethnic / Sanganeri</label></div><p class="zmeta" id="liveNote" style="margin:0 0 12px"></p><button class="primary" id="liveSave" type="button">Apply to live site now</button></div></section>
-        <section class="panel"><div style="padding:16px 20px"><div class="eyebrow" style="margin-bottom:10px">READY-MADE TEMPLATES (tap one, then fine-tune below, then Save)</div><div class="zactions" id="zvTemplates"></div></div></section>
+        <section class="panel"><div style="padding:16px 20px"><div class="eyebrow" style="margin-bottom:10px">CHOOSE YOUR STORE LOOK</div><div class="zactions" id="zvTemplates"></div></div></section>
         <div id="zvHomeBuilder"></div>
         <div id="zvForm"></div>
         <p class="zmeta" id="zvStatus" style="padding:8px 4px">Loading…</p>
@@ -445,12 +497,18 @@ const ZV_GROUPS=[
 ];
 const zvPal=(st,et,extra)=>Object.assign({'theme.street':st,'theme.ethnic':et},extra);
 const ZV_TEMPLATES={
- classic:{name:'Classic (current look)',reset:true,set:{}},
- midnight:{name:'Midnight Luxe',set:zvPal({bg:'#0b0d12',surface:'#141824',ink:'#f2efe8',muted:'#9aa0b2',line:'#2a3042',accent:'#d4af37'},{bg:'#14110d',surface:'#1d1812',ink:'#f3e9d6',muted:'#a89a82',line:'#3a3125',accent:'#d4af37'},{'theme.btnText':'#14110a','theme.footerBg':'#07090d','theme.stripBg':'#10131c','theme.catBg':'#0e1119','font.heading':'playfair','font.body':'inter','style.radius':'soft','card.style':'shadow','motion.reveal':'fade'})},
- ivory:{name:'Ivory Boutique',set:zvPal({bg:'#faf7f2',surface:'#ffffff',ink:'#1f1b16',muted:'#7a7064',line:'#e6ddd0',accent:'#b08a4a'},{bg:'#f7efe3',surface:'#fffaf2',ink:'#2d2118',muted:'#8a7765',line:'#e2d1ba',accent:'#80512f'},{'theme.btnText':'#ffffff','theme.footerBg':'#2b2118','theme.stripBg':'#2b2118','theme.catBg':'#f1e8da','font.heading':'cormorant','font.body':'montserrat','style.radius':'soft','card.style':'minimal','card.hover':'zoom','card.image':'portrait'})},
- rose:{name:'Rose Silk',set:zvPal({bg:'#1a0f14',surface:'#25151c',ink:'#fbeef2',muted:'#c49aa8',line:'#43252f',accent:'#f08fb0'},{bg:'#fdf1f3',surface:'#fff8f9',ink:'#3a1f27',muted:'#9a6b78',line:'#f0d3da',accent:'#c2456f'},{'theme.btnText':'#2a0f19','theme.footerBg':'#12080c','theme.stripBg':'#25151c','theme.catBg':'#1f1117','font.heading':'dmserif','font.body':'poppins','style.radius':'round','style.button':'pill','card.style':'shadow'})},
- emerald:{name:'Emerald Noir',set:zvPal({bg:'#0a1512',surface:'#10201b',ink:'#eaf3ee',muted:'#8fb0a2',line:'#1f3a31',accent:'#3ecf8e'},{bg:'#f1f6f2',surface:'#fbfdfb',ink:'#14281f',muted:'#5d7a6b',line:'#cfe0d5',accent:'#1f7a52'},{'theme.btnText':'#04140d','theme.footerBg':'#06100c','theme.stripBg':'#0e1c17','theme.catBg':'#0c1914','font.heading':'playfair','font.body':'inter','style.radius':'sharp','card.style':'bordered','card.hover':'zoom'})},
- mono:{name:'Minimal Mono',set:zvPal({bg:'#0f0f0f',surface:'#181818',ink:'#f5f5f5',muted:'#9a9a9a',line:'#2c2c2c',accent:'#ffffff'},{bg:'#f4f4f4',surface:'#ffffff',ink:'#111111',muted:'#707070',line:'#dddddd',accent:'#8c8c8c'},{'theme.btnText':'#000000','theme.footerBg':'#0a0a0a','theme.stripBg':'#161616','theme.catBg':'#141414','font.heading':'inter','font.body':'inter','style.radius':'sharp','style.button':'square','card.style':'minimal','card.hover':'zoom','motion.reveal':'fade'})}
+ noir:{name:'Noir Atelier — Streetwear Luxe',set:zvPal(
+  {bg:'#0b0d0f',surface:'#15191b',ink:'#f5f1e9',muted:'#a9a39a',line:'#303638',accent:'#c6a16a'},
+  {bg:'#f4eee4',surface:'#fffaf2',ink:'#2b2119',muted:'#8a7968',line:'#e4d7c6',accent:'#8b5b38'},
+  {'theme.btnText':'#15120e','theme.footerBg':'#090b0c','theme.stripBg':'#15191b','theme.catBg':'#101415','font.heading':'playfair','font.body':'inter','style.radius':'sharp','card.style':'minimal','card.hover':'zoom','card.image':'portrait','motion.reveal':'fade'})},
+ jaipur:{name:'Jaipur Heritage — Sanganeri Edit',set:zvPal(
+  {bg:'#171311',surface:'#211a16',ink:'#f7eee2',muted:'#c1ad99',line:'#40332a',accent:'#c79a68'},
+  {bg:'#f7eee2',surface:'#fffaf2',ink:'#3c281e',muted:'#8d705b',line:'#e4d0b8',accent:'#965b3d'},
+  {'theme.btnText':'#fffaf2','theme.footerBg':'#352319','theme.stripBg':'#ead8c0','theme.catBg':'#efe0cc','font.heading':'cormorant','font.body':'montserrat','style.radius':'soft','style.button':'square','card.style':'shadow','card.hover':'zoom','card.image':'portrait','motion.reveal':'fade'})},
+ editorial:{name:'Editorial Ivory — Premium Boutique',set:zvPal(
+  {bg:'#f8f6f1',surface:'#ffffff',ink:'#1c1c1a',muted:'#77736b',line:'#e7e2d9',accent:'#aa8959'},
+  {bg:'#f8f1e7',surface:'#fffaf3',ink:'#30251d',muted:'#887767',line:'#e8d9c6',accent:'#986b45'},
+  {'theme.btnText':'#ffffff','theme.footerBg':'#171715','theme.stripBg':'#efebe3','theme.catBg':'#f0ece4','font.heading':'playfair','font.body':'inter','style.radius':'soft','card.style':'minimal','card.hover':'zoom','card.image':'portrait','motion.reveal':'fade'})}
 };
 let zvCfg={},zvLoaded=false;
 function zvGet(o,path){return path.split('.').reduce((a,k)=>a==null?undefined:a[k],o)}
@@ -954,7 +1012,7 @@ function ztRender(){
  const box=$('zvThemeCards');if(!box)return;
  const cur=zvGet(zvCfg,'theme.template')||'dawn';
  box.innerHTML=ZV_STORE_THEMES.map(t=>`<button type="button" class="zvtheme ${t.key===cur?'on':''}" data-zvtheme="${t.key}"><div class="zvthumb" style="background:${t.bg}"><i style="height:10px;background:${t.bar}"></i><i style="height:46px;background:${t.bar};opacity:.75"></i><i style="height:34px;background:${t.line}"></i></div><b>${zEsc(t.name)}${t.key===cur?' ✓':''}</b><span class="d">${zEsc(t.desc)}</span></button>`).join('');
- const n=$('zvThemeNote');if(n)n.textContent='Tap a theme to publish it on your live website at once. You can change back any time.';
+ const n=$('zvThemeNote');if(n)n.textContent='Choose one premium preset, check the preview, then use Save & publish at the top. Your products and poster photos are kept.';
 }
 async function ztApply(key){
  try{

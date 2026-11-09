@@ -290,7 +290,99 @@ html[class*="zv-theme-"] .footer input{background:#fff!important;color:#121212!i
 html[class*="zv-theme-"] .darkstrip,html[class*="zv-theme-"] .app.ethnic .darkstrip{background:var(--card)!important;color:var(--ink)!important;border-block:1px solid var(--line)}
 html[class*="zv-theme-"] .darkstrip *{color:inherit!important}
 .zv-buildtag{position:fixed;left:8px;bottom:8px;z-index:99999;background:#000;color:#fff;font:600 11px/1 Arial;padding:6px 9px;border-radius:6px;opacity:.9}
-</style></head><body><main class="app" id="app">
+</style>
+<style id="zivra-storefront-premium-refresh">
+/* Premium editorial finish — keeps both collection identities and existing poster images */
+:root{--zv-editorial-gold:#c6a16a}
+.zvs-hero{overflow:hidden;background:#0b0d0e}
+.zv-street .zvh-slide{min-height:clamp(570px,88vh,900px)}
+.zv-street .zvh-img{background-position:center 30%;filter:saturate(.86)}
+.zv-street .zvh-shade{background:linear-gradient(90deg,rgba(4,5,6,.78),rgba(4,5,6,.28) 58%,rgba(4,5,6,.04)),linear-gradient(0deg,rgba(0,0,0,.48),transparent 48%)}
+.zv-street .zvh-copy{max-width:min(980px,88vw);bottom:clamp(72px,14vh,145px)}
+.zv-street .zvh-eyebrow{font-size:10px;letter-spacing:.34em;color:#e8c99b}
+.zv-street .zvh-title{font-size:clamp(52px,10.5vw,148px);letter-spacing:-.055em;line-height:.86;text-wrap:balance}
+.zv-street .zvh-sub{max-width:480px;color:#eee9e1;font-size:clamp(13px,1.35vw,16px)}
+.zv-street .zvb{background:#e4c18e;color:#19140f;transition:transform .2s,background .2s}
+.zv-street .zvb:hover{background:#f1d7ae;transform:translateY(-2px)}
+.zv-ethnic .zvh-slide{min-height:clamp(520px,82vh,820px)}
+.zv-ethnic .zvh-img{background-position:center 38%;filter:saturate(.9)}
+.zv-ethnic .zvh-shade{background:linear-gradient(90deg,rgba(48,29,19,.68),rgba(48,29,19,.22) 55%,rgba(48,29,19,.02)),linear-gradient(0deg,rgba(36,21,13,.32),transparent 48%)}
+.zv-ethnic .zvh-eyebrow{color:#f0d8b8}
+.zv-ethnic .zvh-title{font-family:Georgia,serif;font-weight:500;letter-spacing:-.045em;line-height:.91;text-wrap:balance}
+.zv-ethnic .zvh-sub{max-width:500px;color:#fff8ed}
+.zv-ethnic .zvb{background:#f0d6b5;color:#3a2418}
+.zvs-head h2,.zvs-title{letter-spacing:-.035em}
+.zvs-newin,.zvs-tiles,.zvs-banner,.zvs-trust,.zvs-reviews{padding-top:clamp(34px,5vw,72px)!important;padding-bottom:clamp(34px,5vw,72px)!important}
+.zv-street .zvs-tiles{background:#101314}
+.zv-street .zvt-img{width:104px;height:126px;border:1px solid #ffffff20}
+.zv-street .zvt-txt b{font-size:15px;letter-spacing:.04em}
+.zv-street .zvt-txt em{font-size:9px;letter-spacing:.18em;color:#d7b987}
+.zv-ethnic .zvs-tiles{background:#efe3d2}
+.zv-ethnic .zvt-img{width:104px;height:126px;border:1px solid #bda78b}
+.zv-ethnic .zvt-txt b{font:500 21px Georgia,serif;color:#3d291e}
+.zv-ethnic .zvt-txt span{color:#755c49}
+.zv-ethnic .zvt-txt em{font-size:9px;letter-spacing:.16em;color:#895b3b}
+.zvs-banner .zvb-frame{overflow:hidden}
+.zvs-banner .zvb-img{transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+.zvs-banner:hover .zvb-img{transform:scale(1.025)}
+.zvs-banner .zvb-copy h2{line-height:.98;letter-spacing:-.04em}
+.zvs-reviews .zvr{border:1px solid #8883;border-radius:10px;padding:22px;background:#ffffff08}
+.product{border-radius:8px!important;overflow:hidden;box-shadow:0 5px 20px #0000000a}
+.product img{transition:transform .65s cubic-bezier(.2,.7,.2,1);object-position:center}
+.product:hover img{transform:scale(1.035)}
+.product .pinfo{padding:14px}
+.product .pname{letter-spacing:.01em;line-height:1.4}
+.product .add{letter-spacing:.1em;text-transform:uppercase;transition:background .2s,color .2s}
+.app.ethnic .product{box-shadow:0 5px 22px #69482b0c}
+.footer{padding-top:44px;padding-bottom:40px}
+@media(max-width:760px){
+ .zv-street .zvh-slide{min-height: min(78svh,740px);min-height:max(520px,78svh)}
+ .zv-street .zvh-img{background-position:58% center}
+ .zv-street .zvh-shade{background:linear-gradient(90deg,rgba(0,0,0,.62),rgba(0,0,0,.13)),linear-gradient(0deg,rgba(0,0,0,.5),transparent 56%)}
+ .zv-street .zvh-copy{left:20px;right:20px;bottom:76px;max-width:90vw}
+ .zv-street .zvh-title{font-size:clamp(48px,14vw,82px);line-height:.9}
+ .zv-street .zvh-sub{font-size:12px;max-width:290px;line-height:1.6}
+ .zv-ethnic .zvh-slide{min-height: min(74svh,680px);min-height:max(490px,74svh)}
+ .zv-ethnic .zvh-img{background-position:58% center}
+ .zv-ethnic .zvh-copy{left:20px;right:20px;bottom:66px;max-width:88vw}
+ .zv-ethnic .zvh-title{font-size:clamp(42px,12vw,72px)}
+ .zv-ethnic .zvh-sub{font-size:12px;max-width:290px;line-height:1.6}
+ .zvh-btns{gap:12px;margin-top:20px}
+ .zvb{padding:12px 17px;font-size:10px}
+ .zvh-dots{left:20px;bottom:22px}
+ .zvs-tiles .zvt-img{width:78px;height:96px}
+ .zvs-tiles .zvt{gap:12px}
+ .zvs-tiles .zvt-grid{grid-template-columns:1fr 1fr;gap:18px 12px}
+ .zvs-tiles .zvt-txt b{font-size:13px}
+ .zvs-tiles .zvt-txt span{font-size:10px;line-height:1.4}
+ .zvs-tiles .zvt-txt em{font-size:8px}
+ .zvs-banner{grid-template-columns:1fr!important}
+ .zvs-banner .zvb-copy{padding:24px 20px!important}
+ .zvs-banner .zvb-copy h2{font-size:clamp(28px,8vw,42px)}
+ .zvs-newin{overflow:hidden}
+ .zvs-newin .zvn-row{gap:10px}
+ .zvs-newin .zvn{min-width:118px}
+ .zvs-newin .zvn-img{height:148px}
+ .zvs-trust .zvtr-grid{grid-template-columns:1fr 1fr;gap:18px}
+ .zvs-reviews .zvr-grid{grid-template-columns:1fr}
+ .product img{height:190px}
+ .pinfo{padding:10px!important}
+ .pname{font-size:12px!important}
+ .price{font-size:12px}
+ .add{font-size:9px;padding:10px 4px}
+ .footer{gap:16px;padding:30px 5%}
+}
+@media(max-width:380px){
+ .zvs-tiles .zvt-grid{grid-template-columns:1fr}
+ .zvs-tiles .zvt-img{width:86px;height:100px}
+ .product img{height:165px}
+}
+@media(prefers-reduced-motion:reduce){
+ .product img,.zvs-banner .zvb-img{transition:none}
+}
+</style>
+
+</head><body><main class="app" id="app">
 <header class="topbar"><button class="menu-trigger" id="menuTrigger" type="button" aria-label="Open navigation" aria-expanded="false">☰</button><a href="#" class="logo" id="logo">ZIVRA<small>WEAR YOUR STORY</small></a><nav class="nav"><a href="#home">Home</a><a href="#shop">Shop</a><a href="#collections">Collections</a><a href="#about">About</a><a href="#contact">Contact</a></nav><label class="search"><input id="search" placeholder="Search for products..."><span>⌕</span></label><div class="icons"><button type="button" id="accountButton" title="My Account" aria-label="My Account" style="background:none;border:0;color:inherit;font:inherit;padding:0">♙</button><span title="Wishlist">♡</span><span title="Bag" id="bag">▢<sup id="count">0</sup></span></div></header><div class="customer-drawer-backdrop" id="drawerBackdrop"></div><aside class="customer-drawer" id="customerDrawer" aria-hidden="true"><div class="drawer-head"><strong>ZIVRA.</strong><button class="drawer-close" id="drawerClose" aria-label="Close menu">×</button></div><div class="eyebrow">EXPLORE ZIVRA</div><nav class="drawer-links"><a href="#home">⌂ &nbsp; Home</a><a href="#shop">◇ &nbsp; Shop</a><a href="#collections">▦ &nbsp; Collections</a><a href="about.html">✧ &nbsp; About / Story</a><a href="contact.html">✉ &nbsp; Contact</a><a href="account.html">♙ &nbsp; My Account</a><a href="track-order.html">↗ &nbsp; My Orders</a><a href="help-center.html">? &nbsp; Help Centre</a></nav><section class="drawer-support"><h3>Need a hand?</h3><p>Order updates, sizing, returns or anything else — find answers in our customer care space.</p><a href="help-center.html">Visit Help Centre →</a></section></aside>
 <div class="switchline"><div class="switchbox"><b id="streetLabel" class="active">Men's Streetwear</b><button class="toggle" id="toggle" role="switch" aria-checked="false" aria-label="Switch collection"><span class="knob"></span></button><b id="ethnicLabel">Sanganeri & Ethnic Wear</b></div></div>
 <section class="hero" id="hero"><div class="hero-copy"><div class="eyebrow" id="eyebrow">MEN'S STREETWEAR</div><h1 id="headline">BUILT FOR<br>THE BOLD</h1><p id="subhead">Oversized fits / Premium cotton / Urban vibes</p><button class="btn" id="shopNow">Shop Now&nbsp; →</button></div></section>
