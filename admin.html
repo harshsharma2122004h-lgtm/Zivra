@@ -568,7 +568,7 @@ function zhRender(){
  const lines=Array.isArray(zvGet(zvCfg,zhPath('marquee')))?zvGet(zvCfg,zhPath('marquee')).join('\n'):'';
  box.innerHTML=`<details class="zgroup" open><summary>✨ Home page builder (posters, banners, sections)</summary><div style="padding:16px 20px">
  <div class="zactions" style="margin-bottom:14px"><button type="button" data-zhmode="street" class="${m==='street'?'primary':'secondary'}">Streetwear home</button><button type="button" data-zhmode="ethnic" class="${m==='ethnic'?'primary':'secondary'}">Ethnic home</button></div>
- <div class="zgrid" style="padding:0 0 12px"><div class="zfield"><label>Home page design</label>${sel('home.design',[['','New premium home (recommended)'],['classic','Old simple home']],zvGet(zvCfg,'home.design')||'')}</div>
+ <div class="zgrid" style="padding:0 0 12px"><div class="zfield"><label>Home page design</label>${sel('home.design',[['','New premium home']],zvGet(zvCfg,'home.design')||'')}</div>
  <div class="zfield"><label>Poster changes every</label>${sel('home.interval',[['','6 seconds (default)'],['4','4 seconds'],['8','8 seconds'],['10','10 seconds']],String(zvGet(zvCfg,'home.interval')||''))}</div>
  <div class="zfield"><label>Posters slide automatically</label>${sel('home.autoplay',[['','Yes (default)'],['off','No — only by swipe/arrows']],zvGet(zvCfg,'home.autoplay')===false?'off':'')}</div>
  <div class="zfield"><label>Scrolling text speed</label>${sel('home.marqueeSpeed',[['','Normal'],['slow','Slow'],['fast','Fast']],zvGet(zvCfg,'home.marqueeSpeed')||'')}</div></div>
@@ -946,13 +946,13 @@ document.addEventListener('change',e=>{if(e.target.id==='liveStreet'||e.target.i
 
 // ===== Store themes (Shopify-style) =====
 const ZV_STORE_THEMES=[
- {key:'',name:'ZIVRA Original',desc:'Your current dark Streetwear and beige Ethnic look.',bg:'#15191a',bar:'#e5c690',line:'#2a3032'},
- {key:'dawn',name:'Shopify Dawn',desc:'Clean white, black buttons, full-width banner, modern sans-serif. The most popular Shopify style.',bg:'#ffffff',bar:'#121212',line:'#e7e7e7'},
+ {key:'classic',name:'ZIVRA Original',desc:'The earlier dark Streetwear and beige Ethnic colours (home page layout stays modern).',bg:'#15191a',bar:'#e5c690',line:'#2a3032'},
+ {key:'dawn',name:'Shopify Dawn (default)',desc:'Clean white, black buttons, full-width banner, modern sans-serif. The most popular Shopify style.',bg:'#ffffff',bar:'#121212',line:'#e7e7e7'},
  {key:'prestige',name:'Shopify Prestige',desc:'Luxury ivory and gold, elegant serif headings, thin lines, dark footer.',bg:'#faf6ef',bar:'#a8844a',line:'#e5d9c4'}
 ];
 function ztRender(){
  const box=$('zvThemeCards');if(!box)return;
- const cur=zvGet(zvCfg,'theme.template')||'';
+ const cur=zvGet(zvCfg,'theme.template')||'dawn';
  box.innerHTML=ZV_STORE_THEMES.map(t=>`<button type="button" class="zvtheme ${t.key===cur?'on':''}" data-zvtheme="${t.key}"><div class="zvthumb" style="background:${t.bg}"><i style="height:10px;background:${t.bar}"></i><i style="height:46px;background:${t.bar};opacity:.75"></i><i style="height:34px;background:${t.line}"></i></div><b>${zEsc(t.name)}${t.key===cur?' ✓':''}</b><span class="d">${zEsc(t.desc)}</span></button>`).join('');
  const n=$('zvThemeNote');if(n)n.textContent='Tap a theme to publish it on your live website at once. You can change back any time.';
 }
@@ -1011,6 +1011,7 @@ const ZA_KB=[
  {re:/column|schema cache|does not exist|could not find the function/i,title:'Database setup missing',fix:'Run the latest SQL files in the Supabase SQL Editor, then refresh.'},
  {re:/failed to fetch|network|timeout|load failed/i,title:'Customer network issue',fix:'Usually a weak connection on the customer side. No action unless it keeps repeating.'},
  {re:/contact-form/i,title:'Contact form failed',fix:'A customer could not send a message. Check the messages table SQL was run.'},
+ {re:/help-chat-unanswered/i,title:'Questions the help chat could not answer',fix:'Customers asked these. Read them and tell me which answers to add to the help assistant, or reply to them personally.'},
  {re:/./,title:'Website script error',fix:'Send me the message and the page name, and I will fix it in the next release.'}
 ];
 function zaGroups(){
@@ -1118,5 +1119,5 @@ startAdmin();
   document.addEventListener('visibilitychange',function(){if(!document.hidden)paintZivraDashboardClock()});
 })();
 </script>
-<div style="position:fixed;right:8px;bottom:8px;z-index:9999;font:600 10px Arial;color:#8a8a8a;background:rgba(255,255,255,.85);padding:4px 7px;border-radius:6px">Admin build 2026-11-07-shop1</div></body>
+<div style="position:fixed;right:8px;bottom:8px;z-index:9999;font:600 10px Arial;color:#8a8a8a;background:rgba(255,255,255,.85);padding:4px 7px;border-radius:6px">Admin build 2026-11-08-shop2</div></body>
 </html>

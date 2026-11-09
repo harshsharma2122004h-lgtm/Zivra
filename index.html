@@ -187,7 +187,7 @@ html.zv-edit .cat.cat-photo{outline-offset:-3px}
 .zvc b{display:block;margin-top:8px;font-size:12px;font-weight:600;letter-spacing:.02em}
 .zv-ethnic .zvc-img{border-radius:999px 999px 14px 14px;aspect-ratio:3/4}
 .zvs-newin{padding:26px 0 10px;background:var(--bg)}.zvs-head{padding:0 clamp(14px,4vw,60px);margin-bottom:14px}.zvs-head h2{margin:0;font-size:clamp(20px,3vw,30px);font-weight:800;letter-spacing:-.01em}
-.zvn-row{gap:12px;padding:0 clamp(14px,4vw,60px) 10px;scroll-snap-type:x proximity}
+.zvn-row{gap:12px;padding:0 clamp(14px,4vw,60px) 10px;scroll-snap-type:x proximity;scroll-padding-left:clamp(14px,4vw,60px)}
 .zvn{flex:0 0 auto;width:clamp(120px,30vw,190px);background:none;border:0;padding:0;text-align:left;color:var(--ink);cursor:pointer;scroll-snap-align:start;font-family:inherit}
 .zvn-img{display:block;aspect-ratio:3/4;border-radius:10px;background-size:cover;background-position:center;background-color:var(--surface);border:1px solid var(--line)}
 .zvn b{display:block;margin-top:8px;font-size:12px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.zvn-price{font-size:12px;font-weight:700}.zvn-price s{opacity:.5;font-weight:400;margin-right:5px}
@@ -209,70 +209,86 @@ html.zv-one-collection .switchline{display:none!important}
 .product .add{padding:9px 6px!important;font-size:11px!important;border-radius:6px}
 @media(max-width:560px){.products{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:12px 10px!important}}
 </style><style id="zv-theme-css">
-/* ===== Shopify-style full-site themes: Dawn (clean) and Prestige (luxury) ===== */
-html.zv-theme-dawn .app,html.zv-theme-dawn .app.ethnic{--bg:#ffffff;--surface:#ffffff;--ink:#121212;--muted:#6b6b6b;--line:#e7e7e7;--accent:#121212;--card:#f3f3f3;--site-background:#fff;--site-on-background:#121212}
-html.zv-theme-prestige .app,html.zv-theme-prestige .app.ethnic{--bg:#faf6ef;--surface:#fffdf9;--ink:#26211a;--muted:#8a7f6f;--line:#e5d9c4;--accent:#a8844a;--card:#f1e9da;--site-background:#faf6ef;--site-on-background:#26211a}
-html.zv-theme-dawn body,html.zv-theme-dawn .app,html.zv-theme-prestige body,html.zv-theme-prestige .app{background:var(--bg)!important;color:var(--ink)!important}
-html.zv-theme-dawn body,html.zv-theme-dawn button,html.zv-theme-dawn input{font-family:Inter,Arial,sans-serif}
-html.zv-theme-prestige body,html.zv-theme-prestige button,html.zv-theme-prestige input{font-family:Jost,Arial,sans-serif}
-/* header + bars */
-html.zv-theme-dawn .topbar,html.zv-theme-prestige .topbar{background:var(--surface)!important;color:var(--ink)!important;border-bottom:1px solid var(--line)}
-html.zv-theme-dawn .search,html.zv-theme-prestige .search{background:var(--card)!important;border-radius:0!important;border:0!important}
-html.zv-theme-dawn .search input,html.zv-theme-prestige .search input{color:var(--ink)!important}
-html.zv-theme-dawn .switchline,html.zv-theme-prestige .switchline{background:var(--surface)!important;border-bottom:1px solid var(--line)}
+/* ===== ZIVRA Shopify-style design system (default). Themes: dawn (default), prestige. 'classic' = old look ===== */
+html.zv-theme-dawn .app,html.zv-theme-dawn .app.ethnic{--bg:#ffffff;--surface:#ffffff;--ink:#121212;--muted:#6b6b6b;--line:#e7e7e7;--accent:#121212;--on-accent:#ffffff;--card:#f4f4f4;--site-background:#fff;--site-on-background:#121212}
+html.zv-theme-prestige .app,html.zv-theme-prestige .app.ethnic{--bg:#faf6ef;--surface:#fffdf9;--ink:#26211a;--muted:#8a7f6f;--line:#e5d9c4;--accent:#a8844a;--on-accent:#ffffff;--card:#f1e9da;--site-background:#faf6ef;--site-on-background:#26211a}
+html[class*="zv-theme-"] body,html[class*="zv-theme-"] .app,html[class*="zv-theme-"] .section,html[class*="zv-theme-"] .app.ethnic .section{background:var(--bg)!important;color:var(--ink)!important}
+html.zv-theme-dawn body,html.zv-theme-dawn button,html.zv-theme-dawn input,html.zv-theme-dawn textarea{font-family:Inter,Arial,sans-serif}
+html.zv-theme-prestige body,html.zv-theme-prestige button,html.zv-theme-prestige input,html.zv-theme-prestige textarea{font-family:Jost,Arial,sans-serif}
+html[class*="zv-theme-"] .customer-drawer:not(.open){box-shadow:none!important;visibility:hidden}
+/* every button that sits on the accent colour gets readable text */
+html[class*="zv-theme-"] .btn,html[class*="zv-theme-"] .detail-add,html[class*="zv-theme-"] .product .add,html[class*="zv-theme-"] .option-btn.selected,html[class*="zv-theme-"] .account-tab.active,html[class*="zv-theme-"] .checkout-steps .step.active i,html[class*="zv-theme-"] .corner-badge,html[class*="zv-theme-"] .offer-badge,html[class*="zv-theme-"] #newsletter button,html[class*="zv-theme-"] .place-order,html[class*="zv-theme-"] .checkout-btn{background:var(--accent)!important;color:var(--on-accent)!important;border-color:var(--accent)!important}
+html[class*="zv-theme-"] .product .add[disabled]{background:transparent!important;color:var(--muted)!important;border:1px solid var(--line)!important}
+html[class*="zv-theme-"] .btn,html[class*="zv-theme-"] .detail-add,html[class*="zv-theme-"] .product .add{border-radius:0;letter-spacing:.12em}
+html[class*="zv-theme-"] .detail-add[disabled]{opacity:.5}
+/* header */
+html[class*="zv-theme-"] .topbar{background:var(--surface)!important;color:var(--ink)!important;border-bottom:1px solid var(--line)}
+html[class*="zv-theme-"] .search{background:var(--card)!important;border-radius:0!important;border:0!important}
+html[class*="zv-theme-"] .search input,html[class*="zv-theme-"] .topbar a,html[class*="zv-theme-"] .topbar button{color:var(--ink)!important}
+html[class*="zv-theme-"] .switchline{background:var(--surface)!important;border-bottom:1px solid var(--line)}
 html.zv-theme-dawn .zv-announce{background:#121212;color:#fff;font-size:12px;letter-spacing:.05em}
 html.zv-theme-prestige .zv-announce{background:#26211a;color:#e9d9b8;font-size:11px;letter-spacing:.18em;text-transform:uppercase}
 html.zv-theme-prestige .logo,html.zv-theme-prestige .section-head h2,html.zv-theme-prestige .zvb-copy h2,html.zv-theme-prestige .zvh-title{font-family:'Cormorant Garamond',Georgia,serif!important}
-/* poster becomes a full-width Shopify banner */
-html.zv-theme-dawn .zv-street .zvh-slide,html.zv-theme-dawn .zv-ethnic .zvh-slide,html.zv-theme-prestige .zv-street .zvh-slide,html.zv-theme-prestige .zv-ethnic .zvh-slide{display:block;min-height:clamp(320px,46vw,560px);background:#222;color:#fff}
-html.zv-theme-dawn .zvh-img,html.zv-theme-prestige .zvh-img{position:absolute!important;inset:0!important;height:100%!important;aspect-ratio:auto!important;order:0!important}
-html.zv-theme-dawn .zvh-shade,html.zv-theme-prestige .zvh-shade{display:block!important;position:absolute;inset:0;background:rgba(0,0,0,.30)}
-html.zv-theme-dawn .zvh-copy,html.zv-theme-prestige .zvh-copy{position:relative!important;min-height:clamp(320px,46vw,560px);display:flex!important;flex-direction:column;align-items:center;justify-content:center;text-align:center;color:#fff!important;padding:44px 22px 52px!important}
-html.zv-theme-dawn .zvh-eyebrow,html.zv-theme-dawn .zvh-sub,html.zv-theme-prestige .zvh-eyebrow,html.zv-theme-prestige .zvh-sub{color:#fff!important;opacity:.95}
+/* poster = full-width banner */
+html[class*="zv-theme-"] .zv-street .zvh-slide,html[class*="zv-theme-"] .zv-ethnic .zvh-slide{display:block;min-height:clamp(340px,46vw,560px);background:#222;color:#fff}
+html[class*="zv-theme-"] .zvh-img{position:absolute!important;inset:0!important;height:100%!important;aspect-ratio:auto!important;order:0!important}
+html[class*="zv-theme-"] .zvh-shade{display:block!important;position:absolute;inset:0;background:rgba(0,0,0,.30)}
+html[class*="zv-theme-"] .zvh-copy{position:relative!important;min-height:clamp(340px,46vw,560px);display:flex!important;flex-direction:column;align-items:center;justify-content:center;text-align:center;color:#fff!important;padding:44px 22px 56px!important}
+html[class*="zv-theme-"] .zvh-eyebrow,html[class*="zv-theme-"] .zvh-sub{color:#fff!important;opacity:.95}
 html.zv-theme-dawn .zvh-title{color:#fff!important;font-family:Inter,Arial,sans-serif!important;font-style:normal!important;font-weight:400!important;text-transform:none!important;letter-spacing:-.025em!important;font-size:clamp(30px,5.2vw,66px)!important;line-height:1.05!important}
 html.zv-theme-prestige .zvh-title{color:#fff!important;font-style:normal!important;font-weight:500!important;text-transform:none!important;letter-spacing:.01em!important;font-size:clamp(34px,5.8vw,76px)!important;line-height:1.02!important}
-html.zv-theme-dawn .zvh-btns,html.zv-theme-prestige .zvh-btns{justify-content:center}
+html[class*="zv-theme-"] .zvh-btns{justify-content:center}
 html.zv-theme-dawn .zvb{background:#fff!important;color:#121212!important;border-radius:0!important;letter-spacing:.1em}
-html.zv-theme-prestige .zvb{background:transparent!important;color:#fff!important;border:1px solid #fff!important;border-radius:0!important;letter-spacing:.2em}html.zv-theme-prestige .zvb:hover{background:#fff!important;color:#26211a!important}
-html.zv-theme-dawn .zvb-ghost,html.zv-theme-prestige .zvb-ghost{background:transparent!important;color:#fff!important;border:0!important;border-bottom:1px solid #fff!important}
-html.zv-theme-dawn .zvh-dot,html.zv-theme-prestige .zvh-dot{background:rgba(255,255,255,.45)}html.zv-theme-dawn .zvh-dot.on,html.zv-theme-prestige .zvh-dot.on{background:#fff}
-html.zv-theme-dawn .zvh-arrow,html.zv-theme-prestige .zvh-arrow{background:rgba(255,255,255,.18);color:#fff;border-color:rgba(255,255,255,.7)}
+html.zv-theme-prestige .zvb{background:transparent!important;color:#fff!important;border:1px solid #fff!important;border-radius:0!important;letter-spacing:.2em}
+html.zv-theme-prestige .zvb:hover{background:#fff!important;color:#26211a!important}
+html[class*="zv-theme-"] .zvb-ghost{background:transparent!important;color:#fff!important;border:0!important;border-bottom:1px solid #fff!important}
+html[class*="zv-theme-"] .zvh-dot{background:rgba(255,255,255,.45)}html[class*="zv-theme-"] .zvh-dot.on{background:#fff}
+html[class*="zv-theme-"] .zvh-arrow{background:rgba(255,255,255,.18);color:#fff;border-color:rgba(255,255,255,.7)}
 /* sections */
-html.zv-theme-dawn .zvs-cats,html.zv-theme-dawn .zvs-newin,html.zv-theme-prestige .zvs-cats,html.zv-theme-prestige .zvs-newin{background:var(--bg)}
-html.zv-theme-dawn .zv-street .zvs-tiles,html.zv-theme-dawn .zv-ethnic .zvs-tiles,html.zv-theme-prestige .zv-street .zvs-tiles,html.zv-theme-prestige .zv-ethnic .zvs-tiles{background:var(--bg);padding:40px clamp(14px,4vw,60px)}
-html.zv-theme-dawn .zv-street .zvt,html.zv-theme-prestige .zv-street .zvt,html.zv-theme-dawn .zv-ethnic .zvt,html.zv-theme-prestige .zv-ethnic .zvt{display:block;text-align:left;color:var(--ink)}
-html.zv-theme-dawn .zvt-img,html.zv-theme-prestige .zvt-img{width:100%!important;height:auto!important;aspect-ratio:4/5!important;display:block;border-radius:0!important;margin-bottom:12px;filter:none!important}
-html.zv-theme-dawn .zvt-grid,html.zv-theme-prestige .zvt-grid{grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:18px}
-html.zv-theme-dawn .zvt-txt b,html.zv-theme-prestige .zvt-txt b{font-family:inherit!important;font-style:normal!important;font-size:15px;font-weight:600}
-html.zv-theme-dawn .zv-street .zvs-marquee,html.zv-theme-prestige .zv-street .zvs-marquee,html.zv-theme-dawn .zv-ethnic .zvs-marquee,html.zv-theme-prestige .zv-ethnic .zvs-marquee{background:#121212;margin:0;padding:12px 0;border:0}
+html[class*="zv-theme-"] .zvs-cats,html[class*="zv-theme-"] .zvs-newin{background:var(--bg)}
+html[class*="zv-theme-"] .zv-street .zvs-tiles,html[class*="zv-theme-"] .zv-ethnic .zvs-tiles{background:var(--bg);padding:34px 0 8px}
+html[class*="zv-theme-"] .zvt-grid{display:flex!important;gap:12px;overflow-x:auto;padding:0 clamp(14px,4vw,60px) 8px;scrollbar-width:none;max-width:none}
+html[class*="zv-theme-"] .zvt-grid::-webkit-scrollbar{display:none}
+html[class*="zv-theme-"] .zv-street .zvt,html[class*="zv-theme-"] .zv-ethnic .zvt{display:block;flex:0 0 clamp(150px,42vw,300px);text-align:left;color:var(--ink);position:relative}
+html[class*="zv-theme-"] .zvt-img{width:100%!important;height:auto!important;aspect-ratio:4/5!important;display:block;border-radius:0!important;margin:0 0 10px;filter:none!important}
+html[class*="zv-theme-"] .zvt-txt{display:grid;gap:2px}html[class*="zv-theme-"] .zvt-txt b{font-family:inherit!important;font-style:normal!important;font-size:15px;font-weight:600}
+html[class*="zv-theme-"] .zvt-txt span{font-size:12px;color:var(--muted)}html[class*="zv-theme-"] .zvt-txt em{display:none}
+html[class*="zv-theme-"] .zvs-marquee{background:#121212!important;margin:0!important;padding:12px 0!important;border:0!important}
 html.zv-theme-prestige .zvs-marquee{background:#26211a!important}
-html.zv-theme-dawn .zvm-track span,html.zv-theme-prestige .zvm-track span{color:#fff!important;-webkit-text-stroke:0!important;font-family:inherit!important;font-style:normal!important;font-weight:500!important;font-size:12px!important;letter-spacing:.18em;padding:0 26px!important}
+html[class*="zv-theme-"] .zvm-track span{color:#fff!important;-webkit-text-stroke:0!important;font-family:inherit!important;font-style:normal!important;font-weight:500!important;font-size:12px!important;letter-spacing:.18em;padding:0 26px!important}
 html.zv-theme-prestige .zvm-track span{color:#e9d9b8!important}
-html.zv-theme-dawn .zvm-track span::after,html.zv-theme-prestige .zvm-track span::after{color:#888}
-html.zv-theme-dawn .zv-street .zvs-banner{min-height:clamp(320px,50vw,520px)}
-html.zv-theme-dawn .zvb-copy h2,html.zv-theme-prestige .zvb-copy h2{text-transform:none!important;font-style:normal!important;letter-spacing:-.02em!important;font-weight:500!important}
-html.zv-theme-dawn .zv-street .zvs-trust,html.zv-theme-prestige .zv-street .zvs-trust{background:var(--card);border:0}
-html.zv-theme-dawn .zv-ethnic .zvtr,html.zv-theme-prestige .zv-ethnic .zvtr{border-radius:0}
+html[class*="zv-theme-"] .zvm-track span::after{color:#888}
+html[class*="zv-theme-"] .zv-street .zvs-banner{min-height:clamp(320px,50vw,520px)}
+html[class*="zv-theme-"] .zvb-copy h2{text-transform:none!important;font-style:normal!important;letter-spacing:-.02em!important;font-weight:500!important}
+html[class*="zv-theme-"] .zvs-trust{background:var(--card)!important;border:0!important;padding:34px clamp(14px,4vw,60px)!important}
+html[class*="zv-theme-"] .zvtr-grid{grid-template-columns:repeat(4,1fr)!important;gap:18px}
+html[class*="zv-theme-"] .zv-street .zvtr,html[class*="zv-theme-"] .zv-ethnic .zvtr{display:flex;flex-direction:column;align-items:flex-start;gap:6px;border:0;background:transparent;padding:0;text-align:left}
+html[class*="zv-theme-"] .zvtr i{width:34px;height:34px}html[class*="zv-theme-"] .zvtr i svg{width:30px;height:30px}
+@media(max-width:760px){html[class*="zv-theme-"] .zvtr-grid{grid-template-columns:repeat(2,1fr)!important}}
+/* category filter = compact pills (was huge boxes) */
+html[class*="zv-theme-"] .categories,html[class*="zv-theme-"] .app.ethnic .categories{display:flex!important;grid-template-columns:none!important;gap:8px!important;overflow-x:auto;padding:14px clamp(14px,4vw,60px)!important;background:var(--bg)!important;border-bottom:1px solid var(--line);scrollbar-width:none;margin:0!important}
+html[class*="zv-theme-"] .categories::-webkit-scrollbar{display:none}
+html[class*="zv-theme-"] .cat,html[class*="zv-theme-"] .cat.cat-photo,html[class*="zv-theme-"] .cat:not(.cat-photo),html[class*="zv-theme-"] .app.ethnic .cat.cat-photo{flex:0 0 auto;width:auto!important;min-height:0!important;aspect-ratio:auto!important;display:inline-flex!important;align-items:center;gap:8px;padding:9px 18px!important;border:1px solid var(--line)!important;border-radius:999px!important;background:var(--surface)!important;background-image:none!important;color:var(--ink)!important;font-size:13px!important;font-weight:600!important;letter-spacing:0!important;text-transform:none!important}
+html[class*="zv-theme-"] .cat.cat-photo{padding:5px 16px 5px 5px!important}
+html[class*="zv-theme-"] .cat.cat-photo::before{content:'';width:32px;height:32px;border-radius:50%;flex:none;background:var(--thumb) center/cover,var(--card)}
 /* products */
-html.zv-theme-dawn .section-head h2,html.zv-theme-prestige .section-head h2{font-style:normal!important;font-weight:400!important;text-transform:none;letter-spacing:-.01em}
-html.zv-theme-prestige .section-head h2{font-weight:500!important;letter-spacing:.02em}
-html.zv-theme-dawn .product .add,html.zv-theme-dawn .app.ethnic .product .add{background:#121212!important;color:#fff!important;border:0!important;border-radius:0!important}
-html.zv-theme-prestige .product .add,html.zv-theme-prestige .app.ethnic .product .add{background:transparent!important;color:#26211a!important;border:1px solid #26211a!important;border-radius:0!important;letter-spacing:.18em}
+html[class*="zv-theme-"] .section-head h2{font-style:normal!important;font-weight:400!important;text-transform:none;letter-spacing:-.01em;font-family:inherit}
+html.zv-theme-prestige .section-head h2{font-weight:500!important;letter-spacing:.02em;font-family:'Cormorant Garamond',Georgia,serif!important}
+html.zv-theme-prestige .product .add{background:transparent!important;color:#26211a!important;border:1px solid #26211a!important;letter-spacing:.18em}
 html.zv-theme-prestige .product .add:hover{background:#26211a!important;color:#fff!important}
-html.zv-theme-dawn .product .corner-badge,html.zv-theme-prestige .product .corner-badge{background:#121212;color:#fff;border-radius:2px;font-weight:600;letter-spacing:.06em}
-html.zv-theme-prestige .product .corner-badge{background:#a8844a}
+html[class*="zv-theme-"] .product .corner-badge{border-radius:2px;font-weight:600;letter-spacing:.06em}
+html[class*="zv-theme-"] .soldout-ribbon{top:auto;bottom:10px;right:auto;left:0}
 html.zv-theme-dawn .price .pct{color:#c62828}html.zv-theme-prestige .price .pct{color:#a8844a}
-html.zv-theme-dawn .pimg,html.zv-theme-prestige .pimg{border-radius:0}
-html.zv-theme-dawn .wish,html.zv-theme-prestige .wish{border-radius:50%}
-html.zv-theme-dawn .cat.cat-photo,html.zv-theme-prestige .cat.cat-photo,html.zv-theme-dawn .app.ethnic .cat.cat-photo,html.zv-theme-prestige .app.ethnic .cat.cat-photo{border-radius:0}
-html.zv-theme-dawn .categories,html.zv-theme-prestige .categories,html.zv-theme-dawn .app.ethnic .categories,html.zv-theme-prestige .app.ethnic .categories{background:var(--bg)!important}
-html.zv-theme-dawn .promo,html.zv-theme-prestige .promo{border-radius:0;background:var(--card)}
+html[class*="zv-theme-"] .pimg{border-radius:0}
+html[class*="zv-theme-"] .promo{border-radius:0;background:var(--card)!important;color:var(--ink)!important}
+html[class*="zv-theme-"] .promo *{color:inherit}
 /* footer */
 html.zv-theme-dawn .footer,html.zv-theme-dawn .app.ethnic .footer{background:#f4f4f4!important;color:#121212!important}
 html.zv-theme-prestige .footer,html.zv-theme-prestige .app.ethnic .footer{background:#2a2118!important;color:#efe5d2!important}
-html.zv-theme-dawn .darkstrip,html.zv-theme-prestige .darkstrip{background:var(--card)!important;color:var(--ink)!important;border-block:1px solid var(--line)}
-html.zv-theme-dawn .footer a,html.zv-theme-dawn .footer p,html.zv-theme-dawn .footer small,html.zv-theme-dawn .footer h4{color:inherit!important}
-html.zv-theme-prestige .footer a,html.zv-theme-prestige .footer p,html.zv-theme-prestige .footer small,html.zv-theme-prestige .footer h4{color:inherit!important}
+html[class*="zv-theme-"] .footer a,html[class*="zv-theme-"] .footer p,html[class*="zv-theme-"] .footer small,html[class*="zv-theme-"] .footer h4,html[class*="zv-theme-"] .footer label{color:inherit!important}
+html[class*="zv-theme-"] .footer input{background:#fff!important;color:#121212!important;border:1px solid #d9d9d9!important;border-radius:0!important}
+html[class*="zv-theme-"] .darkstrip,html[class*="zv-theme-"] .app.ethnic .darkstrip{background:var(--card)!important;color:var(--ink)!important;border-block:1px solid var(--line)}
+html[class*="zv-theme-"] .darkstrip *{color:inherit!important}
 .zv-buildtag{position:fixed;left:8px;bottom:8px;z-index:99999;background:#000;color:#fff;font:600 11px/1 Arial;padding:6px 9px;border-radius:6px;opacity:.9}
 </style></head><body><main class="app" id="app">
 <header class="topbar"><button class="menu-trigger" id="menuTrigger" type="button" aria-label="Open navigation" aria-expanded="false">☰</button><a href="#" class="logo" id="logo">ZIVRA<small>WEAR YOUR STORY</small></a><nav class="nav"><a href="#home">Home</a><a href="#shop">Shop</a><a href="#collections">Collections</a><a href="#about">About</a><a href="#contact">Contact</a></nav><label class="search"><input id="search" placeholder="Search for products..."><span>⌕</span></label><div class="icons"><button type="button" id="accountButton" title="My Account" aria-label="My Account" style="background:none;border:0;color:inherit;font:inherit;padding:0">♙</button><span title="Wishlist">♡</span><span title="Bag" id="bag">▢<sup id="count">0</sup></span></div></header><div class="customer-drawer-backdrop" id="drawerBackdrop"></div><aside class="customer-drawer" id="customerDrawer" aria-hidden="true"><div class="drawer-head"><strong>ZIVRA.</strong><button class="drawer-close" id="drawerClose" aria-label="Close menu">×</button></div><div class="eyebrow">EXPLORE ZIVRA</div><nav class="drawer-links"><a href="#home">⌂ &nbsp; Home</a><a href="#shop">◇ &nbsp; Shop</a><a href="#collections">▦ &nbsp; Collections</a><a href="about.html">✧ &nbsp; About / Story</a><a href="contact.html">✉ &nbsp; Contact</a><a href="account.html">♙ &nbsp; My Account</a><a href="track-order.html">↗ &nbsp; My Orders</a><a href="help-center.html">? &nbsp; Help Centre</a></nav><section class="drawer-support"><h3>Need a hand?</h3><p>Order updates, sizing, returns or anything else — find answers in our customer care space.</p><a href="help-center.html">Visit Help Centre →</a></section></aside>
@@ -280,7 +296,7 @@ html.zv-theme-prestige .footer a,html.zv-theme-prestige .footer p,html.zv-theme-
 <section class="hero" id="hero"><div class="hero-copy"><div class="eyebrow" id="eyebrow">MEN'S STREETWEAR</div><h1 id="headline">BUILT FOR<br>THE BOLD</h1><p id="subhead">Oversized fits / Premium cotton / Urban vibes</p><button class="btn" id="shopNow">Shop Now&nbsp; →</button></div></section>
 <div class="categories" id="categories"></div>
 <section class="section" id="shop"><div class="section-head"><h2 id="sectionTitle">Featured Collection</h2><a href="#shop" id="viewAll">View All&nbsp; →</a></div><div class="products-layout"><div class="products" id="products"></div><aside class="promo"><img id="promoImage" alt="Coordinated fashion accessories"><div class="promotext"><h3 id="promoTitle">Complete Your Look</h3><p id="promoDesc">Matching accessories for your style.</p><button class="btn" id="promoBtn">Explore Accessories →</button></div></aside></div></section>
-<section class="darkstrip" id="about"><div><div class="eyebrow">ZIVRA ORIGINALS</div><h2 id="stripTitle">Stay Original.</h2></div><div class="benefit"><strong>♧ &nbsp; Free Shipping</strong><span>On orders above ₹1499</span></div><div class="benefit"><strong>◇ &nbsp; Secure Payments · Easy Returns</strong><span>Safe checkout and hassle-free process</span></div></section>
+<section class="darkstrip" id="about"><div><div class="eyebrow">ZIVRA ORIGINALS</div><h2 id="stripTitle">Stay Original.</h2></div><div class="benefit"><strong>♧ &nbsp; Free Shipping</strong><span>On orders above ₹1999</span></div><div class="benefit"><strong>◇ &nbsp; Secure Payments · Easy Returns</strong><span>Safe checkout and hassle-free process</span></div></section>
 <footer class="footer" id="contact"><div><div class="logo">ZIVRA<small>WEAR YOUR STORY</small></div><p>© 2026 ZIVRA. All rights reserved.</p></div><div><h4>Quick Links</h4><a href="#home">Home</a><a href="#shop">Shop</a><a href="#collections">Collections</a><a href="about.html">About</a><a href="contact.html">Contact</a><a href="account.html">My Account</a></div><div><h4>Customer Care</h4><a href="size-guide.html">Size Guide</a><a href="shipping-returns.html">Shipping & Returns</a><a href="faq.html">FAQ</a><a href="track-order.html">Track Order</a><a href="privacy-policy.html">Privacy Policy</a></div><div><h4>Newsletter ↗</h4><p>Get the latest updates and exclusive offers.</p><form id="newsletter"><input type="email" placeholder="Your email address" required><button class="btn">Join →</button></form><small>Instagram　●　Pinterest　●　YouTube</small></div><div><h4>Our Philosophy</h4><p style="font:italic 20px Georgia">Fashion has no gender, only style.</p><small>Cash on Delivery</small></div></footer><div class="product-modal" id="infoModal" aria-hidden="true"><section class="product-dialog" role="dialog" aria-modal="true" aria-labelledby="infoTitle"><button class="modal-close" id="infoClose" aria-label="Close">×</button><div class="product-detail-copy" style="padding:28px"><div class="eyebrow">ZIVRA / CUSTOMER CARE</div><h2 id="infoTitle">Customer Care</h2><div id="infoContent"></div></div></section></div><div class="product-modal" id="accountModal" aria-hidden="true"><section class="product-dialog" role="dialog" aria-modal="true" aria-labelledby="accountTitle"><button class="modal-close" id="accountClose" aria-label="Close">×</button><div class="product-detail-copy" style="padding:28px"><div class="eyebrow">ZIVRA / MY ACCOUNT</div><h2 id="accountTitle">Welcome to ZIVRA</h2><div id="accountPanel"><div class="account-tabs"><button type="button" class="account-tab active" data-auth-tab="login">Login</button><button type="button" class="account-tab" data-auth-tab="signup">Create account</button></div><form id="customerAuthForm"><label class="account-field" id="customerNameWrap" hidden>Full name<input name="name" autocomplete="name" placeholder="Your name"></label><label class="account-field">Email address<input name="email" type="email" autocomplete="email" placeholder="you@example.com" required></label><label class="account-field">Password<input name="password" type="password" minlength="8" placeholder="At least 8 characters" required></label><button class="detail-add" type="submit" id="customerAuthSubmit">LOGIN</button><p class="account-note">Use your email address and private password. No SMS or Twilio setup is required.</p><p id="customerAuthMessage" role="status"></p></form></div></div></section></div><div class="cart-overlay" id="cartOverlay" aria-hidden="true"><section class="cart-panel" role="dialog" aria-modal="true" aria-labelledby="cartHeading"><div class="cart-head"><h2 id="cartHeading">Your Bag <span id="bagCountLabel" class="cart-badge">0</span></h2><button class="icon-btn" id="closeCart" aria-label="Close bag">×</button></div><div id="cartContents"><div class="empty-bag">Your bag is waiting for something good.</div></div><form class="checkout-form" id="checkoutForm"><div class="checkout-steps"><span class="step active"><i>1</i> Bag</span><span class="step-line"></span><span class="step active"><i>2</i> Delivery</span><span class="step-line"></span><span class="step"><i>3</i> Confirmation</span></div><button class="checkout-back" type="button" id="backToBag">← Back to bag</button><h3>Delivery Details</h3><input name="fullName" placeholder="Full name" required autocomplete="name"><input name="email" type="email" placeholder="Email address" required autocomplete="email"><input name="phone" type="tel" placeholder="Mobile number" required pattern="[0-9+() -]{8,18}" autocomplete="tel"><textarea name="address" placeholder="Full delivery address" rows="3" required autocomplete="street-address"></textarea><div class="form-grid"><input name="city" placeholder="City" required autocomplete="address-level2"><input name="pincode" placeholder="PIN code" required pattern="[0-9]{6}" maxlength="6" inputmode="numeric" autocomplete="postal-code"></div><div class="voucher-entry"><label for="voucherCode">Coupon / voucher code (optional)</label><input id="voucherCode" name="voucherCode" type="text" placeholder="Enter voucher code" autocomplete="off" autocapitalize="characters"><button type="button" id="couponApply" style="padding:9px 16px;border:1px solid var(--accent);background:transparent;color:var(--ink);border-radius:4px;font-size:12px;letter-spacing:.06em">APPLY CODE</button><small id="couponInfo" aria-live="polite">Have a code? Apply it to see your discount and total.</small></div><label style="font-size:13px;display:flex;gap:9px;align-items:center"><input type="radio" name="payment" value="cod" checked> Cash on Delivery</label><label class="email-consent"><input type="checkbox" name="marketingOptIn" value="yes"><span><strong>Send me ZIVRA style notes & offers</strong><br>Optional marketing emails. You can unsubscribe anytime. Order updates are separate and still sent for a real order.</span></label><p class="checkout-note">Payment: Cash on Delivery. Pay when your order arrives.</p><button class="place-order" type="submit" id="placeOrderBtn">PLACE ORDER →</button></form><div class="order-success" id="orderSuccess"><div class="check">✓</div><div class="success-kicker">ZIVRA / ORDER STATUS</div><h3>Thank you for your order.</h3><p id="orderMessage">Your order summary is ready.</p><p class="checkout-note">Your order is stored in ZIVRA. Email notifications are not sent yet; payment is Cash on Delivery.</p>
 <div class="email-center" hidden><div class="success-kicker">AFTER CHECKOUT</div><h4>Here’s how the emails will look</h4><p style="font-size:12px">Two separate order confirmations, plus a separate optional marketing email.</p>
 <div class="email-grid">
@@ -520,7 +536,7 @@ function mutateData(c){
   });
 }
 function applyStatic(c){
-  (function(){var cl=document.documentElement.className.replace(/\bzv-theme-[a-z]+\b/g,'').replace(/\s+/g,' ').trim();var t=(c.theme||{}).template;if(t&&/^[a-z]+$/.test(t)&&t!=='classic')cl+=' zv-theme-'+t;document.documentElement.className=cl})();
+  (function(){var cl=document.documentElement.className.replace(/\bzv-theme-[a-z]+\b/g,'').replace(/\s+/g,' ').trim();var t=(c.theme||{}).template||'dawn';if(/^[a-z]+$/.test(t)&&t!=='classic')cl+=' zv-theme-'+t;document.documentElement.className=cl})();
   var b=c.brand||{};
   if(b.name||b.tagline!==undefined||b.logoUrl){
     var nm={name:b.name||'ZIVRA',tagline:b.tagline,logoUrl:b.logoUrl};
@@ -784,8 +800,8 @@ function decorateCats(){
       var name=b.dataset.filter,img=ci[catKey2(mode,name)]||ci[catKey(name)]||'';
       if(!img){if(name==='All'){var f=list.filter(function(x){return productImage(x)})[0];img=f?productImage(f):''}else img=catImage(mode,name)}
       var u=safeUrl(img);
-      if(u){b.classList.add('cat-photo');b.style.backgroundImage='linear-gradient(0deg,rgba(0,0,0,.78),rgba(0,0,0,0) 58%),url(\''+u+'\')'}
-      else{b.classList.remove('cat-photo');b.style.backgroundImage=''}
+      if(u){b.classList.add('cat-photo');b.style.backgroundImage='linear-gradient(0deg,rgba(0,0,0,.78),rgba(0,0,0,0) 58%),url(\''+u+'\')';b.style.setProperty('--thumb','url(\''+u+'\')')}
+      else{b.classList.remove('cat-photo');b.style.backgroundImage='';b.style.removeProperty('--thumb')}
       if(ZE){b.setAttribute('data-zve','home.catImages.'+catKey2(mode,name));b.setAttribute('data-zk','image');b.setAttribute('data-zl','Category photo: '+name)}
     });
   }catch(e){}
@@ -819,7 +835,8 @@ function applyLive(c){
   return false;
 }
 window.zivraHomeRender=function(){
-  var c=window.ZIVRA_SITE||{},h=c.home||{},on=h.design!=='classic';
+  var c=window.ZIVRA_SITE||{},h=c.home||{},on=true;
+  (function(){var tpl=(c.theme||{}).template||'dawn';var cl=document.documentElement.className.replace(/\bzv-theme-[a-z]+\b/g,'').replace(/\s+/g,' ').trim();if(/^[a-z]+$/.test(tpl)&&tpl!=='classic')cl+=' zv-theme-'+tpl;document.documentElement.className=cl})();
   if(applyLive(c))return;
   document.documentElement.classList.toggle('zv-newhome',on);
   document.documentElement.classList.toggle('zv-edit',!!ZE);
@@ -953,5 +970,107 @@ document.addEventListener('click',function(e){
 },true);
 })()}catch(zvWErr){try{window.zivraReport&&window.zivraReport('wishlist',zvWErr)}catch(_){}}
 
+
+/* ===== ZIVRA customer help assistant (answers from the store's own policies; looks up orders) ===== */
+try{(function(){
+var FREE_SHIP=1999;
+var wa='https://wa.me/917742057696';
+var KB=[
+ {k:/track|order status|where is my order|where's my order|my order|kahan|kaha hai|kab aay|delivery status|status/i,id:'track'},
+ {k:/return|refund|exchange|replace|wapas|vapas|cancel|damaged|wrong item|defect/i,id:'returns'},
+ {k:/ship|deliver|dispatch|courier|how long|kitne din|charge|free shipping/i,id:'shipping'},
+ {k:/size|fit|measure|chest|waist|length|oversized|xl|xxl/i,id:'size'},
+ {k:/pay|cod|cash on|upi|card|online|razorpay|netbanking/i,id:'payment'},
+ {k:/coupon|code|offer|discount|voucher|sale|off\b/i,id:'offer'},
+ {k:/account|login|log in|sign up|register|password/i,id:'account'},
+ {k:/contact|human|agent|support|call|whatsapp|talk|help me|complain/i,id:'human'}
+];
+var ANS={
+ shipping:'Orders are recorded right after checkout and processed as per item availability. Shipping is FREE on orders above \u20B9'+FREE_SHIP+'; below that a \u20B999 delivery charge applies. Courier details are shown on the Track Order page once your order ships.',
+ returns:'For a damaged, wrong or size-related item, please contact us with your order number and clear photos of the product. Our team confirms eligibility and timelines first, so please wait for return instructions before sending anything back.',
+ size:'Men\u2019s tops (chest): S 36\u201338 in \u00B7 M 38\u201340 \u00B7 L 40\u201342 \u00B7 XL 42\u201344 \u00B7 XXL 44\u201346. Between sizes? Choose the larger size for a relaxed fit or the smaller for a closer fit. Oversized styles sit looser. Product-specific measurements on the product page take priority.',
+ payment:'Cash on Delivery is the active payment option right now \u2014 you pay when your order arrives. Online payment is not enabled yet.',
+ offer:'Live offers appear as badges and struck-through prices on products. Have a code? Enter it in the \u201CCoupon / voucher code\u201D box at checkout and tap Apply to see your discount before you place the order.',
+ account:'Tap the profile icon at the top to log in or create an account. You can also place an order without an account and track it any time from Track Order using your order number and email.',
+ human:'Happy to connect you with the team. Send us a message on the Contact page or chat on WhatsApp \u2014 include your order number if you have one.'
+};
+var box,list,input,state={step:'',order:''};
+function el(tag,cls,txt){var e=document.createElement(tag);if(cls)e.className=cls;if(txt!=null)e.textContent=txt;return e}
+function say(text,who,links){
+  var b=el('div','zhc-msg '+(who||'bot'));b.textContent=text;
+  if(links&&links.length){var w=el('div','zhc-links');links.forEach(function(l){var a=el('a','zhc-chip',l[0]);a.href=l[1];if(/^https?:/.test(l[1])){a.target='_blank';a.rel='noopener'}w.appendChild(a)});b.appendChild(w)}
+  list.appendChild(b);list.scrollTop=list.scrollHeight;return b;
+}
+function chips(items){
+  var w=el('div','zhc-quick');
+  items.forEach(function(it){var b=el('button','zhc-chip',it[0]);b.type='button';b.addEventListener('click',function(){w.remove();ask(it[1]||it[0],true)});w.appendChild(b)});
+  list.appendChild(w);list.scrollTop=list.scrollHeight;
+}
+function menu(){chips([['Track my order','track'],['Shipping & delivery','shipping'],['Returns & exchange','returns'],['Size help','size'],['Payment options','payment'],['Offers & coupons','offer']])}
+function open(){
+  if(!box){build()}
+  box.classList.add('open');document.documentElement.classList.add('zhc-open');
+  if(!list.children.length){say('Hi! I\u2019m the ZIVRA assistant. I can track your order and answer questions about shipping, returns, sizes and offers. What do you need?');menu()}
+  setTimeout(function(){input.focus()},200);
+}
+function close(){box&&box.classList.remove('open');document.documentElement.classList.remove('zhc-open')}
+async function track(orderNo,email){
+  var sb=window.zivraSupabase;
+  if(!sb){say('I can\u2019t reach the order system right now. Please use the Track Order page.',null,[['Track Order page','track-order.html']]);return}
+  try{
+    var r=await sb.rpc('zivra_track_order',{p_order_number:orderNo,p_email:email});
+    if(r.error)throw r.error;
+    var d=r.data;if(!d||d.error){say('I couldn\u2019t find an order with those details. Please check the order number (it starts with ZV-) and the email used at checkout.');return}
+    var st=String(d.status||'pending').toUpperCase();
+    var t='Order '+d.order_number+' is currently '+st+'.';
+    if(d.courier_name||d.tracking_number)t+=' Courier: '+(d.courier_name||'-')+(d.tracking_number?' \u00B7 AWB '+d.tracking_number:'')+'.';
+    say(t,null,d.tracking_url&&/^https?:/.test(d.tracking_url)?[['Track with courier',d.tracking_url],['Full details','track-order.html']]:[['Full details','track-order.html']]);
+  }catch(e){
+    var msg=window.zivraHandle?window.zivraHandle('help-chat-track',e,'I couldn\u2019t check that right now. Please try the Track Order page.'):'I couldn\u2019t check that right now.';
+    say(msg,null,[['Track Order page','track-order.html']]);
+  }
+}
+function ask(q,fromChip){
+  q=String(q||'').trim();if(!q)return;
+  if(!fromChip||q.length>12)say(fromChip?q:q,'me');
+  if(state.step==='email'){
+    if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(q)){say('That doesn\u2019t look like an email address. Please type the email you used at checkout.');return}
+    var no=state.order;state={step:'',order:''};say('Checking your order\u2026');track(no,q);return;
+  }
+  if(state.step==='order'){
+    var m=q.match(/ZV-[A-Z0-9]{5,14}/i);
+    if(!m){say('Please type your order number \u2014 it starts with ZV- (for example ZV-AB12CD34).');return}
+    state={step:'email',order:m[0].toUpperCase()};say('Thanks! Now type the email address you used at checkout.');return;
+  }
+  var found=null;KB.forEach(function(x){if(!found&&x.k.test(q))found=x.id});
+  var inline=q.match(/ZV-[A-Z0-9]{5,14}/i);
+  if(found==='track'||inline){
+    if(inline){state={step:'email',order:inline[0].toUpperCase()};say('I found order number '+state.order+'. Please type the email address used at checkout.')}
+    else{state={step:'order',order:''};say('Sure! Please type your order number (it starts with ZV-).')}
+    return;
+  }
+  if(found==='human'){say(ANS.human,null,[['Contact page','contact.html'],['WhatsApp',wa]]);return}
+  if(found&&ANS[found]){say(ANS[found],null,found==='size'?[['Size guide','size-guide.html']]:found==='returns'?[['Shipping & Returns','shipping-returns.html'],['Contact us','contact.html']]:found==='shipping'?[['Shipping & Returns','shipping-returns.html']]:null);chips([['Track my order','track'],['Talk to the team','contact us']]);return}
+  say('I\u2019m not sure about that one. You can pick a topic below, or message our team and we\u2019ll reply personally.',null,[['Contact page','contact.html'],['WhatsApp',wa]]);
+  menu();
+  try{window.zivraReport&&window.zivraReport('help-chat-unanswered',q.slice(0,160))}catch(e){}
+}
+function build(){
+  box=el('div','zhc');box.setAttribute('role','dialog');box.setAttribute('aria-label','ZIVRA help');
+  var head=el('div','zhc-head');head.appendChild(el('b',null,'ZIVRA Help'));head.appendChild(el('span',null,'Orders \u00B7 shipping \u00B7 returns \u00B7 sizes'));
+  var x=el('button','zhc-x','\u00D7');x.type='button';x.setAttribute('aria-label','Close help');x.addEventListener('click',close);head.appendChild(x);
+  list=el('div','zhc-list');
+  var form=el('form','zhc-form');input=el('input');input.type='text';input.placeholder='Type your question\u2026';input.maxLength=200;input.setAttribute('aria-label','Your question');
+  var send=el('button',null,'Send');send.type='submit';form.appendChild(input);form.appendChild(send);
+  form.addEventListener('submit',function(e){e.preventDefault();var v=input.value;input.value='';ask(v)});
+  box.appendChild(head);box.appendChild(list);box.appendChild(form);document.body.appendChild(box);
+}
+var css=document.createElement('style');css.id='zv-help-css';
+css.textContent='.zhc{position:fixed;right:14px;bottom:84px;z-index:100000;width:min(380px,calc(100vw - 28px));height:min(560px,calc(100vh - 120px));background:#fff;color:#121212;border:1px solid #e5e5e5;box-shadow:0 18px 60px rgba(0,0,0,.28);display:none;flex-direction:column;font:14px/1.5 Inter,Arial,sans-serif;border-radius:14px;overflow:hidden}.zhc.open{display:flex}.zhc-head{padding:14px 44px 12px 16px;background:#121212;color:#fff;position:relative}.zhc-head b{display:block;font-size:15px}.zhc-head span{font-size:11px;opacity:.75}.zhc-x{position:absolute;right:8px;top:8px;width:32px;height:32px;border:0;background:transparent;color:#fff;font-size:26px;cursor:pointer}.zhc-list{flex:1;overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:10px;background:#f6f6f6}.zhc-msg{max-width:88%;padding:10px 13px;border-radius:14px;white-space:pre-wrap;word-break:break-word}.zhc-msg.bot{background:#fff;border:1px solid #e8e8e8;align-self:flex-start}.zhc-msg.me{background:#121212;color:#fff;align-self:flex-end}.zhc-links,.zhc-quick{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}.zhc-quick{margin:0}.zhc-chip{display:inline-block;border:1px solid #121212;background:#fff;color:#121212;border-radius:999px;padding:6px 12px;font:600 12px Inter,Arial,sans-serif;text-decoration:none;cursor:pointer}.zhc-chip:hover{background:#121212;color:#fff}.zhc-form{display:flex;gap:8px;padding:10px;border-top:1px solid #e5e5e5;background:#fff}.zhc-form input{flex:1;padding:11px 12px;border:1px solid #d6d6d6;border-radius:8px;font:inherit;background:#fff;color:#121212}.zhc-form button{border:0;background:#121212;color:#fff;border-radius:8px;padding:0 16px;font-weight:600;cursor:pointer}html.zhc-open .help-launch{display:none}@media(max-width:520px){.zhc{right:0;left:0;bottom:0;width:100%;height:78vh;border-radius:16px 16px 0 0}}';
+document.head.appendChild(css);
+document.addEventListener('click',function(e){var a=e.target.closest('.help-launch');if(!a||window.zvEditMode)return;e.preventDefault();open()});
+window.zivraOpenHelp=open;
+})()}catch(zvHcErr){try{window.zivraReport&&window.zivraReport('help-chat',zvHcErr)}catch(_){}}
+
 </script>
-<a class="help-launch" href="help-center.html">✦ &nbsp; Need help?</a><script>(function(){const root=document.body,trigger=document.getElementById("menuTrigger"),back=document.getElementById("drawerBackdrop"),close=document.getElementById("drawerClose"),drawer=document.getElementById("customerDrawer");if(!trigger||!drawer)return;function setOpen(v){root.classList.toggle("drawer-open",v);trigger.setAttribute("aria-expanded",String(v));drawer.setAttribute("aria-hidden",String(!v));}trigger.addEventListener("click",()=>setOpen(true));back.addEventListener("click",()=>setOpen(false));close.addEventListener("click",()=>setOpen(false));drawer.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>setOpen(false)));document.addEventListener("keydown",e=>{if(e.key==="Escape")setOpen(false)});})();</script><script src="./razorpay-checkout.js"></script><script>window.ZIVRA_BUILD='2026-11-07-shop1';if(location.search.indexOf('build')>-1){document.addEventListener('DOMContentLoaded',function(){var d=document.createElement('div');d.className='zv-buildtag';d.textContent='Store build '+window.ZIVRA_BUILD;document.body.appendChild(d)})}</script></body></html>
+<a class="help-launch" href="help-center.html">✦ &nbsp; Need help?</a><script>(function(){const root=document.body,trigger=document.getElementById("menuTrigger"),back=document.getElementById("drawerBackdrop"),close=document.getElementById("drawerClose"),drawer=document.getElementById("customerDrawer");if(!trigger||!drawer)return;function setOpen(v){root.classList.toggle("drawer-open",v);trigger.setAttribute("aria-expanded",String(v));drawer.setAttribute("aria-hidden",String(!v));}trigger.addEventListener("click",()=>setOpen(true));back.addEventListener("click",()=>setOpen(false));close.addEventListener("click",()=>setOpen(false));drawer.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>setOpen(false)));document.addEventListener("keydown",e=>{if(e.key==="Escape")setOpen(false)});})();</script><script src="./razorpay-checkout.js"></script><script>window.ZIVRA_BUILD='2026-11-08-shop2';if(location.search.indexOf('build')>-1){document.addEventListener('DOMContentLoaded',function(){var d=document.createElement('div');d.className='zv-buildtag';d.textContent='Store build '+window.ZIVRA_BUILD;document.body.appendChild(d)})}</script></body></html>
