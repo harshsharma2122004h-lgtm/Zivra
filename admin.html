@@ -794,7 +794,7 @@ async function zpExtrasFromForm(price){
 }
 const zpIsColErr=e=>/column|schema cache|does not exist/i.test(String((e&&e.message)||''));
 async function zpSave(payload,id){
- const run=b=>id?supabaseClient.from('products').update(b).eq('id',id):supabaseClient.from('products').insert(b);
+ const run=b=>id?supabaseClient.from('products').update(b).eq('id',id).select('id').single():supabaseClient.from('products').insert(b).select('id').single();
  let r=await run(payload);
  if(r.error&&zpIsColErr(r.error)){
   const slim={name:payload.name,sku:payload.sku,category:payload.category,price:payload.price,stock:payload.stock,image_url:payload.image_url,description:payload.description,compare_at_price:payload.compare_at_price};
