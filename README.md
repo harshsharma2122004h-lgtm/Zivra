@@ -4,7 +4,8 @@ This repository contains the ZIVRA website files prepared for GitHub upload.
 
 ## Files
 - `index.html` — main storefront / shopping flow
-- `admin.html` — admin and database studio preview
+- `admin.html` — admin dashboard and catalog management
+- `zivra-boutique.css` — shared premium boutique visual layer for storefront, admin and content pages
 - `preview.html` — fixed storefront preview
 
 ## Publish with GitHub Pages
