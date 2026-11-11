@@ -91,6 +91,7 @@ body:not(.authorized) #app{display:none}
 }
 </style>
 
+<link rel="stylesheet" href="./zivra-boutique.css?v=20261111">
 </head>
 <body>
 <div id="adminGate"><form class="gate-card" id="adminLoginForm" onsubmit="return window.zivraAdminLogin(event)"><div class="gate-brand">ZIVRA<span>.</span></div><h1>Admin sign in</h1><p>This private workspace is restricted to your approved ZIVRA administrator account.</p><label for="adminEmail">Email address</label><input id="adminEmail" type="email" autocomplete="username" value="harshsharma2122004h@gmail.com" required><label for="adminPassword">Password</label><input id="adminPassword" type="password" autocomplete="current-password" required><button id="adminLoginButton" type="submit">Sign in securely</button><button type="button" id="forgotPasswordBtn">Forgot password? Send reset link</button><div id="gateError" role="alert"></div></form></div>
