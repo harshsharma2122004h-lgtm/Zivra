@@ -4,7 +4,8 @@ This repository contains the ZIVRA website files prepared for GitHub upload.
 
 ## Files
 - `index.html` — main storefront / shopping flow
-- `admin.html` — admin and database studio preview
+- `admin.html` — admin dashboard and catalog management
+- `zivra-boutique.css` — shared premium boutique visual layer for storefront, admin and content pages
 - `preview.html` — fixed storefront preview
 
 ## Publish with GitHub Pages
@@ -30,7 +31,8 @@ The public project configuration is stored in `supabase-config.js`. It contains 
 2. Go to **SQL Editor → New query**.
 3. Paste and run the contents of `supabase-schema.sql`.
 4. Confirm that the `products`, `orders`, and `order_items` tables exist.
-5. Before launch, connect admin sign-in and assign the approved administrator the server-managed `app_metadata.role = admin` claim. Do not grant admin access through user-editable metadata.
+5. Run `supabase-product-catalog-patch.sql` to add the product editor fields and configure the `product-images` Storage bucket with admin-only write policies.
+6. Before launch, connect admin sign-in and assign the approved administrator the server-managed `app_metadata.role = admin` claim. Do not grant admin access through user-editable metadata.
 
 The schema includes public read access to active products, admin-only order access, and a database-side guest-order function that recalculates prices and stock. The existing HTML preview pages are not yet fully wired to these tables; online payments and order emails are also not activated. Do not accept real payments until a payment provider and verified server-side webhook are integrated.
 
