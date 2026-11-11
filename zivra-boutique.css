@@ -3,6 +3,11 @@
 html{scroll-behavior:smooth}body{font-family:var(--zvsans);-webkit-font-smoothing:antialiased}
 a,button,input,select,textarea{transition:color .2s ease,background-color .2s ease,border-color .2s ease,box-shadow .2s ease,transform .2s ease}
 button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid var(--zvt);outline-offset:3px}
+/* A restrained editorial announcement strip, before the storefront header */
+#app.app:before{content:"COMPLIMENTARY SHIPPING ON ORDERS ABOVE ₹1,999  ·  DISCOVER THE LATEST ZIVRA COLLECTION";display:block;text-align:center;padding:8px 12px;background:#c8bba8;color:#292722;font-size:9px;line-height:1.3;font-weight:600;letter-spacing:.16em;text-transform:uppercase}
+#app.app.ethnic:before{background:#e9e2d8;color:#514536}
+#app .offer-badge,#app .corner-badge{border-radius:0!important;letter-spacing:.12em!important;font-size:9px!important;text-transform:uppercase!important}
+#app .wish{border-radius:0!important;background:rgba(255,253,248,.92)!important;color:#292722!important}
 /* Storefront: charcoal streetwear shell, ivory product presentation */
 #app.app{--bg:#20211f;--surface:#292a27;--ink:#f7f5f0;--muted:#bcb5aa;--line:rgba(255,255,255,.13);--accent:#c8bba8;--card:#292a27;background:#20211f;color:#f7f5f0;font-family:var(--zvsans)}
 #app.app.ethnic{--bg:#f7f5f0;--surface:#fffdf8;--ink:#292722;--muted:#81786d;--line:var(--zvl);--accent:#8d7257;--card:#fffdf8;background:#f7f5f0;color:#292722}
