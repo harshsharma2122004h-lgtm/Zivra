@@ -210,8 +210,8 @@ html.zv-one-collection .switchline{display:none!important}
 @media(max-width:560px){.products{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:12px 10px!important}}
 </style><style id="zv-theme-css">
 /* ===== ZIVRA Shopify-style design system (default). Themes: dawn (default), prestige. 'classic' = old look ===== */
-html.zv-theme-dawn .app,html.zv-theme-dawn .app.ethnic{--bg:#ffffff;--surface:#ffffff;--ink:#121212;--muted:#6b6b6b;--line:#e7e7e7;--accent:#121212;--on-accent:#ffffff;--card:#f4f4f4;--site-background:#fff;--site-on-background:#121212}
-html.zv-theme-prestige .app,html.zv-theme-prestige .app.ethnic{--bg:#faf6ef;--surface:#fffdf9;--ink:#26211a;--muted:#8a7f6f;--line:#e5d9c4;--accent:#a8844a;--on-accent:#ffffff;--card:#f1e9da;--site-background:#faf6ef;--site-on-background:#26211a}
+html.zv-theme-dawn,html.zv-theme-dawn .app,html.zv-theme-dawn .app.ethnic{--bg:#ffffff;--surface:#ffffff;--ink:#121212;--muted:#6b6b6b;--line:#e7e7e7;--accent:#121212;--on-accent:#ffffff;--card:#f4f4f4;--site-background:#fff;--site-on-background:#121212}
+html.zv-theme-prestige,html.zv-theme-prestige .app,html.zv-theme-prestige .app.ethnic{--bg:#faf6ef;--surface:#fffdf9;--ink:#26211a;--muted:#8a7f6f;--line:#e5d9c4;--accent:#a8844a;--on-accent:#ffffff;--card:#f1e9da;--site-background:#faf6ef;--site-on-background:#26211a}
 html[class*="zv-theme-"] body,html[class*="zv-theme-"] .app,html[class*="zv-theme-"] .section,html[class*="zv-theme-"] .app.ethnic .section{background:var(--bg)!important;color:var(--ink)!important}
 html.zv-theme-dawn body,html.zv-theme-dawn button,html.zv-theme-dawn input,html.zv-theme-dawn textarea{font-family:Inter,Arial,sans-serif}
 html.zv-theme-prestige body,html.zv-theme-prestige button,html.zv-theme-prestige input,html.zv-theme-prestige textarea{font-family:Jost,Arial,sans-serif}
@@ -289,100 +289,65 @@ html[class*="zv-theme-"] .footer a,html[class*="zv-theme-"] .footer p,html[class
 html[class*="zv-theme-"] .footer input{background:#fff!important;color:#121212!important;border:1px solid #d9d9d9!important;border-radius:0!important}
 html[class*="zv-theme-"] .darkstrip,html[class*="zv-theme-"] .app.ethnic .darkstrip{background:var(--card)!important;color:var(--ink)!important;border-block:1px solid var(--line)}
 html[class*="zv-theme-"] .darkstrip *{color:inherit!important}
-.zv-buildtag{position:fixed;left:8px;bottom:8px;z-index:99999;background:#000;color:#fff;font:600 11px/1 Arial;padding:6px 9px;border-radius:6px;opacity:.9}
-</style>
-<style id="zivra-storefront-premium-refresh">
-/* Premium editorial finish — keeps both collection identities and existing poster images */
-:root{--zv-editorial-gold:#c6a16a}
-.zvs-hero{overflow:hidden;background:#0b0d0e}
-.zv-street .zvh-slide{min-height:clamp(570px,88vh,900px)}
-.zv-street .zvh-img{background-position:center 30%;filter:saturate(.86)}
-.zv-street .zvh-shade{background:linear-gradient(90deg,rgba(4,5,6,.78),rgba(4,5,6,.28) 58%,rgba(4,5,6,.04)),linear-gradient(0deg,rgba(0,0,0,.48),transparent 48%)}
-.zv-street .zvh-copy{max-width:min(980px,88vw);bottom:clamp(72px,14vh,145px)}
-.zv-street .zvh-eyebrow{font-size:10px;letter-spacing:.34em;color:#e8c99b}
-.zv-street .zvh-title{font-size:clamp(52px,10.5vw,148px);letter-spacing:-.055em;line-height:.86;text-wrap:balance}
-.zv-street .zvh-sub{max-width:480px;color:#eee9e1;font-size:clamp(13px,1.35vw,16px)}
-.zv-street .zvb{background:#e4c18e;color:#19140f;transition:transform .2s,background .2s}
-.zv-street .zvb:hover{background:#f1d7ae;transform:translateY(-2px)}
-.zv-ethnic .zvh-slide{min-height:clamp(520px,82vh,820px)}
-.zv-ethnic .zvh-img{background-position:center 38%;filter:saturate(.9)}
-.zv-ethnic .zvh-shade{background:linear-gradient(90deg,rgba(48,29,19,.68),rgba(48,29,19,.22) 55%,rgba(48,29,19,.02)),linear-gradient(0deg,rgba(36,21,13,.32),transparent 48%)}
-.zv-ethnic .zvh-eyebrow{color:#f0d8b8}
-.zv-ethnic .zvh-title{font-family:Georgia,serif;font-weight:500;letter-spacing:-.045em;line-height:.91;text-wrap:balance}
-.zv-ethnic .zvh-sub{max-width:500px;color:#fff8ed}
-.zv-ethnic .zvb{background:#f0d6b5;color:#3a2418}
-.zvs-head h2,.zvs-title{letter-spacing:-.035em}
-.zvs-newin,.zvs-tiles,.zvs-banner,.zvs-trust,.zvs-reviews{padding-top:clamp(34px,5vw,72px)!important;padding-bottom:clamp(34px,5vw,72px)!important}
-.zv-street .zvs-tiles{background:#101314}
-.zv-street .zvt-img{width:104px;height:126px;border:1px solid #ffffff20}
-.zv-street .zvt-txt b{font-size:15px;letter-spacing:.04em}
-.zv-street .zvt-txt em{font-size:9px;letter-spacing:.18em;color:#d7b987}
-.zv-ethnic .zvs-tiles{background:#efe3d2}
-.zv-ethnic .zvt-img{width:104px;height:126px;border:1px solid #bda78b}
-.zv-ethnic .zvt-txt b{font:500 21px Georgia,serif;color:#3d291e}
-.zv-ethnic .zvt-txt span{color:#755c49}
-.zv-ethnic .zvt-txt em{font-size:9px;letter-spacing:.16em;color:#895b3b}
-.zvs-banner .zvb-frame{overflow:hidden}
-.zvs-banner .zvb-img{transition:transform .8s cubic-bezier(.2,.7,.2,1)}
-.zvs-banner:hover .zvb-img{transform:scale(1.025)}
-.zvs-banner .zvb-copy h2{line-height:.98;letter-spacing:-.04em}
-.zvs-reviews .zvr{border:1px solid #8883;border-radius:10px;padding:22px;background:#ffffff08}
-.product{border-radius:8px!important;overflow:hidden;box-shadow:0 5px 20px #0000000a}
-.product img{transition:transform .65s cubic-bezier(.2,.7,.2,1);object-position:center}
-.product:hover img{transform:scale(1.035)}
-.product .pinfo{padding:14px}
-.product .pname{letter-spacing:.01em;line-height:1.4}
-.product .add{letter-spacing:.1em;text-transform:uppercase;transition:background .2s,color .2s}
-.app.ethnic .product{box-shadow:0 5px 22px #69482b0c}
-.footer{padding-top:44px;padding-bottom:40px}
-@media(max-width:760px){
- .zv-street .zvh-slide{min-height: min(78svh,740px);min-height:max(520px,78svh)}
- .zv-street .zvh-img{background-position:58% center}
- .zv-street .zvh-shade{background:linear-gradient(90deg,rgba(0,0,0,.62),rgba(0,0,0,.13)),linear-gradient(0deg,rgba(0,0,0,.5),transparent 56%)}
- .zv-street .zvh-copy{left:20px;right:20px;bottom:76px;max-width:90vw}
- .zv-street .zvh-title{font-size:clamp(48px,14vw,82px);line-height:.9}
- .zv-street .zvh-sub{font-size:12px;max-width:290px;line-height:1.6}
- .zv-ethnic .zvh-slide{min-height: min(74svh,680px);min-height:max(490px,74svh)}
- .zv-ethnic .zvh-img{background-position:58% center}
- .zv-ethnic .zvh-copy{left:20px;right:20px;bottom:66px;max-width:88vw}
- .zv-ethnic .zvh-title{font-size:clamp(42px,12vw,72px)}
- .zv-ethnic .zvh-sub{font-size:12px;max-width:290px;line-height:1.6}
- .zvh-btns{gap:12px;margin-top:20px}
- .zvb{padding:12px 17px;font-size:10px}
- .zvh-dots{left:20px;bottom:22px}
- .zvs-tiles .zvt-img{width:78px;height:96px}
- .zvs-tiles .zvt{gap:12px}
- .zvs-tiles .zvt-grid{grid-template-columns:1fr 1fr;gap:18px 12px}
- .zvs-tiles .zvt-txt b{font-size:13px}
- .zvs-tiles .zvt-txt span{font-size:10px;line-height:1.4}
- .zvs-tiles .zvt-txt em{font-size:8px}
- .zvs-banner{grid-template-columns:1fr!important}
- .zvs-banner .zvb-copy{padding:24px 20px!important}
- .zvs-banner .zvb-copy h2{font-size:clamp(28px,8vw,42px)}
- .zvs-newin{overflow:hidden}
- .zvs-newin .zvn-row{gap:10px}
- .zvs-newin .zvn{min-width:118px}
- .zvs-newin .zvn-img{height:148px}
- .zvs-trust .zvtr-grid{grid-template-columns:1fr 1fr;gap:18px}
- .zvs-reviews .zvr-grid{grid-template-columns:1fr}
- .product img{height:190px}
- .pinfo{padding:10px!important}
- .pname{font-size:12px!important}
- .price{font-size:12px}
- .add{font-size:9px;padding:10px 4px}
- .footer{gap:16px;padding:30px 5%}
-}
-@media(max-width:380px){
- .zvs-tiles .zvt-grid{grid-template-columns:1fr}
- .zvs-tiles .zvt-img{width:86px;height:100px}
- .product img{height:165px}
-}
-@media(prefers-reduced-motion:reduce){
- .product img,.zvs-banner .zvb-img{transition:none}
-}
-</style>
 
-</head><body><main class="app" id="app">
+/* ===== ZIVRA Soft: minimal + cute (default) ===== */
+html.zv-theme-soft,html.zv-theme-soft .app,html.zv-theme-soft .app.ethnic{--bg:#fffaf6;--surface:#ffffff;--ink:#3a2f2b;--muted:#8f7e77;--line:#f1e3da;--accent:#d9818f;--on-accent:#ffffff;--card:#fcefe8;--sage:#b7cdb4;--site-background:#fffaf6;--site-on-background:#3a2f2b}
+html.zv-theme-soft body,html.zv-theme-soft button,html.zv-theme-soft input,html.zv-theme-soft textarea,html.zv-theme-soft select{font-family:Nunito,Inter,Arial,sans-serif}
+html.zv-theme-soft .logo,html.zv-theme-soft .section-head h2,html.zv-theme-soft .zvs-title,html.zv-theme-soft .zvb-copy h2,html.zv-theme-soft .zvh-title,html.zv-theme-soft .zvs-head h2{font-family:Fraunces,Georgia,serif!important}
+html.zv-theme-soft .zv-announce{background:var(--card);color:var(--ink);font-size:12px;letter-spacing:.04em;font-weight:700}
+html.zv-theme-soft .topbar{border-bottom:0;box-shadow:0 6px 24px rgba(217,129,143,.10)}
+html.zv-theme-soft .search{border-radius:999px!important;background:var(--card)!important}
+html.zv-theme-soft .switchline{border-bottom:0;padding-bottom:6px}
+html.zv-theme-soft .btn,html.zv-theme-soft .detail-add,html.zv-theme-soft .product .add,html.zv-theme-soft .place-order,html.zv-theme-soft .checkout-btn,html.zv-theme-soft #newsletter button{border-radius:999px!important;letter-spacing:.06em!important;font-weight:800;box-shadow:0 6px 16px rgba(217,129,143,.28)}
+html.zv-theme-soft .option-btn,html.zv-theme-soft .color-dot{border-radius:999px}
+/* banner: soft rounded card */
+html.zv-theme-soft .zvs-hero{margin:12px clamp(10px,3vw,36px) 4px;border-radius:26px;background:var(--card);width:auto}
+html.zv-theme-soft .zvh-shade{background:linear-gradient(0deg,rgba(58,47,43,.52),rgba(58,47,43,.08) 62%)!important}
+html.zv-theme-soft .zvh-title{color:#fff!important;text-transform:none!important;font-style:italic!important;font-weight:500!important;font-size:clamp(32px,5.4vw,70px)!important;letter-spacing:-.01em!important;line-height:1.04!important}
+html.zv-theme-soft .zvb-copy h2{text-transform:none!important}
+html.zv-theme-soft .zvb{background:#fff!important;color:var(--ink)!important;border-radius:999px!important;font-weight:800;box-shadow:none}
+html.zv-theme-soft .zvb-ghost{background:transparent!important;color:#fff!important;border-radius:0!important}
+html.zv-theme-soft .zvh-dot{width:8px;height:8px;border-radius:50%}
+html.zv-theme-soft .zvh-arrow{border-radius:50%}
+/* category circles */
+html.zv-theme-soft .zvc-img{border:3px solid #fff;box-shadow:0 0 0 2px var(--accent),0 8px 18px rgba(217,129,143,.22)}
+html.zv-theme-soft .zv-ethnic .zvc-img{border-radius:999px 999px 18px 18px}
+html.zv-theme-soft .zvc b{color:var(--ink);font-weight:800;font-size:12px}
+/* marquee: pastel */
+html.zv-theme-soft .zvs-marquee{background:var(--card)!important;border-block:0!important;padding:14px 0!important}
+html.zv-theme-soft .zvm-track span{color:var(--ink)!important;font-weight:800!important;letter-spacing:.14em!important}
+html.zv-theme-soft .zvm-track span::after{content:'\2661'!important;color:var(--accent)!important;margin-left:52px!important;font-size:12px!important}
+/* tiles, new arrivals, products: round + airy */
+html.zv-theme-soft .zvt-img,html.zv-theme-soft .zvn-img,html.zv-theme-soft .pimg,html.zv-theme-soft .product img{border-radius:20px!important}
+html.zv-theme-soft .zvn-img{border:0}
+html.zv-theme-soft .pimg{overflow:hidden;box-shadow:0 10px 26px rgba(143,100,86,.12)}
+html.zv-theme-soft .product:hover .pimg{box-shadow:0 14px 32px rgba(217,129,143,.25)}
+html.zv-theme-soft .product .corner-badge,html.zv-theme-soft .offer-badge{border-radius:999px!important;padding:4px 10px;font-weight:800}
+html.zv-theme-soft .pct{color:var(--accent)!important}
+html.zv-theme-soft .wish{box-shadow:0 4px 12px rgba(0,0,0,.12)}
+html.zv-theme-soft .wish.on{color:var(--accent)}
+html.zv-theme-soft .zvs-trust{background:transparent!important;padding:26px clamp(14px,4vw,60px)!important}
+html.zv-theme-soft .zv-street .zvtr,html.zv-theme-soft .zv-ethnic .zvtr{background:var(--card);border-radius:20px;padding:16px;align-items:flex-start}
+html.zv-theme-soft .zvtr i{color:var(--accent)}
+html.zv-theme-soft .zv-street .zvs-banner,html.zv-theme-soft .zv-ethnic .zvs-banner{margin:6px clamp(10px,3vw,36px);border-radius:26px;overflow:hidden;min-height:clamp(300px,44vw,480px)}
+html.zv-theme-soft .zvs-banner::after{background:linear-gradient(90deg,rgba(58,47,43,.6),rgba(58,47,43,.05) 70%)!important}
+html.zv-theme-soft .zvb-copy h2{font-style:italic!important;font-weight:500!important}
+/* pills for categories */
+html.zv-theme-soft .cat,html.zv-theme-soft .cat.cat-photo,html.zv-theme-soft .cat:not(.cat-photo){border-color:var(--line)!important;background:#fff!important}
+html.zv-theme-soft .cat.cat-photo::before{box-shadow:0 0 0 2px var(--accent)}
+html.zv-theme-soft .section-head h2{font-style:italic!important;font-weight:500!important;font-size:clamp(26px,3.4vw,38px)}
+/* modal, cart, forms: soft corners */
+html.zv-theme-soft .product-dialog,html.zv-theme-soft .modal,html.zv-theme-soft .cart-drawer,html.zv-theme-soft .customer-drawer{border-radius:24px}
+html.zv-theme-soft input,html.zv-theme-soft textarea,html.zv-theme-soft select{border-radius:12px}
+html.zv-theme-soft .footer,html.zv-theme-soft .app.ethnic .footer{background:var(--card)!important;color:var(--ink)!important;border-radius:28px 28px 0 0;margin-top:10px}
+html.zv-theme-soft .footer input{border-radius:999px!important;border-color:#f0d6cb!important}
+html.zv-theme-soft .darkstrip,html.zv-theme-soft .app.ethnic .darkstrip{background:var(--bg)!important;border:0!important}
+html.zv-theme-soft .promo{border-radius:26px;background:var(--card)!important}
+html.zv-theme-soft .help-launch{background:var(--accent)!important;color:#fff!important;border-radius:999px;box-shadow:0 10px 26px rgba(217,129,143,.4)}
+html.zv-theme-soft .help-launch *{color:#fff!important}
+html.zv-theme-soft .zhc{border-radius:24px;border-color:var(--line)}html.zv-theme-soft .zhc-head{background:var(--accent)}html.zv-theme-soft .zhc-msg.me,html.zv-theme-soft .zhc-form button{background:var(--accent)}html.zv-theme-soft .zhc-chip{border-color:var(--accent);color:var(--accent)}html.zv-theme-soft .zhc-chip:hover{background:var(--accent);color:#fff}
+.zv-buildtag{position:fixed;left:8px;bottom:8px;z-index:99999;background:#000;color:#fff;font:600 11px/1 Arial;padding:6px 9px;border-radius:6px;opacity:.9}
+</style></head><body><main class="app" id="app">
 <header class="topbar"><button class="menu-trigger" id="menuTrigger" type="button" aria-label="Open navigation" aria-expanded="false">☰</button><a href="#" class="logo" id="logo">ZIVRA<small>WEAR YOUR STORY</small></a><nav class="nav"><a href="#home">Home</a><a href="#shop">Shop</a><a href="#collections">Collections</a><a href="#about">About</a><a href="#contact">Contact</a></nav><label class="search"><input id="search" placeholder="Search for products..."><span>⌕</span></label><div class="icons"><button type="button" id="accountButton" title="My Account" aria-label="My Account" style="background:none;border:0;color:inherit;font:inherit;padding:0">♙</button><span title="Wishlist">♡</span><span title="Bag" id="bag">▢<sup id="count">0</sup></span></div></header><div class="customer-drawer-backdrop" id="drawerBackdrop"></div><aside class="customer-drawer" id="customerDrawer" aria-hidden="true"><div class="drawer-head"><strong>ZIVRA.</strong><button class="drawer-close" id="drawerClose" aria-label="Close menu">×</button></div><div class="eyebrow">EXPLORE ZIVRA</div><nav class="drawer-links"><a href="#home">⌂ &nbsp; Home</a><a href="#shop">◇ &nbsp; Shop</a><a href="#collections">▦ &nbsp; Collections</a><a href="about.html">✧ &nbsp; About / Story</a><a href="contact.html">✉ &nbsp; Contact</a><a href="account.html">♙ &nbsp; My Account</a><a href="track-order.html">↗ &nbsp; My Orders</a><a href="help-center.html">? &nbsp; Help Centre</a></nav><section class="drawer-support"><h3>Need a hand?</h3><p>Order updates, sizing, returns or anything else — find answers in our customer care space.</p><a href="help-center.html">Visit Help Centre →</a></section></aside>
 <div class="switchline"><div class="switchbox"><b id="streetLabel" class="active">Men's Streetwear</b><button class="toggle" id="toggle" role="switch" aria-checked="false" aria-label="Switch collection"><span class="knob"></span></button><b id="ethnicLabel">Sanganeri & Ethnic Wear</b></div></div>
 <section class="hero" id="hero"><div class="hero-copy"><div class="eyebrow" id="eyebrow">MEN'S STREETWEAR</div><h1 id="headline">BUILT FOR<br>THE BOLD</h1><p id="subhead">Oversized fits / Premium cotton / Urban vibes</p><button class="btn" id="shopNow">Shop Now&nbsp; →</button></div></section>
@@ -628,7 +593,7 @@ function mutateData(c){
   });
 }
 function applyStatic(c){
-  (function(){var cl=document.documentElement.className.replace(/\bzv-theme-[a-z]+\b/g,'').replace(/\s+/g,' ').trim();var t=(c.theme||{}).template||'dawn';if(/^[a-z]+$/.test(t)&&t!=='classic')cl+=' zv-theme-'+t;document.documentElement.className=cl})();
+  (function(){var cl=document.documentElement.className.replace(/\bzv-theme-[a-z]+\b/g,'').replace(/\s+/g,' ').trim();var t=(c.theme||{}).template||'soft';if(/^[a-z]+$/.test(t)&&t!=='classic')cl+=' zv-theme-'+t;document.documentElement.className=cl})();
   var b=c.brand||{};
   if(b.name||b.tagline!==undefined||b.logoUrl){
     var nm={name:b.name||'ZIVRA',tagline:b.tagline,logoUrl:b.logoUrl};
@@ -928,7 +893,7 @@ function applyLive(c){
 }
 window.zivraHomeRender=function(){
   var c=window.ZIVRA_SITE||{},h=c.home||{},on=true;
-  (function(){var tpl=(c.theme||{}).template||'dawn';var cl=document.documentElement.className.replace(/\bzv-theme-[a-z]+\b/g,'').replace(/\s+/g,' ').trim();if(/^[a-z]+$/.test(tpl)&&tpl!=='classic')cl+=' zv-theme-'+tpl;document.documentElement.className=cl})();
+  (function(){var tpl=(c.theme||{}).template||'soft';var cl=document.documentElement.className.replace(/\bzv-theme-[a-z]+\b/g,'').replace(/\s+/g,' ').trim();if(/^[a-z]+$/.test(tpl)&&tpl!=='classic')cl+=' zv-theme-'+tpl;document.documentElement.className=cl})();
   if(applyLive(c))return;
   document.documentElement.classList.toggle('zv-newhome',on);
   document.documentElement.classList.toggle('zv-edit',!!ZE);
@@ -954,7 +919,7 @@ window.zivraHomeRender=function(){
   sl.i=0;sl.iv=Math.max(3,Number(h.interval)||6);sl.auto=h.autoplay!==false;
   restart();wire(c.motion);decorateCats();tagStatic();
 };
-try{if(!document.getElementById('zv-home-fonts')){var lk=document.createElement('link');lk.id='zv-home-fonts';lk.rel='stylesheet';lk.href='https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800;900&family=Cormorant+Garamond:ital,wght@0,500;0,700;1,500;1,700&family=Jost:wght@400;500;600&display=swap';document.head.appendChild(lk)}}catch(e){}
+try{if(!document.getElementById('zv-home-fonts')){var lk=document.createElement('link');lk.id='zv-home-fonts';lk.rel='stylesheet';lk.href='https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Fraunces:ital,opsz,wght@0,9..144,500;1,9..144,500&family=Inter:wght@400;500;600;800;900&family=Cormorant+Garamond:ital,wght@0,500;0,700;1,500;1,700&family=Jost:wght@400;500;600&display=swap';document.head.appendChild(lk)}}catch(e){}
 /* ---------- visual editor bridge (only inside the admin preview frame) ---------- */
 if(ZE){
   document.addEventListener('click',function(e){
@@ -1165,4 +1130,4 @@ window.zivraOpenHelp=open;
 })()}catch(zvHcErr){try{window.zivraReport&&window.zivraReport('help-chat',zvHcErr)}catch(_){}}
 
 </script>
-<a class="help-launch" href="help-center.html">✦ &nbsp; Need help?</a><script>(function(){const root=document.body,trigger=document.getElementById("menuTrigger"),back=document.getElementById("drawerBackdrop"),close=document.getElementById("drawerClose"),drawer=document.getElementById("customerDrawer");if(!trigger||!drawer)return;function setOpen(v){root.classList.toggle("drawer-open",v);trigger.setAttribute("aria-expanded",String(v));drawer.setAttribute("aria-hidden",String(!v));}trigger.addEventListener("click",()=>setOpen(true));back.addEventListener("click",()=>setOpen(false));close.addEventListener("click",()=>setOpen(false));drawer.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>setOpen(false)));document.addEventListener("keydown",e=>{if(e.key==="Escape")setOpen(false)});})();</script><script src="./razorpay-checkout.js"></script><script>window.ZIVRA_BUILD='2026-11-08-shop2';if(location.search.indexOf('build')>-1){document.addEventListener('DOMContentLoaded',function(){var d=document.createElement('div');d.className='zv-buildtag';d.textContent='Store build '+window.ZIVRA_BUILD;document.body.appendChild(d)})}</script></body></html>
+<a class="help-launch" href="help-center.html">✦ &nbsp; Need help?</a><script>(function(){const root=document.body,trigger=document.getElementById("menuTrigger"),back=document.getElementById("drawerBackdrop"),close=document.getElementById("drawerClose"),drawer=document.getElementById("customerDrawer");if(!trigger||!drawer)return;function setOpen(v){root.classList.toggle("drawer-open",v);trigger.setAttribute("aria-expanded",String(v));drawer.setAttribute("aria-hidden",String(!v));}trigger.addEventListener("click",()=>setOpen(true));back.addEventListener("click",()=>setOpen(false));close.addEventListener("click",()=>setOpen(false));drawer.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>setOpen(false)));document.addEventListener("keydown",e=>{if(e.key==="Escape")setOpen(false)});})();</script><script src="./razorpay-checkout.js"></script><script>window.ZIVRA_BUILD='2026-11-09-soft1';if(location.search.indexOf('build')>-1){document.addEventListener('DOMContentLoaded',function(){var d=document.createElement('div');d.className='zv-buildtag';d.textContent='Store build '+window.ZIVRA_BUILD;document.body.appendChild(d)})}</script></body></html>
